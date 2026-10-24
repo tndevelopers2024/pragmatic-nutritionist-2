@@ -6,7 +6,6 @@ import CoreAreas from '../components/CoreAreas'
 import ResultsFilter from '../components/ResultsFilter'
 import WhyPragmatic from '../components/WhyPragmatic'
 import Timeline from '../components/Timeline'
-import MeetMeenu from '../components/MeetMeenu'
 import DiagnosticCare from '../components/DiagnosticCare'
 import GutAssessmentSection from '../components/GutAssessmentSection'
 import Faq from '../components/Faq'
@@ -29,11 +28,11 @@ export default function Home() {
       {/* 3. Core Disciplines: Gut Health & Sports Nutrition */}
       <CoreAreas />
 
-      {/* 4. Clinical Philosophy: The Pragmatic Approach */}
-      <WhyPragmatic />
+      {/* 4. Social Proof: Champions & Elite Athletes (Performance That Speaks) */}
+      <Champions />
 
-      {/* 5. Clinical Founder & Honors: Meenu Balaji & Realistic Awards 2026 */}
-      <MeetMeenu />
+      {/* 5. Clinical Philosophy: The Pragmatic Approach */}
+      <WhyPragmatic />
 
       {/* 6. Precision Care: Data-Led Diagnostic Testing */}
       <DiagnosticCare />
@@ -44,10 +43,7 @@ export default function Home() {
       {/* 8. Comprehensive Gut Health Assessment Spotlight */}
       <GutAssessmentSection />
 
-      {/* 9. Social Proof: Champions & Elite Athletes */}
-      <Champions />
-
-      {/* 10. Social Proof: Verified Patient Clinical Outcomes */}
+      {/* 9. Social Proof: Verified Patient Clinical Outcomes */}
       <ResultsFilter />
 
       {/* 11. FAQ: Common Inquiries & Clarity */}

@@ -1,4 +1,4 @@
-import { ArrowRight, ShieldCheck, Award, Sparkles, CheckCircle2 } from 'lucide-react'
+import { ArrowRight, ShieldCheck, Sparkles, CheckCircle2, Trophy } from 'lucide-react'
 import WhatsAppIcon from './WhatsAppIcon'
 import { useBook } from '../context/bookContext'
 import { wa } from '../data/site'
@@ -59,21 +59,51 @@ export default function Hero() {
             </a>
           </div>
 
-          {/* Subtle Clinical Trust & Expertise Markers */}
-          <div className="hero-trust-bar" role="region" aria-label="Clinical credentials and experience">
-            <div className="hero-trust-item">
-              <span className="trust-num">14+</span>
-              <span className="trust-label">Years Clinical Practice</span>
+          {/* Highlighted Award & Clinical Credentials Showcase */}
+          <div className="hero-highlight-showcase" role="region" aria-label="Award recognition and clinical credentials">
+            {/* Best Nutritionist & Dietitian Award 2026 Card */}
+            <div className="hero-award-card">
+              <div className="hero-award-trophy" aria-hidden="true">
+                <Trophy size={22} strokeWidth={2.2} />
+              </div>
+              <div className="hero-award-details">
+                <div className="hero-award-header">
+                  <strong className="hero-award-title">BEST NUTRITIONIST &amp; DIETITIAN AWARD 2026</strong>
+                  <span className="hero-award-badge">9TH EDITION REALISTIC AWARDS</span>
+                </div>
+                <p className="hero-award-desc">
+                  Honoured at Chennai for pioneering evidence-based gut health protocols and adolescent sports nutrition frameworks.
+                </p>
+                <a
+                  href="https://republicnewsindia.com/9th-edition-realistic-awards-2026-an-evening-celebrating-the-power-and-grace-of-womanhood/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hero-award-link"
+                >
+                  <span>Read Feature on Republic News India</span>
+                  <ArrowRight size={14} strokeWidth={2.4} aria-hidden="true" />
+                </a>
+              </div>
             </div>
-            <div className="hero-trust-divider" aria-hidden="true" />
-            <div className="hero-trust-item">
-              <span className="trust-num">4,500+</span>
-              <span className="trust-label">Clients Guided Worldwide</span>
-            </div>
-            <div className="hero-trust-divider" aria-hidden="true" />
-            <div className="hero-trust-item">
-              <span className="trust-num">India • UK • NZ</span>
-              <span className="trust-label">Global Consultations</span>
+
+            {/* 4 Clinical Credential Pills */}
+            <div className="hero-credentials-pills-grid" aria-label="Professional qualifications">
+              <div className="hero-credential-pill">
+                <CheckCircle2 size={16} strokeWidth={2.5} className="pill-check-icon" aria-hidden="true" />
+                <span>Registered Clinical Nutritionist (14+ Years)</span>
+              </div>
+              <div className="hero-credential-pill">
+                <CheckCircle2 size={16} strokeWidth={2.5} className="pill-check-icon" aria-hidden="true" />
+                <span>M.H.Sc Food Science &amp; Nutrition</span>
+              </div>
+              <div className="hero-credential-pill">
+                <CheckCircle2 size={16} strokeWidth={2.5} className="pill-check-icon" aria-hidden="true" />
+                <span>ICAR JRF &amp; UGC NET JRF Qualified</span>
+              </div>
+              <div className="hero-credential-pill">
+                <CheckCircle2 size={16} strokeWidth={2.5} className="pill-check-icon" aria-hidden="true" />
+                <span>Peer Reviewer, European Journal of Nutrition</span>
+              </div>
             </div>
           </div>
         </div>

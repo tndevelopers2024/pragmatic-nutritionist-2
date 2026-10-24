@@ -45,16 +45,15 @@ export default function CoreAreas() {
         <span className="divider-label">ATHLETIC FUELLING.</span>
       </div>
 
-      <div className="core-case-studies-stack">
+      <div className="core-case-studies-grid">
         {CORE_AREAS.map((area, idx) => {
           const bgImg = AREA_BG_IMAGES[area.id]
           const metrics = DISCIPLINE_METRICS[area.id] || []
-          const isReversed = idx % 2 === 1
 
           return (
             <article
               key={area.id}
-              className={`core-case-study-card ${isReversed ? 'layout-reversed' : ''}`}
+              className="core-case-study-card"
             >
               {/* Visual Presentation Area */}
               <div className="case-study-visual-wrapper">
