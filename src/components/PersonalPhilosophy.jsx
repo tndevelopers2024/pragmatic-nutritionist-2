@@ -25,7 +25,7 @@ export default function PersonalPhilosophy() {
             </p>
 
             <p>
-              What actually changed the direction of my career was watching it work in real life. Early in practice, working with clients on weight loss and diabetes management, I started seeing something research papers don't fully prepare you for: people's medication dosages coming down, their energy returning, their quality of life visibly shifting — not in the abstract, but in front of my eyes, consultation after consultation.
+              What actually changed the direction of my career was watching it work in real life. Early in practice, working with clients on weight loss and diabetes management, I started seeing something research papers don't fully prepare you for: people's medication dosages coming down, their energy returning, their quality of life visibly shifting — not in the abstract, but in front of me, consultation after consultation.
             </p>
 
             <p>

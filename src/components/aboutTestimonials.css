@@ -1,0 +1,30 @@
+.about-testimonials-viewport {
+  overflow: hidden;
+}
+
+.about-testimonials-track {
+  display: flex;
+  align-items: stretch;
+  transition: transform 450ms ease;
+}
+
+.about-testimonials-slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.about-testimonials .champions-header-controls {
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.about-testimonials .athlete-nav-btn {
+  color: var(--color-primary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-testimonials-track {
+    transition: none;
+  }
+}

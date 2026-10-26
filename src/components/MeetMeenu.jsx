@@ -4,7 +4,7 @@ import Section from './Section'
 import Photo from './Photo'
 import meenuPhoto from '../assets/Faithful high-resolution photo enhancement.png'
 
-export default function MeetMeenu() {
+export default function MeetMeenu({ profile }) {
   const openBook = useBook()
 
   return (
@@ -43,18 +43,19 @@ export default function MeetMeenu() {
 
         {/* Right Column: Bio, Credentials & Award Feature */}
         <div className="meenu-bio-content">
-          <span className="section-eyebrow">Meet Meenu Balaji &bull; M.H.Sc (Food Science &amp; Nutrition)</span>
+          <span className="section-eyebrow">{profile ? <>{profile.name} &bull; {profile.qualification}</> : <>Meet Meenu Balaji &bull; M.H.Sc (Food Science &amp; Nutrition)</>}</span>
           <h2 className="meenu-heading">
-            Clinical Care Grounded in <span className="nowrap-text"><em>Real&#8209;Life Practice</em></span>
+            {profile ? <>{profile.headingStart} <span className="nowrap-text"><em>{profile.headingEnd}</em></span></> : <>Clinical Care Grounded in <span className="nowrap-text"><em>Real&#8209;Life Practice</em></span></>}
           </h2>
 
           <div className="meenu-paragraphs">
             <p className="lead-meenu">
-              You are not failing at nutrition. You are struggling to apply generic templates to a complex life.
+              {profile?.description || 'You are not failing at nutrition. You are struggling to apply generic templates to a complex life.'}
             </p>
             <p className="body-meenu">
-              With 14+ years of clinical practice across India, the UK, and New Zealand, I bridge the gap between rigorous clinical biochemistry and everyday home cooking.
+              {profile ? <>{profile.role}<br />{profile.practice}</> : 'With 14+ years of clinical practice across India, the UK, and New Zealand, I bridge the gap between rigorous clinical biochemistry and everyday home cooking.'}
             </p>
+            {profile && <p className="body-meenu">{profile.stats}</p>}
           </div>
 
           <div className="meenu-award-card">
@@ -100,7 +101,7 @@ export default function MeetMeenu() {
 
           <div className="meenu-cta-row">
             <button type="button" className="btn-editorial-text" onClick={openBook}>
-              <span>Talk to Meenu Balaji</span>
+              <span>{profile ? 'Talk to Meenu' : 'Talk to Meenu Balaji'}</span>
               <ArrowRight size={15} strokeWidth={2.25} aria-hidden="true" />
             </button>
             <span className="meenu-trust-note">Personal 1-on-1 consultations via Video &amp; WhatsApp</span>

@@ -1,0 +1,219 @@
+/* Section content layout only. Typography, shadows and shared styles are
+   inherited unchanged from the existing design system. */
+.sports-content-pages .clinical-cta-section-wrapper {
+  /* The shared CTA resets section padding with !important. */
+  padding-top: clamp(32px, 4vw, 56px) !important;
+}
+
+.sports-content-pages .sports-content-flow > .sports-editorial-section:nth-child(even) {
+  background: var(--color-primary-soft);
+}
+
+.sports-content-pages .sports-editorial-section {
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.sports-content-pages .sports-content-flow > .sports-editorial-section:last-child {
+  padding-bottom: 0;
+}
+
+.sports-content-pages > .faq-section {
+  padding-top: 0;
+}
+
+.sports-content-pages .gut-section-header .placeholder-icon {
+  margin-inline: auto;
+}
+
+.sports-content-pages .sports-program-pattern {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.sports-content-pages .sports-testimonial-copy {
+  width: 100%;
+}
+
+.sports-content-pages .sports-testimonial-copy .placeholder-desc,
+.sports-content-pages .gut-pricing-footnote .placeholder-desc {
+  max-width: none;
+}
+
+.sports-content-pages .gut-program-card .program-action {
+  margin-top: auto;
+}
+
+.sports-content-pages .sports-content-intro-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(32px, 4vw, 72px);
+}
+
+.sports-content-pages .sports-content-visual {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 14px;
+  background: var(--color-primary-soft);
+}
+
+.sports-content-pages .sports-content-visual img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.sports-content-pages .sports-content-intro-grid .sports-content-visual img {
+  aspect-ratio: 4 / 5;
+}
+
+.sports-content-pages .sports-content-expert-grid {
+  display: grid;
+  grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+  align-items: start;
+  gap: clamp(32px, 4vw, 72px);
+}
+
+.sports-content-pages .sports-content-expert-grid .placeholder-desc {
+  max-width: none;
+}
+
+.sports-content-pages .sports-content-portrait {
+  position: sticky;
+  top: 112px;
+}
+
+.sports-content-youth .sports-youth-intro {
+  text-align: center;
+  max-width: 780px;
+  margin: 0 auto 32px;
+}
+
+.sports-content-youth .sports-youth-intro .placeholder-desc {
+  max-width: none;
+}
+
+.sports-content-youth .sports-youth-athletes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.sports-content-youth .sports-youth-athlete {
+  display: grid;
+  grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+  align-items: start;
+  gap: 24px;
+}
+
+.sports-content-youth .sports-youth-athlete img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.sports-content-youth .sports-youth-testimonials {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 24px;
+}
+
+.sports-content-youth .sports-youth-testimonials > article {
+  grid-column: 1;
+}
+
+.sports-content-youth .sports-youth-testimonials > article:nth-child(2) {
+  grid-column: 2;
+  grid-row: 1 / span 3;
+}
+
+.sports-content-youth .sports-youth-testimonial-person {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.sports-content-youth .sports-youth-testimonial-person .placeholder-icon {
+  flex-shrink: 0;
+  margin-bottom: 0;
+}
+
+.sports-content-youth .sports-youth-testimonial-person .placeholder-desc {
+  margin-bottom: 0;
+}
+
+.sports-content-youth .sports-youth-results .gut-who-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.sports-content-youth .sports-youth-pricing-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.sports-content-youth .sports-youth-pricing-row > div {
+  flex: 1;
+}
+
+.sports-content-youth .sports-youth-pricing-row > a {
+  flex-shrink: 0;
+}
+
+.sports-content-youth .sports-youth-pricing {
+  padding-block: 40px;
+}
+
+@media (max-width: 1000px) {
+  .sports-content-youth .sports-youth-athlete {
+    grid-template-columns: 1fr;
+  }
+
+  .sports-content-youth .sports-youth-athlete img {
+    aspect-ratio: 4 / 3;
+    object-position: center 25%;
+  }
+}
+
+@media (max-width: 768px) {
+  .sports-content-youth .sports-youth-athletes,
+  .sports-content-youth .sports-youth-testimonials,
+  .sports-content-youth .sports-youth-results .gut-who-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sports-content-youth .sports-youth-testimonials > article,
+  .sports-content-youth .sports-youth-testimonials > article:nth-child(2) {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .sports-content-youth .sports-youth-pricing-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .sports-content-pages .sports-content-intro-grid,
+  .sports-content-pages .sports-content-expert-grid,
+  .sports-content-pages .sports-program-pattern {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .sports-content-pages .sports-content-intro-grid .sports-content-visual img {
+    aspect-ratio: 4 / 3;
+  }
+
+  .sports-content-pages .sports-content-portrait {
+    max-width: 320px;
+    position: static;
+  }
+}

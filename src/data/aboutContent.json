@@ -1,0 +1,86 @@
+{
+  "sourceUrl": "https://www.pragmaticnutritionist.com/about-meenu-balaji-nutritionist",
+  "heroDescription": "Meenu Balaji, Nutritionist in Chennai & India, Gut Health & Sports Nutrition Specialist",
+  "founder": {
+    "headingStart": "Nutrition Expertise",
+    "headingEnd": "Grounded in Real Life",
+    "name": "MEENU BALAJI",
+    "qualification": "M.H.Sc. Food Science & Nutrition",
+    "role": "Founder & Chief Nutritionist",
+    "practice": "14+ years of clinical practice across India, the UK & New Zealand",
+    "description": "Evidence-led practical nutrition for gut health and sports performance, shaped around Indian foods, individual needs and sustainable changes.",
+    "stats": "4,500+ clients | 14+ years of practice | 350+ nutritionists trained"
+  },
+  "expertise": {
+    "title": "Two Areas of Focused Expertise",
+    "areas": [
+      {
+        "title": "Gut Health",
+        "description": "Bloating, IBS, acidity, constipation and digestive health",
+        "to": "/gut-health"
+      },
+      {
+        "title": "Sports Nutrition",
+        "description": "Performance, recovery, energy availability and nutrition for teen & athletes",
+        "to": "/sports-nutrition"
+      }
+    ]
+  },
+  "disclaimer": {
+    "title": "Disclaimer",
+    "paragraphs": [
+      "The guidance and content provided by Pragmatic Nutrition are intended for general educational and wellness purposes only. While Meenu Balaji is a qualified nutritionist practicing in India, these services are not a substitute for medical care, diagnosis, or treatment in any country.",
+      "If you have any pre-existing medical conditions or are under medical treatment, please consult your doctor, registered dietitian, or a licensed healthcare provider in your country before starting any nutrition or wellness program."
+    ]
+  },
+  "research": {
+    "title": "How I use nutrition research?",
+    "paragraphs": [
+      "I use high-quality, peer-reviewed research to inform my work, never to override clinical judgment or individual context. Evidence helps identify patterns and mechanisms, but real-world outcomes depend on factors such as age, physiology, gut health, lifestyle, medical history, and long-term habits. My role is to critically evaluate nutrition research, apply it within evidence-based frameworks, and translate it into practical, realistic guidance that clients can sustain. When evidence is evolving, limited, or mixed, I clearly communicate uncertainty, set appropriate expectations, and avoid overpromising outcomes."
+    ]
+  },
+  "international": {
+    "title": "For international clients:",
+    "paragraphs": [
+      "Consultations are provided in the form of nutrition and lifestyle coaching, focused on education, behaviour change, and evidence-based guidance. Medical nutrition therapy is coordinated with local healthcare providers when required."
+    ]
+  },
+  "testimonials": [
+    {
+      "paragraphs": [
+        "We truly appreciate Meenu’s knowledge, patience, and commitment. It is reassuring to have the right nutritional guidance while supporting Dhairya’s journey in international Modern Pentathlon.",
+        "Highly recommended for athletes and anyone looking for personalised, professional, and practical nutrition guidance. Thank you, Meenu and Pragmatic Nutrition, for your excellent support!"
+      ],
+      "name": "Uma, Mother of Dhairya",
+      "program": "Sports Nutrition Program"
+    },
+    {
+      "paragraphs": [
+        "We have been consulting Meenu for my daughter's swimming performance and overall health... The diet plan provided is very well balanced, practical, and perfectly suited to a growing child who is actively training..Meenu takes the time to understand her routine, preferences, and competition schedule, and gives clear, easy-to-follow guidance. Highly recommend for sports kids"
+      ],
+      "name": "Bhumiga, Mom of swimmer Niralya",
+      "program": "Sports Nutrition Program"
+    },
+    {
+      "paragraphs": [
+        "I consulted Meenu for my gut issues and she gave me a lot of eye opening advice which made me understand my gut and the pain associated with it. for the past 2 years I have consulted gastros who kept saying that nothing was wrong with me as my test results were normal."
+      ],
+      "name": "Vaidehi Venkatakrishnan, Chennai",
+      "program": "Gut Health Program"
+    },
+    {
+      "paragraphs": [
+        "I was struggling with IBS for many years. After starting the gut health plan, my IBS symptoms reduced by 70–80% in just 8-9 weeks. What I appreciate most is being educated on how to manage even during a stressful flare-up."
+      ],
+      "name": "Akila, UK",
+      "program": "Improvement in IBS, Gut Health Program"
+    },
+    {
+      "paragraphs": [
+        "I lost 20 kgs in 4.5 months. Thank you very much for your kind guidance and support provided from the beginning of my weight loss journey. Your experience and dedication helped me achieve significant results in a short period."
+      ],
+      "name": "Aakash, India",
+      "program": "Weight loss Program"
+    }
+  ]
+}

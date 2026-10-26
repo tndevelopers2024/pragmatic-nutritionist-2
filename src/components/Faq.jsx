@@ -4,7 +4,15 @@ import WhatsAppIcon from './WhatsAppIcon'
 import { FAQ, wa } from '../data/site'
 import Section from './Section'
 
-export default function Faq({ tight }) {
+export default function Faq({
+  tight,
+  items = FAQ,
+  eyebrow = 'FREQUENTLY ASKED',
+  heading = 'Answers for ',
+  headingHighlight = 'Your Peace of Mind',
+  description = 'Transparent insights into consultation workflows, food philosophies, and timeline expectations.',
+  idPrefix = 'faq'
+}) {
   const [openIndex, setOpenIndex] = useState(0)
 
   const toggleItem = (idx) => {
@@ -28,13 +36,11 @@ export default function Faq({ tight }) {
       <div className="faq-two-col">
         {/* Left Column: Header & Support Contact */}
         <div className="faq-left-col">
-          <span className="section-eyebrow">FREQUENTLY ASKED</span>
+          <span className="section-eyebrow">{eyebrow}</span>
           <h2 className="faq-title">
-            Answers for <em>Your Peace of Mind</em>
+            {heading}{headingHighlight && <em>{headingHighlight}</em>}
           </h2>
-          <p className="lead">
-            Transparent insights into consultation workflows, food philosophies, and timeline expectations.
-          </p>
+          {description && <p className="lead">{description}</p>}
 
           <div className="faq-support-card">
             <h4>Have a specific medical or dietary question?</h4>
@@ -54,7 +60,7 @@ export default function Faq({ tight }) {
 
         {/* Right Column: Accordion List with CSS Grid expansion */}
         <div className="faq-accordion-list" role="region" aria-label="Frequently Asked Questions">
-          {FAQ.map(([q, a], idx) => {
+          {items.map(([q, a], idx) => {
             const isOpen = openIndex === idx
             return (
               <div
@@ -65,8 +71,8 @@ export default function Faq({ tight }) {
                   className="faq-question-btn"
                   onClick={() => toggleItem(idx)}
                   aria-expanded={isOpen}
-                  aria-controls={`faq-answer-${idx}`}
-                  id={`faq-q-${idx}`}
+                  aria-controls={`${idPrefix}-answer-${idx}`}
+                  id={`${idPrefix}-q-${idx}`}
                 >
                   <div className="faq-q-left">
                     <span className="faq-num">(0{idx + 1})</span>
@@ -78,13 +84,13 @@ export default function Faq({ tight }) {
                 </button>
 
                 <div
-                  id={`faq-answer-${idx}`}
+                  id={`${idPrefix}-answer-${idx}`}
                   className="faq-answer-collapse"
                   role="region"
-                  aria-labelledby={`faq-q-${idx}`}
+                  aria-labelledby={`${idPrefix}-q-${idx}`}
                 >
                   <div className="faq-answer-inner">
-                    <p>{a}</p>
+                    {typeof a === 'string' ? <p>{a}</p> : a}
                   </div>
                 </div>
               </div>

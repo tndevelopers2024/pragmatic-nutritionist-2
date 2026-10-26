@@ -156,7 +156,7 @@ export default function Champions({
           aria-label="Athlete achievements carousel"
         >
           {athletes.map((athlete, idx) => {
-            const photoSrc = ATHLETE_PHOTOS[athlete.name]
+            const photoSrc = athlete.photoSrc || ATHLETE_PHOTOS[athlete.name]
 
             return (
               <article

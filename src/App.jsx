@@ -16,6 +16,7 @@ import GutConditionPage from './pages/GutConditionPage'
 import Home from './pages/Home'
 import PlaceholderPage from './pages/PlaceholderPage'
 import SectionPage from './pages/SectionPage'
+import SportsNutritionPage from './pages/SportsNutritionPage'
 
 function ScrollTop() {
   const { pathname } = useLocation()
@@ -57,7 +58,10 @@ export default function App() {
             <Route path="/gut-health-checker" element={<GutAssessmentPage />} />
             <Route path="/gut-health-assessment" element={<GutAssessmentPage />} />
             <Route path="/gut-assessment" element={<GutAssessmentPage />} />
-            {PAGES.filter(p => !p.to.startsWith('/gut-health')).map((p) => (
+            <Route path="/sports-nutrition" element={<SportsNutritionPage />} />
+            <Route path="/sports-nutrition/youth-teen-athletes" element={<SportsNutritionPage variant="youth" />} />
+            <Route path="/sports-nutrition/competitive-athletes" element={<SportsNutritionPage variant="competitive" />} />
+            {PAGES.filter(p => !p.to.startsWith('/gut-health') && !p.to.startsWith('/sports-nutrition')).map((p) => (
               <Route key={p.to} path={p.to} element={element(p)} />
             ))}
             <Route
