@@ -1,12 +1,10 @@
 # Dependencies
 node_modules/
-client/node_modules/
 .pnp
 .pnp.js
 
 # Production build output
 dist/
-client/dist/
 build/
 dist-ssr/
 playwright
@@ -17,9 +15,6 @@ test-results/
 playwright/.cache/
 *.spec.js-snapshots/
 run-playwright-tests.js
-client/run-playwright-tests.js
-*_*.png
-*px.png
 *.spec.js.snap
 
 # Environment variables & secrets
