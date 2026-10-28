@@ -1,0 +1,37 @@
+/* PCOS follows the same shared care layout without inventing service content. */
+.pn-approach, .pn-metabolic { display: grid; grid-template-columns: 1fr 1fr; align-items: start; gap: 36px; }
+.pn-page .pn-process { align-self: stretch; display: flex; flex-direction: column; justify-content: center; }
+.pn-page .pn-process-steps { color: var(--color-primary); font-weight: 600; margin: 0; }
+.pn-testimonial { display: grid; grid-template-columns: minmax(0,2fr) minmax(0,1fr); align-items: center; gap: 40px; margin: 0; padding: 36px; }
+.pn-quote-icon { color: var(--color-primary); margin-bottom: 18px; }
+.pn-testimonial blockquote { margin: 0; }
+.pn-testimonial figcaption { padding-left: 32px; border-left: 1px solid var(--cn-border); }
+.pn-testimonial figcaption strong { font-size: 1rem; color: var(--color-text-main); }
+.pn-testimonial figcaption p { margin: 8px 0 0; }
+.pn-page .pn-review-note, .pn-page .pn-care-note { font-size: .8rem; margin: 20px 0 0; }
+.pn-expert-closing { margin-top: 24px; }
+.pn-page .cn-expert { align-items: center; gap: clamp(32px, 4vw, 64px); }
+.pn-page .cn-expert > img { align-self: center; }
+.pn-text-link { display: inline-flex; align-items: center; gap: 10px; color: var(--color-primary); font-weight: 600; font-size: .9rem; }
+.pn-closing-section .cn-consultation { margin: 0; background: #fff; }
+.pn-closing-section h2 { font-size: clamp(1.6rem,1.2rem + 1.2vw,2.25rem); }
+@media (max-width: 768px) { .pn-approach, .pn-metabolic, .pn-testimonial { grid-template-columns: 1fr; gap: 24px; } .pn-testimonial { padding: 26px; } .pn-testimonial figcaption { padding: 20px 0 0; border-left: 0; border-top: 1px solid var(--cn-border); } }
+/* Keep the intro together and show the existing process as a clear sequence. */
+.pn-page .cn-intro { gap: 0; background: #EDF5F1; border: 1px solid var(--cn-border); border-radius: var(--cn-radius); overflow: hidden; }
+.pn-page .cn-intro > div { padding: clamp(26px,3vw,40px); }
+.pn-page .cn-intro > img { border-radius: 0; }
+.pn-approach-section .cn-section-heading { text-align: left; margin: 0 0 24px; }
+.pn-approach > p { margin: 0; }
+.pn-approach-section .pn-process { margin-top: 28px; padding: 26px; }
+.pn-step-list { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: 20px; counter-reset: care-step; list-style: none; margin: 0; padding: 0; }
+.pn-step-list > li { counter-increment: care-step; display: flex; align-items: center; gap: 12px; border-right: 1px solid var(--cn-border); padding-right: 16px; }
+.pn-step-list > li:last-child { border: 0; padding-right: 0; }
+.pn-step-list > li::before { content: counter(care-step, decimal-leading-zero); display: grid; place-items: center; width: 34px; height: 34px; flex-shrink: 0; border-radius: 50%; background: #E8F4EE; color: var(--color-primary); font-size: .75rem; }
+.pn-step-list > li > span:first-child { color: var(--color-primary); }
+@media (max-width: 1000px) { .pn-step-list { grid-template-columns: repeat(3,minmax(0,1fr)); } .pn-step-list > li { border: 0; padding: 0; } }
+@media (max-width: 768px) { .pn-page .cn-intro { gap: 0; } }
+@media (max-width: 520px) { .pn-step-list { grid-template-columns: 1fr; gap: 14px; } .pn-approach-section .pn-process { padding: 22px; } }
+
+.pn-metabolic { align-items: center; }
+.pn-metabolic-image { display: block; width: 100%; height: auto; border-radius: var(--cn-radius); }
+.pn-page .pn-metabolic-note { margin: 20px 0 0; }

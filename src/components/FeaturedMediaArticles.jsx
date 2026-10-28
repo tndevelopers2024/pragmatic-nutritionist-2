@@ -115,7 +115,8 @@ const MEDIA_ARTICLES = [
     icon: Newspaper,
     theme: 'teal',
     summary:
-      'Featured executive commentary on nutrition practice, long-term habit modification, and evidence-led health guidance.'
+      'Featured executive commentary on nutrition practice, long-term habit modification, and evidence-led health guidance.',
+    url: 'https://medium.com/authority-magazine/meenu-balaji-of-pragmatic-nutrition-on-nutrition-for-optimal-well-being-6aea0fc964f8'
   },
   {
     id: 10,
@@ -293,9 +294,21 @@ export default function FeaturedMediaArticles() {
                   <p className="media-card-summary">{article.summary}</p>
 
                   <div className="media-card-footer">
-                    <span className="media-read-badge">
-                      <span>Expert Commentary</span>
-                    </span>
+                    {article.url ? (
+                      <a
+                        href={article.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="media-read-badge media-read-link"
+                      >
+                        <span>Read Publication</span>
+                        <ExternalLink size={12} strokeWidth={2.2} />
+                      </a>
+                    ) : (
+                      <span className="media-read-badge">
+                        <span>Expert Commentary</span>
+                      </span>
+                    )}
                   </div>
                 </article>
               )

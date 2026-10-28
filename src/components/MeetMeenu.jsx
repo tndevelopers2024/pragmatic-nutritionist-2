@@ -68,15 +68,26 @@ export default function MeetMeenu({ profile }) {
                 <span className="award-badge-pill">9th Edition Realistic Awards</span>
               </div>
               <p>Honoured at Chennai for pioneering evidence-based gut health protocols and adolescent sports nutrition frameworks.</p>
-              <a
-                href="https://republicnewsindia.com/9th-edition-realistic-awards-2026-an-evening-celebrating-the-power-and-grace-of-womanhood/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="award-press-link"
-              >
-                <span>Read Feature on Republic News India</span>
-                <ArrowRight size={13} strokeWidth={2.2} />
-              </a>
+              <div className="award-links-row" style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', marginTop: '6px' }}>
+                <a
+                  href="https://republicnewsindia.com/9th-edition-realistic-awards-2026-an-evening-celebrating-the-power-and-grace-of-womanhood/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="award-press-link"
+                >
+                  <span>Read Feature on Republic News India</span>
+                  <ArrowRight size={13} strokeWidth={2.2} />
+                </a>
+                <a
+                  href="https://www.linkedin.com/posts/meenu-balaji_returning-to-chennai-after-21-years-felt-activity-7437005391835619329-tNPK"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="award-press-link"
+                >
+                  <span>View Post on LinkedIn</span>
+                  <ArrowRight size={13} strokeWidth={2.2} />
+                </a>
+              </div>
             </div>
           </div>
 

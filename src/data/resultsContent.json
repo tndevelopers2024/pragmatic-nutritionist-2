@@ -1,0 +1,111 @@
+{
+  "sourceUrl": "https://www.pragmaticnutritionist.com/",
+  "testimonialsTitle": "What People Say About Working with Meenu",
+  "testimonialsEyebrow": "REAL CLIENTS REAL OUTCOMES",
+  "rating": "4.9",
+  "ratingLabel": "4500 + verified clients",
+  "testimonials": [
+    {
+      "paragraphs": [
+        "\"Meenu is a highly competent nutritionist, who has the ability to convey complex information into education material that patients can understand and will endeavour to comply with.",
+        "Meenu's knowledge in the field is outstanding and its relationship with exercise has been beneficial.",
+        "We were very impressed with her depth of knowledge in adolescent nutrition and its direct relation to athletic performance. We have applied her frameworks with great effect in our adolescent population.\""
+      ],
+      "category": "Sports Nutrition",
+      "initials": "VV",
+      "name": "Vijay Vallabh",
+      "role": "Wellington Sports Medicine,  New Zealand"
+    },
+    {
+      "paragraphs": [
+        "\"I lost 14 kg in 12 weeks. As a working professional, I eat out every day. But Meenu gave me practical strategies that actually worked. I would recommend her to anyone wanting real, sustainable weight loss.\""
+      ],
+      "category": "Weight Loss",
+      "initials": "AK",
+      "name": "Ankit",
+      "role": "Media Design Professional, Chennai"
+    },
+    {
+      "paragraphs": [
+        "\"Consulted Meenu for severe acidity and gut issues. She gave a tailor-made 12-week plan around my preferences,  the changes were minimal but the results were remarkable. Worth every rupee.\""
+      ],
+      "category": "Gut Health",
+      "initials": "SM",
+      "name": "Shobha Manoharan",
+      "role": "Chennai"
+    },
+    {
+      "paragraphs": [
+        "\"My PCOS symptoms improved in just 5–6 weeks. No more migraines. My menstrual health is better, acne reduced, and the plan was completely flexible around my life.",
+        "My foods craving reduce too.\""
+      ],
+      "category": "PCOS",
+      "initials": "AK",
+      "name": "Amirtha",
+      "role": "Software Professional, Bengaluru"
+    },
+    {
+      "paragraphs": [
+        "\"HbA1C reduced from 7.1 to 6.8 in just 4 weeks. I joined the 3 months diabetes plan with Meenu.",
+        "I'm very happy with the results. The diet was simple and easy."
+      ],
+      "category": "Diabetes",
+      "initials": "VP",
+      "name": "Prabhakaran",
+      "role": "Trichy"
+    },
+    {
+      "paragraphs": [
+        "\"Meenu has been a constant guide and a major contributor to Charitha's national gold. Her nutrition strategy helped improve Charitha's PB from 27.8s to 27.02s, outperforming Olympic-level swimmers\""
+      ],
+      "category": "Sports Nutrition",
+      "initials": "SM",
+      "name": "Dr. Smriti",
+      "role": "Homeopathy Doctor, Bangalore"
+    }
+  ],
+  "athletesTitle": "Performance That Speaks",
+  "athletesIntro": "Nutrition Support for Athletes competing at National & International events",
+  "athletes": [
+    {
+      "sport": "Jiu-Jitsu",
+      "name": "SAI AMEYA",
+      "achievements": [
+        "Gold medal, IBJJF, Kuala Lampur International Open",
+        "Silver at AJP, Saudi Arabia"
+      ],
+      "image": "sai"
+    },
+    {
+      "sport": "Swimming",
+      "name": "CHARITA PHANINDRANATH",
+      "achievements": [
+        "U17 National record holder-50m Freestyle- 26.04s",
+        "Asian Age group Championship 2026- 4th place, 50m free style"
+      ],
+      "image": "charita"
+    },
+    {
+      "sport": "Squash",
+      "name": "AAHANA SINGH",
+      "achievements": [
+        "GU17 Champion — Bengal Junior Open 2026"
+      ],
+      "image": "aahana"
+    },
+    {
+      "sport": "UIPM-Pentathlon",
+      "name": "DHAIRYA SAMAHITA NAVEEN",
+      "achievements": [
+        "2025 Silver Medal holder at the International Championship"
+      ],
+      "image": "dhairya"
+    }
+  ],
+  "athleteCta": [
+    "Raising a young athlete?",
+    "Their nutrition matters as much as their training.",
+    "Book A Free Discovery Call"
+  ],
+  "disclaimer": "Results are based on client self-reported goal achievement and vary between individuals."
+}

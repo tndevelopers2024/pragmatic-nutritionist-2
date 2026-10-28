@@ -7,10 +7,11 @@ import './aboutTestimonials.css'
 
 export function AboutExpertise() {
   return (
-    <Section width="wide" bg="white" title={content.expertise.title}>
+    <Section width="wide" bg="white" title={content.expertise.title} className="about-expertise">
       <div className="who-for-cards-grid">
         {content.expertise.areas.map((area, index) => (
           <article className="who-for-card" key={area.to}>
+            <img className="about-expertise-image" src={`/images/heroes/expertise-${index === 0 ? 'gut' : 'sports'}.webp`} alt="" loading="lazy" />
             <div className="who-for-check-icon" aria-hidden="true">{index === 0 ? <HeartPulse size={20} /> : <Dumbbell size={20} />}</div>
             <div className="who-for-card-content">
               <h3 className="subtopics-title">{area.title}</h3>
@@ -37,9 +38,9 @@ export function AboutTestimonial() {
     <Section width="wide" bg="white" title="Testimonials">
       <div className="about-testimonials" role="region" aria-label="Client testimonials" aria-roledescription="carousel" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} onFocusCapture={() => setPaused(true)} onBlurCapture={event => { if (!event.currentTarget.contains(event.relatedTarget)) setPaused(false) }}>
       <div className="about-testimonials-viewport">
-      <div className="about-testimonials-track" style={{ transform: `translateX(-${activeIndex * 100}%)` }}>
-      {content.testimonials.map((testimonial, index) => (
-      <article key={testimonial.name} className="outcomes-featured-card about-testimonials-slide" aria-hidden={index !== activeIndex} aria-label={`Testimonial ${index + 1} of ${content.testimonials.length}`}>
+      <div className="about-testimonials-track">
+      {Array.from({ length: Math.min(3, content.testimonials.length) }, (_, offset) => content.testimonials[(activeIndex + offset) % content.testimonials.length]).map((testimonial, index) => (
+      <article key={testimonial.name} className="outcomes-featured-card about-testimonials-slide" aria-label={`Testimonial ${(activeIndex + index) % content.testimonials.length + 1} of ${content.testimonials.length}`}>
         <div className="featured-card-body"><blockquote className="featured-quote">{testimonial.paragraphs.map(text => <p key={text}>{text}</p>)}</blockquote></div>
         <div className="featured-card-footer">
           <div className="featured-author-seal" aria-hidden="true"><span>{testimonial.name[0]}</span></div>
@@ -61,7 +62,7 @@ export function AboutTestimonial() {
 
 export function AboutPracticeNotes() {
   return (
-    <Section width="wide" bg="white">
+    <Section width="wide" bg="white" className="about-practice-notes">
       <div className="working-card-editorial">
         <h2 className="working-title">{content.disclaimer.title}</h2>
         {content.disclaimer.paragraphs.map(text => <p className="working-lead-paragraph" key={text}>{text}</p>)}

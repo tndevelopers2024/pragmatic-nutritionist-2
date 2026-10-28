@@ -1,0 +1,54 @@
+{
+  "scope": "Archived main-page text, including repeats, FAQs and CTAs. Shared navigation and footer are not part of this check.",
+  "results": [
+    {
+      "width": 1440,
+      "page": "child-teen-nutrition",
+      "source": "child-teen-nutrition",
+      "sourceLines": 161,
+      "missing": [],
+      "undercounts": []
+    },
+    {
+      "width": 1440,
+      "page": "child-teen-nutrition",
+      "source": "adhd-nutrition",
+      "sourceLines": 83,
+      "missing": [],
+      "undercounts": []
+    },
+    {
+      "width": 1440,
+      "page": "diabetes",
+      "source": "diabetes-nutrition",
+      "sourceLines": 173,
+      "missing": [],
+      "undercounts": []
+    },
+    {
+      "width": 390,
+      "page": "child-teen-nutrition",
+      "source": "child-teen-nutrition",
+      "sourceLines": 161,
+      "missing": [],
+      "undercounts": []
+    },
+    {
+      "width": 390,
+      "page": "child-teen-nutrition",
+      "source": "adhd-nutrition",
+      "sourceLines": 83,
+      "missing": [],
+      "undercounts": []
+    },
+    {
+      "width": 390,
+      "page": "diabetes",
+      "source": "diabetes-nutrition",
+      "sourceLines": 173,
+      "missing": [],
+      "undercounts": []
+    }
+  ],
+  "errors": []
+}

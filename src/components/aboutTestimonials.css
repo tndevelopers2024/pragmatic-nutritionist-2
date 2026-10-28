@@ -3,15 +3,25 @@
 }
 
 .about-testimonials-track {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
   align-items: stretch;
   transition: transform 450ms ease;
 }
 
 .about-testimonials-slide {
-  flex: 0 0 100%;
   min-width: 0;
   box-sizing: border-box;
+}
+
+@media (max-width: 900px) {
+  .about-testimonials-track { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .about-testimonials-slide:nth-child(3) { display: none; }
+}
+@media (max-width: 600px) {
+  .about-testimonials-track { grid-template-columns: 1fr; }
+  .about-testimonials-slide:nth-child(2) { display: none; }
 }
 
 .about-testimonials .champions-header-controls {
@@ -22,6 +32,12 @@
 .about-testimonials .athlete-nav-btn {
   color: var(--color-primary);
 }
+
+.about-practice-notes .working-card-editorial { padding: clamp(24px, 3vw, 40px); }
+.about-practice-notes .working-title { font-size: clamp(1.6rem, 2vw, 2.1rem); margin-bottom: 12px; }
+.about-practice-notes .working-lead-paragraph { font-family: inherit; font-size: .95rem; line-height: 1.6; margin: 0 0 16px; }
+.about-practice-notes .subtopics-title { font-size: 1.05rem; margin: 20px 0 8px; }
+.about-practice-notes .working-lead-paragraph:last-child { margin-bottom: 0; }
 
 @media (prefers-reduced-motion: reduce) {
   .about-testimonials-track {

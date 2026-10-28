@@ -1,0 +1,21 @@
+.programs-pricing-page .pricing-plans-grid,
+.programs-pricing-page .pricing-signature-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px;
+}
+
+.pricing-signature-section .section-header { margin-bottom: 24px; }
+.programs-pricing-page .pricing-signature-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: 40px 48px; }
+.pricing-signature-image { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 18px; }
+.pricing-signature-features { grid-column: 1 / -1; border-top: 1px solid #d7e5de; padding-top: 28px; }
+.pricing-signature-features ul { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px 30px; }
+
+@media (max-width: 767px) {
+  .programs-pricing-page .pricing-plans-grid,
+  .programs-pricing-page .pricing-signature-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .pricing-signature-features { grid-column: auto; }
+  .pricing-signature-features ul { grid-template-columns: 1fr; }
+}

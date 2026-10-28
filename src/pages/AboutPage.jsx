@@ -8,13 +8,13 @@ import WhoIsThisFor from '../components/WhoIsThisFor'
 import ThinkingBehindPractice from '../components/ThinkingBehindPractice'
 import InternationalPublications from '../components/InternationalPublications'
 import FeaturedMediaArticles from '../components/FeaturedMediaArticles'
-import ProofStrip from '../components/ProofStrip'
 import Champions from '../components/Champions'
 import Faq from '../components/Faq'
 import TransformHealthCta from '../components/TransformHealthCta'
 import { AboutExpertise, AboutTestimonial, AboutPracticeNotes } from '../components/AboutSourceContent'
 import aboutContent from '../data/aboutContent.json'
 import niralyaPhoto from '../assets/niralya-satheesh-kumar.jpeg'
+import './aboutTypography.css'
 
 const ABOUT_ATHLETES = [
   {
@@ -153,9 +153,6 @@ export default function AboutPage() {
 
       {/* Featured Media Articles in Health Magazine */}
       <FeaturedMediaArticles />
-
-      {/* Proof Strip */}
-      <ProofStrip />
 
       {/* FAQs */}
       <Faq

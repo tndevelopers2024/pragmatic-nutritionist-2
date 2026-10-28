@@ -3,6 +3,7 @@ import { Link, NavLink, useLocation } from 'react-router-dom'
 import { ChevronDown, X, ArrowRight } from 'lucide-react'
 import { MENU } from '../data/site'
 import { useBook } from '../context/bookContext'
+import SocialLinks from './SocialLinks'
 import logoImg from '../assets/Pragmatic_logo.png'
 
 export default function Navbar() {
@@ -12,6 +13,7 @@ export default function Navbar() {
   const [openMobileAccordion, setOpenMobileAccordion] = useState(null)
   const [prevPathname, setPrevPathname] = useState('')
   const timeoutRef = useRef(null)
+  const headerRef = useRef(null)
   const openBook = useBook()
   const location = useLocation()
 
@@ -20,6 +22,7 @@ export default function Navbar() {
     setPrevPathname(location.pathname)
     if (mobileOpen) setMobileOpen(false)
     if (activeDropdown) setActiveDropdown(null)
+    if (openMobileAccordion) setOpenMobileAccordion(null)
   }
 
   // Clear any pending dropdown close timeout on unmount
@@ -39,25 +42,32 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Close drawer on Escape key and prevent background body scroll when mobile menu is open
+  // Dismiss desktop dropdowns as well as the mobile drawer.
   useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === 'Escape') {
-        if (timeoutRef.current) clearTimeout(timeoutRef.current)
+    const dismiss = (event) => {
+      if (event.type === 'keydown' && event.key !== 'Escape') return
+      if (event.type === 'pointerdown' && headerRef.current?.contains(event.target)) return
+      if (timeoutRef.current) clearTimeout(timeoutRef.current)
+      if (event.type === 'keydown') {
+        headerRef.current?.querySelector('.nav-link[aria-expanded="true"]')?.focus()
         setMobileOpen(false)
-        setActiveDropdown(null)
+        setOpenMobileAccordion(null)
       }
+      setActiveDropdown(null)
     }
-    if (mobileOpen) {
-      document.body.style.overflow = 'hidden'
-      window.addEventListener('keydown', handleKeyDown)
-    } else {
-      document.body.style.overflow = ''
-    }
+    document.addEventListener('keydown', dismiss)
+    document.addEventListener('pointerdown', dismiss)
     return () => {
-      document.body.style.overflow = ''
-      window.removeEventListener('keydown', handleKeyDown)
+      document.removeEventListener('keydown', dismiss)
+      document.removeEventListener('pointerdown', dismiss)
     }
+  }, [])
+
+  useEffect(() => {
+    if (!mobileOpen) return
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => { document.body.style.overflow = previousOverflow }
   }, [mobileOpen])
 
   const toggleMobileAccordion = (to) => {
@@ -87,19 +97,20 @@ export default function Navbar() {
       timeoutRef.current = null
     }
     setMobileOpen(false)
+    setOpenMobileAccordion(null)
     setActiveDropdown(null)
   }
 
   return (
     <>
-      <header className={`navbar-header ${scrolled ? 'navbar-scrolled' : 'navbar-transparent'}`}>
+      <header ref={headerRef} className={`navbar-header ${scrolled ? 'navbar-scrolled' : 'navbar-transparent'}`}>
         <nav className="navbar-container" aria-label="Main Navigation">
           <Link className="navbar-logo" to="/" onClick={closeAll} aria-label="Meenu Balaji - Pragmatic Nutrition Home">
             <img src={logoImg} alt="Meenu Balaji - Pragmatic Nutritionist" className="navbar-logo-img" />
           </Link>
 
           {/* Desktop Navigation */}
-          <ul className="navbar-links" role="menubar">
+          <ul className="navbar-links">
             {MENU.map((item) => {
               const hasChildren = Boolean(item.children && item.children.length > 0)
               const isOpen = activeDropdown === item.to
@@ -108,7 +119,22 @@ export default function Navbar() {
                 <li
                   key={item.to}
                   className={`nav-item ${hasChildren ? 'has-dropdown' : ''}`}
-                  onMouseEnter={() => hasChildren && handleMouseEnter(item.to)}
+                  onMouseEnter={() => handleMouseEnter(hasChildren ? item.to : null)}
+                  onFocus={() => handleMouseEnter(hasChildren ? item.to : null)}
+                  onBlur={(event) => {
+                    if (!event.currentTarget.contains(event.relatedTarget)) {
+                      if (timeoutRef.current) clearTimeout(timeoutRef.current)
+                      setActiveDropdown(null)
+                    }
+                  }}
+                  onKeyDown={(event) => {
+                    if (hasChildren && event.key === 'ArrowDown' && event.target.closest('.nav-link')) {
+                      event.preventDefault()
+                      handleMouseEnter(item.to)
+                      const itemElement = event.currentTarget
+                      requestAnimationFrame(() => itemElement.querySelector('.mega-item')?.focus())
+                    }
+                  }}
                   onMouseLeave={() => hasChildren && handleMouseLeave()}
                 >
                   <NavLink
@@ -116,7 +142,7 @@ export default function Navbar() {
                     end={item.to === '/'}
                     className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
                     onClick={closeAll}
-                    aria-haspopup={hasChildren ? 'true' : undefined}
+                    aria-controls={hasChildren ? `submenu-${item.to.slice(1)}` : undefined}
                     aria-expanded={hasChildren ? isOpen : undefined}
                   >
                     <span>{item.label}</span>
@@ -127,7 +153,7 @@ export default function Navbar() {
 
                   {/* Mega-menu dropdown panel */}
                   {hasChildren && (
-                    <div className={`mega-dropdown ${isOpen ? 'show' : ''}`} role="menu" aria-label={`${item.label} Submenu`}>
+                    <div className={`mega-dropdown ${isOpen ? 'show' : ''}`} id={`submenu-${item.to.slice(1)}`} aria-label={`${item.label} Submenu`} inert={!isOpen}>
                       <div className="mega-dropdown-header">
                         <span className="mega-tag">{item.label}</span>
                         {item.blurb && <p className="mega-blurb">{item.blurb}</p>}
@@ -138,7 +164,6 @@ export default function Navbar() {
                             key={child.to}
                             to={child.to}
                             className="mega-item"
-                            role="menuitem"
                             onClick={closeAll}
                           >
                             <span className="mega-item-title">{child.label}</span>
@@ -187,7 +212,7 @@ export default function Navbar() {
       />
 
       {/* Mobile Fullscreen Slide-in Drawer */}
-      <div className={`mobile-drawer ${mobileOpen ? 'open' : ''}`} aria-hidden={!mobileOpen}>
+      <div className={`mobile-drawer ${mobileOpen ? 'open' : ''}`} aria-hidden={!mobileOpen} inert={!mobileOpen}>
         <div className="drawer-header">
           <Link className="navbar-logo" to="/" onClick={closeAll} aria-label="Meenu Balaji - Pragmatic Nutrition Home">
             <img src={logoImg} alt="Meenu Balaji - Pragmatic Nutritionist" className="navbar-logo-img" />
@@ -219,6 +244,7 @@ export default function Navbar() {
                         className="drawer-accordion-btn"
                         onClick={() => toggleMobileAccordion(item.to)}
                         aria-expanded={isAccordionOpen}
+                        aria-controls={`mobile-submenu-${item.to.slice(1)}`}
                         aria-label={`Toggle ${item.label} submenu`}
                       >
                         <ChevronDown className={`drawer-caret ${isAccordionOpen ? 'open' : ''}`} size={16} strokeWidth={2.5} />
@@ -227,7 +253,7 @@ export default function Navbar() {
                   </div>
 
                   {hasChildren && (
-                    <div className={`drawer-submenu ${isAccordionOpen ? 'open' : ''}`}>
+                    <div id={`mobile-submenu-${item.to.slice(1)}`} className={`drawer-submenu ${isAccordionOpen ? 'open' : ''}`} aria-hidden={!isAccordionOpen} inert={!isAccordionOpen}>
                       <div className="drawer-submenu-inner">
                         {item.children.map((child) => (
                           <Link
@@ -259,6 +285,11 @@ export default function Navbar() {
           >
             Book Free Call
           </button>
+
+          <div className="drawer-socials-wrap">
+            <span className="drawer-socials-label">Follow Meenu Balaji</span>
+            <SocialLinks className="drawer-social-icons-row" itemClassName="drawer-social-icon-btn" size={20} />
+          </div>
         </div>
       </div>
     </>

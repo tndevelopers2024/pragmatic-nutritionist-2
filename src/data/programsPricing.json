@@ -1,0 +1,19 @@
+{
+  "sources": ["https://www.pragmaticnutritionist.com/nutrition-plans", "https://www.pragmaticnutritionist.com/signature-nutrition-program"],
+  "plans": [
+    {
+      "title": "12-Week Fit & Fuel Program",
+      "price": "18,500",
+      "duration": "Valid for 12 weeks",
+      "description": "The 12-Week Fit & Fuel Program combines personalized nutrition to support sustainable weight loss, strength, and energy.",
+      "features": ["Personalized Meal Plans & Easy, Delicious Recipes", "Diet review & Progress Adjustments in 10 days", "Online support through Whatsapp (Mon-Sat)", "Mindful Eating & Emotional Wellness Tools", "Supplement Guidance & Monitoring"]
+    },
+    {
+      "title": "24 Weeks to Fit & Flourish",
+      "price": "39,999",
+      "duration": "Valid for 24 weeks",
+      "description": "Nutrition+ Fitness",
+      "features": ["Personalized nutrition focused on real, satisfying meals", "Strategies to improve metabolism and reduce cravings", "Diet review every 10 days & expert support for motivation", "Mindset & Habit coaching for lifelong healthy patterns", "1 Fitness consultation, a personalised Fitness plan", "5 Fitness Review sessions", "2 Months Free maintenance- 20 minute call/month"]
+    }
+  ]
+}

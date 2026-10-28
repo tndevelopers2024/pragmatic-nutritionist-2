@@ -1,0 +1,116 @@
+{
+  "child-teen-nutrition": {
+    "label": "Child & Teen Nutrition",
+    "description": "From picky eaters and underweight toddlers to teenagers navigating growth, hormones, and school demands, we build nutrition plans that work with Indian food, real family schedules, and the way children actually eat."
+  },
+  "adhd-nutrition": {
+    "label": "ADHD Nutrition for Children",
+    "description": "Personalised, root-cause nutrition support for children and teens with ADHD, designed around adequate nourishment, gut health, appetite, school routines, and Indian food habits."
+  },
+  "diabetes": {
+    "label": "Diabetes Nutrition",
+    "description": "Personalised diabetes nutrition that fits Indian food, real routines and everyday life"
+  },
+  "pcos": {
+    "label": "PCOS Nutrition",
+    "description": "Hormone-friendly eating for PCOS, built around your food habits and everyday routines.",
+    "intro": [
+      "PCOS nutrition support is an additional area of care offered by Pragmatic Nutrition.",
+      "Your health history, food habits, lifestyle and relevant health data help shape an individual nutrition plan."
+    ],
+    "sections": [
+      {
+        "title": "A personalised approach",
+        "paragraphs": [
+          "Your plan is built around your health history, food habits, lifestyle and relevant health data. Rather than prescribing the same meal plan to everyone with diabetes, the strategy can evolve as your needs change.",
+          "The emphasis is on:",
+          "Understand → Personalise → Implement → Review → Adjust",
+          "This allows nutrition recommendations to become more practical and sustainable over time."
+        ]
+      },
+      {
+        "title": "Nutrition and metabolic health",
+        "paragraphs": [
+          "Metabolic health is not one condition. It is the foundation that connects blood sugar control, hormonal balance, lipid levels, digestion, and body composition.",
+          "Nutrition support focuses on:",
+          "Improving insulin response",
+          "Supporting hormonal regulation",
+          "Reducing metabolic stress",
+          "Enhancing nutrient absorption",
+          "Creating sustainable eating patterns",
+          "Weight changes are addressed as a result of improved metabolic function, not through restrictive or short-term dieting."
+        ]
+      },
+      {
+        "title": "Work with Meenu Balaji",
+        "paragraphs": [
+          "Meenu Balaji, Founder & Chief Nutritionist, Pragmatic Nutrition, brings more than 14 years of nutrition practice to personalised nutrition care. Credentials and experience include:",
+          "M.H.Sc. Food Science & Nutrition",
+          "UGC NET JRF",
+          "ICAR JRF",
+          "14+ years of professional practice",
+          "ISSA Certified Sports Nutritionist",
+          "Peer Reviewer, European Journal of Nutrition since 2017",
+          "Harvard Medical School CME in Lifestyle Medicine",
+          "4,500+ clients",
+          "Experience working with clients in India and internationally",
+          "Her approach combines evidence-based nutrition with the practical realities of Indian food, family life, work and long-term adherence."
+        ]
+      }
+    ],
+    "programs": [],
+    "faqs": [],
+    "resultCategory": "PCOS"
+  },
+  "weight-loss": {
+    "label": "Weight Loss",
+    "description": "Sustainable weight management without crash diets.",
+    "intro": [
+      "Practical nutrition support for people aiming for sustainable weight loss and better overall health.",
+      "Food preferences, cultural eating habits, daily routines and weight goals are considered when developing your nutrition strategy."
+    ],
+    "sections": [
+      {
+        "title": "A personalised approach",
+        "paragraphs": [
+          "Your plan is built around your health history, food habits, lifestyle and relevant health data. Rather than prescribing the same meal plan to everyone with diabetes, the strategy can evolve as your needs change.",
+          "The emphasis is on:",
+          "Understand → Personalise → Implement → Review → Adjust",
+          "This allows nutrition recommendations to become more practical and sustainable over time."
+        ]
+      },
+      {
+        "title": "Weight management and metabolic health",
+        "paragraphs": [
+          "Metabolic health is not one condition. It is the foundation that connects blood sugar control, hormonal balance, lipid levels, digestion, and body composition.",
+          "Nutrition support focuses on:",
+          "Improving insulin response",
+          "Supporting hormonal regulation",
+          "Reducing metabolic stress",
+          "Enhancing nutrient absorption",
+          "Creating sustainable eating patterns",
+          "Weight changes are addressed as a result of improved metabolic function, not through restrictive or short-term dieting."
+        ]
+      },
+      {
+        "title": "Work with Meenu Balaji",
+        "paragraphs": [
+          "Meenu Balaji, Founder & Chief Nutritionist, Pragmatic Nutrition, brings more than 14 years of nutrition practice to personalised nutrition care. Credentials and experience include:",
+          "M.H.Sc. Food Science & Nutrition",
+          "UGC NET JRF",
+          "ICAR JRF",
+          "14+ years of professional practice",
+          "ISSA Certified Sports Nutritionist",
+          "Peer Reviewer, European Journal of Nutrition since 2017",
+          "Harvard Medical School CME in Lifestyle Medicine",
+          "4,500+ clients",
+          "Experience working with clients in India and internationally",
+          "Her approach combines evidence-based nutrition with the practical realities of Indian food, family life, work and long-term adherence."
+        ]
+      }
+    ],
+    "programs": [],
+    "faqs": [],
+    "resultCategory": "Weight Loss"
+  }
+}

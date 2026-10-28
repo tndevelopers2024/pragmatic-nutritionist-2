@@ -8,7 +8,8 @@ import { useSeo } from '../components/Seo'
 import { useBook } from '../context/bookContext'
 import { PAGES } from '../data/site'
 import content from '../data/sportsNutritionContent.json'
-import sportsPhoto from '../assets/sports-nutrotionist.avif'
+import sportsPhoto from '../assets/sports-nutrition-meal.jpg'
+import competitivePhoto from '../assets/competitive-athlete-recovery.jpg'
 import meenuPhoto from '../assets/Faithfully Enhanced Portrait.png'
 import charitaPhoto from '../assets/charita.avif'
 import dhairyaPhoto from '../assets/dhairya.avif'
@@ -71,7 +72,7 @@ function OverviewContent({ page }) {
             <button type="button" className="btn btn-primary" onClick={openBook}>{content.shared.heroCta}<ArrowRight size={14} aria-hidden="true" /></button>
           </div>
           <figure className="sports-content-visual">
-            <img src={sportsPhoto} alt="Swimmer training for athletic performance" loading="lazy" />
+            <img src={sportsPhoto} alt="Athlete preparing a balanced meal after training" loading="lazy" />
           </figure>
         </div>
       </Section>
@@ -84,10 +85,24 @@ function OverviewContent({ page }) {
           <HeartPulse size={24} key="recovery" />, <Plane size={24} key="travel" />
         ]} />
       </ContentSection>
-      <ContentSection title={page.audience.title} icon={<Users size={32} strokeWidth={2} />}>
-        <p className="placeholder-desc">{page.audience.intro}</p>
-        <Features items={page.audience.items} />
-      </ContentSection>
+      <Section width="wide" bg="white" className="sports-editorial-section sports-audience">
+        <div className="sports-audience-layout">
+          <div className="sports-audience-intro">
+            <div className="sports-audience-icon" aria-hidden="true"><Users size={28} /></div>
+            <h2>{page.audience.title}</h2>
+            <p>{page.audience.intro}</p>
+          </div>
+          <div className="sports-audience-list">
+            {page.audience.items.map(item => (
+              <article className="sports-audience-item" key={item.title}>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+                <ArrowRight className="sports-audience-arrow" size={20} aria-hidden="true" />
+              </article>
+            ))}
+          </div>
+        </div>
+      </Section>
       <Section width="wide" bg="base" className="sports-editorial-section">
         <div className="sports-content-expert-grid">
           <figure className="sports-content-visual sports-content-portrait"><img src={meenuPhoto} alt="Meenu Balaji, sports nutritionist" loading="lazy" /></figure>
@@ -129,7 +144,19 @@ function YouthContent({ page }) {
           </article>
         ))}</div>
       </ContentSection>
-      <ContentSection title={page.results.title} icon={<Target size={32} strokeWidth={2} />} className="sports-youth-results"><Features items={page.results.items} /></ContentSection>
+      <Section width="wide" bg="white" className="sports-editorial-section sports-results">
+        <div className="sports-results-heading">
+          <h2>{page.results.title}</h2>
+        </div>
+        <div className="sports-results-grid">
+          {page.results.items.map(item => (
+            <article className="sports-result" key={item.title}>
+              <h3>{item.title}</h3>
+              {item.paragraphs?.map(text => <p key={text}>{text}</p>)}
+            </article>
+          ))}
+        </div>
+      </Section>
       <Section width="wide" bg="white" className="sports-editorial-section sports-youth-pricing">
         <div className="sports-youth-pricing-row"><div><h2 className="placeholder-heading">{content.pages.competitive.pricing.intro}</h2><p className="placeholder-desc">{content.pages.competitive.pricing.notes[0]}</p></div><Link className="subtopic-action" to="/sports-nutrition/competitive-athletes">View programs & pricing<ArrowRight size={14} aria-hidden="true" /></Link></div>
       </Section>
@@ -141,12 +168,23 @@ function CompetitiveContent({ page }) {
   const openBook = useBook()
   return (
     <>
-      <ContentSection title={page.title}>
-        <h3 className="subtopics-title">{page.concerns.title}</h3>
-        <Paragraphs items={page.concerns.items} />
-      </ContentSection>
-      <ContentSection title={page.results.title}><Features items={page.results.items} /></ContentSection>
-      <ContentSection title={page.pricing.title}>
+      <Section width="wide" bg="white" className="sports-editorial-section competitive-concerns">
+        <div className="competitive-concerns-layout">
+          <div className="competitive-concerns-heading"><h2 className="placeholder-heading">{page.title}</h2></div>
+          <img className="competitive-concerns-image" src={competitivePhoto} alt="Athlete taking a hydration break after training" loading="lazy" />
+          <div className="competitive-concerns-list">
+            <h3>{page.concerns.title}</h3>
+            {page.concerns.items.map(text => <p key={text}>{text.replace(/^[⚡🏃💪🩺]\s*/u, '')}</p>)}
+          </div>
+        </div>
+      </Section>
+      <Section width="wide" bg="white" className="sports-editorial-section sports-results">
+        <div className="sports-results-heading"><h2>{page.results.title}</h2></div>
+        <div className="sports-results-grid competitive-results-grid">{page.results.items.map(item => (
+          <article className="sports-result" key={item.title}><h3>{item.title}</h3>{item.paragraphs.map(text => <p key={text}>{text}</p>)}</article>
+        ))}</div>
+      </Section>
+      <ContentSection title={page.pricing.title} className="competitive-pricing">
         <p className="placeholder-desc">{page.pricing.intro}</p>
         <div className="gut-programs-grid sports-program-pattern">
           {page.pricing.programs.map(program => (

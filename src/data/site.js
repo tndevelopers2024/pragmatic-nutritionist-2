@@ -38,7 +38,8 @@ export const MENU = [
     to: '/more-care',
     blurb: 'Nutrition support for specific health needs.',
     children: [
-      c('Child & Teen Nutrition (with ADHD)', '/more-care/child-teen-nutrition', 'Nutrition for growing kids, including ADHD.'),
+      c('Child & Teen Nutrition', '/more-care/child-teen-nutrition', 'Nutrition for growing kids, growth milestones and picky eating.'),
+      c('ADHD Nutrition for Children', '/more-care/adhd-nutrition', 'Root-cause nutrition support for children and teens with ADHD.'),
       c('Diabetes', '/more-care/diabetes', 'Steady blood sugar with practical Indian meals.'),
       c('PCOS', '/more-care/pcos', 'Hormone-friendly eating for PCOS.'),
       c('Weight Loss', '/more-care/weight-loss', 'Sustainable weight loss without crash diets.')
@@ -366,12 +367,12 @@ export const LEGAL_LINKS = [
 ]
 
 export const SOCIAL_LINKS = [
-  { label: 'YouTube', kind: 'youtube', url: 'https://www.youtube.com/@pragmaticnutritionist' },
+  { label: 'YouTube', kind: 'youtube', url: 'https://www.youtube.com/@pragmaticnutrition' },
   { label: 'WhatsApp', kind: 'whatsapp', url: 'https://wa.me/919790425908' },
-  { label: 'Instagram', kind: 'instagram', url: 'https://www.instagram.com/pragmaticnutritionist/' },
-  { label: 'Facebook', kind: 'facebook', url: 'https://www.facebook.com/pragmaticnutritionist/' },
+  { label: 'Instagram', kind: 'instagram', url: 'https://www.instagram.com/meenubalaji_nutritionist/' },
+  { label: 'Facebook', kind: 'facebook', url: 'https://www.facebook.com/Pragmaticnutritionist' },
   { label: 'LinkedIn', kind: 'linkedin', url: 'https://www.linkedin.com/in/meenu-balaji/' },
-  { label: 'Pinterest', kind: 'pinterest', url: 'https://www.pinterest.com/pragmaticnutritionist/' }
+  { label: 'Pinterest', kind: 'pinterest', url: 'https://in.pinterest.com/Meenupreethibalaji/' }
 ]
 
 
