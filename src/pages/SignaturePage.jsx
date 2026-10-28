@@ -6,10 +6,8 @@ import content from '../data/signatureContent.json'
 import './signatureContent.css'
 
 const lines = content.lines
-const applicationUrl = 'https://www.pragmaticnutritionist.com/signature-nutrition-program'
-
 function ApplyLink() {
-  return <a className="btn btn-primary" href={applicationUrl} target="_blank" rel="noopener noreferrer">Apply for the Signature Nutrition Program</a>
+  return <Link className="btn btn-primary" to="/contact?plan=Signature%20Nutrition%20Program">Enquire about the Signature Nutrition Program</Link>
 }
 
 function TextLines({ start, end }) {
@@ -56,7 +54,7 @@ export function SignatureContent() {
     </Section>
     <Section width="wide" bg="base" title={lines[67]} className="signature-inclusions-section">
       <div className="signature-card-grid signature-inclusions">{inclusions.map(([start, end]) => <article className="signature-card" key={start}><h3>{lines[start]}</h3><TextLines start={start + 1} end={end} /></article>)}</div>
-      <div className="signature-investment"><div><h3>{lines[97]}</h3><TextLines start={98} end={100} /></div><div className="signature-investment-action"><ApplyLink /><p>Applications are completed on the original Pragmatic Nutrition website. Intake is selective and is not an automatic booking.</p></div></div>
+      <div className="signature-investment"><div><h3>{lines[97]}</h3><TextLines start={98} end={100} /></div><div className="signature-investment-action"><ApplyLink /><p>Send an enquiry to learn about the application process. Intake is selective and is not an automatic booking.</p></div></div>
     </Section>
     <Section width="wide" bg="white" title={lines[110]} className="signature-faq-section">
       <div className="signature-faq-list">{Array.from({ length: 9 }, (_, index) => 111 + index * 2).map(i => <details key={i} className="signature-faq"><summary>{lines[i]}<span aria-hidden="true" /></summary><p>{lines[i + 1]}</p></details>)}</div>

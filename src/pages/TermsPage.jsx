@@ -13,7 +13,7 @@ function SourceInline({ block }) {
     // The source Privacy Policy anchor points at its homepage. Use the local
     // policy destination while preserving the visible wording exactly.
     if (text.trim() === 'Privacy Policy') return <Link key={i} to="/privacy">{text}</Link>
-    if (/^https?:\/\/(www\.)?pragmaticnutritionist\.com\/?$/.test(part.href)) return <Link key={i} to="/">{text}</Link>
+    if (/^https?:\/\/(www\.)?pragmaticnutritionist\.com(?:\/\.?\/?$|$)/i.test(part.href)) return <Link key={i} to="/">{text}</Link>
     return <a key={i} href={part.href}>{text}</a>
   })
 }

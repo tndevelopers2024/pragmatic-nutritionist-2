@@ -1,5 +1,5 @@
 import { ArrowRight } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import PageHero from '../components/PageHero'
 import Section from '../components/Section'
 import { useSeo } from '../components/Seo'
@@ -8,7 +8,7 @@ import './academy.css'
 // Prices below are shown on the source course listings; availability may change.
 const publicCourses = [
   { title: 'Child Nutrition Webinar', description: "Nourish your child's growth and development with expert guidance.", price: '₹350', slug: 'nourishing-young-minds' },
-  { title: 'Mindful Eating Webinar', description: 'Does thinking of meal times, makes you worried? Let us take the worry out of you and give the tried and tested method, trusted by parents around the globe.', price: '₹799', slug: 'mindful-eating-webinar' },
+  { title: 'Mindful Eating Webinar', description: 'Embrace a healthier relationship with food through mindful eating.', price: '₹799', slug: 'mindful-eating-webinar' },
   { title: 'Picky Eating Masterclass', description: 'Does thinking of meal times, makes you worried? Let us take the worry out of you and give the tried and tested method, trusted by parents around the globe.', price: '₹799', slug: 'picky-eating-masterclass' },
   { title: 'Masterclass on Gut Health', description: 'Unlock the secrets to a thriving gut with our “Optimizing Gut Health” course. Improve your well-being by prioritizing your gut health.', price: '₹499', slug: 'optimize-gut-health' },
   { title: 'Plant-Based Diets', description: "Are you thinking of shifting to a plant based diet (vegan/vegetarian)? Get a Nutritionist's guideline to transition. Learn how to eat healthy in a plant-based diet.", price: '₹799', slug: 'plant-based-diets' },
@@ -130,8 +130,8 @@ const professionalTestimonials = [
   ['Dr. M.S. Saradha Devi, Nutritionist, Bangalore · Nutrition strategies for Menopause', "The webinar was so informative. I'm so glad that the time spent for the webinar is the best decision. I had learnt so much in that 1.5 hours regarding menopause, symptoms, management and supplements. Meenu, I wish to thank you for your time and knowledge you have shared."]
 ]
 
-function ExternalLink({ href, children }) {
-  return <a className="subtopic-action academy-link" href={href} target="_blank" rel="noopener noreferrer">{children}<ArrowRight size={15} aria-hidden="true" /></a>
+function CourseLink({ to, children }) {
+  return <Link className="subtopic-action academy-link" to={to}>{children}<ArrowRight size={15} aria-hidden="true" /></Link>
 }
 
 function PublicCourses() {
@@ -147,7 +147,7 @@ function PublicCourses() {
     <Section bg="base" title="Masterclasses, Webinars & Mini Courses" lead="Explore healthy eating topics for everyday life." width="wide">
       <div className="academy-grid">{publicCourses.map(course => <article className="academy-card" key={course.slug}>
         <h3>{course.title}</h3><p>{course.description}</p><p className="academy-course-meta"><strong>{course.price}</strong><span>1 session</span></p>
-        <ExternalLink href={`https://www.pragmaticnutritionist.com/online-nutrition-courses/${course.slug}`}>Read more on the original site</ExternalLink>
+        <CourseLink to={`/academy/courses-masterclasses?course=${course.slug}`}>View course details</CourseLink>
       </article>)}</div>
       <p className="academy-note">Prices shown are listed on the original course page. Please confirm current availability and price before enrolling.</p>
       <p className="academy-note">Another course listing shows different prices for some sessions. Please confirm the current price before enrolling. <Link to="/academy/online-nutrition-courses">View the other course listing</Link>.</p>
@@ -165,7 +165,7 @@ function LegacyPublicCourses() {
     <PageHero title="Learn Nutrition Online" blurb="Master the Art of Healthy Eating!" parent={{ label: 'Academy', to: '/academy' }} />
     <Section bg="white" width="wide"><div className="academy-copy"><p>In today's fast-paced world, where health issues like diabetes, high blood pressure, and high cholesterol levels on the rise, understanding the power of food is crucial. At Pragmatic Nutrition, we believe that healthy eating is the key to nourish yourself. With extensive experience as a nutritionist, we have curated nutrition courses that cover the basics of nutrition.</p><p>Our courses are delivered through live interactive online sessions, and you will receive individual chat support throughout your learning period. Join us today and take the first step towards a healthier you!</p></div></Section>
     <Section bg="base" title="Masterclass, Webinars & Mini Courses on Healthy Eating" width="wide">
-      <div className="academy-grid">{legacyPublicCourses.map(course => <article className="academy-card" key={course.slug}><h3>{course.title}</h3><p>{course.description}</p><p className="academy-course-meta"><strong>{course.price}</strong><span>1 session</span></p><ExternalLink href={`https://www.pragmaticnutritionist.com/online-nutrition-courses/${course.slug}`}>Read More</ExternalLink></article>)}</div>
+      <div className="academy-grid">{legacyPublicCourses.map(course => <article className="academy-card" key={course.slug}><h3>{course.title}</h3><p>{course.description}</p><p className="academy-course-meta"><strong>{course.price}</strong><span>1 session</span></p><CourseLink to={`/academy/online-nutrition-courses?course=${course.slug}`}>View course details</CourseLink></article>)}</div>
       <p className="academy-note">Course listings show different prices for some sessions; this listing describes Mindful Eating as free while listing ₹399. Please confirm availability and the current price before enrolling.</p>
     </Section>
     <Section bg="white" title="Get to Know Us" width="wide"><div className="academy-copy"><p>Welcome to Pragmatic Nutrition's Courses and Webinars, designed to empower individuals across India with practical knowledge and skills in nutrition. Whether you're eager to learn more about healthy eating habits or wish to specialize in a specific area, our courses and webinars cater to your interests and goals.</p><h3>Our Courses and Webinars</h3>{legacyCourseOverviews.map(([title, overview, experience], index) => <div key={title}><h3>{index + 1}. {title}</h3><p><strong>Overview:</strong> {overview}</p><p><strong>Experience:</strong> {experience}</p></div>)}<h3>Why Choose Online Nutrition Courses?</h3><ul><li><strong>Accessible Learning:</strong> Access courses and webinars from anywhere in the world.</li><li><strong>Expert Guidance:</strong> Learn from seasoned nutritionists and specialists in the field.</li><li><strong>Practical Application:</strong> Gain actionable insights and skills applicable to daily life.</li><li><strong>Certification:</strong> Receive a certificate upon course completion to showcase your knowledge.</li></ul><h3>Join Our Nutrition Community Today!</h3><p>Embark on your nutrition journey with our Nutrition Courses and Webinars. Whether you're a health enthusiast, a fitness professional, or simply curious about nutrition, our courses are designed to enrich your understanding and support your well-being.</p><h3>About Meenu</h3><p>With over a decade of experience as a global nutritionist, Meenu passionately enjoys working with people to achieve their health and wellness goals through personalized nutrition strategies. She has curated these programs to benefit everyone by combining her extensive knowledge with practical insights tailored to diverse lifestyles and needs.</p><Link to="/contact">Contact Us Today</Link></div></Section>
@@ -189,8 +189,8 @@ function ProfessionalCourses() {
     <Section bg="white" title="Build Your Online Presence as a Nutritionist" width="wide"><div className="academy-copy"><p>Starting at ₹299.</p><p>Please confirm current course fees and availability before enrolling.</p><h3>Join Today</h3><p>What are you waiting for?</p></div></Section>
     <Section bg="base" title="Explore professional learning" width="wide">
       <div className="academy-grid">{professionalCourses.map(([title, description, slug, price, duration]) => <article className="academy-card" key={slug}>
-        <h3>{title}</h3><p>{description}</p><p className="academy-course-meta"><strong>{price}</strong><span>{duration}</span></p><ExternalLink href={`https://www.pragmaticnutritionist.com/online-courses-for-nutritionists/${slug}`}>View course details</ExternalLink>
-      </article>)}<article className="academy-card"><h3>Private Practice Masterclass</h3><p>Discover the key to success in building a thriving nutrition practice. Learn everything from client management to business strategies from an expert. Join now!</p><p className="academy-course-meta"><strong>₹299 listed</strong><span>30 minutes</span></p><Link className="subtopic-action academy-link" to="/academy/masterclass-registration">View masterclass registration<ArrowRight size={15} aria-hidden="true" /></Link></article><article className="academy-card"><h3>Build Your Private Practice</h3><p>Understand the keys to success in building your private practice. Enrol now and take the next step towards realizing aspirations.</p><p className="academy-course-meta"><strong>₹3,500 listed</strong><span>4 weeks</span></p><ExternalLink href="https://www.pragmaticnutritionist.com/online-courses-for-nutritionists/build-your-private-practice">View four-week course details</ExternalLink><Link className="subtopic-action" to="/academy/build-your-private-practice">Explore the eight-week intensive<ArrowRight size={15} aria-hidden="true" /></Link></article></div>
+        <h3>{title}</h3><p>{description}</p><p className="academy-course-meta"><strong>{price}</strong><span>{duration}</span></p><CourseLink to={`/academy/certificate-courses?course=${slug}`}>View course details</CourseLink>
+      </article>)}<article className="academy-card"><h3>Private Practice Masterclass</h3><p>Discover the key to success in building a thriving nutrition practice. Learn everything from client management to business strategies from an expert. Join now!</p><p className="academy-course-meta"><strong>₹299 listed</strong><span>30 minutes</span></p><Link className="subtopic-action academy-link" to="/academy/masterclass-registration">View masterclass registration<ArrowRight size={15} aria-hidden="true" /></Link></article><article className="academy-card"><h3>Build Your Private Practice</h3><p>Understand the keys to success in building your private practice. Enrol now and take the next step towards realizing aspirations.</p><p className="academy-course-meta"><strong>₹3,500 listed</strong><span>4 weeks</span></p><CourseLink to="/academy/certificate-courses?course=build-your-private-practice">View four-week course details</CourseLink><Link className="subtopic-action" to="/academy/build-your-private-practice">Explore the eight-week intensive<ArrowRight size={15} aria-hidden="true" /></Link></article></div>
       <p className="academy-note">Please confirm current fees and availability before enrolling. The menopause webinar has been described as free and also listed at ₹350; the masterclass has been listed at ₹299 while its registration page describes free registration.</p>
     </Section>
     <Section bg="white" title="Testimonials" width="wide">
@@ -235,11 +235,78 @@ function Practice() {
   </>
 }
 
+// The catalogues provide different prices for some courses, so details retain
+// the price from the listing the visitor selected.
+const publicDetailIndexes = {
+  'nourishing-young-minds': 0,
+  'mindful-eating-webinar': 1,
+  'picky-eating-masterclass': 2,
+  'optimize-gut-health': 3,
+  'sports-nutrition': 4,
+  'plant-based-diets': 5
+}
+const professionalDetailIndexes = {
+  'mastering-gut-health': 0,
+  'free-blogging-masterclass': 1,
+  'free-career-counselling': 2,
+  'build-your-private-practice': 3,
+  'optimizing-hormonal-health': 4,
+  'nutrition-for-menopause': 5,
+  'interpret-medical-reports': 6
+}
+
+function findCourse(variant, slug) {
+  if (variant === 'public' || variant === 'public-legacy') {
+    const courses = variant === 'public' ? publicCourses : legacyPublicCourses
+    const course = courses.find(item => item.slug === slug)
+    if (!course) return null
+    return { ...course, duration: '1 session', detail: publicDetails[publicDetailIndexes[slug]]?.[1] }
+  }
+  if (variant === 'professional') {
+    const entry = professionalCourses.find(([, , courseSlug]) => courseSlug === slug)
+      || (slug === 'build-your-private-practice' ? ['Build Your Private Practice', 'Understand the keys to success in building your private practice. Enrol now and take the next step towards realizing aspirations.', slug, '₹3,500 listed', '4 weeks'] : null)
+    if (!entry) return null
+    const [title, description, , price, duration] = entry
+    return { title, description, price, duration, detail: professionalDetails[professionalDetailIndexes[slug]]?.[1] }
+  }
+  return null
+}
+
+function CourseDetails({ course, variant }) {
+  const catalogPath = variant === 'professional' ? '/academy/certificate-courses' : variant === 'public-legacy' ? '/academy/online-nutrition-courses' : '/academy/courses-masterclasses'
+  const catalogLabel = variant === 'professional' ? 'Courses for Nutritionists' : variant === 'public-legacy' ? 'Learn Nutrition Online' : 'Courses for Everyone'
+  if (!course) return <>
+    <PageHero title="Course not found" blurb="Please explore the course listing to find a session." parent={{ label: catalogLabel, to: catalogPath }} />
+    <Section bg="white" width="wide"><Link className="subtopic-action" to={catalogPath}>Browse courses<ArrowRight size={15} aria-hidden="true" /></Link></Section>
+  </>
+  return <>
+    <PageHero title={course.title} blurb={course.description} parent={{ label: catalogLabel, to: catalogPath }} />
+    <Section bg="white" title="About this course" width="wide">
+      <div className="academy-copy">
+        <p>{course.detail || course.description}</p>
+        <p className="academy-course-meta"><strong>{course.price}</strong><span>{course.duration}</span></p>
+        <p>Prices and availability can change. Contact us to confirm the current details and find out how to enrol.</p>
+        {variant === 'professional' && <p>These courses are for education and are not intended to diagnose, treat or cure disease. Please discuss medical concerns with a qualified healthcare provider.</p>}
+        {variant === 'professional' && course.title === 'Build Your Private Practice' && <p>This is the four-week course from the professional course listing. The <Link to="/academy/build-your-private-practice">eight-week intensive</Link> is a separate offering.</p>}
+        {variant === 'professional' && course.title === 'Nutrition for Menopause' && <p>The listing describes this webinar as free while also showing ₹350. Please confirm the current fee with the team.</p>}
+        {variant === 'public-legacy' && course.title === 'Mindful Eating Webinar' && <p>The listing describes this webinar as free while also showing ₹399. Please confirm the current fee with the team.</p>}
+        <p><Link className="btn btn-primary" to={`/contact?course=${encodeURIComponent(course.title)}`}>Ask about this course<ArrowRight size={16} aria-hidden="true" /></Link></p>
+        <p><Link to={catalogPath}>Back to {catalogLabel}</Link></p>
+      </div>
+    </Section>
+  </>
+}
+
 export default function AcademyPage({ variant = 'public' }) {
+  const [searchParams] = useSearchParams()
+  const slug = searchParams.get('course')
+  const isCatalog = ['public', 'public-legacy', 'professional'].includes(variant)
+  const course = slug && isCatalog ? findCourse(variant, slug) : null
   const titles = { public: 'Courses for Everyone', 'public-legacy': 'Learn Nutrition Online', professional: 'Courses for Nutritionists', practice: 'Build Your Private Practice', registration: 'Register for Masterclass' }
-  useSeo(titles[variant], 'Online nutrition courses and professional learning from Pragmatic Nutrition.')
+  useSeo(course?.title || titles[variant], course?.description || 'Online nutrition courses and professional learning from Pragmatic Nutrition.')
   let page = <PublicCourses />
-  if (variant === 'professional') page = <ProfessionalCourses />
+  if (slug && isCatalog) page = <CourseDetails course={course} variant={variant} />
+  else if (variant === 'professional') page = <ProfessionalCourses />
   else if (variant === 'practice') page = <Practice />
   else if (variant === 'registration') page = <MasterclassRegistration />
   else if (variant === 'public-legacy') page = <LegacyPublicCourses />

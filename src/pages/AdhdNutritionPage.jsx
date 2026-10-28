@@ -181,15 +181,13 @@ export default function AdhdNutritionPage() {
                         {group.lines[5]?.text}
                       </p>
                       <p style={{ marginTop: '12px' }}>
-                        <a
-                          href="https://www.pragmaticnutritionist.com/post/artificial-food-colours-kids-health"
-                          target="_blank"
-                          rel="noreferrer"
+                        <Link
+                          to="/blog"
                           className="subtopic-action"
                         >
-                          Read our clinical analysis on artificial colours &amp; hyperactivity
+                          Explore our nutrition articles
                           <ArrowRight size={14} aria-hidden="true" />
-                        </a>
+                        </Link>
                       </p>
                     </>
                   )}

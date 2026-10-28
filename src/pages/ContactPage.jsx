@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import {
   MapPin,
   Mail,
@@ -22,14 +23,16 @@ export default function ContactPage() {
   )
 
   const openBook = useBook()
+  const [searchParams] = useSearchParams()
+  const interest = (searchParams.get('plan') || searchParams.get('course'))?.trim().slice(0, 200)
   const [prepared, setPrepared] = useState(false)
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
-    concern: 'Gut Health (IBS, Bloating, Acidity, GERD)',
+    concern: interest ? 'Other Clinical Nutrition Query' : 'Gut Health (IBS, Bloating, Acidity, GERD)',
     mode: 'Online Video Call',
-    message: ''
+    message: interest ? `I would like to enquire about ${interest}.` : ''
   })
 
   const handleChange = (e) => {

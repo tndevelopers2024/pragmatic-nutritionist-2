@@ -25,6 +25,7 @@ import MoreCarePage from './pages/MoreCarePage'
 import ProgramsPricingPage from './pages/ProgramsPricingPage'
 import PricingCataloguePage from './pages/PricingCataloguePage'
 import BlogPage from './pages/BlogPage'
+import BlogArticlePage from './pages/BlogArticlePage'
 import ContactPage from './pages/ContactPage'
 import SignaturePage from './pages/SignaturePage'
 import AcademyPage from './pages/AcademyPage'
@@ -32,10 +33,10 @@ import PageHero from './components/PageHero'
 import { Link } from 'react-router-dom'
 
 function ScrollTop() {
-  const { pathname } = useLocation()
+  const { pathname, search } = useLocation()
   useEffect(() => {
     window.scrollTo(0, 0)
-  }, [pathname])
+  }, [pathname, search])
   return null
 }
 
@@ -91,6 +92,7 @@ export default function App() {
             <Route path="/pricing-plans/list" element={<PricingCataloguePage />} />
             <Route path="/signature-nutrition-program" element={<SignaturePage />} />
             <Route path="/blog" element={<BlogPage />} />
+            <Route path="/blog/:slug" element={<BlogArticlePage />} />
             <Route path="/nutrition-blog" element={<BlogPage />} />
             <Route path="/adhd-nutritionist-children" element={<MoreCarePage slug="adhd-nutrition" />} />
             <Route path="/child-nutritionist-india" element={<MoreCarePage slug="child-teen-nutrition" />} />

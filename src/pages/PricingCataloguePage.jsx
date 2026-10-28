@@ -1,12 +1,11 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { ArrowRight, CheckCircle2, Search } from 'lucide-react'
 import PageHero from '../components/PageHero'
 import Section from '../components/Section'
 import { useSeo } from '../components/Seo'
 import plans from '../data/pricingCatalogue.json'
 import './pricingCatalogue.css'
-
-const originalCatalogue = 'https://www.pragmaticnutritionist.com/pricing-plans/list'
 
 export function PricingCatalogueContent({ embedded = false }) {
   const [query, setQuery] = useState('')
@@ -19,7 +18,7 @@ export function PricingCatalogueContent({ embedded = false }) {
         <div>
           <span className="pricing-catalogue-eyebrow">PERSONALISED SUPPORT</span>
           <h2>Find a plan for you</h2>
-          <p className="pricing-catalogue-intro">Explore plans and their inclusions below. To purchase, select your plan on the Pragmatic Nutrition checkout page.</p>
+          <p className="pricing-catalogue-intro">Explore plans and their inclusions below. Send an enquiry about the plan you are interested in.</p>
         </div>
         <div className="pricing-catalogue-search">
           <label htmlFor={embedded ? 'embedded-plan-search' : 'plan-search'}>Search plans</label>
@@ -38,7 +37,7 @@ export function PricingCatalogueContent({ embedded = false }) {
           <div className="pricing-catalogue-price"><strong>{plan.price}</strong>{plan.recurrence && <span>{plan.recurrence}</span>}{plan.duration && <span>{plan.duration}</span>}</div>
           {plan.currencyNote && <p className="pricing-catalogue-note">This international plan is labelled USD, but its price is shown in ₹. Please confirm the currency before purchasing.</p>}
           {plan.features.length > 0 && <div className="pricing-catalogue-inclusions"><strong>What's included</strong><ul className="pricing-catalogue-features">{plan.features.map((feature, i) => <li key={i}><CheckCircle2 size={16} aria-hidden="true" /><span>{feature}</span></li>)}</ul></div>}
-          <a className="btn btn-primary pricing-catalogue-action" href={originalCatalogue} target="_blank" rel="noopener noreferrer" aria-label={`Choose ${plan.title}${plan.currencyNote ? ` ${plan.description}` : ''} on the original website`}>Choose on original site<ArrowRight size={16} aria-hidden="true" /></a>
+          <Link className="btn btn-primary pricing-catalogue-action" to={`/contact?plan=${encodeURIComponent(plan.title)}`} aria-label={`Enquire about ${plan.title}${plan.currencyNote ? ` ${plan.description}` : ''}`}>Enquire about this plan<ArrowRight size={16} aria-hidden="true" /></Link>
         </article>)}
       </div>
       {visiblePlans.length === 0 && <p className="pricing-catalogue-empty">No plans match “{query}”. Try another search.</p>}
