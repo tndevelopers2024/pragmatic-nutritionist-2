@@ -288,9 +288,9 @@ export default function ContactPage() {
             <h3>Our Commitment to You</h3>
             <p>At Pragmatic Nutrition, we're passionate about empowering you with the knowledge and support you need to thrive. Our team of nutrition experts is dedicated to providing trustworthy guidance and practical tips that fit seamlessly into your lifestyle.</p>
             <h3>How Can We Assist You?</h3>
-            <p>Got a specific dietary concern? Looking for tips to boost your energy levels? Interested in upcoming workshops or one-on-one consultations? Send us a message and we'll get back to you.</p>
+            <p>Got a specific dietary concern? Looking for tips to boost your energy levels? Interested in our upcoming workshops or one-on-one consultations? Whatever it is, drop us a message using the form above and we'll get back to you promptly.</p>
             <h3>Stay Connected</h3>
-            <p>Follow us on social media for nutrition insights, healthy recipes and updates.</p>
+            <p>Want to stay updated on the latest in nutrition trends, healthy recipes, and exclusive offers? Follow us on social media to join a vibrant community of health enthusiasts like yourself, or contact us about newsletter updates.</p>
             <h3>Let's Get Started</h3>
             <p>Don't hesitate to reach out! We're excited to hear from you and support you on your journey towards a healthier, happier you.</p>
             <p>Looking forward to hearing from you,<br />Meenu Balaji<br />Founder &amp; Chief Nutritionist</p>

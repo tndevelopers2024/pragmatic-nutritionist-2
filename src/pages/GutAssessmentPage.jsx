@@ -37,28 +37,27 @@ const SYMPTOM_CLUSTERS = [
     items: [
       {
         id: 'bloating',
-        title: 'Bloating & Abdominal Distension',
-        subtitle: 'Feeling tight, swollen, or heavy after regular meals'
+        title: 'Bloating'
       },
       {
         id: 'constipation',
-        title: 'Constipation or Irregular Bowels',
-        subtitle: 'Hard stools, straining, or incomplete morning evacuation'
+        title: 'Constipation'
       },
       {
         id: 'gas',
-        title: 'Excessive Gas & Stomach Rumbling',
-        subtitle: 'Frequent flatulence, internal bubbling, or discomfort'
+        title: 'Gas'
       },
       {
         id: 'acidity',
-        title: 'Acidity, Heartburn & GERD',
-        subtitle: 'Burning sensation in chest/throat or sour regurgitation'
+        title: 'Acid Reflux'
       },
       {
         id: 'stomach_pain',
-        title: 'Stomach Ache & Cramping',
-        subtitle: 'Abdominal sensitivity, spasms, or post-meal tenderness'
+        title: 'Stomach Pain'
+      },
+      {
+        id: 'heartburn',
+        title: 'Heart Burn'
       }
     ]
   },
@@ -69,30 +68,22 @@ const SYMPTOM_CLUSTERS = [
     items: [
       {
         id: 'brain_fog',
-        title: 'Brain Fog & Post-Meal Slump',
-        subtitle: 'Difficulty focusing, grogginess, or midday energy crashes'
+        title: 'Brain Fog'
       },
       {
         id: 'fatigue',
-        title: 'Unexplained Daily Fatigue',
-        subtitle: 'Feeling exhausted despite sleeping 7-8 hours adequately'
+        title: 'Fatigue'
       }
     ]
   },
   {
     categoryKey: 'metabolic',
-    categoryName: 'Cravings & Skin',
-    categoryDesc: 'Self-reported cravings and skin changes',
+    categoryName: 'Skin',
+    categoryDesc: 'Self-reported skin changes',
     items: [
       {
-        id: 'food_cravings',
-        title: 'Intense Sugar & Carb Cravings',
-        subtitle: 'Sudden urges for sweets or unmanageable hunger drops'
-      },
-      {
         id: 'skin_issues',
-        title: 'Skin Flare-ups & Breakouts',
-        subtitle: 'Acne, unexplained rashes, eczema, or skin dullness'
+        title: 'Skin Issues'
       }
     ]
   }
@@ -111,7 +102,7 @@ const WATER_OPTIONS = [
 ]
 
 const DIET_TYPES = ['Pure Vegetarian', 'Non-Vegetarian', 'Eggetarian', 'Jain / Satvic', 'Vegan']
-const AGE_GROUPS = ['Under 20', '20 - 30', '31 - 45', '46 - 60', '60+']
+const AGE_GROUPS = ['18 - 24', '25 - 35', '36 - 45', '46 - 55', '56 - 75']
 
 const SEVERITY_LEVELS = [
   { text: 'Never', value: 0, short: '0' },
@@ -182,9 +173,9 @@ export default function GutAssessmentPage() {
       0
     )
 
-    const dScore = Math.max(10, Math.round(100 - (digPenalty / 15) * 85))
+    const dScore = Math.max(10, Math.round(100 - (digPenalty / 18) * 85))
     const gbScore = Math.max(10, Math.round(100 - (gbPenalty / 6) * 85))
-    const mScore = Math.max(10, Math.round(100 - (metPenalty / 6) * 85))
+    const mScore = Math.max(10, Math.round(100 - (metPenalty / 3) * 85))
 
     let tier
     if (calculatedScore >= 80) {
@@ -343,7 +334,7 @@ export default function GutAssessmentPage() {
                     type="button"
                     className={`stepper-stage-btn ${step === 2 ? 'is-active' : step > 2 ? 'is-completed' : ''}`}
                     onClick={() => {
-                      if (answeredCount >= 3) setStep(2)
+                      if (answeredCount === totalSymptoms) setStep(2)
                     }}
                   >
                     <span className="stage-number">{step > 2 ? <Check size={12} strokeWidth={3} /> : '2'}</span>
@@ -356,7 +347,7 @@ export default function GutAssessmentPage() {
                     type="button"
                     className={`stepper-stage-btn ${step === 3 ? 'is-active' : ''}`}
                     onClick={() => {
-                      if (answeredCount >= 3) setStep(3)
+                      if (answeredCount === totalSymptoms) setStep(3)
                     }}
                   >
                     <span className="stage-number">3</span>
@@ -411,7 +402,6 @@ export default function GutAssessmentPage() {
                               >
                                 <div className="symptom-info">
                                   <h4 className="symptom-name">{symptom.title}</h4>
-                                  <p className="symptom-desc">{symptom.subtitle}</p>
                                 </div>
 
                                 <div
@@ -881,7 +871,7 @@ export default function GutAssessmentPage() {
                   <div className="pillar-top-row">
                     <span className="pillar-title">
                       <Flame size={16} className="pillar-icon" />
-                      Cravings & Skin
+                      Skin
                     </span>
                     <span className="pillar-score" style={{ color: metabolicScore >= 75 ? '#55883B' : '#9A6735' }}>
                       {metabolicScore}%

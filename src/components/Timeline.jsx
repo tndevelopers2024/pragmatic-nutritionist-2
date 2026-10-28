@@ -33,8 +33,7 @@ export default function Timeline() {
       width="wide"
       bg="brand"
       eyebrow="STRUCTURED METHODOLOGY"
-      title="Your Path to Lasting Vitality"
-      lead="A clear, three-phase clinical process focused on root-cause diagnosis, habit coaching, and continuous support."
+      title="3 Steps to Your Transformation"
     >
       <div className="section-divider-row" aria-hidden="true">
         <span className="divider-label">AUDIT.</span>

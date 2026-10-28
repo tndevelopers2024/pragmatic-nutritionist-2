@@ -316,7 +316,7 @@ export const WHO_IS_THIS_FOR = [
 
 export const GUT_FAQS = [
   {
-    "q": "Who is the best gut health nutritionist in Chennai?",
+    "q": "Who is the Best gut health nutritionist in Chennai?",
     "a": "Meenu Balaji, founder of Pragmatic Nutrition, is one of the leading gut health experts in Chennai with 14+ years of experience treating IBS, acidity, bloating and digestive issues."
   },
   {
@@ -324,8 +324,8 @@ export const GUT_FAQS = [
     "a": "Yes, Meenu offers in-person appointments in OMR clinic as well as online consultations."
   },
   {
-    "q": "Can I consult Meenu if I live outside Chennai?",
-    "a": "Yes, you can. Meenu offers online sessions."
+    "q": "Can I Consult Meenu if I Live outside Chennai?",
+    "a": "Yes, you can. Meenu offers online sessions"
   },
   {
     "q": "What gut health conditions can Pragmatic Nutrition help with?",
@@ -349,7 +349,7 @@ export const GUT_FAQS = [
   },
   {
     "q": "How to book an online consultation for gut health in Chennai?",
-    "a": "You can book a personalised gut health consultation with Meenu Balaji through the contact page. Consultations are available via Zoom or at the Chennai clinic, based on your preference."
+    "a": "You can easily book a personalised gut health consultation with Meenu Balaji, an expert gut health nutritionist, through the contact page. Consultations are available via Zoom or at our Chennai clinic, based on your preference."
   }
 ]
 

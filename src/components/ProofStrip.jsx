@@ -26,10 +26,12 @@ export default function ProofStrip() {
         {/* 4-column counter grid matching editorial wellness reference */}
         <Reveal className="proof-stats-grid">
           <Counter to={14} suffix="+" label="Years of Clinical Practice" />
-          <Counter to={4500} suffix="+" label="Clients Transformed" />
-          <Counter to={350} suffix="+" label="Nutritionists Mentored" />
+          <Counter to={4500} suffix="+" label="Clients" />
+          <Counter to={350} suffix="+" label="Nutritionists Trained" />
           <Counter to={3} suffix=" Countries" label="India • UK • New Zealand" />
         </Reveal>
+
+        <p>Trusted by public figures, founders, international-level athletes, and health professionals across India and internationally.</p>
 
         {/* Seamless slow marquee showcasing featured media logos */}
         <div className="proof-marquee-wrap" aria-label="Media mentions and publications">

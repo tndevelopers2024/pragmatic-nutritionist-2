@@ -106,7 +106,7 @@ export default function GutHealthPage() {
               </div>
 
               <p className="gut-hero-note">
-                <strong>No obligation:</strong> In this quick call, Meenu will understand your gut symptoms and guide you on clinical next steps.
+                Not sure where to begin? In this quick call, Meenu will understand your gut health concerns and guide you on next steps, no obligation.
               </p>
             </div>
 
@@ -164,13 +164,14 @@ export default function GutHealthPage() {
       </header>
 
       <Section width="wide" bg="base" className="gut-symptoms-section" title="Who Is This Gut Health Program For?">
-        <p className="lead">Persistent bloating, IBS-type symptoms, SIBO, acid reflux, constipation, diarrhoea and food intolerances can feel overwhelming after trying multiple diets, supplements or quick-fix remedies. Understanding what drives your symptoms is the starting point.</p>
-        <p>We take a holistic, behaviour-first approach and design practical strategies for your work schedule, family routine and Indian eating habits. When clinically appropriate, testing may include GI-MAP, stool microbiome analysis and SIBO breath testing. Supplements and probiotics are used selectively and reviewed regularly.</p>
-        <p>Online consultations are available across India and internationally, and in-person appointments are available at the Chennai clinic.</p>
+        <p className="lead">Persistent bloating, IBS-type symptoms, SIBO, acid reflux, constipation, diarrhoea, and food intolerances can feel overwhelming, especially after trying multiple diets, supplements, or quick-fix remedies. The problem is rarely a lack of willpower. It is almost always a lack of clarity about what is actually driving your gut issues.</p>
+        <p>At Pragmatic Nutrition, we take a holistic, behaviour-first approach. Rather than prescribing a generic diet chart, we focus on understanding why your digestion reacts the way it does, and design practical strategies that fit real life, including your work schedule, family routine, and Indian eating habits.</p>
+        <p>When clinically appropriate, we use advanced gut testing including GI-MAP, stool microbiome analysis, and SIBO breath testing to identify root causes with precision. Targeted supplement and probiotic support is used selectively, reviewed regularly, and never recommended as a default. All nutrition strategies are adapted to Indian food culture, alongside lifestyle and stress-gut modulation tools that support long-term healing.</p>
+        <p>Online consultations are available across India and internationally for clients in the USA, UK, Australia, and the Middle East. In-person appointments are available at our Chennai clinic.</p>
         <h3>Why This Program Works</h3>
-        <p>Every program follows a three-phase journey: Reset, Restore and Rebuild. The approach combines online and in-clinic support, lab test interpretation, gut-friendly Indian meal plans and behaviour-based guidance.</p>
+        <p>Every program follows a structured three-phase journey: Reset, Restore, and Rebuild, so your gut has time to heal progressively rather than being overwhelmed all at once. We use a hybrid model combining online and in-clinic support, lab test interpretation with data-backed tracking, gut-friendly Indian meal plans, and behaviour-based guidance that delivers sustainable results within weeks, not months of guesswork.</p>
         <h3>Every Gut Health Program Includes</h3>
-        <p>An initial online video assessment, a personalised gut health plan with recipes, follow-up support over WhatsApp or email, symptom tracking and plan adjustments.</p>
+        <p>Each program comes with an online initial assessment via video call, a personalised gut health plan with recipes, follow-up support over WhatsApp or email, ongoing symptom tracking with plan adjustments, and evidence-driven nutrition guidance rooted in digestive physiology and behavioural science.</p>
       </Section>
 
       {/* 7. PROGRAMS & PRICING */}
@@ -243,6 +244,10 @@ export default function GutHealthPage() {
               These programs provide nutrition and health coaching support and do not replace medical advice. Please consult your physician for medical conditions or medication changes.
             </p>
           </div>
+          <div className="gut-section-header">
+            <h3>Best Gut Health Programs</h3>
+            <p>Online consultations are available in Chennai, across India, and internationally. International clients are supported through health coaching–based programs.</p>
+          </div>
         </div>
       </Section>
 
@@ -276,11 +281,13 @@ export default function GutHealthPage() {
 
       <Section width="wide" bg="white" title="What’s Included">
         <div className="gut-pillars-grid">
-          <article className="gut-pillar-card"><h3>Ongoing Online Support</h3><p>Stay supported between consultations through email or WhatsApp for guidance, clarification and timely course-correction.</p></article>
-          <article className="gut-pillar-card"><h3>Structured Follow-Ups</h3><p>Progress is reviewed at regular intervals, typically every 10 days, with personalised adjustments based on symptoms, tolerance and real-life feedback.</p></article>
-          <article className="gut-pillar-card"><h3>Personalised Nutrition Plan with Recipes</h3><p>Gut-friendly Indian-food-based plans and practical recipes support digestion and fit daily life.</p></article>
-          <article className="gut-pillar-card"><h3>Lifestyle &amp; Behavioural Guidance</h3><p>Recommendations support meal timing, stress-gut regulation and sustainable routines.</p></article>
+          <article className="gut-pillar-card"><h3>Ongoing Online Support</h3><p>Stay supported between consultations through email or WhatsApp for guidance, clarification, and timely course-correction when symptoms or questions arise.</p></article>
+          <article className="gut-pillar-card"><h3>Structured Follow-Ups</h3><p>Your progress is reviewed at regular intervals (typically every 10 days), with personalised adjustments based on symptoms, tolerance, and real-life feedback, not rigid timelines.</p></article>
+          <article className="gut-pillar-card"><h3>Personalised Nutrition Plan with Recipes</h3><p>Receive gut-friendly, Indian-food-based nutrition plans along with practical recipes designed to support digestion, reduce symptoms, and fit seamlessly into daily life.</p></article>
+          <article className="gut-pillar-card"><h3>Lifestyle &amp; Behavioural Guidance</h3><p>Get targeted, expert recommendations to strengthen gut-supportive habits — including meal timing, stress-gut regulation, and sustainable routines that support long-term results.</p></article>
         </div>
+        <h3>Join the Gut Health Plan Today!</h3>
+        <button type="button" className="btn btn-primary" onClick={openBook}>Book Now<ArrowRight size={16} aria-hidden="true" /></button>
       </Section>
 
       {/* 9. CLINICAL DIFFERENTIATORS */}
@@ -289,9 +296,9 @@ export default function GutHealthPage() {
           <div className="differentiators-card">
             <div className="diff-header">
               <span className="gut-sec-eyebrow">CLINICAL EXCELLENCE</span>
-              <h2 className="diff-title">What the Best Gut Health Nutritionist Does</h2>
+              <h2 className="diff-title">What makes someone the best gut health nutritionist in India?</h2>
               <p className="diff-lead">
-                Navigating chronic gut dysfunction requires more than a simple meal chart. Here is our clinical standard of care:
+                The best gut health nutritionist is someone who:
               </p>
             </div>
 
@@ -305,6 +312,7 @@ export default function GutHealthPage() {
                 </div>
               ))}
             </div>
+            <p>Read our blog on how to choose the right Gut health nutritionist for you.</p>
           </div>
         </div>
       </Section>
@@ -314,9 +322,9 @@ export default function GutHealthPage() {
         <div className="sec-wide">
           <div className="gut-section-header">
             <span className="gut-sec-eyebrow">CLIENT PROFILES</span>
-            <h2 className="gut-sec-title">Who Is This Program Designed For?</h2>
+            <h2 className="gut-sec-title">Who Is This For?</h2>
             <p className="gut-sec-subtitle">
-              Whether you have been newly diagnosed or have spent years searching for digestive answers, our protocols provide clarity.
+              This plan is ideal for:
             </p>
           </div>
 
@@ -344,9 +352,10 @@ export default function GutHealthPage() {
               </p>
 
               <p className="gut-meet-p">
-                Meenu is a trusted clinical gut health nutritionist in Chennai with 14+ years of global practice, having successfully worked with over 4,500 clients. As a peer reviewer for the prestigious <em>European Journal of Nutrition</em>, she brings rigorous evidence-based science to everyday digestive challenges.
+                Meenu is a trusted gut health nutritionist in Chennai with 14+ years of global experience (UK, NZ and India) and has worked with 4500+ clients. She offers personalized, evidence-based plans to help with IBS, bloating, food sensitivities, and microbiome balance.
               </p>
 
+              <p className="gut-meet-p">Available for in-person and online consultations, she supports your journey to better digestion and overall wellness.</p>
               <p className="gut-meet-p">My approach combines nutrition science, digestive physiology, microbiome testing, and behavioral nutrition to create lasting, measurable improvement.</p>
 
               <div className="gut-meet-actions">
@@ -382,6 +391,11 @@ export default function GutHealthPage() {
             </div>
           </div>
         </div>
+      </Section>
+
+      <Section width="wide" bg="white" title="Take the First Step Towards a Healthier Gut!">
+        <p>Join the Gut Health Diet Plan today to transform your well-being from the inside out.</p>
+        <Link to="/programs-pricing" className="btn btn-primary">Sign Up Now!<ArrowRight size={16} aria-hidden="true" /></Link>
       </Section>
 
       {/* 12. FREQUENTLY ASKED QUESTIONS */}

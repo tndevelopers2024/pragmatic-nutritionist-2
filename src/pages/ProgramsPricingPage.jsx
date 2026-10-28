@@ -9,9 +9,13 @@ import content from '../data/programsPricing.json'
 import './programsPricing.css'
 
 const specialistPrograms = [
-  { title: 'Gut Health', description: 'Explore gut health programs and pricing.', to: '/gut-health#pricing' },
-  { title: 'Sports Nutrition', description: 'Compare Fuel & Focus, Competition Ready, and long-term performance plans.', to: '/sports-nutrition/competitive-athletes' },
-  { title: 'Child & Teen Nutrition', description: 'Explore nutrition support for children and teenagers.', to: '/more-care/child-teen-nutrition' }
+  { title: 'Weight Loss', description: 'Achieve sustainable weight loss with a science-backed approach, focusing on balanced meals, personalized plans, and lasting results. Prioritizing your health ensures progress without restrictive diets. Transform your journey with practical, effective strategies!', to: '/more-care/weight-loss' },
+  { title: 'Sports Nutrition', description: 'Fuel your performance with expert sports nutrition tailored to your goals. Optimize energy, recovery, and endurance with a science-backed approach. Achieve peak performance and lasting results!', to: '/sports-nutrition' },
+  { title: 'PCOS/Hypothyroid', description: 'Achieve hormonal wellness with a personalized, science-backed approach that balances your hormones naturally. Enhance energy, mood, and overall health with targeted nutrition and sustainable habits. Regain harmony and thrive!', to: '/more-care/pcos' },
+  { title: 'Weight Gain', description: 'Achieve healthy weight gain with a personalized, science-backed approach focusing on balanced nutrition and sustainable habits. Build strength, energy, and confidence with lasting results. Transform your journey today!' },
+  { title: 'Gut Health', description: 'Restore your gut health with a science-backed approach that improves digestion, boosts immunity, and enhances overall well-being. We focus on balanced nutrition and personalized care for long-term results. Heal your gut naturally and thrive!', to: '/gut-health' },
+  { title: 'Manage Diabetes', description: 'Manage lifestyle diseases with a science-backed approach focusing on balanced nutrition, sustainable habits, and personalized care. Improve your health, prevent complications, and achieve lasting well-being. Take control of your lifestyle today!', to: '/more-care/diabetes' },
+  { title: 'Child Nutrition', description: "Support your child's growth and development with balanced, science-backed nutrition. Our personalized approach ensures they get the essential nutrients for a healthy, thriving future. Build strong foundations for lifelong well-being!", to: '/more-care/child-teen-nutrition' }
 ]
 
 export default function ProgramsPricingPage() {
@@ -19,10 +23,10 @@ export default function ProgramsPricingPage() {
   useSeo('Programs & Pricing', 'Compare nutrition plans, specialist care and the Signature Nutrition Program at Pragmatic Nutrition.')
   return (
     <div className="programs-pricing-page">
-      <PageHero title="Programs & Pricing" blurb="Nutrition plans and the Signature Program." />
-      <Section width="wide" bg="base" title="Choose your nutrition plan" lead="Healthy eating is about eating right not eating less.">
+      <PageHero title="Programs & Pricing" blurb="Food is more than just calories." />
+      <Section width="wide" bg="base" title="Nutrition packages" lead="Healthy eating is about eating right not eating less.">
         <p className="placeholder-desc">Every meal you eat is an opportunity to nourish your body. Your eating habits can affect both your physical and mental health. Do you often feel that your energy levels are low or you have difficulty sleeping?</p>
-        <p className="placeholder-desc">That is why finding the right balance of nutrients will help you transform your health and make you feel good about yourself.</p>
+        <p className="placeholder-desc">That is why finding the right balance of nutrients will help you transform your health and make you feel good about yourself. How will our healthy nutrition plan help you?</p>
         <div className="gut-programs-grid pricing-plans-grid">
           {content.plans.map(plan => (
             <article className="gut-program-card" key={plan.title}>
@@ -37,8 +41,8 @@ export default function ProgramsPricingPage() {
         <p>Choose your pricing plan and find one that works for you.</p>
         <a className="btn btn-secondary" href="https://pages.razorpay.com/stores/st_QifXYeHOUUdx9x" target="_blank" rel="noopener noreferrer">Join Now — visit payment page<ArrowRight size={16} aria-hidden="true" /></a>
       </Section>
-      <Section width="wide" bg="white" eyebrow="SPECIALIST CARE" title="Find support for your goals">
-        <div className="subtopics-grid">{specialistPrograms.map(program => <Link className="subtopic-card btn-no-underline" key={program.to} to={program.to}><h3 className="subtopic-name">{program.title}</h3><p className="subtopic-blurb">{program.description}</p><span className="subtopic-action">View programs<ArrowRight size={14} aria-hidden="true" /></span></Link>)}</div>
+      <Section width="wide" bg="white" eyebrow="SPECIALIST CARE" title="Services">
+        <div className="subtopics-grid">{specialistPrograms.map(program => <article className="subtopic-card" key={program.title}><h3 className="subtopic-name">{program.title}</h3><p className="subtopic-blurb">{program.description}</p>{program.to && <Link className="subtopic-action" to={program.to}>{program.title === 'PCOS/Hypothyroid' ? 'Explore PCOS support' : 'View programs'}<ArrowRight size={14} aria-hidden="true" /></Link>}</article>)}</div>
       </Section>
       <Section className="pricing-signature-section" width="wide" bg="base">
         <div className="pricing-signature-grid">

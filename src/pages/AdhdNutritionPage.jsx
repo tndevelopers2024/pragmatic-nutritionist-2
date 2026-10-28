@@ -3,16 +3,12 @@ import { Link } from 'react-router-dom'
 import {
   ArrowRight,
   Brain,
-  Sparkles,
   HeartPulse,
   ShieldCheck,
-  Utensils,
-  Activity,
   CheckCircle2,
   Plus,
   MessageCircle,
-  Apple,
-  Zap
+  Apple
 } from 'lucide-react'
 import PageHero from '../components/PageHero'
 import { useSeo } from '../components/Seo'
@@ -300,9 +296,6 @@ export default function AdhdNutritionPage() {
             </blockquote>
             <figcaption style={{ paddingTop: '16px', borderTop: '1px solid var(--cn-border)' }}>
               <strong>{reviewLines[1].text}</strong>
-              <p style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', margin: '2px 0 0' }}>
-                Parent of Child on the Spectrum
-              </p>
             </figcaption>
           </figure>
 
@@ -314,9 +307,6 @@ export default function AdhdNutritionPage() {
             </blockquote>
             <figcaption style={{ paddingTop: '16px', borderTop: '1px solid var(--cn-border)' }}>
               <strong>{reviewLines[4].text}</strong>
-              <p style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', margin: '2px 0 0' }}>
-                Parent of Picky Eater (Texture Sensitive)
-              </p>
             </figcaption>
           </figure>
 
@@ -328,9 +318,6 @@ export default function AdhdNutritionPage() {
             </blockquote>
             <figcaption style={{ paddingTop: '16px', borderTop: '1px solid var(--cn-border)' }}>
               <strong>{reviewLines[6].text}</strong>
-              <p style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', margin: '2px 0 0' }}>
-                Parent of School-Age Child
-              </p>
             </figcaption>
           </figure>
         </div>

@@ -11,7 +11,7 @@ export default function ResultsFilter({
   headingHighlight = 'Patient Stories',
   description = 'Real client progress across digestive recovery, sustainable metabolic health, hormonal balance, and athletic performance.',
   stats = [
-    { value: '4,500+', label: 'Verified Patient Transformations' },
+    { value: '4,500+', label: 'Verified Clients' },
     { value: '4.9 / 5', label: 'Average Patient Rating', stars: true },
     { value: '100%', label: 'Personalised Care' }
   ],

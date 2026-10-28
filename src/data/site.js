@@ -136,7 +136,7 @@ export const ATHLETES = [
 export const CORE_AREAS = [
   {
     id: 'gut-health',
-    title: 'Gut Health Nutrition',
+    title: 'Gut Health',
     subtitle: 'Digestive Recovery & Clinical Care',
     desc: "Understand what's driving your symptoms and build a sustainable nutrition program. Digestive enzymes, acidity, GERD, IBS, bloating, constipation, SIBO & gluten intolerance.",
     linkText: 'EXPLORE GUT HEALTH',
@@ -148,7 +148,7 @@ export const CORE_AREAS = [
     id: 'sports-nutrition',
     title: 'Sports Nutrition',
     subtitle: 'Youth & Elite Athletic Performance',
-    desc: 'Youth athletes, competitive athletes, training nutrition, recovery, match-day fuelling, and tournament preparation.',
+    desc: 'Performance nutrition for athletes competing in national and international events. Youth athletes. Competitive athletes. Training nutrition. Recovery. Competition prep.',
     linkText: 'EXPLORE SPORTS NUTRITION',
     to: '/sports-nutrition',
     icon: '⚡',
@@ -173,7 +173,7 @@ export const RESULTS = [
     big: 'Adolescent athletic performance frameworks',
     metric: 'Frameworks Applied',
     metricLabel: 'Adolescent Clinical Protocol',
-    quote: 'Meenu is a highly competent nutritionist, who has the ability to convey complex information into education material that patients can understand and will endeavour to comply with. We were very impressed with her depth of knowledge in adolescent nutrition and its direct relation to athletic performance. We have applied her frameworks with great effect in our adolescent population.',
+    quote: "Meenu is a highly competent nutritionist, who has the ability to convey complex information into education material that patients can understand and will endeavour to comply with. Meenu's knowledge in the field is outstanding and its relationship with exercise has been beneficial. We were very impressed with her depth of knowledge in adolescent nutrition and its direct relation to athletic performance. We have applied her frameworks with great effect in our adolescent population.",
     p: 'Wellington Sports Medicine, New Zealand',
     featured: true
   },

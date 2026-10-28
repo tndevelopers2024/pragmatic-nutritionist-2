@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Sprout, Zap, ArrowRight, Activity, ShieldCheck, Award } from 'lucide-react'
+import { Sprout, Zap, ArrowRight } from 'lucide-react'
 import { CORE_AREAS } from '../data/site'
 import Section from './Section'
 import gutImg from '../assets/Gut-health.avif'
@@ -35,8 +35,7 @@ export default function CoreAreas() {
       width="wide"
       bg="lime"
       eyebrow="CLINICAL PILLARS"
-      title="Two Core Disciplines of Practice"
-      lead="Targeted gut restoration and high-performance sports nutrition grounded in clinical biochemistry and tailored for real lives."
+      title="Two Core Areas of Gut & Sports Nutrition"
       className="core-disciplines-section"
     >
       <div className="section-divider-row" aria-hidden="true">

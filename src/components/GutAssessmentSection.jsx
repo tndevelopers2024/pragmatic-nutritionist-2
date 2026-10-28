@@ -3,13 +3,10 @@ import { Link } from 'react-router-dom'
 import {
   Sparkles,
   ArrowRight,
-  ShieldCheck,
   Activity,
   HeartPulse,
-  Flame,
   CheckCircle2,
-  Clock,
-  Droplet
+  Clock
 } from 'lucide-react'
 import Section from './Section'
 
@@ -43,10 +40,10 @@ export default function GutAssessmentSection() {
 
   const scoreStatus =
     previewScore >= 80
-      ? { label: 'Optimal Gut Balance', color: 'var(--color-primary)', bg: 'rgba(14, 98, 88, 0.1)', desc: 'Mild symptoms manageable with subtle kitchen adjustments.' }
+      ? { label: 'Sample response summary', color: 'var(--color-primary)', bg: 'rgba(14, 98, 88, 0.1)', desc: 'This preview summarises sample answers and is not a clinical assessment.' }
       : previewScore >= 60
-      ? { label: 'Moderate Sensitivity', color: 'var(--color-secondary)', bg: 'rgba(192, 113, 48, 0.1)', desc: 'Clear warning signs present. Targeted food-first protocols advised.' }
-      : { label: 'High Distress Level', color: '#b91c1c', bg: 'rgba(185, 28, 28, 0.1)', desc: 'Chronic digestive stress. Clinical root-cause intervention recommended.' }
+      ? { label: 'Sample response summary', color: 'var(--color-secondary)', bg: 'rgba(192, 113, 48, 0.1)', desc: 'This preview summarises sample answers and is not a clinical assessment.' }
+      : { label: 'Sample response summary', color: '#b91c1c', bg: 'rgba(185, 28, 28, 0.1)', desc: 'This preview summarises sample answers and is not a clinical assessment.' }
 
   return (
     <Section id="gut-assessment" width="wide" bg="base" className="gut-assessment-section">
@@ -61,15 +58,15 @@ export default function GutAssessmentSection() {
         <div className="gut-assessment-intro">
           <div className="section-eyebrow-pill">
             <Sparkles size={13} className="eyebrow-icon" aria-hidden="true" />
-            <span>CLINICAL SELF-ASSESSMENT • 3-MINUTE AUDIT</span>
+            <span>NOT SURE WHERE TO START?</span>
           </div>
 
           <h2 className="gut-assessment-heading">
-            Free Clinical <em>Gut Health Assessment</em>
+            Take our Free 2-minute <em>Gut Health Checker</em>
           </h2>
 
           <p className="gut-assessment-lead">
-            Evaluate your digestive biochemistry, track your symptom patterns, and get an instant Gut Balance Score with personalized food-first guidance by Meenu Balaji.
+            Get a clearer picture of areas worth exploring before booking a call.
           </p>
 
           <div className="gut-assessment-pillars">
@@ -78,8 +75,8 @@ export default function GutAssessmentSection() {
                 <Activity size={18} />
               </div>
               <div className="gut-pillar-text">
-                <strong>9 Symptom Biomarkers Analyzed</strong>
-                <p>Covers bloating, GERD, constipation, food cravings, energy drops, and gut-brain signals.</p>
+                <strong>Nine symptom questions</strong>
+                <p>Reflect on symptoms including bloating, reflux, constipation, fatigue and brain fog.</p>
               </div>
             </div>
 
@@ -88,8 +85,8 @@ export default function GutAssessmentSection() {
                 <HeartPulse size={18} />
               </div>
               <div className="gut-pillar-text">
-                <strong>Instant Emotional & Clinical Score</strong>
-                <p>Visual 0–100 vitality rating with symptom severity breakdown and trigger classification.</p>
+                <strong>Self-reported symptom summary</strong>
+                <p>Review a simple summary of your responses; it is not a diagnosis.</p>
               </div>
             </div>
 
@@ -98,20 +95,20 @@ export default function GutAssessmentSection() {
                 <CheckCircle2 size={18} />
               </div>
               <div className="gut-pillar-text">
-                <strong>Indian Kitchen Action Plan</strong>
-                <p>Evidence-based dietary recommendations built around dal, rice, roti, and home meals.</p>
+                <strong>Plan your next step</strong>
+                <p>Discuss your questions with a qualified healthcare professional.</p>
               </div>
             </div>
           </div>
 
           <div className="gut-assessment-actions">
             <Link to="/gut-health-checker" className="gut-primary-cta-btn">
-              <span>Start Full Gut Assessment</span>
+              <span>Free Gut Assessment</span>
               <ArrowRight size={16} strokeWidth={2.25} aria-hidden="true" />
             </Link>
             <div className="gut-cta-meta">
               <Clock size={14} className="meta-icon" />
-              <span>Takes ~3 mins • 100% Free • No sign-up required to calculate</span>
+              <span>Free • Takes about 2 minutes</span>
             </div>
           </div>
         </div>

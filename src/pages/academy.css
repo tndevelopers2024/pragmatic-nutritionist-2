@@ -8,5 +8,14 @@
 .academy-link { margin-top: auto; display: inline-flex; align-items: center; gap: 8px; }
 .academy-note, .academy-disclaimer { margin: 28px 0 0; max-width: 900px; line-height: 1.7; }
 .academy-disclaimer { margin-bottom: 20px; }
+.academy-value-table-wrap { overflow-x: auto; }
+.academy-value-table { width: 100%; border-collapse: collapse; text-align: left; }
+.academy-value-table th, .academy-value-table td { padding: 12px 16px; border-bottom: 1px solid var(--color-border, #d7e5de); }
+.academy-value-table th:last-child, .academy-value-table td:last-child { white-space: nowrap; }
+.academy-copy ul { padding-left: 1.4rem; }
+.academy-copy li + li { margin-top: .6rem; }
+.academy-faq { padding: 18px 22px; border: 1px solid var(--color-border, #d7e5de); border-radius: 12px; background: white; }
+.academy-faq summary { cursor: pointer; font-weight: 600; }
+.academy-faq p { margin: 12px 0 0; }
 @media (max-width: 900px) { .academy-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 600px) { .academy-grid { grid-template-columns: 1fr; } .academy-card { padding: 22px; } }

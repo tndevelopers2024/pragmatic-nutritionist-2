@@ -31,7 +31,7 @@ export default function Home() {
       <CoreAreas />
 
       {/* 4. Social Proof: Champions & Elite Athletes (Performance That Speaks) */}
-      <Champions />
+      <Champions ctaButtonText="Book A Free Discovery Call" />
 
       {/* 5. Clinical Philosophy: The Pragmatic Approach */}
       <WhyPragmatic />
@@ -54,7 +54,7 @@ export default function Home() {
       <GutAssessmentSection />
 
       {/* 9. Social Proof: Verified Patient Clinical Outcomes */}
-      <ResultsFilter />
+      <ResultsFilter eyebrow="REAL CLIENTS REAL OUTCOMES" heading="What People Say" headingHighlight="About Working with Meenu" />
 
       {/* 11. FAQ: Common Inquiries & Clarity */}
       <Faq tight />

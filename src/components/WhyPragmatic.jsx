@@ -23,7 +23,7 @@ export default function WhyPragmatic() {
       width="wide"
       bg="white"
       eyebrow="CLINICAL PHILOSOPHY"
-      title="The Pragmatic Approach"
+      title="Why Pragmatic Nutrition?"
       lead="Built for real life: non-extreme, symptom-led, and centered around practical Indian home meals."
     >
       <div className="section-divider-row" aria-hidden="true">
