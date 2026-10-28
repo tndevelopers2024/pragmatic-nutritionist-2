@@ -1,14 +1,10 @@
 import { useState } from 'react'
 import {
   MapPin,
-  Phone,
   Mail,
-  Clock,
   MessageCircle,
   Send,
-  CheckCircle2,
   Calendar,
-  ShieldCheck,
   Globe2,
   ArrowRight
 } from 'lucide-react'
@@ -26,13 +22,13 @@ export default function ContactPage() {
   )
 
   const openBook = useBook()
-  const [submitted, setSubmitted] = useState(false)
+  const [prepared, setPrepared] = useState(false)
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
     concern: 'Gut Health (IBS, Bloating, Acidity, GERD)',
-    mode: 'Online Consultation',
+    mode: 'Online Video Call',
     message: ''
   })
 
@@ -43,11 +39,11 @@ export default function ContactPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    setSubmitted(true)
+    setPrepared(true)
   }
 
   const inquiryWaUrl = wa(
-    `Hi Meenu, I submitted an inquiry on Pragmatic Nutrition:\nName: ${formData.name || 'Client'}\nConcern: ${formData.concern}\nMode: ${formData.mode}\nNote: ${formData.message || 'I would like to consult with you.'}`
+    `Hi Meenu, I would like to inquire about a consultation.\nName: ${formData.name}\nPhone: ${formData.phone}\nEmail: ${formData.email}\nConcern: ${formData.concern}\nPreferred mode: ${formData.mode}\nMessage: ${formData.message || 'I would like to consult with you.'}`
   )
 
   return (
@@ -87,8 +83,9 @@ export default function ContactPage() {
                       rel="noopener noreferrer"
                       className="contact-channel-value"
                     >
-                      {PHONE}
+                      Chat on WhatsApp
                     </a>
+                    <p className="contact-channel-note">Phone: <a href={`tel:${PHONE.replace(/\s/g, '')}`}>{PHONE}</a></p>
                     <p className="contact-channel-note">Fastest response time for appointments &amp; quick queries</p>
                   </div>
                 </div>
@@ -121,17 +118,7 @@ export default function ContactPage() {
                   </div>
                 </div>
 
-                {/* Consultation Hours */}
-                <div className="contact-channel-card">
-                  <div className="contact-channel-icon hours">
-                    <Clock size={22} aria-hidden="true" />
-                  </div>
-                  <div className="contact-channel-body">
-                    <span className="contact-channel-label">Consultation Hours</span>
-                    <span className="contact-channel-value">Monday – Saturday: 9:00 AM – 7:00 PM IST</span>
-                    <p className="contact-channel-note">Flexible scheduling for USA, UK, UAE &amp; Australia time zones</p>
-                  </div>
-                </div>
+
               </div>
 
               {/* Discovery Call Card */}
@@ -159,17 +146,14 @@ export default function ContactPage() {
             {/* Right: Contact Inquiry Form */}
             <div className="contact-form-col">
               <div className="contact-form-panel">
-                {submitted ? (
+                {prepared ? (
                   <div className="contact-success-state">
-                    <div className="contact-success-icon">
-                      <CheckCircle2 size={44} aria-hidden="true" />
-                    </div>
-                    <h3>Thank you for reaching out!</h3>
+                    <h3>Your message is ready</h3>
                     <p>
-                      Your message has been received. Meenu or our clinical care coordinator will get back to you within 24 hours.
+                      Your message has not been sent yet. Open WhatsApp to review and send it to Meenu.
                     </p>
                     <div className="contact-success-fallback">
-                      <p>Need an instant response? Send this inquiry directly via WhatsApp:</p>
+                      <p>Your name, contact details, selected concern and message will be included in the WhatsApp message.</p>
                       <a
                         href={inquiryWaUrl}
                         target="_blank"
@@ -177,22 +161,22 @@ export default function ContactPage() {
                         className="btn btn-primary"
                       >
                         <MessageCircle size={16} aria-hidden="true" />
-                        Chat on WhatsApp Now
+                        Review in WhatsApp
                       </a>
                     </div>
                     <button
                       type="button"
                       className="btn btn-secondary contact-reset-btn"
-                      onClick={() => setSubmitted(false)}
+                      onClick={() => setPrepared(false)}
                     >
-                      Send Another Message
+                      Edit Message
                     </button>
                   </div>
                 ) : (
                   <>
                     <div className="contact-form-header">
                       <h3>Send a Message</h3>
-                      <p>Fill out the form below and we will get back to you promptly.</p>
+                      <p>Fill out the form to prepare a WhatsApp message. You can review it before sending.</p>
                     </div>
 
                     <form className="contact-form" onSubmit={handleSubmit}>
@@ -287,18 +271,29 @@ export default function ContactPage() {
 
                       <button type="submit" className="btn btn-primary contact-submit-btn">
                         <Send size={16} aria-hidden="true" />
-                        Send Message
+                        Prepare WhatsApp Message
                       </button>
 
-                      <div className="contact-form-trust">
-                        <ShieldCheck size={16} aria-hidden="true" />
-                        <span>Your health information and medical records are kept strictly confidential.</span>
-                      </div>
+
                     </form>
                   </>
                 )}
               </div>
             </div>
+          </div>
+
+          <div className="contact-original-copy">
+            <h2>Hey there!</h2>
+            <p>Thanks for stopping by. Whether you have a burning question about nutrition, need personalized advice, or just want to chat about your wellness goals, we're here to help. Your journey to better health starts with a conversation!</p>
+            <h3>Our Commitment to You</h3>
+            <p>At Pragmatic Nutrition, we're passionate about empowering you with the knowledge and support you need to thrive. Our team of nutrition experts is dedicated to providing trustworthy guidance and practical tips that fit seamlessly into your lifestyle.</p>
+            <h3>How Can We Assist You?</h3>
+            <p>Got a specific dietary concern? Looking for tips to boost your energy levels? Interested in upcoming workshops or one-on-one consultations? Send us a message and we'll get back to you.</p>
+            <h3>Stay Connected</h3>
+            <p>Follow us on social media for nutrition insights, healthy recipes and updates.</p>
+            <h3>Let's Get Started</h3>
+            <p>Don't hesitate to reach out! We're excited to hear from you and support you on your journey towards a healthier, happier you.</p>
+            <p>Looking forward to hearing from you,<br />Meenu Balaji<br />Founder &amp; Chief Nutritionist</p>
           </div>
 
           {/* Bottom Trust Banner */}

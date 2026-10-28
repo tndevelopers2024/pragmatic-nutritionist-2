@@ -72,7 +72,7 @@ export default function Hero() {
                   <span className="hero-award-badge">9TH EDITION REALISTIC AWARDS</span>
                 </div>
                 <p className="hero-award-desc">
-                  Honoured at Chennai for pioneering evidence-based gut health protocols and adolescent sports nutrition frameworks.
+                  Meenu Balaji was presented with the Best Nutritionist & Dietitian Award at the Realistic Awards 2026 in Chennai, alongside women achievers from various fields.
                 </p>
                 <a
                   href="https://republicnewsindia.com/9th-edition-realistic-awards-2026-an-evening-celebrating-the-power-and-grace-of-womanhood/"

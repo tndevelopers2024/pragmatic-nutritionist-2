@@ -1,0 +1,49 @@
+Audit the text content of the Pragmatic Nutritionist website migration.
+
+Project folder: open the pragmatic-nutritionist-2 project in Codex Desktop.
+
+Compare the current local implementation with the original live pages listed below. For each mapping, determine whether the original page’s main text, headings, lists, pricing, FAQs, testimonials, disclaimers, and calls to action are present and correctly represented locally. Note meaningful wording changes, missing content, incorrect mappings, and functional differences such as booking versus payment.
+
+Do not make changes yet. Give me a page-by-page report with:
+- Complete, partial, missing, or unable to verify
+- Specific missing or changed content
+- The relevant local route and source files
+- Any incorrect mapping
+- Whether the deployed Vercel page differs from local, if accessible
+
+Exclude shared navigation and footer from the main-content comparison unless a difference affects the page. Don’t mark a page complete just because its route loads. Where the original content or deployment cannot be accessed, state that clearly.
+
+Original → mapped destination:
+
+1. https://www.pragmaticnutritionist.com/ → /
+2. https://www.pragmaticnutritionist.com/about-meenu-balaji-nutritionist → /about
+4. https://www.pragmaticnutritionist.com/best-diabetes-nutritionist-india → /more-care/diabetes
+5. https://www.pragmaticnutritionist.com/best-gut-health-nutritionist-india → /gut-health
+7. https://www.pragmaticnutritionist.com/child-nutritionist-india → /more-care/child-teen-nutrition
+10. https://www.pragmaticnutritionist.com/gut-health-checker → /gut-health-checker
+13. https://www.pragmaticnutritionist.com/nutrition-plans → /programs-pricing
+20. https://www.pragmaticnutritionist.com/privacy-policy-1 → /privacy
+21. https://www.pragmaticnutritionist.com/refund-policy → /refund
+23. https://www.pragmaticnutritionist.com/sports-nutritionist-india → /sports-nutrition
+24. https://www.pragmaticnutritionist.com/terms-conditions → /terms
+25. https://www.pragmaticnutritionist.com/terms-of-use → /terms
+210. https://www.pragmaticnutritionist.com/pricing-plans/list → /programs-pricing
+3. https://www.pragmaticnutritionist.com/adhd-nutritionist-children → /more-care/adhd-nutrition
+6. https://www.pragmaticnutritionist.com/blog → /blog
+8. https://www.pragmaticnutritionist.com/contact-us → /contact
+14. https://www.pragmaticnutritionist.com/nutrition-private-practice → /academy/build-your-private-practice
+15. https://www.pragmaticnutritionist.com/nutritionist-certificate-courses → /academy/certificate-courses
+16. https://www.pragmaticnutritionist.com/nutritionist-practice-masterclass-registration → /academy/build-your-private-practice
+17. https://www.pragmaticnutritionist.com/online-courses-for-nutritionists → /academy/certificate-courses
+18. https://www.pragmaticnutritionist.com/online-nutrition-course → /academy/courses-masterclasses
+19. https://www.pragmaticnutritionist.com/online-nutrition-courses → /academy/courses-masterclasses
+22. https://www.pragmaticnutritionist.com/signature-nutrition-program → /programs-pricing
+34. https://www.pragmaticnutritionist.com/nutrition-blog → /blog
+
+The deployed base URL is https://pragmatic-nutritionist.vercel.app/. Check it separately from the local project.
+
+Known context:
+- The ADHD page now has its own route; an older spreadsheet maps it to the child nutrition page.
+- The blog was intentionally limited to 12 cards; individual article content was not imported.
+- The About page’s separate track-record strip was intentionally removed.
+- Existing source archives and previous verification files are under outputs/. Use them as evidence, but check whether they still match the current implementation.

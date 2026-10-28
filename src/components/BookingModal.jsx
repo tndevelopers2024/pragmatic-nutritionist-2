@@ -9,6 +9,7 @@ export default function BookingModal({ onClose }) {
   const [slot, setSlot] = useState('')
   const [name, setName] = useState('')
   const modalRef = useRef(null)
+  const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone || 'local time'
 
   // Calculate next 3 days
   const days = Array.from({ length: 3 }, (_, n) => {
@@ -95,7 +96,7 @@ export default function BookingModal({ onClose }) {
           {step === 1 && (
             <div className="modal-step-pane">
               <h3 id="modal-step-title" className="modal-heading">Select a preferred time slot</h3>
-              <p className="modal-sub">Free 15-minute 1-on-1 discovery call with Meenu Balaji.</p>
+              <p className="modal-sub">Choose a preferred time for your free discovery call ({timeZone}). These are suggestions, not live availability; the team will confirm a time with you on WhatsApp.</p>
 
               <div className="modal-slots-grid">
                 {allSlots.map((timeSlot) => (
@@ -117,7 +118,7 @@ export default function BookingModal({ onClose }) {
                   disabled={!slot}
                   onClick={() => setStep(2)}
                 >
-                  <span>Continue to Confirmation</span>
+                  <span>Review request</span>
                   <ArrowRight size={16} strokeWidth={2.5} />
                 </button>
                 <button type="button" className="btn btn-ghost btn-block modal-back-btn" onClick={() => setStep(0)}>
@@ -130,8 +131,8 @@ export default function BookingModal({ onClose }) {
 
           {step === 2 && (
             <div className="modal-step-pane">
-              <h3 id="modal-step-title" className="modal-heading">Confirm your discovery call</h3>
-              <p className="modal-sub">Review your session details and enter your name to dispatch your invitation.</p>
+              <h3 id="modal-step-title" className="modal-heading">Request your discovery call</h3>
+              <p className="modal-sub">Review the details, then send your request on WhatsApp. Your call is not booked until the team confirms it.</p>
 
               <div className="booking-summary-card">
                 <div className="summary-row">
@@ -139,7 +140,7 @@ export default function BookingModal({ onClose }) {
                   <strong className="summary-value">{service || 'Gut Health & Clinical Care'}</strong>
                 </div>
                 <div className="summary-row">
-                  <span className="summary-label">Slot:</span>
+                  <span className="summary-label">Preferred time:</span>
                   <strong className="summary-value">{slot}</strong>
                 </div>
                 <div className="summary-row">
@@ -165,13 +166,14 @@ export default function BookingModal({ onClose }) {
               <div className="modal-action-row">
                 <a
                   className={`btn btn-wa btn-block btn-no-underline modal-wa-cta ${!name.trim() ? 'disabled' : ''}`}
-                  href={wa(`Hi Meenu, I would like to confirm my free discovery call.\n• Goal: ${service || 'Gut Health'}\n• Slot: ${slot}\n• Name: ${name}`)}
+                  href={name.trim() ? wa(`Hi Meenu, I would like to request a free discovery call.\n• Goal: ${service || 'Gut Health'}\n• Preferred time: ${slot} (${timeZone})\n• Name: ${name}`) : undefined}
+                  aria-disabled={!name.trim()}
                   target="_blank"
                   rel="noreferrer"
                   style={{ pointerEvents: name.trim() ? 'auto' : 'none', opacity: name.trim() ? 1 : 0.45 }}
                 >
                   <WhatsAppIcon size={18} />
-                  <span>Confirm on WhatsApp</span>
+                  <span>Request on WhatsApp</span>
                 </a>
                 <button type="button" className="btn btn-ghost btn-block modal-back-btn" onClick={() => setStep(1)}>
                   <ArrowLeft size={15} strokeWidth={2.5} />

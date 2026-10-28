@@ -5,15 +5,15 @@
 
 export const GUT_HERO = {
   badge: 'CLINICAL GUT HEALTH NUTRITION • EVIDENCE-BASED',
-  title: 'Root-Cause Digestive Restoration for IBS, SIBO, Bloating & Acidity',
+  title: 'Meenu Balaji, Gut Health Nutritionist in India: Personalised Plans for IBS, Bloating & SIBO',
   subtitle:
     "Struggling with bloating, acidity, SIBO, or IBS that keeps coming back? The problem isn't your willpower; every gut is different, and generic diets rarely work.",
   intro:
     "Meenu Balaji is a clinical gut health nutritionist with 14 years of experience across India, the UK, and New Zealand. At Pragmatic Nutrition, we identify what's actually driving your symptoms—SIBO, food intolerances, microbiome imbalance, or gut inflammation—and build a recovery plan around real Indian food and your real life.",
   stats: [
-    { value: '4,500+', label: 'Clients Recovered', sub: 'Across India & 8+ countries' },
+    { value: '4,500+', label: 'Clients', sub: 'Trusted by 4,500+ clients' },
     { value: '14+ Yrs', label: 'Clinical Expertise', sub: 'India, UK & New Zealand' },
-    { value: '8–12 Wks', label: 'Measurable Relief', sub: 'Symptom scoring & stool tracking' },
+    { value: '8–12 Wks', label: 'Results', sub: 'Results vary between individuals' },
     { value: 'Food-First', label: 'Indian Cuisine', sub: 'Zero starvation or generic charts' }
   ],
   locationsNote: 'Chennai clinic appointments + Online consultations across India, USA, UK, UAE, Australia, and New Zealand.'
@@ -153,216 +153,203 @@ export const DIAGNOSTICS = [
 
 export const PROGRAMS = [
   {
-    id: 'reset-4-weeks',
-    title: '4 Weeks Gut Reset & Nourish',
-    price: '6,499',
-    currency: '₹',
-    duration: 'Valid for 4 weeks',
-    badge: 'Kickstart Relief',
-    popular: false,
-    idealFor: 'Acidity, acute post-meal bloating, recent digestive discomfort, and kickstarting healthy digestion.',
-    features: [
-      'Initial 40-minute Gut & Overall Health Assessment Video Call',
-      'Three 15-minute video check-in reviews (weekly progress)',
-      'Personalised gut-friendly meal plan & easy Indian recipes',
-      'Guidance on meal timing, chewing, and mindful eating',
-      'Continuous Email & WhatsApp support between calls',
-      'Actionable symptom score tracking'
+    "id": "reset-4-weeks",
+    "title": "4 Weeks Gut Reset & Nourish",
+    "price": "6,499",
+    "currency": "₹",
+    "duration": "Valid for 4 weeks",
+    "idealFor": "Acidity, bloating reset",
+    "features": [
+      "Initial 40 min Gut & Overall Health Assessment Video call",
+      "Three 15-minute video check-ins",
+      "Personalised gut-friendly meal plan & recipes",
+      "Email and WhatsApp support"
     ],
-    ctaText: 'Choose 4-Week Reset'
+    "ctaText": "Discuss this plan"
   },
   {
-    id: 'recovery-3-months',
-    title: '3-Month Gut Recovery: Food Intolerance',
-    price: '18,500',
-    currency: '₹',
-    duration: 'Valid for 3 months',
-    badge: 'Most Comprehensive',
-    popular: true,
-    idealFor: 'Acid reflux, gluten intolerance, persistent bloating, post-meal fatigue, brain fog, and chronic gut distress.',
-    features: [
-      'Initial 45-minute Deep-Dive Consultation & Root-Cause Mapping',
-      '15-minute Review call once every 10 days (8 total review sessions)',
-      'Anti-inflammatory and gut-calming Indian food framework',
-      'Symptom + Food Intolerance Tracking with Bristol Stool analysis',
-      'Targeted supplement & digestive enzyme guidance (evidence-led)',
-      'Phased reintroduction protocol for sensitive foods',
-      'Continuous WhatsApp support for instant dining-out and grocery questions'
+    "id": "recovery-3-months",
+    "title": "3-Month Gut Recovery: Food Intolerance",
+    "price": "18,500",
+    "currency": "₹",
+    "duration": "Valid for 3 months",
+    "idealFor": "Restore gut balance and eat with confidence. Designed for people with acid reflux, gluten intolerance, bloating, fatigue, or brain fog after meals.",
+    "features": [
+      "Initial Video Consultation (45 mins)",
+      "15-min Review call once in 10 days",
+      "Anti-inflammatory and gut-calming food plan",
+      "Symptom + Food Intolerance Tracking",
+      "Targeted Supplement Guidance (Optional)",
+      "WhatsApp support"
     ],
-    ctaText: 'Choose 3-Month Protocol'
+    "ctaText": "Discuss this plan"
   },
   {
-    id: 'coaching-6-months',
-    title: '6-Month Advanced Gut Coaching: IBS, SIBO',
-    price: '35,000',
-    currency: '₹',
-    duration: 'Valid for 6 months',
-    badge: 'Clinical IBS & SIBO',
-    popular: false,
-    idealFor: 'Chronic IBS, SIBO, leaky gut, candida, histamine intolerance, and recurrent motility disorders.',
-    features: [
-      'Led directly by Meenu Balaji – Clinical Gut Health Specialist',
-      '45-minute Video for Expert-Level Review & Root-Cause Mapping',
-      '15-minute video review every 10 days throughout the 6 months',
-      'Tailored Indian diet plans, updated monthly based on recovery stage',
-      'Gut recovery, mucosal barrier repair & microbiome rebuilding',
-      'Specialized protocols: Low-FODMAP, SCD, gluten-free, or dairy-free adaptations',
-      'Mindful eating & vagus nerve gut-brain practices',
-      'Full WhatsApp support & continuous course-correction'
+    "id": "coaching-6-months",
+    "title": "6-Month Advanced Gut Coaching: IBS, SIBO",
+    "price": "35,000",
+    "currency": "₹",
+    "duration": "Valid for 6 months",
+    "idealFor": "Root cause identified within weeks; symptom reduction around month 2–3; gut reset over 6 months. Ideal for chronic gut issues (IBS, IBD, leaky gut, SIBO, candida) and histamine intolerance.",
+    "features": [
+      "Led by Meenu – Gut Health Expert",
+      "45 Minute Video for Expert-Level Review & Root-Cause Mapping",
+      "Tailored Indian diet plans, updated monthly",
+      "15 mins video review every 10 days",
+      "Gut recovery, immune support, microbiome rebuilding",
+      "Indian and global diets (low-FODMAP, SCD, gluten/dairy-free)",
+      "Mindful eating practices",
+      "WhatsApp support"
     ],
-    ctaText: 'Choose 6-Month Coaching'
+    "ctaText": "Discuss this plan"
   },
   {
-    id: 'premium-6-months',
-    title: '6-Month Premium Gut Health Program',
-    price: '54,499',
-    currency: '₹',
-    duration: 'Valid for 6 months',
-    badge: 'All-Inclusive Care',
-    popular: false,
-    idealFor: 'Complex multi-system gut issues, chronic IBS/SIBO, leaky gut, gut-PCOS, with advanced testing & fitness.',
-    features: [
-      'Includes Comprehensive Gut Microbiome Test & Lab Interpretation',
-      'Tailored Indian Diet Plans, updated monthly',
-      '3 Nutrition review sessions per month (18 total sessions)',
-      'Symptom tracker + targeted supplement guidance',
-      'Phased Plan to safely reintroduce FODMAPs, dairy, or gluten',
-      '2 Gut-calming Yoga sessions for vagus nerve stimulation',
-      '2 sessions for Customised Fitness & motility routine',
-      'Priority WhatsApp support directly with Meenu Balaji'
+    "id": "premium-6-months",
+    "title": "6-Month Premium Gut Health Program",
+    "price": "54,499",
+    "currency": "₹",
+    "duration": "Valid for 6 months",
+    "idealFor": "Premium Gut Health program with Advanced Testing, Nutrition, Yoga and Fitness for long-term relief.",
+    "features": [
+      "Gut Microbiome test",
+      "Tailored Indian Diet Plans, updated monthly",
+      "3 Nutrition review sessions per month",
+      "Symptom tracker + supplement guidance",
+      "Phased Plan to reintroduce FODMAPs, dairy or gluten",
+      "Ideal for IBS, leaky gut, SIBO, food intolerances, gut-PCOS",
+      "2 Gut-calming Yoga sessions for vagus nerve",
+      "2 sessions for Customised Fitness routine",
+      "WhatsApp support"
     ],
-    ctaText: 'Choose Premium 6-Month'
+    "ctaText": "Discuss this plan"
   },
   {
-    id: 'global-coaching',
-    title: 'Global Gut Health Nutrition Coaching',
-    price: '14,500',
-    currency: '₹',
-    priceSub: 'per month (or USD $99/mo)',
-    duration: 'Valid for 3 months',
-    badge: 'International Clients',
-    popular: false,
-    idealFor: 'Expats & clients living in USA, UK, UAE, Australia, Canada, and NZ wanting authentic Indian gut coaching.',
-    features: [
-      'Personalised online nutrition coaching tailored to your time zone',
-      'Build gut-friendly eating habits using local grocery ingredients',
-      'Balance stress, sleep, and hydration for enhanced gut comfort',
-      'Learn how to make sustainable dietary changes without restrictive fads',
-      'Anti-inflammatory food guidance adapted to international lifestyles',
-      'Guidance to choose the right, high-potency supplements in your country',
-      'Direct WhatsApp access & scheduled video consultations'
+    "id": "global-coaching",
+    "title": "Global Gut Health Nutrition Coaching",
+    "price": "14,500",
+    "currency": "₹",
+    "priceSub": "every month",
+    "duration": "Valid for 3 months",
+    "idealFor": "Personalised online nutrition coaching to improve gut health and overall wellness without fad diets or restrictive cleanses.",
+    "features": [
+      "Build gut-friendly eating habits",
+      "Balance stress, sleep, and hydration for better gut comfort",
+      "Learn how to make sustainable dietary changes",
+      "Stay motivated with personalized coaching",
+      "Anti-inflammatory foods",
+      "Guidance to choose the right supplements"
     ],
-    ctaText: 'Choose Global Coaching'
+    "ctaText": "Discuss this plan"
   }
 ]
 
 export const EIGHT_PILLARS = [
   {
-    icon: 'Stethoscope',
-    title: 'Root-Cause Assessment',
-    desc: 'Comprehensive evaluation of digestive history, symptom triggers, food intolerances, and microbiome imbalances before creating any plan.'
+    "icon": "Stethoscope",
+    "title": "Assessment",
+    "desc": "Start with a comprehensive evaluation of gut symptoms, food intolerances, and microbiome imbalances to restore digestive health naturally."
   },
   {
-    icon: 'Utensils',
-    title: 'Practical Meal Planning',
-    desc: 'Delicious, home-cooked Indian meals and easy recipes designed to soothe digestion, fit family routines, and require zero exotic ingredients.'
+    "icon": "Utensils",
+    "title": "Meal Planning",
+    "desc": "Get practical gut-friendly meal plans and easy recipes designed to support digestion and promote a healthy microbiome."
   },
   {
-    icon: 'UserCheck',
-    title: 'Personalized Approach',
-    desc: 'Your diet plan is uniquely tailored to your bio-individuality, metabolic rate, work schedules, and digestive enzymatic capacity.'
+    "icon": "UserCheck",
+    "title": "Personalized Approach",
+    "desc": "Your diet plan is uniquely tailored to your gut’s needs."
   },
   {
-    icon: 'Sparkles',
-    title: 'Digestive Support & Mindful Eating',
-    desc: 'Evidence-based techniques to optimize stomach acid, prime digestive enzymes, stimulate the vagus nerve, and eliminate hurried eating.'
+    "icon": "Sparkles",
+    "title": "Digestive Support",
+    "desc": "Discover mindful eating habits and portion control techniques to improve digestion and support gut health naturally."
   },
   {
-    icon: 'Apple',
-    title: 'Dietary Strategies & Fiber Balance',
-    desc: 'Strategic balance of soluble vs. insoluble fibers, prebiotics, and fermented foods to nourish beneficial gut flora without triggering gas.'
+    "icon": "Apple",
+    "title": "Dietary Strategies",
+    "desc": "Enjoy guidelines emphasizing fibre, prebiotics and probiotics for a diverse gut microbiome."
   },
   {
-    icon: 'Moon',
-    title: 'Lifestyle & Stress-Gut Modulation',
-    desc: 'Practical tools to regulate the gut-brain axis, improve deep sleep architecture, and reduce sympathetic nervous system tension.'
+    "icon": "Moon",
+    "title": "Lifestyle Adjustments",
+    "desc": "Manage stress, improve sleep, and incorporate exercise to support a healthy gut and enhance digestive wellness."
   },
   {
-    icon: 'Pill',
-    title: 'Targeted Supplement Guidance',
-    desc: 'Personalized, evidence-based nutraceutical recommendations based on lab markers and clinical symptoms—never generic pill regimens.'
+    "icon": "Pill",
+    "title": "Supplement Guidance",
+    "desc": "Get personalized vitamin and supplement recommendations tailored to your gut health needs, based on your test reports."
   },
   {
-    icon: 'ShieldCheck',
-    title: 'Long-Term Maintenance & Freedom',
-    desc: 'Structured reintroduction protocols ensuring you transition smoothly into lifelong digestive freedom and eat social meals with confidence.'
+    "icon": "ShieldCheck",
+    "title": "Long-Term Maintenance",
+    "desc": "Transition smoothly to a sustainable, healthy lifestyle with a 3-month maintenance plan—exclusively for our 12-month subscribers."
   }
 ]
 
 export const CLINICAL_DIFFERENTIATORS = [
-  'Uses root-cause clinical assessment, not generic meal charts',
-  '14+ years specialized experience in IBS, SIBO, reflux, histamine intolerance & motility',
-  'Expertise in interpreting advanced gut diagnostics (GI-MAP, stool microbiome & SIBO breath tests)',
-  'Designs digestive-friendly food plans using authentic Indian ingredients and comfort staples',
-  'Tracks clinical progress using objective symptom scoring, food journals, and Bristol stool patterns',
-  'Adjusts protocols dynamically every 10 days based on your unique digestive feedback'
+  "Uses root-cause assessment, not generic diet charts",
+  "Has experience with IBS, SIBO, reflux, histamine intolerance and motility disorders",
+  "Can interpret gut tests like GI-MAP and microbiome analysis",
+  "Designs digestive-friendly food plans using Indian ingredients",
+  "Tracks progress using symptom scoring, stool patterns and food response",
+  "Adjusts the plan based on your unique gut function, not trends or fads"
 ]
 
 export const WHO_IS_THIS_FOR = [
   {
-    title: 'Individuals with Food Intolerances',
-    desc: 'Suffering from bloating, hives, headaches, or gas after gluten, dairy, lentils, or high-FODMAP foods.'
+    "title": "Individuals with Food Intolerances",
+    "desc": "Individuals with food intolerances such as gluten or lactose intolerance."
   },
   {
-    title: 'People Dealing with IBS & Acid Reflux',
-    desc: 'Frustrated by endless antacids, unpredictable bowel habits, and severe abdominal cramping.'
+    "title": "People Dealing with IBS & Acid Reflux",
+    "desc": "People dealing with IBS, acid reflux, and various digestive discomforts seeking relief."
   },
   {
-    title: 'Those Seeking Long-Term Digestive Freedom',
-    desc: 'Committed to fixing the root biochemical cause rather than cycling through temporary detox teas or fads.'
+    "title": "Those Seeking Lasting Gut Health",
+    "desc": "People committed to achieving lasting gut health and enhancing their overall well-being."
   },
   {
-    title: 'Leaky Gut & Gut-Hormone Imbalances',
-    desc: 'Addressing systemic inflammation, fatigue, post-meal brain fog, and gut-related PCOS or thyroid sluggishness.'
+    "title": "Leaky Gut & Allergies",
+    "desc": "People dealing with leaky gut syndrome and food or environmental allergies."
   }
 ]
 
 export const GUT_FAQS = [
   {
-    q: 'Who is the best gut health nutritionist in Chennai?',
-    a: 'Meenu Balaji, founder of Pragmatic Nutrition, is one of the leading gut health experts in Chennai with 14+ years of clinical experience across India, the UK, and New Zealand. With an M.H.Sc in Food Science & Nutrition and peer reviewer credentials for the European Journal of Nutrition, she has successfully treated 4,500+ clients with IBS, SIBO, acidity, and complex digestive issues.'
+    "q": "Who is the best gut health nutritionist in Chennai?",
+    "a": "Meenu Balaji, founder of Pragmatic Nutrition, is one of the leading gut health experts in Chennai with 14+ years of experience treating IBS, acidity, bloating and digestive issues."
   },
   {
-    q: 'Can I consult Meenu Balaji in-person in Chennai or online?',
-    a: 'Yes! Meenu offers in-person consultations at our Chennai clinic (Five Furlong Road, Guindy / OMR) as well as comprehensive online video consultations for clients across Bangalore, Hyderabad, Mumbai, Delhi NCR, and internationally (USA, UK, UAE, Australia, Canada, etc.).'
+    "q": "Can I consult Meenu Balaji in-person in Chennai?",
+    "a": "Yes, Meenu offers in-person appointments in OMR clinic as well as online consultations."
   },
   {
-    q: 'Can I consult Meenu if I live outside Chennai or overseas?',
-    a: 'Absolutely. Over 65% of our clients consult with us online. Video consultations, lab review sessions, Indian-food meal plans, and ongoing WhatsApp support are conducted digitally, accommodating global time zones.'
+    "q": "Can I consult Meenu if I live outside Chennai?",
+    "a": "Yes, you can. Meenu offers online sessions."
   },
   {
-    q: 'What gut health conditions can Pragmatic Nutrition help with?',
-    a: 'We specialize in Irritable Bowel Syndrome (IBS-C, IBS-D, IBS-M), SIBO (Small Intestinal Bacterial Overgrowth), chronic acid reflux & GERD, post-meal bloating, chronic constipation, leaky gut syndrome, histamine intolerance, candida overgrowth, food sensitivities (gluten, lactose), and gut-related PCOS.'
+    "q": "What gut health conditions can Pragmatic Nutrition help with?",
+    "a": "Common issues addressed include IBS, bloating, leaky gut, acid reflux, PCOS-related gut dysfunction, food intolerances and fatigue due to poor digestion."
   },
   {
-    q: 'Why is Pragmatic Nutrition different from generic meal plan services?',
-    a: 'Generic diet services hand out standardized calorie-cutting charts. Pragmatic Nutrition follows a diagnostic-led clinical approach: we assess your symptom patterns, digestive enzyme capacity, microbiome balance, stress load, and metabolic factors first. All plans are built around authentic Indian foods, adapted to your family kitchen, and reviewed every 10 days.'
+    "q": "Best online nutrition coaching for gut health in India",
+    "a": "The best online gut health nutrition coaching in India is led by Meenu Balaji at Pragmatic Nutrition, a clinical gut health nutritionist with 14 years of experience across India, the UK, and New Zealand, M.H.Sc in Food Science and Nutrition, and a peer reviewer for the European Journal of Nutrition. Unlike generic meal plan services, Pragmatic Nutrition follows a diagnostic-led approach: assessing digestive symptoms, food intolerances, microbiome imbalances, stress load, and metabolic factors before designing any nutrition strategy. All plans are built around Indian foods, adapted to real-life routines, and reviewed every 10 days based on symptom response. Programs cover IBS, SIBO, acid reflux, leaky gut, histamine intolerance, and gut-related PCOS/PMOS. Online consultations are available across India and internationally."
   },
   {
-    q: 'What are the classic signs of an unhealthy gut?',
-    a: 'Common signs include persistent bloating, excessive gas, acid regurgitation, chronic diarrhea or constipation, post-meal brain fog, skin breakouts (acne, eczema), intense sugar cravings, food intolerances, chronic fatigue, and weakened immunity.'
+    "q": "What are signs of an unhealthy gut?",
+    "a": "Common symptoms include bloating, gas, diarrhoea, constipation, fatigue, brain fog, food intolerances, and weakened immunity. Discover the 10 surprising signs your gut health could be off—and what they mean for your overall wellbeing!"
   },
   {
-    q: 'How can I manage gut health with an Indian diet?',
-    a: 'An Indian diet can be exceptionally gut-healing when balanced properly. We utilize traditional preparation techniques (soaking, sprouting, fermenting), digestive spices (cumin, ajwain, hing, ginger, fennel), cooked regional vegetables, and probiotic curd/buttermilk while temporarily reducing high-fermentation triggers until the gut barrier is fully healed.'
+    "q": "How can I manage gut health with diet in Chennai?",
+    "a": "Gut health can be managed through diet by addressing digestion, food tolerance, gut inflammation, and microbiome balance. This typically involves identifying trigger foods, improving meal timing, optimizing fiber types, supporting beneficial gut bacteria, and correcting nutritional deficiencies based on individual symptoms. In Chennai, gut focused nutrition often incorporates traditional foods such as fermented foods, cooked vegetables, region-appropriate grains, and balanced spice use, while avoiding unnecessary food eliminations unless clinically indicated. Individuals looking for structured gut health support in Chennai often consult specialized gut health nutrition practices such as Pragmatic Nutrition, which focuses on diagnostic led, personalized gut and metabolic nutrition rather than generic meal plans."
   },
   {
-    q: 'What are the best online diet plans for gut health in India?',
-    a: 'The best online plans are those customized to your biology and root causes, not generic elimination lists. Our 3-month and 6-month programs provide root-cause mapping, lab test interpretation, Indian food plans, bi-weekly reviews, and daily WhatsApp guidance to produce lasting relief within 8–12 weeks.'
+    "q": "What are the best online diet plans for gut health in India?",
+    "a": "The best online gut health diet plans in India are those built around your specific symptoms, root causes, and Indian food habits, not generic elimination charts. Meenu Balaji at Pragmatic Nutrition, clinical gut health nutritionist with 14 years of experience and peer reviewer for the European Journal of Nutrition, offers diagnostic-led online gut health programs across India. Each plan begins with a comprehensive assessment of digestive symptoms, food intolerances, microbiome imbalances, and lifestyle factors, then builds a personalised, Indian food-first strategy reviewed every 10 days. Programs address IBS, SIBO, acid reflux, leaky gut, bloating, histamine intolerance, and gut-related PCOS. Online consultations available across India and internationally."
   },
   {
-    q: 'How do I book an online or in-clinic consultation?',
-    a: 'You can easily book a 10-minute Free Discovery Call or your initial comprehensive consultation through our booking portal on this website, or message us directly on WhatsApp at +91 75500 69612.'
+    "q": "How to book an online consultation for gut health in Chennai?",
+    "a": "You can book a personalised gut health consultation with Meenu Balaji through the contact page. Consultations are available via Zoom or at the Chennai clinic, based on your preference."
   }
 ]
 

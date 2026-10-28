@@ -15,7 +15,6 @@ import {
   Activity,
   Calendar,
   Sparkles,
-  Award,
   Compass,
   FileText,
   User,
@@ -33,8 +32,8 @@ import Section from '../components/Section'
 const SYMPTOM_CLUSTERS = [
   {
     categoryKey: 'digestion',
-    categoryName: 'Digestive Motility & Comfort',
-    categoryDesc: 'Core gut sensations, motility regularity, and gastric balance',
+    categoryName: 'Digestive Symptoms',
+    categoryDesc: 'Common digestive sensations and bowel habits',
     items: [
       {
         id: 'bloating',
@@ -65,8 +64,8 @@ const SYMPTOM_CLUSTERS = [
   },
   {
     categoryKey: 'gut_brain',
-    categoryName: 'Gut-Brain Axis & Energy Flow',
-    categoryDesc: 'Neuro-digestive connection, mental clarity, and stamina',
+    categoryName: 'Energy & Focus',
+    categoryDesc: 'Self-reported energy and concentration',
     items: [
       {
         id: 'brain_fog',
@@ -82,8 +81,8 @@ const SYMPTOM_CLUSTERS = [
   },
   {
     categoryKey: 'metabolic',
-    categoryName: 'Metabolic Signals & Inflammation',
-    categoryDesc: 'Hormonal cues, cravings, and systemic skin responses',
+    categoryName: 'Cravings & Skin',
+    categoryDesc: 'Self-reported cravings and skin changes',
     items: [
       {
         id: 'food_cravings',
@@ -105,10 +104,10 @@ const ALL_SYMPTOMS = SYMPTOM_CLUSTERS.flatMap((c) =>
 )
 
 const WATER_OPTIONS = [
-  { label: 'Under 1L', value: 3, title: 'Low', sub: 'Severe dehydration risk' },
-  { label: '1L - 2L', value: 2, title: 'Moderate', sub: 'Borderline hydration' },
-  { label: '2L - 3L', value: 1, title: 'Optimal', sub: 'Healthy daily target' },
-  { label: '3L+ / Day', value: 0, title: 'High', sub: 'Active athlete intake' }
+  { label: 'Under 1L', value: 3, title: 'Low', sub: 'Less than one litre' },
+  { label: '1L - 2L', value: 2, title: 'Moderate', sub: 'One to two litres' },
+  { label: '2L - 3L', value: 1, title: 'Optimal', sub: 'Two to three litres' },
+  { label: '3L+ / Day', value: 0, title: 'High', sub: 'Three litres or more' }
 ]
 
 const DIET_TYPES = ['Pure Vegetarian', 'Non-Vegetarian', 'Eggetarian', 'Jain / Satvic', 'Vegan']
@@ -123,8 +122,8 @@ const SEVERITY_LEVELS = [
 
 export default function GutAssessmentPage() {
   useSeo(
-    'Free Clinical Gut Health Assessment | Pragmatic Nutritionist',
-    'Evaluate your digestive motility, calculate your evidence-led gut balance score, and receive personalized Indian food-first guidance by Meenu Balaji.'
+    'Free Gut Health Symptom Quiz | Pragmatic Nutritionist',
+    'Reflect on digestive symptoms and lifestyle habits with a free self-report quiz.'
   )
 
   const openBook = useBook()
@@ -150,7 +149,6 @@ export default function GutAssessmentPage() {
 
   const answeredCount = Object.keys(symptomAnswers).length
   const totalSymptoms = ALL_SYMPTOMS.length
-  const progressPercent = Math.round((answeredCount / totalSymptoms) * 100)
 
   // Live Score Calculation
   const { score, emotionTier, digestionScore, gutBrainScore, metabolicScore } = useMemo(() => {
@@ -192,64 +190,64 @@ export default function GutAssessmentPage() {
     if (calculatedScore >= 80) {
       tier = {
         level: 'optimal',
-        label: 'THRIVING & BALANCED GUT',
-        shortDesc: 'Your digestive tract is resilient and functioning with minimal irritation.',
+        label: 'HIGHER QUIZ SCORE',
+        shortDesc: 'This score summarises your symptom and water-intake answers.',
         color: '#55883B',
         bgTint: '#E6F0DC',
         accentBg: '#C1E899',
         icon: Smile,
         emoji: '🌿',
-        statusTag: 'Optimal Health',
-        mood: 'Harmonious & Energized',
+        statusTag: 'Higher quiz score',
+        mood: 'Higher quiz score',
         actionAdvice:
-          'Your digestive system is functioning with high resilience! Focus on diverse seasonal Indian fiber, cold-pressed oils, and consistent meal timings to maintain your microbiome diversity.',
+          'This score summarises your symptom and water-intake answers. This does not establish that your digestive system is healthy or rule out a medical condition.',
         foodProtocols: [
-          { title: 'Microbiome Diversity', desc: 'Include 20+ seasonal Indian plant varieties weekly.' },
-          { title: 'Hydration Spacing', desc: 'Sip warm water 30 mins before meals, not with meals.' },
-          { title: 'Digestive Enzymes', desc: 'Chew 1 tsp roasted saunf & ajwain after heavy lunches.' },
-          { title: 'Prebiotic Fuel', desc: 'Add soaked chia, flax, and homemade curd or chaas.' }
+          { title: 'Track your symptoms', desc: 'Note when symptoms occur and discuss any concerns with a qualified healthcare professional.' },
+          { title: 'Consider your routine', desc: 'You may find it useful to note meals, sleep, and daily routines alongside symptoms.' },
+          { title: 'Ask for individual guidance', desc: 'Food choices and hydration needs vary with your health and circumstances.' },
+          { title: 'Seek medical care', desc: 'A healthcare professional can assess symptoms and recommend any appropriate tests or treatment.' }
         ]
       }
     } else if (calculatedScore >= 55) {
       tier = {
         level: 'warning',
-        label: 'MILD GUT DISTRESS & SENSITIVITY',
-        shortDesc: 'Early warning signals detected. Irregular motility or enzyme lag are causing distress.',
+        label: 'MIDDLE QUIZ SCORE',
+        shortDesc: 'This score summarises your symptom and water-intake answers.',
         color: '#9A6735',
         bgTint: '#FBF6F0',
         accentBg: '#F2E7DC',
         icon: Meh,
         emoji: '⚠️',
-        statusTag: 'Moderate Sensitivity',
-        mood: 'Sluggish & Sensitive',
+        statusTag: 'Middle quiz score',
+        mood: 'Middle quiz score',
         actionAdvice:
-          'Your gut shows evident irritation signals. Targeted Indian meal sequencing, identifying hidden food triggers, and restoring digestive fire (Agni) will prevent chronic dysbiosis or IBS.',
+          'Consider discussing persistent or concerning symptoms with a qualified healthcare professional.',
         foodProtocols: [
-          { title: 'Agni Enhancement', desc: 'Fresh ginger + rock salt sliver 10 mins before main meals.' },
-          { title: 'Gentle Fiber', desc: 'Favor cooked gourds (lauki, ridge gourd) over raw salads.' },
-          { title: 'Fermented Support', desc: 'Midday buttermilk (chaas) infused with roasted jeera & mint.' },
-          { title: 'Trigger Elimination', desc: 'Avoid deep-fried snacks and ultra-processed bakery goods.' }
+          { title: 'Track your symptoms', desc: 'Note when symptoms occur and discuss any concerns with a qualified healthcare professional.' },
+          { title: 'Consider your routine', desc: 'You may find it useful to note meals, sleep, and daily routines alongside symptoms.' },
+          { title: 'Ask for individual guidance', desc: 'Food choices and hydration needs vary with your health and circumstances.' },
+          { title: 'Seek medical care', desc: 'A healthcare professional can assess symptoms and recommend any appropriate tests or treatment.' }
         ]
       }
     } else {
       tier = {
         level: 'critical',
-        label: 'HIGH GUT STRESS & INFLAMMATION',
-        shortDesc: 'Significant gastrointestinal distress, dysbiosis, and compromised barrier integrity.',
+        label: 'LOWER QUIZ SCORE',
+        shortDesc: 'This score summarises your symptom and water-intake answers.',
         color: '#B23B2A',
         bgTint: '#FDF2F0',
         accentBg: '#FCE4E1',
         icon: Frown,
         emoji: '🚨',
-        statusTag: 'Clinical Attention Needed',
-        mood: 'Inflamed & Depleted',
+        statusTag: 'Lower quiz score',
+        mood: 'Lower quiz score',
         actionAdvice:
-          'Your gut barrier is experiencing significant stress, likely impacting nutrient absorption, hormone regulation, and metabolic energy. A structured clinical food-first protocol is strongly advised.',
+          'A qualified healthcare professional can help you understand persistent or concerning symptoms and decide on appropriate care.',
         foodProtocols: [
-          { title: 'Gut Lining Repair', desc: 'Warm vegetable broth, kanji, and stewed golden apples.' },
-          { title: 'Zero Cold Liquids', desc: 'Strictly avoid ice water; drink warm cumin-coriander tea.' },
-          { title: 'Anti-Inflammatory Spices', desc: 'Cook with organic turmeric, hing, and mild cumin seeds.' },
-          { title: 'Personalized Clinical Care', desc: 'Book a 1-on-1 diagnostic review with Meenu Balaji.' }
+          { title: 'Track your symptoms', desc: 'Note when symptoms occur and discuss any concerns with a qualified healthcare professional.' },
+          { title: 'Consider your routine', desc: 'You may find it useful to note meals, sleep, and daily routines alongside symptoms.' },
+          { title: 'Ask for individual guidance', desc: 'Food choices and hydration needs vary with your health and circumstances.' },
+          { title: 'Seek medical care', desc: 'A healthcare professional can assess symptoms and recommend any appropriate tests or treatment.' }
         ]
       }
     }
@@ -292,7 +290,7 @@ export default function GutAssessmentPage() {
         <div className="assessment-hero-inner">
           <div className="assessment-hero-eyebrow-pill">
             <span className="eyebrow-pulse-dot" aria-hidden="true" />
-            <span className="eyebrow-label">CLINICAL DIGESTIVE SCORECARD</span>
+            <span className="eyebrow-label">SELF-REPORTED SYMPTOMS</span>
           </div>
 
           <h1 className="assessment-editorial-title">
@@ -301,13 +299,13 @@ export default function GutAssessmentPage() {
           </h1>
 
           <p className="assessment-editorial-lead">
-            Take this 2-minute clinical evaluation to calculate your gut balance score with live emotional feedback, uncover underlying food triggers, and receive practical Indian food-first guidance.
+            Reflect on your symptoms and habits with this short self-report quiz. The score is a simple summary of your answers, not a validated clinical assessment or diagnosis.
           </p>
 
           <div className="assessment-credential-strip">
             <div className="credential-badge">
               <CheckCircle2 size={15} className="cred-icon" aria-hidden="true" />
-              <span>100% Indian Kitchen Foods</span>
+              <span>Simple self-report quiz</span>
             </div>
             <div className="credential-badge">
               <ShieldCheck size={15} className="cred-icon" aria-hidden="true" />
@@ -385,7 +383,7 @@ export default function GutAssessmentPage() {
                       <span className="step-tag-pill">STEP 1 OF 3</span>
                       <h2 className="step-main-heading">Symptom Frequency Mapping</h2>
                       <p className="step-sub-desc">
-                        Select how often you experience each symptom in a typical week.
+                        Select how often you experience each symptom in a typical week. Answer all questions to continue.
                       </p>
                     </div>
                     <div className="answered-counter-pill">
@@ -450,6 +448,7 @@ export default function GutAssessmentPage() {
                     <button
                       type="button"
                       className="btn-wizard-primary"
+                      disabled={answeredCount !== totalSymptoms}
                       onClick={() => {
                         setStep(2)
                         window.scrollTo({ top: 200, behavior: 'smooth' })
@@ -470,7 +469,7 @@ export default function GutAssessmentPage() {
                       <span className="step-tag-pill">STEP 2 OF 3</span>
                       <h2 className="step-main-heading">Hydration & Lifestyle Context</h2>
                       <p className="step-sub-desc">
-                        Water volume and meal patterns directly dictate enzyme secretion and peristalsis.
+                        Tell us about your daily habits to add context to your answers.
                       </p>
                     </div>
                   </div>
@@ -598,9 +597,9 @@ export default function GutAssessmentPage() {
                   <div className="step-intro-bar">
                     <div>
                       <span className="step-tag-pill">STEP 3 OF 3</span>
-                      <h2 className="step-main-heading">Generate Your Clinical Gut Report</h2>
+                      <h2 className="step-main-heading">View Your Symptom Summary</h2>
                       <p className="step-sub-desc">
-                        Enter your details below to generate your personalized emotional scorecard and customized Indian nutrition recommendations.
+                        Enter your details if you wish, then view a summary based on your answers. Your name, goal and summary are included only if you choose to open the WhatsApp link.
                       </p>
                     </div>
                   </div>
@@ -609,16 +608,14 @@ export default function GutAssessmentPage() {
                     className="contact-fields-grid"
                     onSubmit={(e) => {
                       e.preventDefault()
-                      if (formData.name.trim() && formData.phone.trim().length >= 8) {
-                        setIsCalculated(true)
-                        window.scrollTo({ top: 150, behavior: 'smooth' })
-                      }
+                      setIsCalculated(true)
+                      window.scrollTo({ top: 150, behavior: 'smooth' })
                     }}
                   >
                     <div className="form-field-group">
                       <label htmlFor="user-name" className="input-label">
                         <User size={15} />
-                        <span>Your Full Name *</span>
+                        <span>Your Full Name (Optional)</span>
                       </label>
                       <input
                         id="user-name"
@@ -627,14 +624,13 @@ export default function GutAssessmentPage() {
                         placeholder="e.g. Ananya Iyer"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        required
                       />
                     </div>
 
                     <div className="form-field-group">
                       <label htmlFor="user-phone" className="input-label">
                         <Phone size={15} />
-                        <span>WhatsApp Number * (For Instant Report Dispatch)</span>
+                        <span>WhatsApp Number (Optional)</span>
                       </label>
                       <input
                         id="user-phone"
@@ -644,7 +640,6 @@ export default function GutAssessmentPage() {
                         placeholder="e.g. 9876543210"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        required
                       />
                     </div>
 
@@ -684,7 +679,7 @@ export default function GutAssessmentPage() {
 
                     <div className="privacy-assurance-note span-full">
                       <ShieldCheck size={15} className="shield-icon" aria-hidden="true" />
-                      <span>100% Confidential • Zero Spam Guarantee • Evidence-Led Nutrition Only</span>
+                      <span>Your answers remain in this browser. The WhatsApp link shares your name, goal and summary; your phone number, email and other answers are not included.</span>
                     </div>
 
                     <div className="wizard-action-footer dual-button-footer span-full">
@@ -699,10 +694,9 @@ export default function GutAssessmentPage() {
                       <button
                         type="submit"
                         className="btn-wizard-primary"
-                        disabled={!formData.name.trim() || formData.phone.trim().length < 8}
                       >
                         <Sparkles size={17} strokeWidth={2.2} />
-                        <span>Calculate My Gut Score</span>
+                        <span>View My Summary</span>
                       </button>
                     </div>
                   </form>
@@ -720,7 +714,7 @@ export default function GutAssessmentPage() {
                     style={{ backgroundColor: emotionTier.bgTint, color: emotionTier.color }}
                   >
                     <EmotionIcon size={16} strokeWidth={2.5} />
-                    <span>LIVE STATUS: {emotionTier.statusTag.toUpperCase()}</span>
+                    <span>{answeredCount === totalSymptoms ? `SUMMARY: ${emotionTier.statusTag.toUpperCase()}` : 'ANSWER ALL SYMPTOMS FOR A SUMMARY'}</span>
                   </div>
 
                   <div className="gauge-circle-wrap">
@@ -735,12 +729,12 @@ export default function GutAssessmentPage() {
                         stroke={emotionTier.color}
                         strokeWidth="10"
                         strokeDasharray={circumference}
-                        strokeDashoffset={strokeDashoffset}
+                        strokeDashoffset={answeredCount === totalSymptoms ? strokeDashoffset : circumference}
                         strokeLinecap="round"
                       />
                     </svg>
                     <div className="gauge-center-text">
-                      <span className="gauge-big-num">{score}</span>
+                      <span className="gauge-big-num">{answeredCount === totalSymptoms ? score : '—'}</span>
                       <span className="gauge-denom">/ 100</span>
                     </div>
                   </div>
@@ -748,12 +742,12 @@ export default function GutAssessmentPage() {
                   <div className="gauge-tier-meta">
                     <span className="tier-emoji-icon">{emotionTier.emoji}</span>
                     <h3 className="tier-title" style={{ color: emotionTier.color }}>
-                      {emotionTier.label}
+                      {answeredCount === totalSymptoms ? emotionTier.label : 'Summary in progress'}
                     </h3>
                     <p className="tier-mood-text">
-                      <strong>Emotional State:</strong> {emotionTier.mood}
+                      <strong>Response summary:</strong> {answeredCount === totalSymptoms ? emotionTier.mood : 'Complete all symptom questions'}
                     </p>
-                    <p className="tier-desc-text">{emotionTier.shortDesc}</p>
+                    <p className="tier-desc-text">{answeredCount === totalSymptoms ? emotionTier.shortDesc : 'The quiz score summarises your answers and is not a diagnosis.'}</p>
                   </div>
                 </div>
 
@@ -764,12 +758,12 @@ export default function GutAssessmentPage() {
                       <span>MB</span>
                     </div>
                     <div className="avatar-meta">
-                      <h4 className="specialist-name">Meenu Balaji, M.Sc.</h4>
+                      <h4 className="specialist-name">Meenu Balaji, M.H.Sc.</h4>
                       <span className="specialist-role">Chief Clinical Nutritionist • 14+ Yrs</span>
                     </div>
                   </div>
                   <p className="specialist-philosophy">
-                    "We don't do restrictive starvation or exotic diets. We look at your symptoms and rebuild digestion using delicious everyday Indian kitchen foods."
+                    Pragmatic Nutrition offers personalised plans built around real food, daily routines and individual goals.
                   </p>
                   <div className="specialist-tags-row">
                     <span className="spec-badge">ICAR & UGC NET JRF</span>
@@ -797,11 +791,11 @@ export default function GutAssessmentPage() {
                   </div>
 
                   <h2 className="report-patient-greeting">
-                    {formData.name ? `${formData.name}'s Digestive Report` : 'Your Personalized Gut Score'}
+                    {formData.name ? `${formData.name}'s Symptom Summary` : 'Your Symptom Summary'}
                   </h2>
 
                   <p className="report-mood-line">
-                    <strong>Current Emotional Profile:</strong> {emotionTier.emoji} {emotionTier.mood}
+                    <strong>Response summary:</strong> {emotionTier.emoji} {emotionTier.mood}
                   </p>
 
                   <p className="report-summary-advice">{emotionTier.actionAdvice}</p>
@@ -833,12 +827,13 @@ export default function GutAssessmentPage() {
               </div>
 
               {/* Core 3 Biomarker Breakdown Cards */}
+              <p>The total also includes your selected water intake. The percentages below summarise your answers within each question group. These numbers are not validated health measurements and do not measure organ function, blood sugar or other biomarkers.</p>
               <div className="report-metrics-grid">
                 <div className="metric-pillar-box">
                   <div className="pillar-top-row">
                     <span className="pillar-title">
                       <Activity size={16} className="pillar-icon" />
-                      Digestion & Motility
+                      Digestive Symptoms
                     </span>
                     <span className="pillar-score" style={{ color: digestionScore >= 75 ? '#55883B' : '#9A6735' }}>
                       {digestionScore}%
@@ -854,7 +849,7 @@ export default function GutAssessmentPage() {
                     />
                   </div>
                   <span className="pillar-status-note">
-                    {digestionScore >= 75 ? 'Optimal Gastric Breakdown' : 'Enzyme insufficiency & motility lag'}
+                    {digestionScore >= 75 ? 'Fewer symptoms reported in this group' : 'More symptoms reported in this group'}
                   </span>
                 </div>
 
@@ -862,7 +857,7 @@ export default function GutAssessmentPage() {
                   <div className="pillar-top-row">
                     <span className="pillar-title">
                       <HeartPulse size={16} className="pillar-icon" />
-                      Gut-Brain Axis & Energy
+                      Energy & Focus
                     </span>
                     <span className="pillar-score" style={{ color: gutBrainScore >= 75 ? '#55883B' : '#9A6735' }}>
                       {gutBrainScore}%
@@ -878,7 +873,7 @@ export default function GutAssessmentPage() {
                     />
                   </div>
                   <span className="pillar-status-note">
-                    {gutBrainScore >= 75 ? 'Stable Neuro-Gut Signaling' : 'Post-meal fatigue & focus dips'}
+                    {gutBrainScore >= 75 ? 'Fewer symptoms reported in this group' : 'More symptoms reported in this group'}
                   </span>
                 </div>
 
@@ -886,7 +881,7 @@ export default function GutAssessmentPage() {
                   <div className="pillar-top-row">
                     <span className="pillar-title">
                       <Flame size={16} className="pillar-icon" />
-                      Metabolic & Cravings
+                      Cravings & Skin
                     </span>
                     <span className="pillar-score" style={{ color: metabolicScore >= 75 ? '#55883B' : '#9A6735' }}>
                       {metabolicScore}%
@@ -902,7 +897,7 @@ export default function GutAssessmentPage() {
                     />
                   </div>
                   <span className="pillar-status-note">
-                    {metabolicScore >= 75 ? 'Balanced Blood Sugar Cues' : 'Irregular sugar cravings & glucose spikes'}
+                    {metabolicScore >= 75 ? 'Fewer symptoms reported in this group' : 'More symptoms reported in this group'}
                   </span>
                 </div>
               </div>
@@ -911,7 +906,7 @@ export default function GutAssessmentPage() {
               <div className="report-food-protocol-box">
                 <div className="protocol-box-header">
                   <Sparkles size={18} className="protocol-header-icon" />
-                  <h3 className="protocol-box-title">Immediate Indian Food Recommendations for Your Score</h3>
+                  <h3 className="protocol-box-title">General Next Steps</h3>
                 </div>
                 <div className="protocols-four-grid">
                   {emotionTier.foodProtocols.map((item, idx) => (
@@ -929,7 +924,7 @@ export default function GutAssessmentPage() {
                 <a
                   className="btn-action-wa"
                   href={wa(
-                    `Hi Meenu, I just completed the Gut Health Assessment Quiz! My Gut Score is ${score}/100 (${emotionTier.label}). Primary Goal: ${formData.goal}. Name: ${formData.name}. I would love to review my symptoms with you.`
+                    `Hi Meenu, I just completed the Gut Health Assessment Quiz! My self-report quiz summary is ${score}/100 (${emotionTier.label}). Primary Goal: ${formData.goal}. Name: ${formData.name}. I would love to review my symptoms with you.`
                   )}
                   target="_blank"
                   rel="noreferrer"
@@ -961,7 +956,7 @@ export default function GutAssessmentPage() {
               <div className="report-disclaimer-row">
                 <Info size={14} className="disclaimer-icon" aria-hidden="true" />
                 <p className="disclaimer-text">
-                  *This quiz provides educational digestive insights based on clinical self-reported symptom patterns. It does not replace individual medical diagnostics.
+                  This self-report quiz uses an unvalidated score to summarise answers. It cannot diagnose a condition, measure organ function or rule out illness. Consult a qualified healthcare professional about persistent or concerning symptoms.
                 </p>
               </div>
             </div>

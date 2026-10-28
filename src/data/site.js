@@ -353,7 +353,8 @@ export const FOOTER_NAV = [
       { label: 'Gut Health Nutrition', to: '/gut-health' },
       { label: 'Sports Nutrition', to: '/sports-nutrition' },
       { label: 'Child & Teen Nutrition', to: '/more-care/child-teen-nutrition' },
-      { label: 'Diabetes & PCOS Plan', to: '/more-care/pcos' },
+      { label: 'Diabetes Nutrition', to: '/more-care/diabetes' },
+      { label: 'PCOS Nutrition', to: '/more-care/pcos' },
       { label: 'Weight Management', to: '/more-care/weight-loss' },
       { label: 'Free Gut Assessment', to: '/gut-health-checker' }
     ]

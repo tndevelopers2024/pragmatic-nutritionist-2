@@ -21,6 +21,8 @@ export default function ProgramsPricingPage() {
     <div className="programs-pricing-page">
       <PageHero title="Programs & Pricing" blurb="Nutrition plans and the Signature Program." />
       <Section width="wide" bg="base" title="Choose your nutrition plan" lead="Healthy eating is about eating right not eating less.">
+        <p className="placeholder-desc">Every meal you eat is an opportunity to nourish your body. Your eating habits can affect both your physical and mental health. Do you often feel that your energy levels are low or you have difficulty sleeping?</p>
+        <p className="placeholder-desc">That is why finding the right balance of nutrients will help you transform your health and make you feel good about yourself.</p>
         <div className="gut-programs-grid pricing-plans-grid">
           {content.plans.map(plan => (
             <article className="gut-program-card" key={plan.title}>
@@ -32,6 +34,8 @@ export default function ProgramsPricingPage() {
             </article>
           ))}
         </div>
+        <p>Choose your pricing plan and find one that works for you.</p>
+        <a className="btn btn-secondary" href="https://pages.razorpay.com/stores/st_QifXYeHOUUdx9x" target="_blank" rel="noopener noreferrer">Join Now — visit payment page<ArrowRight size={16} aria-hidden="true" /></a>
       </Section>
       <Section width="wide" bg="white" eyebrow="SPECIALIST CARE" title="Find support for your goals">
         <div className="subtopics-grid">{specialistPrograms.map(program => <Link className="subtopic-card btn-no-underline" key={program.to} to={program.to}><h3 className="subtopic-name">{program.title}</h3><p className="subtopic-blurb">{program.description}</p><span className="subtopic-action">View programs<ArrowRight size={14} aria-hidden="true" /></span></Link>)}</div>
@@ -47,7 +51,7 @@ export default function ProgramsPricingPage() {
             <p className="placeholder-desc">Nutrition and metabolic performance support for business leaders, where cognitive endurance and metabolic stability directly influence leadership performance. This program is structured, data-led, and designed for elite demands.</p>
             <p className="placeholder-desc">Engagements typically begin at ₹1.25 lakh for a 24-week period, depending on diagnostic depth and performance goals.</p>
             <p className="placeholder-desc">Three clients per quarter. Final pricing is discussed during the application process.</p>
-            <a className="btn btn-primary" href="https://www.pragmaticnutritionist.com/signature-nutrition-program" target="_blank" rel="noopener noreferrer">Explore & apply<ArrowRight size={16} aria-hidden="true" /></a>
+            <Link className="btn btn-primary" to="/signature-nutrition-program">Explore the Signature Program<ArrowRight size={16} aria-hidden="true" /></Link>
           </div>
           <img className="pricing-signature-image" src={signatureImage} alt="Professional enjoying a balanced meal at work" loading="lazy" />
           <div className="program-features-list pricing-signature-features"><strong className="features-head">Program inclusions</strong><ul>{['Personal blood work review', 'Body composition tracking', 'Gut microbiome testing or DNA nutrigenomics, clinically selected by Meenu', 'Two focused review consultations each month with Meenu', 'Monthly plan adaptation', 'Structured WhatsApp or email support between sessions'].map(feature => <li key={feature}><CheckCircle2 size={16} className="feature-check" aria-hidden="true" /><span>{feature}</span></li>)}</ul></div>

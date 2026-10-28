@@ -24,6 +24,8 @@ import MoreCarePage from './pages/MoreCarePage'
 import ProgramsPricingPage from './pages/ProgramsPricingPage'
 import BlogPage from './pages/BlogPage'
 import ContactPage from './pages/ContactPage'
+import SignaturePage from './pages/SignaturePage'
+import AcademyPage from './pages/AcademyPage'
 import PageHero from './components/PageHero'
 import { Link } from 'react-router-dom'
 
@@ -85,20 +87,17 @@ export default function App() {
             <Route path="/programs-pricing" element={<ProgramsPricingPage />} />
             <Route path="/nutrition-plans" element={<ProgramsPricingPage />} />
             <Route path="/pricing-plans/list" element={<ProgramsPricingPage />} />
-            <Route path="/signature-nutrition-program" element={<ProgramsPricingPage />} />
+            <Route path="/signature-nutrition-program" element={<SignaturePage />} />
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/nutrition-blog" element={<BlogPage />} />
             <Route path="/adhd-nutritionist-children" element={<MoreCarePage slug="adhd-nutrition" />} />
             <Route path="/child-nutritionist-india" element={<MoreCarePage slug="child-teen-nutrition" />} />
             <Route path="/best-diabetes-nutritionist-india" element={<MoreCarePage slug="diabetes" />} />
-            <Route path="/nutrition-private-practice" element={element({ label: 'Build Your Private Practice', to: '/academy/build-your-private-practice', blurb: 'Start, scale and manage your private nutrition practice.' })} />
-            <Route path="/nutritionist-practice-masterclass-registration" element={element({ label: 'Build Your Private Practice', to: '/academy/build-your-private-practice', blurb: 'Start, scale and manage your private nutrition practice.' })} />
-            <Route path="/nutritionist-certificate-courses" element={element({ label: 'Certificate Courses', to: '/academy/certificate-courses', blurb: 'Online certificate courses for nutrition professionals.' })} />
-            <Route path="/online-courses-for-nutritionists" element={element({ label: 'Certificate Courses', to: '/academy/certificate-courses', blurb: 'Online certificate courses for nutrition professionals.' })} />
-            <Route path="/online-nutrition-course" element={element({ label: 'Courses & Masterclasses', to: '/academy/courses-masterclasses', blurb: 'Learn clinical dietetics from a practising nutritionist.' })} />
-            <Route path="/online-nutrition-courses" element={element({ label: 'Courses & Masterclasses', to: '/academy/courses-masterclasses', blurb: 'Learn clinical dietetics from a practising nutritionist.' })} />
+            {['/academy/build-your-private-practice', '/nutrition-private-practice', '/nutritionist-practice-masterclass-registration'].map(path => <Route key={path} path={path} element={<AcademyPage variant="practice" />} />)}
+            {['/academy/certificate-courses', '/nutritionist-certificate-courses', '/online-courses-for-nutritionists'].map(path => <Route key={path} path={path} element={<AcademyPage variant="professional" />} />)}
+            {['/academy/courses-masterclasses', '/online-nutrition-course', '/online-nutrition-courses'].map(path => <Route key={path} path={path} element={<AcademyPage variant="public" />} />)}
             {['child-teen-nutrition', 'adhd-nutrition', 'adhd', 'diabetes', 'pcos', 'weight-loss'].map(slug => <Route key={slug} path={`/more-care/${slug}`} element={<MoreCarePage slug={slug} />} />)}
-            {PAGES.filter(p => p.to !== '/blog' && p.to !== '/programs-pricing' && p.to !== '/contact' && p.to !== '/nutrition-plans' && !p.to.startsWith('/gut-health') && !p.to.startsWith('/sports-nutrition') && !p.to.startsWith('/more-care') && p.to !== '/results' && p.to !== '/terms' && p.to !== '/privacy' && p.to !== '/refund').map((p) => (
+            {PAGES.filter(p => p.to !== '/blog' && p.to !== '/programs-pricing' && p.to !== '/contact' && p.to !== '/nutrition-plans' && !p.to.startsWith('/gut-health') && !p.to.startsWith('/sports-nutrition') && !p.to.startsWith('/more-care') && !['/academy/build-your-private-practice', '/academy/certificate-courses', '/academy/courses-masterclasses'].includes(p.to) && p.to !== '/results' && p.to !== '/terms' && p.to !== '/privacy' && p.to !== '/refund').map((p) => (
               <Route key={p.to} path={p.to} element={element(p)} />
             ))}
             <Route

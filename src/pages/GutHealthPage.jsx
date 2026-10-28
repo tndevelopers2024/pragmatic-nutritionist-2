@@ -1,11 +1,10 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
   CheckCircle2,
   ArrowRight,
   ShieldCheck,
   Sparkles,
-  Clock,
   Stethoscope,
   Utensils,
   UserCheck,
@@ -15,8 +14,6 @@ import {
   Pill,
   ChevronDown,
   ChevronUp,
-  MessageCircle,
-  FileCheck,
   ChevronRight,
   Award
 } from 'lucide-react'
@@ -25,13 +22,9 @@ import Section from '../components/Section'
 import CtaBand from '../components/CtaBand'
 import WhatsAppIcon from '../components/WhatsAppIcon'
 import { useBook } from '../context/bookContext'
-import { wa, PHONE } from '../data/site'
+import { wa } from '../data/site'
 import {
   GUT_HERO,
-  COMMON_SYMPTOMS,
-  WHY_STANDARD_DIETS_FAIL,
-  THREE_PHASE_ROADMAP,
-  DIAGNOSTICS,
   PROGRAMS,
   EIGHT_PILLARS,
   CLINICAL_DIFFERENTIATORS,
@@ -59,7 +52,6 @@ export default function GutHealthPage() {
 
   const openBook = useBook()
   const [activeFaq, setActiveFaq] = useState(0)
-  const [pricingCycle, setPricingCycle] = useState('all') // 'all' or 'featured'
 
   return (
     <div className="gut-health-page-container">
@@ -171,129 +163,14 @@ export default function GutHealthPage() {
         </div>
       </header>
 
-      {/* 3. SYMPTOM AUDIT SECTION */}
-      <Section width="wide" bg="base" className="gut-symptoms-section">
-        <div className="sec-wide">
-          <div className="gut-section-header">
-            <span className="gut-sec-eyebrow">COMMON CLINICAL MANIFESTATIONS</span>
-            <h2 className="gut-sec-title">Do You Struggle With Any of These Daily Symptoms?</h2>
-            <p className="gut-sec-subtitle">
-              Digestive distress rarely occurs in isolation. We look beyond surface discomfort to identify whether your symptoms stem from bacterial fermentation, sluggish motility, or mucosal permeability.
-            </p>
-          </div>
-
-          <div className="gut-symptoms-grid">
-            {COMMON_SYMPTOMS.map((item) => (
-              <div key={item.id} className="gut-symptom-card">
-                <div className="symptom-tag-wrap">
-                  <span className="symptom-tag">{item.tag}</span>
-                </div>
-                <h3 className="symptom-card-title">{item.title}</h3>
-                <p className="symptom-card-desc">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </Section>
-
-      {/* 4. WHY STANDARD DIETS FAIL */}
-      <Section width="wide" bg="alt" className="gut-why-fail-section">
-        <div className="sec-wide">
-          <div className="gut-fail-split">
-            <div className="gut-fail-left">
-              <span className="gut-sec-eyebrow">{WHY_STANDARD_DIETS_FAIL.eyebrow}</span>
-              <h2 className="gut-sec-title">{WHY_STANDARD_DIETS_FAIL.heading}</h2>
-              <p className="gut-fail-lead">{WHY_STANDARD_DIETS_FAIL.lead}</p>
-              
-              <div className="gut-philosophy-quote-box">
-                <p className="quote-text">
-                  "At Pragmatic Nutrition, we don't hand out generic elimination charts. We teach your gut how to digest real, nourishing Indian food again without fear or pain."
-                </p>
-                <span className="quote-author">— Meenu Balaji, M.H.Sc</span>
-              </div>
-            </div>
-
-            <div className="gut-fail-right">
-              <div className="gut-fail-cards-list">
-                {WHY_STANDARD_DIETS_FAIL.points.map((pt, idx) => (
-                  <div key={idx} className="gut-fail-card">
-                    <div className="fail-card-num">0{idx + 1}</div>
-                    <div className="fail-card-content">
-                      <h4 className="fail-card-title">{pt.title}</h4>
-                      <p className="fail-card-desc">{pt.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </Section>
-
-      {/* 5. THE 3-PHASE GUT RESTORATION METHODOLOGY */}
-      <Section width="wide" bg="base" className="gut-roadmap-section">
-        <div className="sec-wide">
-          <div className="gut-section-header">
-            <span className="gut-sec-eyebrow">STRUCTURED CLINICAL JOURNEY</span>
-            <h2 className="gut-sec-title">The 3-Phase Gut Restoration Methodology</h2>
-            <p className="gut-sec-subtitle">
-              Every program follows a deliberate, step-by-step roadmap so your digestive system has time to heal progressively rather than being overwhelmed all at once.
-            </p>
-          </div>
-
-          <div className="gut-phases-grid">
-            {THREE_PHASE_ROADMAP.map((phase) => (
-              <div key={phase.step} className="gut-phase-card">
-                <div className="phase-card-top">
-                  <span className="phase-card-step">{phase.step}</span>
-                  <span className="phase-card-timeline">{phase.timeline}</span>
-                </div>
-                <span className="phase-card-badge">{phase.badge}</span>
-                <h3 className="phase-card-heading">{phase.phase}</h3>
-                <h4 className="phase-card-subheading">{phase.title}</h4>
-                <p className="phase-card-desc">{phase.desc}</p>
-
-                <div className="phase-card-highlights">
-                  <strong className="highlights-title">Key Clinical Actions:</strong>
-                  <ul className="highlights-list">
-                    {phase.highlights.map((hl, i) => (
-                      <li key={i}>
-                        <CheckCircle2 size={15} className="highlight-icon" />
-                        <span>{hl}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </Section>
-
-      {/* 6. ADVANCED DIAGNOSTICS & LAB TESTING */}
-      <Section width="wide" bg="alt" className="gut-diagnostics-section">
-        <div className="sec-wide">
-          <div className="gut-section-header">
-            <span className="gut-sec-eyebrow">FUNCTIONAL MEDICINE TESTING</span>
-            <h2 className="gut-sec-title">Precision Gut Diagnostics When Needed</h2>
-            <p className="gut-sec-subtitle">
-              When symptoms are chronic, complex, or recurring, we eliminate guesswork using advanced clinical testing to target the exact microbial imbalances.
-            </p>
-          </div>
-
-          <div className="gut-diagnostics-grid">
-            {DIAGNOSTICS.map((diag, index) => (
-              <div key={index} className="gut-diagnostic-card">
-                <div className="diag-card-header">
-                  <FileCheck size={24} className="diag-icon" />
-                  <span className="diag-tag">{diag.tag}</span>
-                </div>
-                <h3 className="diag-title">{diag.name}</h3>
-                <p className="diag-desc">{diag.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
+      <Section width="wide" bg="base" className="gut-symptoms-section" title="Who Is This Gut Health Program For?">
+        <p className="lead">Persistent bloating, IBS-type symptoms, SIBO, acid reflux, constipation, diarrhoea and food intolerances can feel overwhelming after trying multiple diets, supplements or quick-fix remedies. Understanding what drives your symptoms is the starting point.</p>
+        <p>We take a holistic, behaviour-first approach and design practical strategies for your work schedule, family routine and Indian eating habits. When clinically appropriate, testing may include GI-MAP, stool microbiome analysis and SIBO breath testing. Supplements and probiotics are used selectively and reviewed regularly.</p>
+        <p>Online consultations are available across India and internationally, and in-person appointments are available at the Chennai clinic.</p>
+        <h3>Why This Program Works</h3>
+        <p>Every program follows a three-phase journey: Reset, Restore and Rebuild. The approach combines online and in-clinic support, lab test interpretation, gut-friendly Indian meal plans and behaviour-based guidance.</p>
+        <h3>Every Gut Health Program Includes</h3>
+        <p>An initial online video assessment, a personalised gut health plan with recipes, follow-up support over WhatsApp or email, symptom tracking and plan adjustments.</p>
       </Section>
 
       {/* 7. PROGRAMS & PRICING */}
@@ -303,7 +180,7 @@ export default function GutHealthPage() {
             <span className="gut-sec-eyebrow">TRANSPARENT CLINICAL CARE</span>
             <h2 className="gut-sec-title">Personalized Gut Health Programs & Pricing</h2>
             <p className="gut-sec-subtitle">
-              All programs include initial video assessment, custom Indian-food meal frameworks, continuous tracking, and bi-weekly 1-on-1 check-ins.
+              Each program includes an initial video assessment, a personalised gut health plan with recipes, follow-up support and symptom tracking. Review frequency varies by plan.
             </p>
           </div>
 
@@ -360,10 +237,10 @@ export default function GutHealthPage() {
           <div className="gut-pricing-footnote">
             <p>
               * Prices apply to online consultations across India. In-person consultation fees at our Chennai clinic differ.
-              International clients can join via our Global Gut Health Coaching starting from USD $99 per month.
+              Overseas clients: personalised nutrition plans start from USD $99 per month.
             </p>
             <p className="disclaimer-subtext">
-              These programs provide clinical nutrition and lifestyle coaching support and do not replace medical emergency care. Please consult your physician for specific prescription medication adjustments.
+              These programs provide nutrition and health coaching support and do not replace medical advice. Please consult your physician for medical conditions or medication changes.
             </p>
           </div>
         </div>
@@ -394,6 +271,15 @@ export default function GutHealthPage() {
               )
             })}
           </div>
+        </div>
+      </Section>
+
+      <Section width="wide" bg="white" title="What’s Included">
+        <div className="gut-pillars-grid">
+          <article className="gut-pillar-card"><h3>Ongoing Online Support</h3><p>Stay supported between consultations through email or WhatsApp for guidance, clarification and timely course-correction.</p></article>
+          <article className="gut-pillar-card"><h3>Structured Follow-Ups</h3><p>Progress is reviewed at regular intervals, typically every 10 days, with personalised adjustments based on symptoms, tolerance and real-life feedback.</p></article>
+          <article className="gut-pillar-card"><h3>Personalised Nutrition Plan with Recipes</h3><p>Gut-friendly Indian-food-based plans and practical recipes support digestion and fit daily life.</p></article>
+          <article className="gut-pillar-card"><h3>Lifestyle &amp; Behavioural Guidance</h3><p>Recommendations support meal timing, stress-gut regulation and sustainable routines.</p></article>
         </div>
       </Section>
 
@@ -461,9 +347,7 @@ export default function GutHealthPage() {
                 Meenu is a trusted clinical gut health nutritionist in Chennai with 14+ years of global practice, having successfully worked with over 4,500 clients. As a peer reviewer for the prestigious <em>European Journal of Nutrition</em>, she brings rigorous evidence-based science to everyday digestive challenges.
               </p>
 
-              <p className="gut-meet-p">
-                "My clinical approach combines digestive physiology, microbiome assessment, and behavioral nutrition to create lasting, measurable relief without demanding that you give up traditional Indian comfort foods."
-              </p>
+              <p className="gut-meet-p">My approach combines nutrition science, digestive physiology, microbiome testing, and behavioral nutrition to create lasting, measurable improvement.</p>
 
               <div className="gut-meet-actions">
                 <button
@@ -491,7 +375,7 @@ export default function GutHealthPage() {
                   <li>M.H.Sc Food Science & Nutrition</li>
                   <li>Peer Reviewer, European Journal of Nutrition</li>
                   <li>14+ Years Global Practice (India, UK, NZ)</li>
-                  <li>4,500+ Gut Health Success Cases</li>
+                  <li>4,500+ clients</li>
                   <li>Chennai Clinic (Guindy / OMR) + Global Online</li>
                 </ul>
               </div>
@@ -542,6 +426,11 @@ export default function GutHealthPage() {
             })}
           </div>
         </div>
+      </Section>
+
+      <Section width="wide" bg="white" title="Disclaimer">
+        <p>The guidance and content provided by Pragmatic Nutrition are intended for general educational and wellness purposes only. While Meenu Balaji is a qualified nutritionist practicing in India, these services are not a substitute for medical care, diagnosis, or treatment in any country.</p>
+        <p>If you have any pre-existing medical conditions or are under medical treatment, please consult your doctor, registered dietitian, or a licensed healthcare provider in your country before starting any nutrition or wellness program.</p>
       </Section>
 
       {/* 13. CTA BAND */}

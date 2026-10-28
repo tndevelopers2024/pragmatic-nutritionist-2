@@ -13,14 +13,11 @@ import {
   Leaf
 } from 'lucide-react'
 import indianExpressLogo from '../assets/The_Indian_Express_logo_isolated.png'
-import thriveLogo from '../assets/Thrive_Health___Nutrition_Logo.png'
-import shefindsLogo from '../assets/SHEFINDS_logo_on_white_background.png'
-import authorityLogo from '../assets/Authority_Magazine_seal_on_white.png'
 
 const MEDIA_ARTICLES = [
   {
     id: 1,
-    title: 'Indian Express - Diet and nutrition guidance',
+    title: 'Indian Express - Diet',
     outlet: 'The Indian Express',
     category: 'The Indian Express',
     topicTag: 'Diet Guidance',
@@ -31,7 +28,7 @@ const MEDIA_ARTICLES = [
   },
   {
     id: 2,
-    title: 'Indian express - Evidence-based food choices in Indian contexts',
+    title: 'Indian express Articles',
     outlet: 'The Indian Express',
     category: 'The Indian Express',
     topicTag: 'Indian Contexts',
@@ -42,7 +39,7 @@ const MEDIA_ARTICLES = [
   },
   {
     id: 3,
-    title: 'Indian express - Pre- and post-fasting nutrition',
+    title: 'Indian express - Pre and Post Fasting',
     outlet: 'The Indian Express',
     category: 'The Indian Express',
     topicTag: 'Fasting Practices',
@@ -64,9 +61,9 @@ const MEDIA_ARTICLES = [
   },
   {
     id: 5,
-    title: 'Supplements - Evidence-based use',
-    outlet: 'Health Magazine',
-    category: 'Health Magazine',
+    title: 'Supplements - Thrive Magazine',
+    outlet: 'Thrive Magazine',
+    category: 'Thrive Magazine',
     topicTag: 'Supplements',
     icon: Pill,
     theme: 'teal',
@@ -75,9 +72,9 @@ const MEDIA_ARTICLES = [
   },
   {
     id: 6,
-    title: 'Leaky Gut - Digestive symptoms',
-    outlet: 'Health Magazine',
-    category: 'Health Magazine',
+    title: 'Leaky Gut - Thrive Magazine',
+    outlet: 'Thrive Magazine',
+    category: 'Thrive Magazine',
     topicTag: 'Gut Health',
     icon: HeartPulse,
     theme: 'mint',
@@ -86,9 +83,9 @@ const MEDIA_ARTICLES = [
   },
   {
     id: 7,
-    title: 'Encourage your child’s healthy eating behaviours',
-    outlet: 'Health Magazine',
-    category: 'Health Magazine',
+    title: 'Encourage your kids to eat well - Thrive Magazine',
+    outlet: 'Thrive Magazine',
+    category: 'Thrive Magazine',
     topicTag: 'Child Nutrition',
     icon: Baby,
     theme: 'amber',
@@ -291,7 +288,6 @@ export default function FeaturedMediaArticles() {
                     <h4 className="media-card-heading">{article.title}</h4>
                   </div>
 
-                  <p className="media-card-summary">{article.summary}</p>
 
                   <div className="media-card-footer">
                     {article.url ? (

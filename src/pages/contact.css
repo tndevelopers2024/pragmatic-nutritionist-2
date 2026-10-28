@@ -353,6 +353,17 @@
   font-size: 0.85rem;
 }
 
+.contact-original-copy {
+  max-width: 78ch;
+  margin-top: 56px;
+  line-height: 1.75;
+}
+.contact-original-copy h2, .contact-original-copy h3 {
+  color: var(--color-text-main);
+  margin: 26px 0 8px;
+}
+.contact-original-copy p { margin: 0 0 18px; }
+
 /* Trust Bar */
 .contact-trust-bar {
   display: flex;
