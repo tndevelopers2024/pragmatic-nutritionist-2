@@ -9,6 +9,7 @@ import Footer from './components/Footer'
 import StickyCta from './components/StickyCta'
 import ResultsPage from './pages/ResultsPage'
 import TermsPage from './pages/TermsPage'
+import termsOfUse from './data/termsOfUseContent'
 import PrivacyPage from './pages/PrivacyPage'
 import RefundPage from './pages/RefundPage'
 import Faq from './components/Faq'
@@ -22,6 +23,7 @@ import SectionPage from './pages/SectionPage'
 import SportsNutritionPage from './pages/SportsNutritionPage'
 import MoreCarePage from './pages/MoreCarePage'
 import ProgramsPricingPage from './pages/ProgramsPricingPage'
+import PricingCataloguePage from './pages/PricingCataloguePage'
 import BlogPage from './pages/BlogPage'
 import ContactPage from './pages/ContactPage'
 import SignaturePage from './pages/SignaturePage'
@@ -62,7 +64,7 @@ export default function App() {
             <Route path="/privacy-policy-1" element={<PrivacyPage />} />
             <Route path="/terms" element={<TermsPage />} />
             <Route path="/terms-conditions" element={<TermsPage />} />
-            <Route path="/terms-of-use" element={<TermsPage />} />
+            <Route path="/terms-of-use" element={<TermsPage document={termsOfUse} />} />
             <Route path="/results" element={<ResultsPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/about-us" element={<AboutPage />} />
@@ -86,18 +88,20 @@ export default function App() {
             <Route path="/more-care" element={<MoreCarePage />} />
             <Route path="/programs-pricing" element={<ProgramsPricingPage />} />
             <Route path="/nutrition-plans" element={<ProgramsPricingPage />} />
-            <Route path="/pricing-plans/list" element={<ProgramsPricingPage />} />
+            <Route path="/pricing-plans/list" element={<PricingCataloguePage />} />
             <Route path="/signature-nutrition-program" element={<SignaturePage />} />
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/nutrition-blog" element={<BlogPage />} />
             <Route path="/adhd-nutritionist-children" element={<MoreCarePage slug="adhd-nutrition" />} />
             <Route path="/child-nutritionist-india" element={<MoreCarePage slug="child-teen-nutrition" />} />
             <Route path="/best-diabetes-nutritionist-india" element={<MoreCarePage slug="diabetes" />} />
-            {['/academy/build-your-private-practice', '/nutrition-private-practice', '/nutritionist-practice-masterclass-registration'].map(path => <Route key={path} path={path} element={<AcademyPage variant="practice" />} />)}
+            {['/academy/build-your-private-practice', '/nutrition-private-practice'].map(path => <Route key={path} path={path} element={<AcademyPage variant="practice" />} />)}
+            {['/academy/masterclass-registration', '/nutritionist-practice-masterclass-registration'].map(path => <Route key={path} path={path} element={<AcademyPage variant="registration" />} />)}
             {['/academy/certificate-courses', '/nutritionist-certificate-courses', '/online-courses-for-nutritionists'].map(path => <Route key={path} path={path} element={<AcademyPage variant="professional" />} />)}
-            {['/academy/courses-masterclasses', '/online-nutrition-course', '/online-nutrition-courses'].map(path => <Route key={path} path={path} element={<AcademyPage variant="public" />} />)}
+            {['/academy/courses-masterclasses', '/online-nutrition-course'].map(path => <Route key={path} path={path} element={<AcademyPage variant="public" />} />)}
+            {['/academy/online-nutrition-courses', '/online-nutrition-courses'].map(path => <Route key={path} path={path} element={<AcademyPage variant="public-legacy" />} />)}
             {['child-teen-nutrition', 'adhd-nutrition', 'adhd', 'diabetes', 'pcos', 'weight-loss'].map(slug => <Route key={slug} path={`/more-care/${slug}`} element={<MoreCarePage slug={slug} />} />)}
-            {PAGES.filter(p => p.to !== '/blog' && p.to !== '/programs-pricing' && p.to !== '/contact' && p.to !== '/nutrition-plans' && !p.to.startsWith('/gut-health') && !p.to.startsWith('/sports-nutrition') && !p.to.startsWith('/more-care') && !['/academy/build-your-private-practice', '/academy/certificate-courses', '/academy/courses-masterclasses'].includes(p.to) && p.to !== '/results' && p.to !== '/terms' && p.to !== '/privacy' && p.to !== '/refund').map((p) => (
+            {PAGES.filter(p => p.to !== '/blog' && p.to !== '/programs-pricing' && p.to !== '/contact' && p.to !== '/nutrition-plans' && !p.to.startsWith('/gut-health') && !p.to.startsWith('/sports-nutrition') && !p.to.startsWith('/more-care') && !['/academy/build-your-private-practice', '/academy/certificate-courses', '/academy/courses-masterclasses', '/academy/masterclass-registration', '/academy/online-nutrition-courses'].includes(p.to) && p.to !== '/results' && p.to !== '/terms' && p.to !== '/privacy' && p.to !== '/refund').map((p) => (
               <Route key={p.to} path={p.to} element={element(p)} />
             ))}
             <Route

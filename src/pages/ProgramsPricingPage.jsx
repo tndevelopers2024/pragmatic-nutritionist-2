@@ -1,11 +1,13 @@
 import { Link } from 'react-router-dom'
 import signatureImage from '../assets/signature-nutrition.jpg'
-import { ArrowRight, CheckCircle2 } from 'lucide-react'
+import { ArrowRight, CheckCircle2, ChevronDown } from 'lucide-react'
 import PageHero from '../components/PageHero'
 import Section from '../components/Section'
 import { useBook } from '../context/bookContext'
 import { useSeo } from '../components/Seo'
 import content from '../data/programsPricing.json'
+import { SignatureContent } from './SignaturePage'
+import { PricingCatalogueContent } from './PricingCataloguePage'
 import './programsPricing.css'
 
 const specialistPrograms = [
@@ -25,8 +27,8 @@ export default function ProgramsPricingPage() {
     <div className="programs-pricing-page">
       <PageHero title="Programs & Pricing" blurb="Food is more than just calories." />
       <Section width="wide" bg="base" title="Nutrition packages" lead="Healthy eating is about eating right not eating less.">
-        <p className="placeholder-desc">Every meal you eat is an opportunity to nourish your body. Your eating habits can affect both your physical and mental health. Do you often feel that your energy levels are low or you have difficulty sleeping?</p>
-        <p className="placeholder-desc">That is why finding the right balance of nutrients will help you transform your health and make you feel good about yourself. How will our healthy nutrition plan help you?</p>
+        <div className="pricing-introduction"><p className="placeholder-desc">Every meal you eat is an opportunity to nourish your body. Your eating habits can affect both your physical and mental health. Do you often feel that your energy levels are low or you have difficulty sleeping?</p>
+        <p className="placeholder-desc">That is why finding the right balance of nutrients will help you transform your health and make you feel good about yourself. How will our healthy nutrition plan help you?</p></div>
         <div className="gut-programs-grid pricing-plans-grid">
           {content.plans.map(plan => (
             <article className="gut-program-card" key={plan.title}>
@@ -38,8 +40,15 @@ export default function ProgramsPricingPage() {
             </article>
           ))}
         </div>
-        <p>Choose your pricing plan and find one that works for you.</p>
-        <a className="btn btn-secondary" href="https://pages.razorpay.com/stores/st_QifXYeHOUUdx9x" target="_blank" rel="noopener noreferrer">Join Now — visit payment page<ArrowRight size={16} aria-hidden="true" /></a>
+        <div className="pricing-payment-prompt"><p>Choose your pricing plan and find one that works for you.</p>
+        <a className="btn btn-secondary" href="https://pages.razorpay.com/stores/st_QifXYeHOUUdx9x" target="_blank" rel="noopener noreferrer">Join Now — visit payment page<ArrowRight size={16} aria-hidden="true" /></a></div>
+      </Section>
+      <Section width="wide" bg="white" className="pricing-explore-section" title="Explore all nutrition plans" lead="Find the support that fits your goals and routine.">
+        <details className="pricing-catalogue-disclosure">
+          <summary><span><strong>View the full list of 31 plans</strong><span>Compare prices, durations and inclusions</span></span><ChevronDown size={22} aria-hidden="true" /></summary>
+          <PricingCatalogueContent embedded />
+        </details>
+        <p className="pricing-catalogue-page-link"><Link to="/pricing-plans/list">Open the full pricing list <ArrowRight size={15} aria-hidden="true" /></Link></p>
       </Section>
       <Section width="wide" bg="white" eyebrow="SPECIALIST CARE" title="Services">
         <div className="subtopics-grid">{specialistPrograms.map(program => <article className="subtopic-card" key={program.title}><h3 className="subtopic-name">{program.title}</h3><p className="subtopic-blurb">{program.description}</p>{program.to && <Link className="subtopic-action" to={program.to}>{program.title === 'PCOS/Hypothyroid' ? 'Explore PCOS support' : 'View programs'}<ArrowRight size={14} aria-hidden="true" /></Link>}</article>)}</div>
@@ -61,6 +70,9 @@ export default function ProgramsPricingPage() {
           <div className="program-features-list pricing-signature-features"><strong className="features-head">Program inclusions</strong><ul>{['Personal blood work review', 'Body composition tracking', 'Gut microbiome testing or DNA nutrigenomics, clinically selected by Meenu', 'Two focused review consultations each month with Meenu', 'Monthly plan adaptation', 'Structured WhatsApp or email support between sessions'].map(feature => <li key={feature}><CheckCircle2 size={16} className="feature-check" aria-hidden="true" /><span>{feature}</span></li>)}</ul></div>
         </div>
       </Section>
+      <div id="signature-program-details" aria-label="Signature Nutrition Program details">
+        <SignatureContent />
+      </div>
       <Section width="wide" bg="white" title="Ready to take the first step?" lead="Schedule a free, no-obligation consultation with our nutrition expert and discover the right plan for you.">
         <button className="btn btn-primary" type="button" onClick={openBook}>Book a Free Health Assessment<ArrowRight size={16} aria-hidden="true" /></button>
       </Section>

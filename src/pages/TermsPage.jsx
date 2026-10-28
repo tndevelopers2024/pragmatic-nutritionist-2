@@ -42,11 +42,16 @@ function Contents({ content }) {
 export default function TermsPage({ document = content }) {
   const policy = document
   useSeo(policy.title, (policy.intro[1] || policy.intro[0]).text)
+  const relatedTerms = policy.sourceUrl?.includes('/terms-of-use')
+    ? { to: '/terms', label: 'Read Terms & Conditions' }
+    : policy.sourceUrl?.includes('/terms-conditions')
+      ? { to: '/terms-of-use', label: 'Read Terms of Use' }
+      : null
   return <div className="terms-page">
     <PageHero title={policy.title} />
     <div className="terms-layout">
-      <aside className="terms-sidebar"><Contents content={policy} /></aside>
-      <details className="terms-mobile-contents"><summary>{policy.title}<ChevronDown size={18} aria-hidden="true" /></summary><Contents content={policy} /></details>
+      <aside className="terms-sidebar"><Contents content={policy} />{relatedTerms && <Link to={relatedTerms.to}>{relatedTerms.label}</Link>}</aside>
+      <details className="terms-mobile-contents"><summary>{policy.title}<ChevronDown size={18} aria-hidden="true" /></summary><Contents content={policy} />{relatedTerms && <Link to={relatedTerms.to}>{relatedTerms.label}</Link>}</details>
       <article className="terms-document" data-source-url={policy.sourceUrl} aria-label={policy.title}>
         <div className="terms-introduction"><SourceBlocks blocks={policy.intro} /></div>
         {policy.sections.map(section => <section className="terms-clause" id={section.id} key={section.id}><h2>{section.title}</h2><SourceBlocks blocks={section.blocks} /></section>)}

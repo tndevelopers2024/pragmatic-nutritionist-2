@@ -21,6 +21,22 @@
 .dn-related-cards > a { text-decoration: none; color: var(--color-primary); }
 .dn-related-cards > a:hover { border-color: var(--color-primary); }
 .dn-related-note { margin-top: 20px !important; text-align: center; }
+.dn-results-concerns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 0; padding: 0; }
+.dn-results-concerns > li { position: relative; min-width: 0; padding: 22px 24px 22px 53px; border: 1px solid var(--cn-border); border-radius: var(--cn-radius); background: var(--color-surface); color: var(--color-text-secondary); line-height: 1.7; }
+.dn-results-concerns > li::before { position: absolute; top: 28px; left: 24px; width: 9px; height: 9px; border-radius: 50%; background: var(--color-primary); content: ''; }
+.dn-results-concerns > li:last-child { grid-column: 1 / -1; }
+.dn-results-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-top: 36px; }
+.dn-results-stats > div { display: grid; gap: 6px; padding: 22px; border: 1px solid var(--cn-border); border-radius: var(--cn-radius); background: var(--color-surface); }
+.dn-results-stats strong { color: var(--color-primary); font-family: var(--font-display); font-size: 1.65rem; }
+.dn-results-stats span { font-size: .85rem; line-height: 1.5; }
+.dn-page .cn-review .cn-tag { align-self: flex-start; margin-bottom: 18px; }
+.dn-page .cn-review h3 { font-size: 1.05rem; line-height: 1.4; }
+.dn-page .cn-review > blockquote { color: var(--color-text-secondary); line-height: 1.75; }
+.dn-page .dn-results-disclaimer { margin-top: 24px; font-size: .85rem; }
+.dn-recognition-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.dn-featured-publications { margin-top: 24px !important; }
+@media (max-width: 900px) { .dn-results-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } .dn-recognition-grid { grid-template-columns: 1fr; } }
+@media (max-width: 520px) { .dn-results-stats { grid-template-columns: 1fr 1fr; } .dn-results-stats > div { padding: 16px; } .dn-results-concerns { grid-template-columns: 1fr; } .dn-results-concerns > li:last-child { grid-column: auto; } }
 @media (max-width: 1000px) { .dn-feature-grid { grid-template-columns: 1fr 1fr; } .dn-feature-grid > .cn-card:last-child { grid-template-columns: auto 1fr; } .dn-feature-grid > .cn-card:last-child p { grid-column: 1 / -1; } }
 @media (max-width: 768px) { .dn-approach-grid, .dn-related-cards { grid-template-columns: 1fr; gap: 24px; } .dn-approach-grid > .cn-card { height: auto; } }
 @media (max-width: 520px) { .dn-feature-grid, .dn-condition-list .cn-checklist, .dn-broad-audience .cn-checklist, .dn-included-list .cn-checklist { grid-template-columns: 1fr; } .dn-condition-list { padding: 22px; } }

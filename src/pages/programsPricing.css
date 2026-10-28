@@ -10,6 +10,23 @@
 .pricing-signature-image { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 18px; }
 .pricing-signature-features { grid-column: 1 / -1; border-top: 1px solid #d7e5de; padding-top: 28px; }
 .pricing-signature-features ul { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px 30px; }
+.pricing-introduction { max-width: 850px; margin-bottom: 36px; }
+.pricing-introduction p + p { margin-top: 16px; }
+.pricing-payment-prompt { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; margin-top: 30px; padding: 22px 26px; border: 1px solid #d7e5de; border-radius: 16px; background: #fff; }
+.pricing-payment-prompt p { margin: 0; color: var(--color-text-secondary); }
+.pricing-payment-prompt .btn-secondary { border-color: var(--color-primary); color: var(--color-primary) !important; background: #fff; }
+.pricing-payment-prompt .btn-secondary:hover { background: var(--color-primary-subtle); }
+.pricing-explore-section .section-header { max-width: 800px; }
+.pricing-catalogue-disclosure > summary { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 24px 28px; border: 1px solid #c9ded8; border-radius: 16px; background: var(--color-primary-subtle); color: var(--color-text-main); cursor: pointer; list-style: none; }
+.pricing-catalogue-disclosure > summary::-webkit-details-marker { display: none; }
+.pricing-catalogue-disclosure > summary > span { display: grid; gap: 5px; }
+.pricing-catalogue-disclosure > summary strong { font-size: 1.15rem; }
+.pricing-catalogue-disclosure > summary span span { color: var(--color-text-secondary); font-size: .9rem; }
+.pricing-catalogue-disclosure > summary svg { flex: 0 0 auto; color: var(--color-primary); transition: transform .2s ease; }
+.pricing-catalogue-disclosure[open] > summary svg { transform: rotate(180deg); }
+.pricing-catalogue-disclosure > summary:focus-visible { outline: 3px solid var(--color-primary); outline-offset: 4px; }
+.pricing-catalogue-page-link { margin-top: 18px; }
+.pricing-catalogue-page-link a { display: inline-flex; align-items: center; gap: 6px; color: var(--color-primary); font-weight: 700; }
 
 @media (max-width: 767px) {
   .programs-pricing-page .pricing-plans-grid,
@@ -18,4 +35,7 @@
   }
   .pricing-signature-features { grid-column: auto; }
   .pricing-signature-features ul { grid-template-columns: 1fr; }
+  .pricing-payment-prompt { align-items: stretch; flex-direction: column; padding: 20px; }
+  .pricing-payment-prompt .btn { justify-content: center; }
+  .pricing-catalogue-disclosure > summary { padding: 20px; }
 }

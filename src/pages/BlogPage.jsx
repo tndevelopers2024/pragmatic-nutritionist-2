@@ -6,6 +6,8 @@ import blogExcerpts from '../data/blogExcerpts.json'
 import './blog.css'
 
 const posts = [
+  ['High Fibre Foods for Piles', 'Gut Health', '', 'high-fibre-foods-for-piles', '1b432c_f4795157c0464eb68b62551fd687df30~mv2.png'],
+  ['Psyllium Husk (Isabgol): Benefits, How to Take It, Side Effects and Who Should Avoid It', 'Gut Health', '', 'psyllium-husk-benefits-side-effects', '1b432c_c34803d159064addb30b9bfbf03c3200~mv2.jpg'],
   ['What is IBD (Inflammatory Bowel Disease): Symptoms, IBD vs IBS, Treatment and Diet', 'Gut Health', 'Explore IBD symptoms, how IBD differs from IBS, treatment, and the role of food and lifestyle alongside medical care.', 'what-is-ibd-ibd-vs-ibs', '1b432c_e50fc5ab7a554a1ba7fcdcf3ab1fbb1f~mv2.png'],
   ["Runner's Stomach and Runner's Diarrhea: Why It Happens, How Long It Lasts and How to Stop It", 'Sports Nutrition', 'Learn why running can cause digestive symptoms, how food and training may affect them, and when to seek medical advice.', 'runners-stomach', '11062b_daca98a9e870490986859c1fc81e7113~mv2.jpg'],
   ['Low Stomach Acid: Symptoms, Causes & Tests (Hypochlorhydria)', 'Gut Health', 'Explore possible symptoms and causes of low stomach acid, medical tests, common remedies, and when to see a doctor.', 'low-stomach-acid-symptoms', '1b432c_fa17f77997f842959e34001d0a3c246c~mv2.jpg'],
@@ -15,9 +17,7 @@ const posts = [
   ['GLP-1 Side Effects: How They Affect Digestion, Gastric Emptying and Gut Motility', 'Gut Health', 'Learn how GLP-1 medicines can affect digestion, which symptoms need attention, and what the guide says about food and stopping treatment.', 'glp-1-side-effects', '4d180cd9aa2b40a5969735637ce00ab3.jpg'],
   ['What Is the Vagus Nerve? Gut Link, Reset Myths & Evidence', 'Gut Health', 'A practical look at what the vagus nerve does, its connection to the gut, and the evidence behind popular reset claims.', 'vagus-nerve', '1b432c_b1f9d91cd0f44ed4a4e43b02aefacb44~mv2.png'],
   ['MCAS (Mast Cell Activation Syndrome): Symptoms, the Gut Connection and What to Eat', 'Gut Health', 'Understand MCAS symptoms, how it differs from histamine intolerance and IBS, and the role food may play alongside treatment.', 'mcas', '11062b_694b1e153d59443aa0bbc0742b7db759~mv2.jpeg'],
-  ['Best Sports Nutritionist in Chennai: What to Actually Look For (and Why It Matters)', 'Sports Nutrition', 'Find out what to consider when choosing nutrition support for a teen athlete, including experience, qualifications and results.', 'best-sports-nutritionist-in-chennai', 'd9db73_6e3e23c381054debb382e24eb7149a29~mv2.jpg'],
-  ["Digestive Enzymes, Low Stomach Acid, and SIBO: What's Actually Going Wrong When Digestion Fails", 'Gut Health', 'Explore how the guide connects low stomach acid, digestive enzymes, SIBO and persistent digestive symptoms.', 'digestive-enzymes', '11062b_06d5d2444a63452ab2809157423f2b3e~mv2.jpeg'],
-  ["How to Grow Taller: A Nutritionist's Honest Answer for Parents", 'Child Nutrition', 'A guide for parents on genetics, growth, nutrition, sleep, exercise and common claims about height supplements.', 'how-to-grow-taller', '1b432c_2c4d1f1c5f9d4c68ab480f282124b8f8~mv2.png']
+  ['Best Sports Nutritionist in Chennai: What to Actually Look For (and Why It Matters)', 'Sports Nutrition', 'Find out what to consider when choosing nutrition support for a teen athlete, including experience, qualifications and results.', 'best-sports-nutritionist-in-chennai', 'd9db73_6e3e23c381054debb382e24eb7149a29~mv2.jpg']
 ]
 
 export default function BlogPage() {
