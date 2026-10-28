@@ -25,7 +25,6 @@ import MoreCarePage from './pages/MoreCarePage'
 import ProgramsPricingPage from './pages/ProgramsPricingPage'
 import PricingCataloguePage from './pages/PricingCataloguePage'
 import BlogPage from './pages/BlogPage'
-import BlogArticlePage from './pages/BlogArticlePage'
 import ContactPage from './pages/ContactPage'
 import SignaturePage from './pages/SignaturePage'
 import AcademyPage from './pages/AcademyPage'
@@ -92,7 +91,6 @@ export default function App() {
             <Route path="/pricing-plans/list" element={<PricingCataloguePage />} />
             <Route path="/signature-nutrition-program" element={<SignaturePage />} />
             <Route path="/blog" element={<BlogPage />} />
-            <Route path="/blog/:slug" element={<BlogArticlePage />} />
             <Route path="/nutrition-blog" element={<BlogPage />} />
             <Route path="/adhd-nutritionist-children" element={<MoreCarePage slug="adhd-nutrition" />} />
             <Route path="/child-nutritionist-india" element={<MoreCarePage slug="child-teen-nutrition" />} />
@@ -110,7 +108,7 @@ export default function App() {
               path="*"
               element={
                 <>
-                  <PageHero title="Page not found" blurb="That page does not exist. Use the navigation menu above to find what you need." image="not-found" />
+                  <PageHero title="404 — Page not found" blurb="That page does not exist. Use the navigation menu above to find what you need." image="not-found" />
                   <section className="section bg-base"><div className="sec-wide"><Link className="btn btn-primary" to="/">Back to home</Link></div></section>
                 </>
               }
