@@ -1,4 +1,12 @@
 /* Diabetes uses the shared care-page typography, cards and spacing. */
+.dn-page .cn-section-heading h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 2.8vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1.25;
+}
+.dn-page :is(p, li, blockquote) { font-family: var(--font-sans); font-weight: 400; }
+.dn-page .cn-card h3 { font-family: var(--font-display); font-weight: 700; letter-spacing: -.02em; }
 .dn-page .cn-intro > img { align-self: center; }
 .dn-condition-list { padding: 26px; border: 1px solid var(--cn-border); border-radius: var(--cn-radius); background: #fff; }
 .dn-condition-list .cn-checklist, .dn-broad-audience .cn-checklist, .dn-included-list .cn-checklist { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px 32px; }

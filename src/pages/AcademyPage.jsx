@@ -238,9 +238,10 @@ function Practice() {
 export default function AcademyPage({ variant = 'public' }) {
   const titles = { public: 'Courses for Everyone', 'public-legacy': 'Learn Nutrition Online', professional: 'Courses for Nutritionists', practice: 'Build Your Private Practice', registration: 'Register for Masterclass' }
   useSeo(titles[variant], 'Online nutrition courses and professional learning from Pragmatic Nutrition.')
-  if (variant === 'professional') return <ProfessionalCourses />
-  if (variant === 'practice') return <Practice />
-  if (variant === 'registration') return <MasterclassRegistration />
-  if (variant === 'public-legacy') return <LegacyPublicCourses />
-  return <PublicCourses />
+  let page = <PublicCourses />
+  if (variant === 'professional') page = <ProfessionalCourses />
+  else if (variant === 'practice') page = <Practice />
+  else if (variant === 'registration') page = <MasterclassRegistration />
+  else if (variant === 'public-legacy') page = <LegacyPublicCourses />
+  return <div className="academy-page">{page}</div>
 }

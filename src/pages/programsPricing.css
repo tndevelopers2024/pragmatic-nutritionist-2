@@ -20,8 +20,8 @@
 .pricing-catalogue-disclosure > summary { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 24px 28px; border: 1px solid #c9ded8; border-radius: 16px; background: var(--color-primary-subtle); color: var(--color-text-main); cursor: pointer; list-style: none; }
 .pricing-catalogue-disclosure > summary::-webkit-details-marker { display: none; }
 .pricing-catalogue-disclosure > summary > span { display: grid; gap: 5px; }
-.pricing-catalogue-disclosure > summary strong { font-size: 1.15rem; }
-.pricing-catalogue-disclosure > summary span span { color: var(--color-text-secondary); font-size: .9rem; }
+.pricing-catalogue-disclosure > summary strong { font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; line-height: 1.3; }
+.pricing-catalogue-disclosure > summary span span { color: var(--color-text-secondary); font-family: var(--font-sans); font-size: .875rem; font-weight: 400; line-height: 1.55; }
 .pricing-catalogue-disclosure > summary svg { flex: 0 0 auto; color: var(--color-primary); transition: transform .2s ease; }
 .pricing-catalogue-disclosure[open] > summary svg { transform: rotate(180deg); }
 .pricing-catalogue-disclosure > summary:focus-visible { outline: 3px solid var(--color-primary); outline-offset: 4px; }
