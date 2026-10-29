@@ -3,6 +3,7 @@ import { Link, useSearchParams } from 'react-router-dom'
 import PageHero from '../components/PageHero'
 import Section from '../components/Section'
 import { useSeo } from '../components/Seo'
+import { professionalCourseContent } from '../data/professionalCourseContent'
 import './academy.css'
 
 // Prices below are shown on the source course listings; availability may change.
@@ -21,7 +22,7 @@ const legacyPublicCourses = [
   { title: 'Nourishing Young Minds', description: 'Join our nutrition webinar for expert tips on helping young kids develop healthy eating habits, making nutritious meals fun and easy for the whole family!', price: 'Free', slug: 'nourishing-young-minds' },
   { title: 'Picky eating Masterclass', description: 'Does thinking of meal times, makes you worried? Let us take the worry out of you and give the tried and tested method, trusted by parents around the globe.', price: '₹799', slug: 'picky-eating-masterclass' },
   { title: 'Plant based Diets', description: "Are you thinking of shifting to a plant based diet (vegan/vegetarian)? Get a Nutritionist's guideline to transition.", price: '₹799', slug: 'plant-based-diets' },
-  { title: 'Mindful Eating Webinar', description: 'Do you go through phases of dieting and eating more than you should? Embrace a healthier relationship with food through mindful eating. Sign up free.', price: '₹399', slug: 'mindful-eating-webinar' },
+  { title: 'Mindful Eating Webinar', description: 'Do you go through phases of dieting and eating more than you should? Embrace a healthier relationship with food through mindful eating.', price: '₹399', slug: 'mindful-eating-webinar' },
   { title: 'Optimize Gut Health', description: 'Unlock the secrets to a thriving gut with our “Optimizing Gut Health” course. Improve your well-being by prioritizing your gut health.', price: '₹499', slug: 'optimize-gut-health' },
   { title: 'Sports Nutrition', description: 'Knowing firsthand the basics of Sports Nutrition will give you great insights about how efficiently you can plan your meals and improve on-field performance.', price: '₹950', slug: 'sports-nutrition' }
 ]
@@ -49,9 +50,9 @@ const professionalCourses = [
   ['Mastering Gut Health', "Empower your nutrition practice with our 'Mastering Gut Health' course. Elevate your practice with cutting-edge insights and practical strategies.", 'mastering-gut-health', '₹1,499', '4 weeks'],
   ['Basics of Gut Health', 'Learn the intricacies of gut health with modules exploring microbiome fundamentals and disorders, equipping nutritionists to optimize client well-being.', 'basics-of-gut-health', '₹1,200', '4 weeks'],
   ['Optimizing Hormonal Health', "This advanced course is designed for practicing nutritionists aiming to specialize in women's hormone wellness.", 'optimizing-hormonal-health', '₹850', '45 minutes'],
-  ['Nutrition for Menopause', 'Join this Free Webinar to equip yourself specialized knowledge and practical tools to guide women through menopause using evidence-based nutritional strategies.', 'nutrition-for-menopause', '₹350 listed', '45 minutes'],
-  ['Interpret Medical Reports', 'Medical reports are crucial pieces of the puzzle while making lifestyle recommendations to your clients and as an expert you show how to connect the dots.', 'interpret-medical-reports', '₹799', '45 minutes'],
-  ['Understanding CGM', "Explore cutting-edge insights into metabolic health with real-time data using CGM. Elevate your expertise as a nutritionist and improve your client's health.", 'understanding-cgm', '₹350', '1 session']
+  ['Nutrition for Menopause', 'Gain specialized knowledge and practical tools to guide women through menopause using evidence-based nutritional strategies.', 'nutrition-for-menopause', '₹350 listed', '45 minutes'],
+  ['Interpret Medical Reports', 'Medical reports are crucial pieces of the puzzle while making lifestyle recommendations to your clients and as an expert you show how to connect the dots.', 'interpret-medical-reports', '₹799', '1.5 hours'],
+  ['Understanding CGM', "Explore cutting-edge insights into metabolic health with real-time data using CGM. Elevate your expertise as a nutritionist and improve your client's health.", 'understanding-cgm', '₹450', '2 weeks']
 ]
 
 const publicDetails = [
@@ -267,7 +268,7 @@ function findCourse(variant, slug) {
       || (slug === 'build-your-private-practice' ? ['Build Your Private Practice', 'Understand the keys to success in building your private practice. Enrol now and take the next step towards realizing aspirations.', slug, '₹3,500 listed', '4 weeks'] : null)
     if (!entry) return null
     const [title, description, , price, duration] = entry
-    return { title, description, price, duration, detail: professionalDetails[professionalDetailIndexes[slug]]?.[1] }
+    return { title, description, price, duration, slug, detail: professionalDetails[professionalDetailIndexes[slug]]?.[1] }
   }
   return null
 }
@@ -284,11 +285,24 @@ function CourseDetails({ course, variant }) {
     <Section bg="white" title="About this course" width="wide">
       <div className="academy-copy">
         <p>{course.detail || course.description}</p>
+        {variant === 'professional' && professionalCourseContent[course.slug]?.map(({ heading, items }) => <div key={heading}>
+          <h3>{heading}</h3>
+          <ul>{items.map(item => <li key={item}>{item}</li>)}</ul>
+        </div>)}
+        {variant === 'public-legacy' && course.slug === 'mindful-eating-webinar' && <div>
+          <h3>What you will learn</h3>
+          <ul>
+            <li>Rethink restrictive dieting and recognise hunger and fullness cues.</li>
+            <li>Respond to cravings without deprivation and explore emotional and stress-related eating.</li>
+            <li>Build a respectful relationship with food and sustainable eating habits.</li>
+          </ul>
+        </div>}
         <p className="academy-course-meta"><strong>{course.price}</strong><span>{course.duration}</span></p>
         <p>Prices and availability can change. Contact us to confirm the current details and find out how to enrol.</p>
         {variant === 'professional' && <p>These courses are for education and are not intended to diagnose, treat or cure disease. Please discuss medical concerns with a qualified healthcare provider.</p>}
         {variant === 'professional' && course.title === 'Build Your Private Practice' && <p>This is the four-week course from the professional course listing. The <Link to="/academy/build-your-private-practice">eight-week intensive</Link> is a separate offering.</p>}
         {variant === 'professional' && course.title === 'Nutrition for Menopause' && <p>The listing describes this webinar as free while also showing ₹350. Please confirm the current fee with the team.</p>}
+        {variant === 'professional' && course.slug === 'free-career-counselling' && <p><a href="https://calendly.com/meenu-egyz/30min">View career counselling appointment availability</a></p>}
         {variant === 'public-legacy' && course.title === 'Mindful Eating Webinar' && <p>The listing describes this webinar as free while also showing ₹399. Please confirm the current fee with the team.</p>}
         <p><Link className="btn btn-primary" to={`/contact?course=${encodeURIComponent(course.title)}`}>Ask about this course<ArrowRight size={16} aria-hidden="true" /></Link></p>
         <p><Link to={catalogPath}>Back to {catalogLabel}</Link></p>
