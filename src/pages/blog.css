@@ -42,12 +42,42 @@
 .blog-table th { background: #f3f7f5; font-weight: 700; color: var(--color-text-primary); }
 .blog-table tr:nth-child(even) { background: #fafbfc; }
 
-/* Open FAQ Blocks (Matching live site) */
-.blog-faq-block { margin: 28px 0; }
-.blog-faq-question { font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; color: #17332c; margin: 0 0 10px; line-height: 1.4; }
-.blog-faq-answer p { margin: 0 0 16px; color: #374151; font-size: 1.02rem; line-height: 1.8; }
+/* Editorial FAQ Section (Pixel-matched to Live Article Standard) */
+.blog-faq-section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.65rem, 2.5vw, 1.95rem);
+  font-weight: 800;
+  color: #111827;
+  margin: 54px 0 24px;
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+}
 
-/* Collapsible FAQs fallback */
+.blog-faq-block {
+  margin: 28px 0;
+}
+
+.blog-faq-question {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #111827;
+  margin: 32px 0 10px;
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+}
+
+.blog-faq-answer,
+.blog-faq-answer p {
+  font-family: var(--font-sans);
+  font-size: 1.03rem;
+  font-weight: 400;
+  line-height: 1.75;
+  color: #374151;
+  margin: 0 0 24px;
+}
+
+/* Collapsible FAQs fallback (if any) */
 .blog-faq-item { margin: 16px 0; border: 1px solid var(--color-border-subtle); border-radius: var(--radius-card); background: #ffffff; overflow: hidden; transition: border-color 0.2s; }
 .blog-faq-item[open] { border-color: var(--color-primary); }
 .blog-faq-item summary { padding: 16px 20px; font-weight: 700; font-size: 1.05rem; cursor: pointer; background: #fdfdfd; list-style: none; display: flex; align-items: center; justify-content: space-between; user-select: none; }

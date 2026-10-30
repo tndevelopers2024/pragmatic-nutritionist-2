@@ -65,12 +65,13 @@
 .academy-value-table th:last-child, .academy-value-table td:last-child { white-space: nowrap; }
 .academy-value-table tfoot th, .academy-value-table tfoot td { color: var(--color-text-main); font-weight: 700; }
 .academy-value-table tr:last-child > * { border-bottom: 0; }
-.academy-faq { padding: 20px 24px; border: 1px solid var(--color-border-subtle); border-radius: 14px; background: var(--color-surface); }
-.academy-faq summary { display: flex; justify-content: space-between; gap: 16px; color: var(--color-text-main); cursor: pointer; font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; line-height: 1.4; list-style: none; }
+.academy-faq { padding: 20px 24px; border: 1px solid rgba(14, 98, 88, 0.14); border-radius: 16px; background: var(--color-surface); margin-bottom: 14px; transition: all 0.25s var(--ease-reveal); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03); }
+.academy-faq[open] { border-color: #0E6258; box-shadow: 0 6px 20px rgba(14, 98, 88, 0.08); }
+.academy-faq summary { display: flex; justify-content: space-between; align-items: center; gap: 16px; color: #111827; cursor: pointer; font-family: var(--font-display); font-size: clamp(1.02rem, 1.3vw, 1.15rem); font-weight: 700; line-height: 1.35; list-style: none; letter-spacing: -0.01em; }
 .academy-faq summary::-webkit-details-marker { display: none; }
-.academy-faq summary::after { flex: none; color: var(--color-primary); content: '+'; font-size: 1.35rem; line-height: 1; }
+.academy-faq summary::after { flex: none; color: #0E6258; content: '+'; font-size: 1.4rem; font-weight: 600; line-height: 1; transition: transform 0.2s; }
 .academy-faq[open] summary::after { content: '−'; }
-.academy-faq p { margin: 14px 0 0; color: var(--color-text-secondary); }
+.academy-faq p { margin: 14px 0 0; font-family: var(--font-sans); font-size: 1.02rem; line-height: 1.75; color: #374151; }
 @media (max-width: 900px) { .academy-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 600px) {
   .academy-grid, .academy-editorial-grid, .academy-build-copy ul, .academy-audience-copy ul { grid-template-columns: 1fr; }

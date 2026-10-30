@@ -671,18 +671,21 @@ a.btn {
   position: absolute;
   top: calc(100% + 8px);
   left: 50%;
-  transform: translateX(-50%) translateY(8px);
+  transform: translate3d(-50%, 8px, 0);
   width: min(520px, 92vw);
   background-color: var(--color-surface);
   border: 1px solid var(--color-border-subtle);
   border-radius: var(--r-card);
   padding: 18px;
-  box-shadow: var(--shadow-2xl);
+  box-shadow: 0 0 0 1px rgba(14, 98, 88, 0.08), var(--shadow-2xl);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
   transition: opacity 0.18s ease, transform 0.2s var(--ease-reveal), visibility 0.18s;
   z-index: 60;
+  will-change: transform, opacity;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 .mega-dropdown::before {
   content: '';
@@ -697,7 +700,7 @@ a.btn {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
-  transform: translateX(-50%) translateY(0);
+  transform: translate3d(-50%, 0, 0);
 }
 .mega-dropdown-header {
   padding-bottom: 10px;
@@ -718,7 +721,7 @@ a.btn {
 }
 .mega-dropdown-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 8px;
 }
 .mega-item {
@@ -728,6 +731,8 @@ a.btn {
   border-radius: var(--r-inner);
   transition: background-color 0.2s, transform 0.2s;
   text-decoration: none !important;
+  box-sizing: border-box;
+  min-width: 0;
 }
 .mega-item:hover {
   background-color: var(--color-primary-soft);
@@ -3754,25 +3759,25 @@ a.btn {
 .faq-editorial-item,
 .faq-accordion-item {
   background-color: var(--color-surface);
-  border: 1px solid var(--color-border-subtle);
-  border-radius: 18px;
+  border: 1px solid rgba(14, 98, 88, 0.14);
+  border-radius: 16px;
   overflow: hidden;
   transition: all 0.25s var(--ease-reveal);
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
 }
 .faq-editorial-item.is-open,
 .faq-accordion-item.is-open {
-  border-color: var(--color-primary);
-  box-shadow: var(--shadow-md);
+  border-color: #0E6258;
+  box-shadow: 0 6px 20px rgba(14, 98, 88, 0.08);
 }
 
 .faq-question-btn {
   width: 100%;
-  padding: 18px 22px;
+  padding: 20px 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 14px;
+  gap: 16px;
   text-align: left;
   cursor: pointer;
   background: none;
@@ -3781,22 +3786,23 @@ a.btn {
 .faq-q-left {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   flex: 1;
 }
 .faq-num {
   font-family: var(--font-display);
   font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--color-primary);
+  font-weight: 800;
+  color: #0E6258;
   flex-shrink: 0;
 }
 .faq-q-text {
   font-family: var(--font-display);
-  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
   font-weight: 700;
-  color: var(--color-text-main);
+  color: #111827;
   line-height: 1.35;
+  letter-spacing: -0.01em;
 }
 .faq-icon {
   width: 32px;
@@ -3832,10 +3838,10 @@ a.btn {
   overflow: hidden;
 }
 .faq-answer-inner p {
-  padding: 0 22px 22px 22px;
-  font-size: 0.9rem;
-  color: var(--color-text-secondary);
-  line-height: 1.65;
+  padding: 0 24px 24px 24px;
+  font-size: 1.02rem;
+  color: #374151;
+  line-height: 1.75;
 }
 
 @media (max-width: 860px) {
@@ -8781,10 +8787,45 @@ a.media-read-badge:hover {
    -------------------------------------------------------------------------- */
 
 .gut-health-page-container,
-.gut-condition-page-container {
+.gut-condition-page-container,
+.sports-content-pages,
+.care-pages,
+.pcos-page,
+.diabetes-page,
+.child-nutrition-page,
+.adhd-page,
+.cn-page {
   width: 100%;
-  overflow-x: hidden;
+  overflow-x: clip;
   background-color: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.gut-health-page-container *,
+.gut-condition-page-container *,
+.sports-content-pages *,
+.care-pages *,
+.pcos-page *,
+.diabetes-page *,
+.child-nutrition-page *,
+.adhd-page *,
+.cn-page * {
+  box-sizing: border-box;
+}
+
+.gut-health-page-container svg,
+.gut-condition-page-container svg,
+.sports-content-pages svg,
+.care-pages svg,
+.pcos-page svg,
+.diabetes-page svg,
+.child-nutrition-page svg,
+.adhd-page svg,
+.cn-page svg {
+  flex-shrink: 0;
+  shape-rendering: geometricPrecision;
 }
 
 /* --- Hero Section --- */
@@ -9093,9 +9134,18 @@ a.media-read-badge:hover {
   color: #556E66;
 }
 
-/* Gut Overview Section (Who Is This Gut Health Program For) */
-.gut-overview-section {
-  padding-top: 20px;
+/* Gut Health & Dropdown Page Section Cadence & Spacing */
+.gut-health-page-container .section,
+.gut-condition-page-container .section,
+.sports-content-pages .section,
+.sports-content-pages .sports-editorial-section,
+.care-pages .section,
+.pcos-page .section,
+.diabetes-page .section,
+.child-nutrition-page .section,
+.adhd-page .section,
+.cn-section {
+  padding: clamp(44px, 5vw, 76px) 0;
 }
 
 .gut-lead-box {
@@ -10174,20 +10224,21 @@ a.media-read-badge:hover {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
 }
 
 .gut-faq-item {
   background: #FFFFFF;
-  border: 1px solid rgba(14, 98, 88, 0.12);
-  border-radius: 14px;
+  border: 1px solid rgba(14, 98, 88, 0.14);
+  border-radius: 16px;
   overflow: hidden;
-  transition: all 0.2s ease;
+  transition: all 0.25s var(--ease-reveal);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
 }
 
 .gut-faq-item.faq-item-open {
   border-color: #0E6258;
-  box-shadow: 0 4px 16px rgba(14, 98, 88, 0.06);
+  box-shadow: 0 6px 20px rgba(14, 98, 88, 0.08);
 }
 
 .gut-faq-question-btn {
@@ -10200,39 +10251,54 @@ a.media-read-badge:hover {
   border: none;
   text-align: left;
   cursor: pointer;
-  color: #17332C;
+  color: #111827;
 }
 
 .faq-num {
-  font-family: var(--font-serif);
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: #C07130;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #0E6258;
   flex-shrink: 0;
 }
 
 .faq-q-text {
-  font-family: var(--font-serif);
-  font-size: 1.05rem;
-  font-weight: 600;
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+  font-weight: 700;
+  color: #111827;
   flex-grow: 1;
-  line-height: 1.4;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
 }
 
 .faq-toggle-icon {
   color: #0E6258;
   flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(14, 98, 88, 0.08);
+  transition: background 0.2s, color 0.2s;
+}
+
+.gut-faq-item.faq-item-open .faq-toggle-icon {
+  background: #0E6258;
+  color: #FFFFFF;
 }
 
 .gut-faq-answer-panel {
-  padding: 0 24px 22px 56px;
+  padding: 0 24px 24px 62px;
   border-top: 1px dashed rgba(14, 98, 88, 0.08);
 }
 
 .faq-a-text {
-  font-size: 0.9rem;
-  line-height: 1.65;
-  color: #4A635D;
+  font-family: var(--font-sans);
+  font-size: 1.02rem;
+  line-height: 1.75;
+  color: #374151;
   margin-top: 14px;
 }
 
@@ -10262,16 +10328,20 @@ a.media-read-badge:hover {
 
 .condition-causes-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 20px;
 }
 
 .cause-card {
   background: #FFFFFF;
-  border: 1px solid rgba(14, 98, 88, 0.12);
+  border: 1px solid rgba(14, 98, 88, 0.14);
   border-radius: 16px;
   padding: 26px 20px;
   box-shadow: 0 4px 14px rgba(14, 98, 88, 0.03);
+  box-sizing: border-box;
+  min-width: 0;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 .cause-card-num {
@@ -10298,7 +10368,7 @@ a.media-read-badge:hover {
 
 .protocol-steps-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 24px;
 }
 
@@ -10308,6 +10378,10 @@ a.media-read-badge:hover {
   border-radius: 18px;
   padding: 30px 24px;
   box-shadow: 0 6px 18px rgba(14, 98, 88, 0.04);
+  box-sizing: border-box;
+  min-width: 0;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 .step-badge {
@@ -10337,16 +10411,20 @@ a.media-read-badge:hover {
 
 .condition-phases-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 24px;
 }
 
 .condition-phase-card {
   background: #FFFFFF;
-  border: 1px solid rgba(14, 98, 88, 0.12);
+  border: 1px solid rgba(14, 98, 88, 0.14);
   border-radius: 16px;
   padding: 28px 24px;
   box-shadow: 0 4px 16px rgba(14, 98, 88, 0.03);
+  box-sizing: border-box;
+  min-width: 0;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 .cond-phase-header {
@@ -10401,12 +10479,14 @@ a.media-read-badge:hover {
 
 .condition-package-card {
   display: grid;
-  grid-template-columns: 1.35fr 0.85fr;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.85fr);
   background: #FFFFFF;
   border: 2px solid #0E6258;
   border-radius: 22px;
   overflow: hidden;
   box-shadow: 0 12px 36px rgba(14, 98, 88, 0.1);
+  box-sizing: border-box;
+  min-width: 0;
 }
 
 .package-card-left {
@@ -10518,13 +10598,13 @@ a.media-read-badge:hover {
 /* Cross-links */
 .crosslinks-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 20px;
 }
 
 .crosslink-card {
   background: #FFFFFF;
-  border: 1px solid rgba(14, 98, 88, 0.12);
+  border: 1px solid rgba(14, 98, 88, 0.14);
   border-radius: 16px;
   padding: 24px 20px;
   display: flex;
@@ -10532,6 +10612,10 @@ a.media-read-badge:hover {
   text-decoration: none;
   transition: all 0.2s ease;
   box-shadow: 0 4px 14px rgba(14, 98, 88, 0.03);
+  box-sizing: border-box;
+  min-width: 0;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 .crosslink-card:hover {
@@ -10711,6 +10795,136 @@ a.media-read-badge:hover {
   }
   .gut-faq-answer-panel {
     padding: 0 16px 16px 16px;
+  }
+}
+
+/* --- Ultra-Wide & TV Display Scaling (1080p / 4K TVs, 1440p+ Displays) --- */
+@media (min-width: 1920px) {
+  .sec-wide,
+  .navbar-container,
+  .page-hero-container,
+  .cn-container,
+  .osmo-footer-container,
+  .hero-editorial-container,
+  .proof-container,
+  .champions-container {
+    max-width: 1540px;
+    padding-left: clamp(24px, 4vw, 56px);
+    padding-right: clamp(24px, 4vw, 56px);
+  }
+  .gut-sec-title,
+  .placeholder-heading,
+  .cn-page h2,
+  .sports-results-heading h2,
+  .sports-audience-intro h2,
+  .care-editorial-grid h2 {
+    font-size: clamp(2.2rem, 2.4vw, 2.8rem);
+  }
+  .gut-hero-title,
+  .page-hero-title {
+    font-size: clamp(2.8rem, 3.2vw, 3.4rem);
+  }
+  .gut-hero-subtitle,
+  .page-hero-blurb {
+    font-size: 1.25rem;
+  }
+  .gut-stats-card,
+  .differentiators-card,
+  .gut-meet-card,
+  .gut-step-action-card,
+  .cause-card,
+  .protocol-step-card,
+  .condition-phase-card,
+  .crosslink-card,
+  .sports-result,
+  .cn-card {
+    padding: clamp(32px, 2.5vw, 44px);
+  }
+  .gut-pillars-grid,
+  .condition-causes-grid,
+  .protocol-steps-grid,
+  .condition-phases-grid,
+  .crosslinks-grid,
+  .sports-results-grid {
+    gap: 28px;
+  }
+  .gut-health-page-container .section,
+  .gut-condition-page-container .section,
+  .sports-content-pages .section,
+  .sports-content-pages .sports-editorial-section,
+  .care-pages .section,
+  .pcos-page .section,
+  .diabetes-page .section,
+  .child-nutrition-page .section,
+  .adhd-page .section,
+  .cn-section {
+    padding: clamp(60px, 5.5vw, 88px) 0;
+  }
+}
+
+@media (min-width: 2560px) {
+  .sec-wide,
+  .navbar-container,
+  .page-hero-container,
+  .cn-container,
+  .osmo-footer-container,
+  .hero-editorial-container,
+  .proof-container,
+  .champions-container {
+    max-width: 1720px;
+    padding-left: clamp(32px, 4.5vw, 72px);
+    padding-right: clamp(32px, 4.5vw, 72px);
+  }
+  .gut-sec-title,
+  .placeholder-heading,
+  .cn-page h2,
+  .sports-results-heading h2,
+  .sports-audience-intro h2,
+  .care-editorial-grid h2 {
+    font-size: 3.1rem;
+  }
+  .gut-hero-title,
+  .page-hero-title {
+    font-size: 3.8rem;
+  }
+  .gut-lead-text,
+  .page-hero-blurb {
+    font-size: 1.15rem;
+    line-height: 1.75;
+  }
+  .approach-card-title,
+  .method-card-title,
+  .inclusions-card-title,
+  .cause-title,
+  .step-title,
+  .cond-phase-title,
+  .package-title,
+  .crosslink-title,
+  .cn-page h3 {
+    font-size: 1.35rem;
+  }
+  .approach-card-desc,
+  .method-card-desc,
+  .inclusions-card-desc,
+  .cause-desc,
+  .step-desc,
+  .cond-phase-desc,
+  .crosslink-desc,
+  .cn-page p {
+    font-size: 0.98rem;
+    line-height: 1.7;
+  }
+  .gut-health-page-container .section,
+  .gut-condition-page-container .section,
+  .sports-content-pages .section,
+  .sports-content-pages .sports-editorial-section,
+  .care-pages .section,
+  .pcos-page .section,
+  .diabetes-page .section,
+  .child-nutrition-page .section,
+  .adhd-page .section,
+  .cn-section {
+    padding: 96px 0;
   }
 }
 

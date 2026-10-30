@@ -16,7 +16,10 @@ import {
   ChevronUp,
   ChevronRight,
   Award,
-  Globe
+  Globe,
+  Clock,
+  Compass,
+  MessageCircle
 } from 'lucide-react'
 import { useSeo } from '../components/Seo'
 import Section from '../components/Section'
@@ -283,7 +286,7 @@ export default function GutHealthPage() {
       </Section>
 
       {/* 7. PROGRAMS & PRICING */}
-      <Section width="wide" bg="base" className="gut-programs-section" id="pricing">
+      <Section width="wide" bg="white" className="gut-programs-section" id="pricing">
         <div className="gut-section-header">
           <span className="gut-sec-eyebrow">TRANSPARENT CLINICAL CARE</span>
           <h2 className="gut-sec-title">Personalized Gut Health Programs & Pricing</h2>
@@ -391,10 +394,34 @@ export default function GutHealthPage() {
           <p className="gut-sec-subtitle">Comprehensive care and clinical touchpoints built into every program.</p>
         </div>
         <div className="gut-pillars-grid">
-          <article className="gut-pillar-card"><h3>Ongoing Online Support</h3><p>Stay supported between consultations through email or WhatsApp for guidance, clarification, and timely course-correction when symptoms or questions arise.</p></article>
-          <article className="gut-pillar-card"><h3>Structured Follow-Ups</h3><p>Your progress is reviewed at regular intervals (typically every 10 days), with personalised adjustments based on symptoms, tolerance, and real-life feedback, not rigid timelines.</p></article>
-          <article className="gut-pillar-card"><h3>Personalised Nutrition Plan with Recipes</h3><p>Receive gut-friendly, Indian-food-based nutrition plans along with practical recipes designed to support digestion, reduce symptoms, and fit seamlessly into daily life.</p></article>
-          <article className="gut-pillar-card"><h3>Lifestyle &amp; Behavioural Guidance</h3><p>Get targeted, expert recommendations to strengthen gut-supportive habits — including meal timing, stress-gut regulation, and sustainable routines that support long-term results.</p></article>
+          <article className="gut-pillar-card">
+            <div className="pillar-icon-box">
+              <MessageCircle size={22} className="pillar-icon" />
+            </div>
+            <h3 className="pillar-title">Ongoing Online Support</h3>
+            <p className="pillar-desc">Stay supported between consultations through email or WhatsApp for guidance, clarification, and timely course-correction when symptoms or questions arise.</p>
+          </article>
+          <article className="gut-pillar-card">
+            <div className="pillar-icon-box">
+              <Clock size={22} className="pillar-icon" />
+            </div>
+            <h3 className="pillar-title">Structured Follow-Ups</h3>
+            <p className="pillar-desc">Your progress is reviewed at regular intervals (typically every 10 days), with personalised adjustments based on symptoms, tolerance, and real-life feedback, not rigid timelines.</p>
+          </article>
+          <article className="gut-pillar-card">
+            <div className="pillar-icon-box">
+              <Utensils size={22} className="pillar-icon" />
+            </div>
+            <h3 className="pillar-title">Personalised Nutrition Plan with Recipes</h3>
+            <p className="pillar-desc">Receive gut-friendly, Indian-food-based nutrition plans along with practical recipes designed to support digestion, reduce symptoms, and fit seamlessly into daily life.</p>
+          </article>
+          <article className="gut-pillar-card">
+            <div className="pillar-icon-box">
+              <Compass size={22} className="pillar-icon" />
+            </div>
+            <h3 className="pillar-title">Lifestyle &amp; Behavioural Guidance</h3>
+            <p className="pillar-desc">Get targeted, expert recommendations to strengthen gut-supportive habits — including meal timing, stress-gut regulation, and sustainable routines that support long-term results.</p>
+          </article>
         </div>
         <div className="gut-included-cta-banner">
           <h3 className="included-cta-title">Join the Gut Health Plan Today!</h3>

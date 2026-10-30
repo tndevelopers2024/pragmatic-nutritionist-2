@@ -24,14 +24,14 @@
 .cn-icon { width: 44px; height: 44px; border-radius: 12px; background: #E8F4EE; color: var(--color-primary); display: inline-grid; place-items: center; flex-shrink: 0; }
 .cn-page .cn-number { color: var(--color-primary); font-size: .85rem; font-weight: 700; }
 .cn-tag { display: inline-block; padding: 4px 10px; border-radius: 6px; color: var(--color-primary); background: #E8F4EE; font-size: .75rem; line-height: 1.6; font-weight: 600; }
-.cn-intro { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 64px); align-items: center; }
+.cn-intro { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 64px); align-items: center; }
 .cn-intro > img { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; border-radius: var(--cn-radius); display: block; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05); }
 .cn-page .cn-intro-copy { font-size: 1.05rem; line-height: 1.85; margin-bottom: 26px; }
 .cn-page .btn { font-family: inherit; font-size: .85rem; line-height: 1.5; white-space: normal; text-align: left; gap: 12px; }
 .cn-page .btn svg { flex-shrink: 0; }
 .cn-page .cn-button-secondary { color: var(--color-primary) !important; background: transparent; border: 1px solid var(--cn-border); box-shadow: none; }
 .cn-page .cn-button-secondary:hover { background: #E8F4EE; }
-.cn-concerns { display: grid; grid-template-columns: .8fr 1.6fr; gap: 40px; }
+.cn-concerns { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.6fr); gap: 40px; }
 .cn-concerns > header { padding-top: 8px; }
 .cn-concern-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 .cn-concern-grid .cn-icon { margin-bottom: 18px; }
@@ -81,14 +81,15 @@
 .cn-consultation > .btn { flex-shrink: 0; max-width: 270px; }
 .cn-consultation p { margin-bottom: 0; }
 .cn-faq-list { max-width: 1000px; margin: auto; }
-.cn-faq-item { background: #fff; border: 1px solid var(--cn-border); border-radius: 12px; overflow: hidden; margin-bottom: 12px; }
-.cn-faq-item.is-open { border-color: var(--color-primary); }
+.cn-faq-item { background: #fff; border: 1px solid rgba(14, 98, 88, 0.14); border-radius: 16px; overflow: hidden; margin-bottom: 14px; transition: all 0.25s var(--ease-reveal); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03); }
+.cn-faq-item.is-open { border-color: #0E6258; box-shadow: 0 6px 20px rgba(14, 98, 88, 0.08); }
 .cn-faq-item > h3 { margin: 0; }
-.cn-page .cn-faq-trigger { display: flex; gap: 16px; align-items: center; width: 100%; padding: 20px; margin: 0; background: transparent; border: 0; color: var(--color-text-main); font-family: inherit; font-size: .95rem; line-height: 1.5; text-align: left; font-weight: 600; cursor: pointer; }
-.cn-faq-number { font-size: .8rem; color: var(--color-primary); flex-shrink: 0; }
-.cn-faq-plus { margin-left: auto; flex-shrink: 0; transition: transform .2s; color: var(--color-primary); }
-.cn-faq-item.is-open .cn-faq-plus { transform: rotate(45deg); }
-.cn-faq-answer { padding: 0 24px 24px 56px; }
+.cn-page .cn-faq-trigger { display: flex; gap: 16px; align-items: center; width: 100%; padding: 20px 24px; margin: 0; background: transparent; border: 0; color: #111827; font-family: var(--font-display); font-size: clamp(1.02rem, 1.3vw, 1.15rem); line-height: 1.35; text-align: left; font-weight: 700; cursor: pointer; letter-spacing: -0.01em; }
+.cn-faq-number { font-family: var(--font-display); font-size: 1rem; font-weight: 800; color: #0E6258; flex-shrink: 0; }
+.cn-faq-plus { margin-left: auto; flex-shrink: 0; transition: transform .25s var(--ease-reveal); color: #0E6258; }
+.cn-faq-item.is-open .cn-faq-plus { transform: rotate(45deg); color: #0E6258; }
+.cn-faq-answer { padding: 0 24px 24px 62px; font-family: var(--font-sans); font-size: 1.02rem; line-height: 1.75; color: #374151; }
+.cn-faq-answer p { margin-bottom: 12px; }
 .cn-faq-answer p:last-child { margin-bottom: 0; }
 .cn-contact-line { max-width: 1000px; margin: 24px auto 0; padding-top: 24px; border-top: 1px solid var(--cn-border); display: flex; justify-content: space-between; align-items: center; gap: 24px; }
 .cn-contact-line > h3 { margin: 0; }
