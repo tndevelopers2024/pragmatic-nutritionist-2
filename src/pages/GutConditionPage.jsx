@@ -109,134 +109,126 @@ export default function GutConditionPage({ conditionSlug }) {
 
       {/* 2. ROOT CAUSES BREAKDOWN */}
       <Section width="wide" bg="base" className="condition-root-causes-section">
-        <div className="sec-wide">
-          <div className="gut-section-header">
-            <span className="gut-sec-eyebrow">CLINICAL ETIOLOGY</span>
-            <h2 className="gut-sec-title">What Is Actually Driving Your Symptoms?</h2>
-            <p className="gut-sec-subtitle">
-              Digestive distress isn't random. Understanding the underlying biochemical and motility factors is the first step toward lasting healing.
-            </p>
-          </div>
+        <div className="gut-section-header">
+          <span className="gut-sec-eyebrow">CLINICAL ETIOLOGY</span>
+          <h2 className="gut-sec-title">What Is Actually Driving Your Symptoms?</h2>
+          <p className="gut-sec-subtitle">
+            Digestive distress isn't random. Understanding the underlying biochemical and motility factors is the first step toward lasting healing.
+          </p>
+        </div>
 
-          <div className="condition-causes-grid">
-            {condition.rootCauses.map((cause, idx) => (
-              <div key={idx} className="cause-card">
-                <div className="cause-card-num">0{idx + 1}</div>
-                <h3 className="cause-title">{cause.title}</h3>
-                <p className="cause-desc">{cause.desc}</p>
-              </div>
-            ))}
-          </div>
+        <div className="condition-causes-grid">
+          {condition.rootCauses.map((cause, idx) => (
+            <div key={idx} className="cause-card">
+              <div className="cause-card-num">0{idx + 1}</div>
+              <h3 className="cause-title">{cause.title}</h3>
+              <p className="cause-desc">{cause.desc}</p>
+            </div>
+          ))}
         </div>
       </Section>
 
       {/* 3. THE FOOD-FIRST INDIAN PROTOCOL */}
       <Section width="wide" bg="alt" className="condition-protocol-section">
-        <div className="sec-wide">
-          <div className="gut-section-header">
-            <span className="gut-sec-eyebrow">EVIDENCE-BASED NUTRITION</span>
-            <h2 className="gut-sec-title">The Food-First Clinical Protocol</h2>
-            <p className="gut-sec-subtitle">
-              We modify your home cooking methods, spice ratios, and meal timing to soothe your gut while keeping meals satisfying and culturally familiar.
-            </p>
-          </div>
+        <div className="gut-section-header">
+          <span className="gut-sec-eyebrow">EVIDENCE-BASED NUTRITION</span>
+          <h2 className="gut-sec-title">The Food-First Clinical Protocol</h2>
+          <p className="gut-sec-subtitle">
+            We modify your home cooking methods, spice ratios, and meal timing to soothe your gut while keeping meals satisfying and culturally familiar.
+          </p>
+        </div>
 
-          <div className="protocol-steps-grid">
-            {condition.protocolPoints.map((pt, i) => (
-              <div key={i} className="protocol-step-card">
-                <div className="step-badge">Step {pt.step}</div>
-                <h3 className="step-title">{pt.title}</h3>
-                <p className="step-desc">{pt.desc}</p>
-              </div>
-            ))}
-          </div>
+        <div className="protocol-steps-grid">
+          {condition.protocolPoints.map((pt, i) => (
+            <div key={i} className="protocol-step-card">
+              <div className="step-badge">Step {pt.step}</div>
+              <h3 className="step-title">{pt.title}</h3>
+              <p className="step-desc">{pt.desc}</p>
+            </div>
+          ))}
         </div>
       </Section>
 
       {/* 4. 3-PHASE RECOVERY ROADMAP */}
       <Section width="wide" bg="base" className="condition-roadmap-section">
-        <div className="sec-wide">
-          <div className="gut-section-header">
-            <span className="gut-sec-eyebrow">RECOVERY TIMELINE</span>
-            <h2 className="gut-sec-title">How Your Gut Restores Progressively</h2>
-            <p className="gut-sec-subtitle">
-              Healing takes place in structured stages to avoid overwhelming an inflamed digestive tract.
-            </p>
-          </div>
+        <div className="gut-section-header">
+          <span className="gut-sec-eyebrow">RECOVERY TIMELINE</span>
+          <h2 className="gut-sec-title">How Your Gut Restores Progressively</h2>
+          <p className="gut-sec-subtitle">
+            Healing takes place in structured stages to avoid overwhelming an inflamed digestive tract.
+          </p>
+        </div>
 
-          <div className="condition-phases-grid">
-            {THREE_PHASE_ROADMAP.map((ph) => (
-              <div key={ph.step} className="condition-phase-card">
-                <div className="cond-phase-header">
-                  <span className="cond-step-num">{ph.step}</span>
-                  <span className="cond-phase-timeline">{ph.timeline}</span>
-                </div>
-                <h3 className="cond-phase-title">{ph.phase}</h3>
-                <h4 className="cond-phase-subtitle">{ph.title}</h4>
-                <p className="cond-phase-desc">{ph.desc}</p>
+        <div className="condition-phases-grid">
+          {THREE_PHASE_ROADMAP.map((ph) => (
+            <div key={ph.step} className="condition-phase-card">
+              <div className="cond-phase-header">
+                <span className="cond-step-num">{ph.step}</span>
+                <span className="cond-phase-timeline">{ph.timeline}</span>
               </div>
-            ))}
-          </div>
+              <h3 className="cond-phase-title">{ph.phase}</h3>
+              <h4 className="cond-phase-subtitle">{ph.title}</h4>
+              <p className="cond-phase-desc">{ph.desc}</p>
+            </div>
+          ))}
         </div>
       </Section>
 
       {/* 5. RECOMMENDED PROGRAM PACKAGE */}
       <Section width="wide" bg="alt" className="condition-recommended-package-section">
-        <div className="sec-wide">
-          <div className="gut-section-header">
-            <span className="gut-sec-eyebrow">RECOMMENDED PROTOCOL</span>
-            <h2 className="gut-sec-title">Recommended Clinical Program For This Condition</h2>
-            <p className="gut-sec-subtitle">
-              Based on clinical timelines for gut mucosal repair and symptom resolution, here is our targeted care package.
-            </p>
-          </div>
+        <div className="gut-section-header">
+          <span className="gut-sec-eyebrow">RECOMMENDED PROTOCOL</span>
+          <h2 className="gut-sec-title">Recommended Clinical Program For This Condition</h2>
+          <p className="gut-sec-subtitle">
+            Based on clinical timelines for gut mucosal repair and symptom resolution, here is our targeted care package.
+          </p>
+        </div>
 
-          <div className="condition-package-card-wrap">
-            <div className="condition-package-card">
-              <div className="package-card-left">
-                <span className="package-tier-badge">{recommendedProgram.badge}</span>
-                <h3 className="package-title">{recommendedProgram.title}</h3>
-                <p className="package-ideal">
-                  <strong>Designed for:</strong> {recommendedProgram.idealFor}
-                </p>
+        <div className="condition-package-card-wrap">
+          <div className="condition-package-card">
+            <div className="package-card-left">
+              <span className="package-tier-badge">{recommendedProgram.badge}</span>
+              <h3 className="package-title">{recommendedProgram.title}</h3>
+              <p className="package-ideal">
+                <strong>Designed for:</strong> {recommendedProgram.idealFor}
+              </p>
 
-                <div className="package-features-block">
-                  <strong>Program Inclusions:</strong>
-                  <ul>
-                    {recommendedProgram.features.map((f, i) => (
-                      <li key={i}>
-                        <CheckCircle2 size={16} className="feature-check" />
-                        <span>{f}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+              <div className="package-features-block">
+                <strong>Program Inclusions:</strong>
+                <ul>
+                  {recommendedProgram.features.map((f, i) => (
+                    <li key={i}>
+                      <CheckCircle2 size={16} className="feature-check" />
+                      <span>{f}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <div className="package-card-right">
+              <div className="package-price-tag">
+                <span className="tag-currency">{recommendedProgram.currency}</span>
+                <span className="tag-amount">{recommendedProgram.price}</span>
+                <span className="tag-duration">{recommendedProgram.duration}</span>
               </div>
 
-              <div className="package-card-right">
-                <div className="package-price-tag">
-                  <span className="tag-currency">{recommendedProgram.currency}</span>
-                  <span className="tag-amount">{recommendedProgram.price}</span>
-                  <span className="tag-duration">{recommendedProgram.duration}</span>
-                </div>
+              <button
+                type="button"
+                className="clinical-btn-primary w-full"
+                onClick={openBook}
+              >
+                <span>Book Free Discovery Call</span>
+                <ArrowRight size={16} />
+              </button>
 
-                <button
-                  type="button"
-                  className="clinical-btn-primary w-full"
-                  onClick={openBook}
-                >
-                  <span>Book Free Discovery Call</span>
-                  <ArrowRight size={16} />
-                </button>
-
-                <p className="package-note">
-                  Need a different program? Explore all our{' '}
-                  <Link to="/gut-health#pricing" className="text-leaf underline">
-                    Gut Health Programs
-                  </Link>
-                  .
-                </p>
-              </div>
+              <p className="package-note">
+                Need a different program? Explore all our{' '}
+                <Link to="/gut-health#pricing" className="text-leaf underline">
+                  Gut Health Programs
+                </Link>
+                .
+              </p>
             </div>
           </div>
         </div>
@@ -244,51 +236,48 @@ export default function GutConditionPage({ conditionSlug }) {
 
       {/* 6. CONDITION FREQUENTLY ASKED QUESTIONS */}
       <Section width="wide" bg="base" className="condition-faq-section">
-        <div className="sec-wide">
-          <div className="gut-section-header">
-            <span className="gut-sec-eyebrow">COMMON QUERIES</span>
-            <h2 className="gut-sec-title">Questions About {condition.heroBadge}</h2>
-          </div>
+        <div className="gut-section-header">
+          <span className="gut-sec-eyebrow">COMMON QUERIES</span>
+          <h2 className="gut-sec-title">Questions About {condition.heroBadge}</h2>
+        </div>
 
-          <div className="gut-faq-accordion-list">
-            {condition.faq.map((item, idx) => {
-              const isOpen = activeFaq === idx
-              return (
-                <div key={idx} className={`gut-faq-item ${isOpen ? 'faq-item-open' : ''}`}>
-                  <button
-                    type="button"
-                    className="gut-faq-question-btn"
-                    onClick={() => setActiveFaq(isOpen ? -1 : idx)}
-                    aria-expanded={isOpen}
-                  >
-                    <span className="faq-num">0{idx + 1}</span>
-                    <span className="faq-q-text">{item.q}</span>
-                    <span className="faq-toggle-icon">
-                      {isOpen ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
-                    </span>
-                  </button>
+        <div className="gut-faq-accordion-list">
+          {condition.faq.map((item, idx) => {
+            const isOpen = activeFaq === idx
+            return (
+              <div key={idx} className={`gut-faq-item ${isOpen ? 'faq-item-open' : ''}`}>
+                <button
+                  type="button"
+                  className="gut-faq-question-btn"
+                  onClick={() => setActiveFaq(isOpen ? -1 : idx)}
+                  aria-expanded={isOpen}
+                >
+                  <span className="faq-num">0{idx + 1}</span>
+                  <span className="faq-q-text">{item.q}</span>
+                  <span className="faq-toggle-icon">
+                    {isOpen ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
+                  </span>
+                </button>
 
-                  {isOpen && (
-                    <div className="gut-faq-answer-panel">
-                      <p className="faq-a-text">{item.a}</p>
-                    </div>
-                  )}
-                </div>
-              )
-            })}
-          </div>
+                {isOpen && (
+                  <div className="gut-faq-answer-panel">
+                    <p className="faq-a-text">{item.a}</p>
+                  </div>
+                )}
+              </div>
+            )
+          })}
         </div>
       </Section>
 
       {/* 7. CROSS-LINKS TO RELATED SUB-PAGES */}
       <Section width="wide" bg="alt" className="condition-crosslinks-section">
-        <div className="sec-wide">
-          <div className="gut-section-header">
-            <span className="gut-sec-eyebrow">RELATED CONDITIONS</span>
-            <h2 className="gut-sec-title">Explore Other Specialized Gut Protocols</h2>
-          </div>
+        <div className="gut-section-header">
+          <span className="gut-sec-eyebrow">RELATED CONDITIONS</span>
+          <h2 className="gut-sec-title">Explore Other Specialized Gut Protocols</h2>
+        </div>
 
-          <div className="crosslinks-grid">
+        <div className="crosslinks-grid">
             <Link to="/gut-health" className="crosslink-card main-hub-card">
               <span className="crosslink-tag">Clinical Hub</span>
               <h3 className="crosslink-title">All Gut Health Programs & Methodology</h3>
@@ -316,8 +305,7 @@ export default function GutConditionPage({ conditionSlug }) {
               )
             })}
           </div>
-        </div>
-      </Section>
+        </Section>
 
       {/* 8. CTA BAND */}
       <CtaBand

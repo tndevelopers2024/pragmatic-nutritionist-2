@@ -42,7 +42,12 @@
 .blog-table th { background: #f3f7f5; font-weight: 700; color: var(--color-text-primary); }
 .blog-table tr:nth-child(even) { background: #fafbfc; }
 
-/* Collapsible FAQs / Accordions */
+/* Open FAQ Blocks (Matching live site) */
+.blog-faq-block { margin: 28px 0; }
+.blog-faq-question { font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; color: #17332c; margin: 0 0 10px; line-height: 1.4; }
+.blog-faq-answer p { margin: 0 0 16px; color: #374151; font-size: 1.02rem; line-height: 1.8; }
+
+/* Collapsible FAQs fallback */
 .blog-faq-item { margin: 16px 0; border: 1px solid var(--color-border-subtle); border-radius: var(--radius-card); background: #ffffff; overflow: hidden; transition: border-color 0.2s; }
 .blog-faq-item[open] { border-color: var(--color-primary); }
 .blog-faq-item summary { padding: 16px 20px; font-weight: 700; font-size: 1.05rem; cursor: pointer; background: #fdfdfd; list-style: none; display: flex; align-items: center; justify-content: space-between; user-select: none; }
@@ -51,9 +56,23 @@
 .blog-faq-item[open] summary::after { content: '−'; }
 .blog-faq-body { padding: 16px 20px 20px; border-top: 1px solid var(--color-border-subtle); color: var(--color-text-secondary); line-height: 1.75; }
 
-/* Media */
-.blog-media { margin: 28px 0; text-align: center; }
-.blog-media img { max-width: 100%; border-radius: var(--radius-card); }
+/* Media & Infographics */
+.blog-media { margin: 36px 0; text-align: center; width: 100%; }
+.blog-media img { display: block; width: 100%; max-width: 100%; height: auto; object-fit: contain; border-radius: 12px; margin: 0 auto; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); }
+
+/* References & Citations */
+.blog-article-body ol { margin: 0 0 28px; padding-left: 24px; color: #374151; }
+.blog-article-body ol li { margin-bottom: 14px; line-height: 1.7; font-size: 0.95rem; }
+.blog-article-body ol li p { margin: 0; }
+.blog-article-body a[href*="pubmed"],
+.blog-article-body a[href*="ncbi.nlm.nih.gov"],
+.blog-article-body a[href*="doi.org"],
+.blog-article-body a[href*="pmc.ncbi.nlm.nih.gov"] {
+  color: #0e6258;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  word-break: break-all;
+}
 
 /* Author Box */
 .blog-author-card { display: flex; gap: 20px; align-items: center; margin-top: 40px; padding: 24px; border-radius: var(--radius-card); background: #f8faf9; border: 1px solid var(--color-border-subtle); }
