@@ -15,7 +15,8 @@ import {
   ChevronDown,
   ChevronUp,
   ChevronRight,
-  Award
+  Award,
+  Globe
 } from 'lucide-react'
 import { useSeo } from '../components/Seo'
 import Section from '../components/Section'
@@ -163,15 +164,123 @@ export default function GutHealthPage() {
         </div>
       </header>
 
-      <Section width="wide" bg="base" className="gut-symptoms-section" title="Who Is This Gut Health Program For?">
-        <p className="lead">Persistent bloating, IBS-type symptoms, SIBO, acid reflux, constipation, diarrhoea, and food intolerances can feel overwhelming, especially after trying multiple diets, supplements, or quick-fix remedies. The problem is rarely a lack of willpower. It is almost always a lack of clarity about what is actually driving your gut issues.</p>
-        <p>At Pragmatic Nutrition, we take a holistic, behaviour-first approach. Rather than prescribing a generic diet chart, we focus on understanding why your digestion reacts the way it does, and design practical strategies that fit real life, including your work schedule, family routine, and Indian eating habits.</p>
-        <p>When clinically appropriate, we use advanced gut testing including GI-MAP, stool microbiome analysis, and SIBO breath testing to identify root causes with precision. Targeted supplement and probiotic support is used selectively, reviewed regularly, and never recommended as a default. All nutrition strategies are adapted to Indian food culture, alongside lifestyle and stress-gut modulation tools that support long-term healing.</p>
-        <p>Online consultations are available across India and internationally for clients in the USA, UK, Australia, and the Middle East. In-person appointments are available at our Chennai clinic.</p>
-        <h3>Why This Program Works</h3>
-        <p>Every program follows a structured three-phase journey: Reset, Restore, and Rebuild, so your gut has time to heal progressively rather than being overwhelmed all at once. We use a hybrid model combining online and in-clinic support, lab test interpretation with data-backed tracking, gut-friendly Indian meal plans, and behaviour-based guidance that delivers sustainable results within weeks, not months of guesswork.</p>
-        <h3>Every Gut Health Program Includes</h3>
-        <p>Each program comes with an online initial assessment via video call, a personalised gut health plan with recipes, follow-up support over WhatsApp or email, ongoing symptom tracking with plan adjustments, and evidence-driven nutrition guidance rooted in digestive physiology and behavioural science.</p>
+      {/* 3. WHO IS THIS GUT HEALTH PROGRAM FOR? */}
+      <Section width="wide" bg="base" className="gut-overview-section" id="who-it-is-for">
+        <div className="sec-wide">
+          <div className="gut-section-header">
+            <span className="gut-sec-eyebrow">CLINICAL GUT RESTORATION</span>
+            <h2 className="gut-sec-title">Who Is This Gut Health Program For?</h2>
+            <div className="gut-lead-box">
+              <p className="lead gut-lead-text">
+                Persistent bloating, IBS-type symptoms, SIBO, acid reflux, constipation, diarrhoea, and food intolerances can feel overwhelming, especially after trying multiple diets, supplements, or quick-fix remedies. The problem is rarely a lack of willpower. It is almost always a lack of clarity about what is actually driving your gut issues.
+              </p>
+            </div>
+          </div>
+
+          <div className="gut-approach-cards-grid">
+            <div className="gut-approach-card">
+              <div className="approach-card-header">
+                <div className="approach-icon-wrap">
+                  <Utensils size={22} className="approach-icon" />
+                </div>
+                <span className="approach-badge">BEHAVIOUR-FIRST</span>
+              </div>
+              <h3 className="approach-card-title">Holistic, Behaviour-First Approach</h3>
+              <p className="approach-card-desc">
+                At Pragmatic Nutrition, we take a holistic, behaviour-first approach. Rather than prescribing a generic diet chart, we focus on understanding why your digestion reacts the way it does, and design practical strategies that fit real life, including your work schedule, family routine, and Indian eating habits.
+              </p>
+            </div>
+
+            <div className="gut-approach-card">
+              <div className="approach-card-header">
+                <div className="approach-icon-wrap">
+                  <Stethoscope size={22} className="approach-icon" />
+                </div>
+                <span className="approach-badge">TARGETED SCIENCE</span>
+              </div>
+              <h3 className="approach-card-title">Advanced Gut Testing & Targeted Support</h3>
+              <p className="approach-card-desc">
+                When clinically appropriate, we use advanced gut testing including GI-MAP, stool microbiome analysis, and SIBO breath testing to identify root causes with precision. Targeted supplement and probiotic support is used selectively, reviewed regularly, and never recommended as a default. All nutrition strategies are adapted to Indian food culture, alongside lifestyle and stress-gut modulation tools that support long-term healing.
+              </p>
+            </div>
+
+            <div className="gut-approach-card">
+              <div className="approach-card-header">
+                <div className="approach-icon-wrap">
+                  <Globe size={22} className="approach-icon" />
+                </div>
+                <span className="approach-badge">HYBRID CARE</span>
+              </div>
+              <h3 className="approach-card-title">Online & In-Clinic Consultations</h3>
+              <p className="approach-card-desc">
+                Online consultations are available across India and internationally for clients in the USA, UK, Australia, and the Middle East. In-person appointments are available at our Chennai clinic.
+              </p>
+            </div>
+          </div>
+
+          <div className="gut-overview-dual-grid">
+            {/* Why This Program Works */}
+            <div className="gut-method-card">
+              <div className="method-card-badge-wrap">
+                <span className="method-tag">STRUCTURED METHODOLOGY</span>
+              </div>
+              <h3 className="method-card-title">Why This Program Works</h3>
+              <p className="method-card-desc">
+                Every program follows a structured three-phase journey: Reset, Restore, and Rebuild, so your gut has time to heal progressively rather than being overwhelmed all at once. We use a hybrid model combining online and in-clinic support, lab test interpretation with data-backed tracking, gut-friendly Indian meal plans, and behaviour-based guidance that delivers sustainable results within weeks, not months of guesswork.
+              </p>
+              <div className="method-phases-pills">
+                <div className="method-phase-pill">
+                  <span className="phase-pill-num">01</span>
+                  <span className="phase-pill-text">Reset</span>
+                </div>
+                <span className="method-phase-arrow" aria-hidden="true">→</span>
+                <div className="method-phase-pill">
+                  <span className="phase-pill-num">02</span>
+                  <span className="phase-pill-text">Restore</span>
+                </div>
+                <span className="method-phase-arrow" aria-hidden="true">→</span>
+                <div className="method-phase-pill">
+                  <span className="phase-pill-num">03</span>
+                  <span className="phase-pill-text">Rebuild</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Every Gut Health Program Includes */}
+            <div className="gut-inclusions-card">
+              <div className="method-card-badge-wrap">
+                <span className="method-tag method-tag-alt">WHAT’S INCLUDED</span>
+              </div>
+              <h3 className="inclusions-card-title">Every Gut Health Program Includes</h3>
+              <p className="inclusions-card-desc">
+                Each program comes with an online initial assessment via video call, a personalised gut health plan with recipes, follow-up support over WhatsApp or email, ongoing symptom tracking with plan adjustments, and evidence-driven nutrition guidance rooted in digestive physiology and behavioural science.
+              </p>
+              
+              <div className="inclusions-pill-grid">
+                <div className="inclusion-item">
+                  <CheckCircle2 size={16} className="inclusion-check" />
+                  <span>Online initial assessment via video call</span>
+                </div>
+                <div className="inclusion-item">
+                  <CheckCircle2 size={16} className="inclusion-check" />
+                  <span>Personalised gut health plan with recipes</span>
+                </div>
+                <div className="inclusion-item">
+                  <CheckCircle2 size={16} className="inclusion-check" />
+                  <span>Follow-up support over WhatsApp or email</span>
+                </div>
+                <div className="inclusion-item">
+                  <CheckCircle2 size={16} className="inclusion-check" />
+                  <span>Ongoing symptom tracking with plan adjustments</span>
+                </div>
+                <div className="inclusion-item">
+                  <CheckCircle2 size={16} className="inclusion-check" />
+                  <span>Evidence-driven nutrition guidance rooted in digestive physiology & behavioural science</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </Section>
 
       {/* 7. PROGRAMS & PRICING */}

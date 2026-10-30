@@ -9093,6 +9093,217 @@ a.media-read-badge:hover {
   color: #556E66;
 }
 
+/* Gut Overview Section (Who Is This Gut Health Program For) */
+.gut-overview-section {
+  padding-top: 20px;
+}
+
+.gut-lead-box {
+  background: #FFFFFF;
+  border-left: 4px solid #0E6258;
+  border-radius: 0 14px 14px 0;
+  padding: 24px 28px;
+  box-shadow: 0 4px 16px rgba(14, 98, 88, 0.04);
+  margin: 18px 0 32px;
+}
+
+.gut-lead-text {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #2D4A41;
+  margin: 0;
+}
+
+.gut-approach-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.gut-approach-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(14, 98, 88, 0.12);
+  border-radius: 16px;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 16px rgba(14, 98, 88, 0.03);
+}
+
+.gut-approach-card:hover {
+  border-color: #0E6258;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(14, 98, 88, 0.08);
+}
+
+.approach-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.approach-icon-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(14, 98, 88, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0E6258;
+}
+
+.approach-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: rgba(192, 113, 48, 0.1);
+  color: #C07130;
+  text-transform: uppercase;
+}
+
+.approach-card-title {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #17332C;
+  margin-bottom: 12px;
+  line-height: 1.35;
+}
+
+.approach-card-desc {
+  font-size: 0.88rem;
+  line-height: 1.62;
+  color: #556E66;
+  margin: 0;
+}
+
+.gut-overview-dual-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 10px;
+}
+
+.gut-method-card,
+.gut-inclusions-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(14, 98, 88, 0.12);
+  border-radius: 18px;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 18px rgba(14, 98, 88, 0.04);
+}
+
+.method-card-badge-wrap {
+  margin-bottom: 14px;
+}
+
+.method-tag {
+  display: inline-block;
+  padding: 4px 10px;
+  background: rgba(14, 98, 88, 0.1);
+  color: #0E6258;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  border-radius: 6px;
+  text-transform: uppercase;
+}
+
+.method-tag-alt {
+  background: rgba(72, 184, 150, 0.15);
+  color: #0E6258;
+}
+
+.method-card-title,
+.inclusions-card-title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #17332C;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.method-card-desc,
+.inclusions-card-desc {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: #556E66;
+  margin-bottom: 20px;
+}
+
+.method-phases-pills {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 18px;
+  border-top: 1px dashed rgba(14, 98, 88, 0.16);
+}
+
+.method-phase-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #F4F8F6;
+  border: 1px solid rgba(14, 98, 88, 0.14);
+  border-radius: 10px;
+  padding: 8px 14px;
+  flex: 1;
+  justify-content: center;
+}
+
+.phase-pill-num {
+  font-family: var(--font-serif);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #C07130;
+}
+
+.phase-pill-text {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #17332C;
+}
+
+.method-phase-arrow {
+  color: #0E6258;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.inclusions-pill-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 18px;
+  border-top: 1px dashed rgba(14, 98, 88, 0.16);
+}
+
+.inclusion-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.86rem;
+  line-height: 1.45;
+  color: #2D4A41;
+}
+
+.inclusion-check {
+  color: #0E6258;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
 /* Symptoms Grid */
 .gut-symptoms-grid {
   display: grid;
@@ -10261,12 +10472,20 @@ a.media-read-badge:hover {
     grid-template-columns: 1fr;
     gap: 28px;
   }
+  .gut-approach-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 768px) {
   .gut-hero-section,
   .gut-condition-hero {
     padding: 28px 0 40px;
+  }
+  .gut-approach-cards-grid,
+  .gut-overview-dual-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
   .gut-symptoms-grid,
   .gut-phases-grid,
@@ -10303,6 +10522,20 @@ a.media-read-badge:hover {
 }
 
 @media (max-width: 480px) {
+  .gut-lead-box {
+    padding: 18px 20px;
+  }
+  .gut-method-card,
+  .gut-inclusions-card {
+    padding: 24px 20px;
+  }
+  .method-phases-pills {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .method-phase-arrow {
+    display: none;
+  }
   .gut-hero-actions,
   .condition-hero-actions {
     flex-direction: column;
