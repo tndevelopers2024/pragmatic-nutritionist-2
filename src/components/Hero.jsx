@@ -85,26 +85,6 @@ export default function Hero() {
                 </a>
               </div>
             </div>
-
-            {/* 4 Clinical Credential Pills */}
-            <div className="hero-credentials-pills-grid" aria-label="Professional qualifications">
-              <div className="hero-credential-pill">
-                <CheckCircle2 size={16} strokeWidth={2.5} className="pill-check-icon" aria-hidden="true" />
-                <span>Registered Clinical Nutritionist (14+ Years)</span>
-              </div>
-              <div className="hero-credential-pill">
-                <CheckCircle2 size={16} strokeWidth={2.5} className="pill-check-icon" aria-hidden="true" />
-                <span>M.H.Sc Food Science &amp; Nutrition</span>
-              </div>
-              <div className="hero-credential-pill">
-                <CheckCircle2 size={16} strokeWidth={2.5} className="pill-check-icon" aria-hidden="true" />
-                <span>ICAR JRF &amp; UGC NET JRF Qualified</span>
-              </div>
-              <div className="hero-credential-pill">
-                <CheckCircle2 size={16} strokeWidth={2.5} className="pill-check-icon" aria-hidden="true" />
-                <span>Peer Reviewer, European Journal of Nutrition</span>
-              </div>
-            </div>
           </div>
         </div>
 
@@ -141,6 +121,26 @@ export default function Hero() {
               <CheckCircle2 size={13} className="tag-check" />
               <span>Root-Cause Indian Nutrition</span>
             </div>
+          </div>
+        </div>
+
+        {/* Credentials strip: full-width row beneath both columns so nothing is cut at the fold */}
+        <div className="hero-credentials-pills-grid" aria-label="Professional qualifications">
+          <div className="hero-credential-pill">
+            <CheckCircle2 size={16} strokeWidth={2.5} className="pill-check-icon" aria-hidden="true" />
+            <span>Registered Clinical Nutritionist (14+ Years)</span>
+          </div>
+          <div className="hero-credential-pill">
+            <CheckCircle2 size={16} strokeWidth={2.5} className="pill-check-icon" aria-hidden="true" />
+            <span>M.H.Sc Food Science &amp; Nutrition</span>
+          </div>
+          <div className="hero-credential-pill">
+            <CheckCircle2 size={16} strokeWidth={2.5} className="pill-check-icon" aria-hidden="true" />
+            <span>ICAR JRF &amp; UGC NET JRF Qualified</span>
+          </div>
+          <div className="hero-credential-pill">
+            <CheckCircle2 size={16} strokeWidth={2.5} className="pill-check-icon" aria-hidden="true" />
+            <span>Peer Reviewer, European Journal of Nutrition</span>
           </div>
         </div>
       </div>

@@ -7,7 +7,6 @@ import ResultsFilter from '../components/ResultsFilter'
 import WhyPragmatic from '../components/WhyPragmatic'
 import Timeline from '../components/Timeline'
 import GutAssessmentSection from '../components/GutAssessmentSection'
-import MeetMeenu from '../components/MeetMeenu'
 import Faq from '../components/Faq'
 import CtaBand from '../components/CtaBand'
 
@@ -39,8 +38,6 @@ export default function Home() {
       {/* 7. Structured Methodology: 3-Phase Path to Lasting Vitality */}
       <Timeline />
 
-      {/* 8. Clinical Founder Bio & Realistic Awards 2026 */}
-      <MeetMeenu variant="home" />
 
       {/* 9. Comprehensive Gut Health Assessment Spotlight */}
       <GutAssessmentSection />
