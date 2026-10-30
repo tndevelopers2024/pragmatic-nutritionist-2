@@ -33,7 +33,7 @@ function ContentSection({ title, children, icon, eyebrow, className = '' }) {
 
 function Paragraphs({ items }) {
   const openBook = useBook()
-  return items.map(text => text.startsWith('🔗 Book') ? (
+  return items.map(text => /^(Book your Sports Nutrition|Book a Sports Nutrition)/i.test(text) ? (
     <p key={text}>
       <button type="button" className="btn btn-primary" onClick={openBook}>
         {text}<ArrowRight size={14} aria-hidden="true" />
@@ -174,7 +174,7 @@ function CompetitiveContent({ page }) {
           <img className="competitive-concerns-image" src={competitivePhoto} alt="Athlete taking a hydration break after training" loading="lazy" />
           <div className="competitive-concerns-list">
             <h3>{page.concerns.title}</h3>
-            {page.concerns.items.map(text => <p key={text}>{text.replace(/^[⚡🏃💪🩺]\s*/u, '')}</p>)}
+            {page.concerns.items.map(text => <p key={text}>{text}</p>)}
           </div>
         </div>
       </Section>

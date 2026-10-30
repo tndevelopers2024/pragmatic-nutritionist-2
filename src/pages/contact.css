@@ -20,9 +20,14 @@
 
 .contact-grid {
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
   gap: clamp(32px, 5vw, 64px);
   align-items: start;
+}
+
+.contact-info-col,
+.contact-form-panel {
+  min-width: 0;
 }
 
 /* Left Column */
@@ -113,6 +118,7 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
+  min-width: 0;
 }
 
 .contact-channel-label {
@@ -128,6 +134,7 @@
   font-weight: 600;
   color: var(--color-text-main);
   text-decoration: none;
+  overflow-wrap: anywhere;
 }
 
 .contact-channel-value:hover {
@@ -405,7 +412,7 @@
 /* Responsive adjustments */
 @media (max-width: 960px) {
   .contact-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 40px;
   }
   .contact-discovery-card {
@@ -419,6 +426,14 @@
   }
   .contact-trust-divider {
     display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-input,
+  .contact-select,
+  .contact-textarea {
+    font-size: 1rem;
   }
 }
 

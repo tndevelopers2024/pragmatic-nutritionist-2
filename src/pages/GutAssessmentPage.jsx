@@ -3,14 +3,12 @@ import {
   Smile,
   Meh,
   Frown,
-  CheckCircle2,
   Droplet,
   Flame,
   ShieldCheck,
   ArrowRight,
   ArrowLeft,
   RotateCcw,
-  Clock,
   HeartPulse,
   Activity,
   Calendar,
@@ -23,6 +21,7 @@ import {
   Check,
   Info
 } from 'lucide-react'
+import PageHero from '../components/PageHero'
 import WhatsAppIcon from '../components/WhatsAppIcon'
 import { useSeo } from '../components/Seo'
 import { useBook } from '../context/bookContext'
@@ -187,7 +186,6 @@ export default function GutAssessmentPage() {
         bgTint: '#E6F0DC',
         accentBg: '#C1E899',
         icon: Smile,
-        emoji: '🌿',
         statusTag: 'Higher quiz score',
         mood: 'Higher quiz score',
         actionAdvice:
@@ -208,7 +206,6 @@ export default function GutAssessmentPage() {
         bgTint: '#FBF6F0',
         accentBg: '#F2E7DC',
         icon: Meh,
-        emoji: '⚠️',
         statusTag: 'Middle quiz score',
         mood: 'Middle quiz score',
         actionAdvice:
@@ -229,7 +226,6 @@ export default function GutAssessmentPage() {
         bgTint: '#FDF2F0',
         accentBg: '#FCE4E1',
         icon: Frown,
-        emoji: '🚨',
         statusTag: 'Lower quiz score',
         mood: 'Lower quiz score',
         actionAdvice:
@@ -277,38 +273,7 @@ export default function GutAssessmentPage() {
   return (
     <div className="gut-assessment-page-root">
       {/* 1. EDITORIAL HERO HEADER */}
-      <section className="assessment-editorial-hero">
-        <div className="assessment-hero-inner">
-          <div className="assessment-hero-eyebrow-pill">
-            <span className="eyebrow-pulse-dot" aria-hidden="true" />
-            <span className="eyebrow-label">SELF-REPORTED SYMPTOMS</span>
-          </div>
-
-          <h1 className="assessment-editorial-title">
-            <span>Free Gut Health </span>
-            <span className="title-accent-highlight">Assessment Quiz</span>
-          </h1>
-
-          <p className="assessment-editorial-lead">
-            Reflect on your symptoms and habits with this short self-report quiz. The score is a simple summary of your answers, not a validated clinical assessment or diagnosis.
-          </p>
-
-          <div className="assessment-credential-strip">
-            <div className="credential-badge">
-              <CheckCircle2 size={15} className="cred-icon" aria-hidden="true" />
-              <span>Simple self-report quiz</span>
-            </div>
-            <div className="credential-badge">
-              <ShieldCheck size={15} className="cred-icon" aria-hidden="true" />
-              <span>14+ Years Clinical Expertise</span>
-            </div>
-            <div className="credential-badge">
-              <Clock size={15} className="cred-icon" aria-hidden="true" />
-              <span>Takes ~2 Minutes</span>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PageHero />
 
       {/* 2. MAIN INTERACTIVE ASSESSMENT CONTAINER */}
       <Section id="assessment-workspace" width="wide" bg="none" className="assessment-main-section">
@@ -730,7 +695,9 @@ export default function GutAssessmentPage() {
                   </div>
 
                   <div className="gauge-tier-meta">
-                    <span className="tier-emoji-icon">{emotionTier.emoji}</span>
+                    <span className="tier-emoji-icon" aria-hidden="true">
+                      <EmotionIcon size={26} strokeWidth={2} style={{ color: emotionTier.color }} />
+                    </span>
                     <h3 className="tier-title" style={{ color: emotionTier.color }}>
                       {answeredCount === totalSymptoms ? emotionTier.label : 'Summary in progress'}
                     </h3>
@@ -785,7 +752,7 @@ export default function GutAssessmentPage() {
                   </h2>
 
                   <p className="report-mood-line">
-                    <strong>Response summary:</strong> {emotionTier.emoji} {emotionTier.mood}
+                    <strong>Response summary:</strong> {emotionTier.mood}
                   </p>
 
                   <p className="report-summary-advice">{emotionTier.actionAdvice}</p>

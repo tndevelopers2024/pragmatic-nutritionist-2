@@ -1,5 +1,5 @@
 import { ArrowRight } from 'lucide-react'
-import { Link, useSearchParams } from 'react-router-dom'
+import { Link, useParams, useSearchParams } from 'react-router-dom'
 import PageHero from '../components/PageHero'
 import Section from '../components/Section'
 import { useSeo } from '../components/Seo'
@@ -192,7 +192,7 @@ function ProfessionalCourses() {
     <Section bg="base" title="Explore professional learning" width="wide">
       <div className="academy-grid">{professionalCourses.map(([title, description, slug, price, duration]) => <article className="academy-card" key={slug}>
         <h3>{title}</h3><p>{description}</p><p className="academy-course-meta"><strong>{price}</strong><span>{duration}</span></p><CourseLink to={`/academy/certificate-courses?course=${slug}`}>View course details</CourseLink>
-      </article>)}<article className="academy-card"><h3>Private Practice Masterclass</h3><p>Discover the key to success in building a thriving nutrition practice. Learn everything from client management to business strategies from an expert. Join now!</p><p className="academy-course-meta"><strong>₹299 listed</strong><span>30 minutes</span></p><Link className="subtopic-action academy-link" to="/academy/masterclass-registration">View masterclass registration<ArrowRight size={15} aria-hidden="true" /></Link></article><article className="academy-card"><h3>Build Your Private Practice</h3><p>Understand the keys to success in building your private practice. Enrol now and take the next step towards realizing aspirations.</p><p className="academy-course-meta"><strong>₹3,500 listed</strong><span>4 weeks</span></p><CourseLink to="/academy/certificate-courses?course=build-your-private-practice">View four-week course details</CourseLink><Link className="subtopic-action" to="/academy/build-your-private-practice">Explore the eight-week intensive<ArrowRight size={15} aria-hidden="true" /></Link></article></div>
+      </article>)}<article className="academy-card"><h3>Private Practice Masterclass</h3><p>Discover the key to success in building a thriving nutrition practice. Learn everything from client management to business strategies from an expert. Join now!</p><p className="academy-course-meta"><strong>₹299 listed</strong><span>30 minutes</span></p><div className="academy-card-actions"><CourseLink to="/academy/certificate-courses?course=private-practice-masterclass">View course details</CourseLink><Link className="subtopic-action" to="/academy/masterclass-registration">View masterclass registration<ArrowRight size={15} aria-hidden="true" /></Link></div></article><article className="academy-card"><h3>Build Your Private Practice</h3><p>Understand the keys to success in building your private practice. Enrol now and take the next step towards realizing aspirations.</p><p className="academy-course-meta"><strong>₹3,500 listed</strong><span>4 weeks</span></p><div className="academy-card-actions"><CourseLink to="/academy/certificate-courses?course=build-your-private-practice">View four-week course details</CourseLink><Link className="subtopic-action" to="/academy/build-your-private-practice">Explore the eight-week intensive<ArrowRight size={15} aria-hidden="true" /></Link></div></article></div>
       <p className="academy-note">Please confirm current fees and availability before enrolling. The menopause webinar has been described as free and also listed at ₹350; the masterclass has been listed at ₹299 while its registration page describes free registration.</p>
     </Section>
     <Section bg="white" title="Testimonials" width="wide">
@@ -254,7 +254,8 @@ const professionalDetailIndexes = {
   'build-your-private-practice': 3,
   'optimizing-hormonal-health': 4,
   'nutrition-for-menopause': 5,
-  'interpret-medical-reports': 6
+  'interpret-medical-reports': 6,
+  'private-practice-masterclass': 7
 }
 
 function findCourse(variant, slug) {
@@ -262,68 +263,211 @@ function findCourse(variant, slug) {
     const courses = variant === 'public' ? publicCourses : legacyPublicCourses
     const course = courses.find(item => item.slug === slug)
     if (!course) return null
-    return { ...course, duration: '1 session', detail: publicDetails[publicDetailIndexes[slug]]?.[1] }
+    return {
+      ...course,
+      duration: '1 session',
+      detail: publicDetails[publicDetailIndexes[slug]]?.[1],
+      rich: publicCourseContent[slug] || null
+    }
   }
   if (variant === 'professional') {
-    const entry = professionalCourses.find(([, , courseSlug]) => courseSlug === slug)
-      || (slug === 'build-your-private-practice' ? ['Build Your Private Practice', 'Understand the keys to success in building your private practice. Enrol now and take the next step towards realizing aspirations.', slug, '₹3,500 listed', '4 weeks'] : null)
+    const extraCourses = {
+      'build-your-private-practice': ['Build Your Private Practice', 'Understand the keys to success in building your private practice. Enrol now and take the next step towards realizing aspirations.', 'build-your-private-practice', '₹3,500 listed', '4 weeks'],
+      'private-practice-masterclass': ['Private Practice Masterclass', 'Discover the key to success in building a thriving nutrition practice. Learn everything from client management to business strategies from an expert.', 'private-practice-masterclass', '₹299 listed', '30 minutes']
+    }
+    const entry = professionalCourses.find(([, , courseSlug]) => courseSlug === slug) || extraCourses[slug] || null
     if (!entry) return null
     const [title, description, , price, duration] = entry
-    return { title, description, price, duration, slug, detail: professionalDetails[professionalDetailIndexes[slug]]?.[1] }
+    return {
+      title,
+      description,
+      price,
+      duration,
+      slug,
+      detail: professionalDetails[professionalDetailIndexes[slug]]?.[1],
+      rich: professionalCourseContent[slug] || null
+    }
   }
   return null
+}
+
+const COURSE_HERO_IMAGES = {
+  'nourishing-young-minds': '/images/heroes/stock/child-teen.jpg',
+  'picky-eating-masterclass': '/images/heroes/stock/child-teen.jpg',
+  'mindful-eating-webinar': '/images/heroes/stock/gut-checker.jpg',
+  'optimize-gut-health': '/images/heroes/stock/gut-health-hub.jpg',
+  'mastering-gut-health': '/images/heroes/stock/gut-health-hub.jpg',
+  'sports-nutrition': '/images/heroes/stock/sports-hub.jpg',
+  'plant-based-diets': '/images/heroes/stock/gluten-free-grains.jpg',
+  'free-blogging-masterclass': '/images/heroes/stock/clinical-blog.jpg',
+  'free-career-counselling': '/images/heroes/stock/book-discovery-call.jpg',
+  'build-your-private-practice': '/images/heroes/stock/academy-practice.jpg',
+  'private-practice-masterclass': '/images/heroes/stock/academy-practice.jpg',
+  'optimizing-hormonal-health': '/images/heroes/stock/pcos-hormonal.jpg',
+  'nutrition-for-menopause': '/images/heroes/stock/pcos-hormonal.jpg',
+  'interpret-medical-reports': '/images/heroes/stock/academy-practitioner.jpg'
 }
 
 function CourseDetails({ course, variant }) {
   const catalogPath = variant === 'professional' ? '/academy/certificate-courses' : variant === 'public-legacy' ? '/academy/online-nutrition-courses' : '/academy/courses-masterclasses'
   const catalogLabel = variant === 'professional' ? 'Courses for Nutritionists' : variant === 'public-legacy' ? 'Learn Nutrition Online' : 'Courses for Everyone'
+  const fallbackCourseImage = variant === 'professional'
+    ? '/images/heroes/stock/academy-practitioner.jpg'
+    : '/images/heroes/stock/academy-public.jpg'
   if (!course) return <>
-    <PageHero title="Course not found" blurb="Please explore the course listing to find a session." parent={{ label: catalogLabel, to: catalogPath }} />
+    <PageHero
+      dynamic
+      breadcrumb="COURSE NOT FOUND"
+      badge="ACADEMY CATALOGUE NOTICE"
+      title="Course Not Found: Explore Available Nutrition Sessions"
+      blurb="The session you requested could not be found. Browse our active nutrition webinars, masterclasses, and practitioner certificate modules."
+      parent={{ label: catalogLabel, to: catalogPath }}
+      primaryCta={{ label: `Browse ${catalogLabel}`, to: catalogPath }}
+      secondaryCta={{ label: 'Explore Academy Overview', to: '/academy', icon: 'GraduationCap' }}
+      waMessage="Hi Meenu, I am looking for a specific nutrition course in Pragmatic Nutrition Academy."
+      trustItems={[
+        'Taught by Meenu Balaji, M.H.Sc',
+        'Live & Recorded Online Access',
+        'Certificate of Completion'
+      ]}
+      image={fallbackCourseImage}
+      imageAlt="Online nutrition learning session on laptop"
+      imageCaption="Pragmatic Nutrition Academy"
+    />
     <Section bg="white" width="wide"><Link className="subtopic-action" to={catalogPath}>Browse courses<ArrowRight size={15} aria-hidden="true" /></Link></Section>
   </>
+  const rich = course.rich
+  const courseHeroImage = COURSE_HERO_IMAGES[course.slug] || fallbackCourseImage
   return <>
-    <PageHero title={course.title} blurb={course.description} parent={{ label: catalogLabel, to: catalogPath }} />
+    <PageHero
+      dynamic
+      breadcrumb={course.title.toUpperCase()}
+      badge={variant === 'professional' ? 'PROFESSIONAL NUTRITIONIST CERTIFICATE MODULE' : 'LIVE & RECORDED NUTRITION MASTERCLASS'}
+      title={course.title}
+      blurb={rich?.intro?.[0] || rich?.subtitle || course.description}
+      parent={{ label: catalogLabel, to: catalogPath }}
+      primaryCta={{
+        label: 'Enquire About This Course',
+        to: `/contact?course=${encodeURIComponent(course.title)}`
+      }}
+      secondaryCta={{
+        label: `Back to ${catalogLabel}`,
+        to: catalogPath,
+        icon: 'GraduationCap'
+      }}
+      waMessage={`Hi Meenu, I would like enrolment details for the "${course.title}" course.`}
+      trustItems={[
+        `Listed Fee: ${course.price}`,
+        `Format: ${course.duration}`,
+        'Led by Meenu Balaji, M.H.Sc'
+      ]}
+      image={courseHeroImage}
+      imageAlt={course.title}
+      imageCaption={variant === 'professional' ? 'Practitioner Continuing Education' : 'Practical Online Nutrition Session'}
+    />
     <Section bg="white" title="About this course" width="wide">
+      <div className="academy-detail-overview">
+        <div className="academy-copy">
+          {rich?.intro?.length
+            ? rich.intro.map(paragraph => <p key={paragraph}>{paragraph}</p>)
+            : <p>{course.detail || course.description}</p>}
+          {course.detail && rich?.intro?.length > 0 && <p>{course.detail}</p>}
+        </div>
+        <aside className="academy-enroll-card" aria-label="Course enrollment summary">
+          <span className="academy-enroll-eyebrow">{variant === 'professional' ? 'Professional Education' : 'Online Learning'}</span>
+          <h3>{course.title}</h3>
+          <p className="academy-course-meta"><strong>{course.price}</strong><span>{course.duration}</span></p>
+          <p className="academy-enroll-note">Prices and schedule availability may vary across cohorts. Contact us to confirm upcoming dates and enrolment details.</p>
+          <Link className="btn btn-primary" to={`/contact?course=${encodeURIComponent(course.title)}`}>Enquire about this course<ArrowRight size={16} aria-hidden="true" /></Link>
+          {variant === 'professional' && course.slug === 'free-career-counselling' && (
+            <a className="subtopic-action" href="https://calendly.com/meenu-egyz/30min" target="_blank" rel="noopener noreferrer">View career counselling calendar<ArrowRight size={15} aria-hidden="true" /></a>
+          )}
+          {variant === 'professional' && course.slug === 'private-practice-masterclass' && (
+            <CourseLink to="/academy/masterclass-registration">Open masterclass registration</CourseLink>
+          )}
+        </aside>
+      </div>
+    </Section>
+
+    {rich?.sections?.map((section, idx) => (
+      <Section key={section.heading} bg={idx % 2 === 0 ? 'base' : 'white'} title={section.heading} width="wide">
+        {section.paragraphs?.length > 0 && (
+          <div className="academy-copy">
+            {section.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}
+          </div>
+        )}
+        {section.cards?.length > 0 && (
+          <div className="academy-editorial-grid">
+            {section.cards.map(card => (
+              <div key={card.title}>
+                <h3>{card.title}</h3>
+                <p>{card.desc}</p>
+              </div>
+            ))}
+          </div>
+        )}
+        {section.items?.length > 0 && (
+          <div className="academy-copy academy-build-copy">
+            <ul>{section.items.map(item => <li key={item}>{item}</li>)}</ul>
+          </div>
+        )}
+      </Section>
+    ))}
+
+    {rich?.instructor?.length > 0 && (
+      <Section bg="white" title="Meet Your Instructor — Meenu Balaji, M.H.Sc" width="wide">
+        <div className="academy-copy">
+          {rich.instructor.map(paragraph => <p key={paragraph}>{paragraph}</p>)}
+        </div>
+      </Section>
+    )}
+
+    {rich?.faqs?.length > 0 && (
+      <Section bg="base" title="Frequently Asked Questions" width="wide">
+        <div className="academy-copy">
+          {rich.faqs.map(([question, answer]) => (
+            <details className="academy-faq" key={question}>
+              <summary>{question}</summary>
+              <p>{answer}</p>
+            </details>
+          ))}
+        </div>
+      </Section>
+    )}
+
+    <Section bg="white" width="wide">
       <div className="academy-copy">
-        <p>{course.detail || course.description}</p>
-        {variant === 'professional' && professionalCourseContent[course.slug]?.map(({ heading, items }) => <div key={heading}>
-          <h3>{heading}</h3>
-          <ul>{items.map(item => <li key={item}>{item}</li>)}</ul>
-        </div>)}
-        {variant === 'public-legacy' && publicCourseContent[course.slug]?.map(({ heading, items }) => <div key={heading}>
-          <h3>{heading}</h3>
-          <ul>{items.map(item => <li key={item}>{item}</li>)}</ul>
-        </div>)}
-        {variant === 'public-legacy' && course.slug === 'picky-eating-masterclass' && <p>For more support, explore our <Link to="/more-care/child-teen-nutrition">child and teen nutrition services</Link>.</p>}
-        {variant === 'public-legacy' && course.slug === 'mindful-eating-webinar' && <div>
-          <h3>What you will learn</h3>
-          <ul>
-            <li>Rethink restrictive dieting and recognise hunger and fullness cues.</li>
-            <li>Respond to cravings without deprivation and explore emotional and stress-related eating.</li>
-            <li>Build a respectful relationship with food and sustainable eating habits.</li>
-          </ul>
-        </div>}
-        <p className="academy-course-meta"><strong>{course.price}</strong><span>{course.duration}</span></p>
-        <p>Prices and availability can change. Contact us to confirm the current details and find out how to enrol.</p>
-        {variant === 'professional' && <p>These courses are for education and are not intended to diagnose, treat or cure disease. Please discuss medical concerns with a qualified healthcare provider.</p>}
-        {variant === 'professional' && course.title === 'Build Your Private Practice' && <p>This is the four-week course from the professional course listing. The <Link to="/academy/build-your-private-practice">eight-week intensive</Link> is a separate offering.</p>}
-        {variant === 'professional' && course.title === 'Nutrition for Menopause' && <p>The listing describes this webinar as free while also showing ₹350. Please confirm the current fee with the team.</p>}
-        {variant === 'professional' && course.slug === 'free-career-counselling' && <p><a href="https://calendly.com/meenu-egyz/30min">View career counselling appointment availability</a></p>}
-        {variant === 'public-legacy' && course.title === 'Mindful Eating Webinar' && <p>The listing describes this webinar as free while also showing ₹399. Please confirm the current fee with the team.</p>}
-        <p><Link className="btn btn-primary" to={`/contact?course=${encodeURIComponent(course.title)}`}>Ask about this course<ArrowRight size={16} aria-hidden="true" /></Link></p>
-        <p><Link to={catalogPath}>Back to {catalogLabel}</Link></p>
+        {variant === 'professional' && (
+          <p className="academy-disclaimer"><strong>Educational Disclaimer:</strong> These courses are designed for continuing education and professional skill development only and are not intended to diagnose, treat, or cure disease. Always advise clients to consult qualified medical practitioners regarding medical diagnoses or treatments.</p>
+        )}
+        {variant === 'professional' && course.slug === 'build-your-private-practice' && (
+          <p className="academy-note">This page outlines the four-week foundation course from the professional catalogue. Looking for live 8-week mentorship? <Link to="/academy/build-your-private-practice">Explore the eight-week intensive</Link>.</p>
+        )}
+        {variant === 'professional' && course.slug === 'nutrition-for-menopause' && (
+          <p className="academy-note">The listing describes this webinar as free while also showing ₹350. Please confirm the current fee with the team before enrolling.</p>
+        )}
+        {variant === 'public-legacy' && course.slug === 'mindful-eating-webinar' && (
+          <p className="academy-note">This listing describes the Mindful Eating Webinar as free while also showing ₹399 (and ₹799 on the updated catalogue). Please confirm the current fee with the team.</p>
+        )}
+        <div className="academy-detail-footer-links">
+          {rich?.relatedLink && (
+            <CourseLink to={rich.relatedLink.to}>{rich.relatedLink.label}</CourseLink>
+          )}
+          <CourseLink to={catalogPath}>Back to {catalogLabel}</CourseLink>
+        </div>
       </div>
     </Section>
   </>
 }
 
 export default function AcademyPage({ variant = 'public' }) {
+  const { courseSlug } = useParams()
   const [searchParams] = useSearchParams()
-  const slug = searchParams.get('course')
+  const slug = courseSlug || searchParams.get('course')
   const isCatalog = ['public', 'public-legacy', 'professional'].includes(variant)
   const course = slug && isCatalog ? findCourse(variant, slug) : null
   const titles = { public: 'Courses for Everyone', 'public-legacy': 'Learn Nutrition Online', professional: 'Courses for Nutritionists', practice: 'Build Your Private Practice', registration: 'Register for Masterclass' }
-  useSeo(course?.title || titles[variant], course?.description || 'Online nutrition courses and professional learning from Pragmatic Nutrition.')
+  useSeo(course?.title || titles[variant], course?.rich?.subtitle || course?.description || 'Online nutrition courses and professional learning from Pragmatic Nutrition.')
   let page = <PublicCourses />
   if (slug && isCatalog) page = <CourseDetails course={course} variant={variant} />
   else if (variant === 'professional') page = <ProfessionalCourses />

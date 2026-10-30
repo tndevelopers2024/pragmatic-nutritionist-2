@@ -13,8 +13,8 @@ import './programsPricing.css'
 const specialistPrograms = [
   { title: 'Weight Loss', description: 'Achieve sustainable weight loss with a science-backed approach, focusing on balanced meals, personalized plans, and lasting results. Prioritizing your health ensures progress without restrictive diets. Transform your journey with practical, effective strategies!', to: '/more-care/weight-loss' },
   { title: 'Sports Nutrition', description: 'Fuel your performance with expert sports nutrition tailored to your goals. Optimize energy, recovery, and endurance with a science-backed approach. Achieve peak performance and lasting results!', to: '/sports-nutrition' },
-  { title: 'PCOS/Hypothyroid', description: 'Achieve hormonal wellness with a personalized, science-backed approach that balances your hormones naturally. Enhance energy, mood, and overall health with targeted nutrition and sustainable habits. Regain harmony and thrive!', to: '/more-care/pcos' },
-  { title: 'Weight Gain', description: 'Achieve healthy weight gain with a personalized, science-backed approach focusing on balanced nutrition and sustainable habits. Build strength, energy, and confidence with lasting results. Transform your journey today!' },
+  { title: 'PCOS/Hypothyroid', description: 'Achieve hormonal wellness with a personalized, science-backed approach that balances your hormones naturally. Enhance energy, mood, and overall health with targeted nutrition and sustainable habits. Regain harmony and thrive!', to: '/more-care/pcos', actionLabel: 'Explore PCOS support' },
+  { title: 'Weight Gain', description: 'Achieve healthy weight gain with a personalized, science-backed approach focusing on balanced nutrition and sustainable habits. Build strength, energy, and confidence with lasting results. Transform your journey today!', to: '/contact?plan=Weight%20Gain', actionLabel: 'Enquire about program' },
   { title: 'Gut Health', description: 'Restore your gut health with a science-backed approach that improves digestion, boosts immunity, and enhances overall well-being. We focus on balanced nutrition and personalized care for long-term results. Heal your gut naturally and thrive!', to: '/gut-health' },
   { title: 'Manage Diabetes', description: 'Manage lifestyle diseases with a science-backed approach focusing on balanced nutrition, sustainable habits, and personalized care. Improve your health, prevent complications, and achieve lasting well-being. Take control of your lifestyle today!', to: '/more-care/diabetes' },
   { title: 'Child Nutrition', description: "Support your child's growth and development with balanced, science-backed nutrition. Our personalized approach ensures they get the essential nutrients for a healthy, thriving future. Build strong foundations for lifelong well-being!", to: '/more-care/child-teen-nutrition' }
@@ -31,7 +31,12 @@ export default function ProgramsPricingPage() {
         <p className="placeholder-desc">That is why finding the right balance of nutrients will help you transform your health and make you feel good about yourself. How will our healthy nutrition plan help you?</p></div>
         <div className="gut-programs-grid pricing-plans-grid">
           {content.plans.map(plan => (
-            <article className="gut-program-card" key={plan.title}>
+            <article className={`gut-program-card ${plan.popular ? 'popular-card' : ''}`} key={plan.title}>
+              {plan.badge && (
+                <div className="program-badge-wrap">
+                  <span className="program-badge">{plan.badge}</span>
+                </div>
+              )}
               <h2 className="program-title">{plan.title}</h2>
               <p className="program-ideal-text">{plan.description}</p>
               <div className="program-price-box"><span className="price-currency">₹</span><span className="price-number">{plan.price}</span><span className="price-duration">{plan.duration}</span></div>
@@ -40,7 +45,12 @@ export default function ProgramsPricingPage() {
             </article>
           ))}
         </div>
-        <div className="pricing-payment-prompt"><p>Choose your pricing plan and find one that works for you.</p>
+        <div className="pricing-stats-strip" aria-label="Practice track record">
+          <div className="pricing-stat-item"><strong>4,500+</strong><span>Clients Served Globally</span></div>
+          <div className="pricing-stat-item"><strong>100%</strong><span>Customized Nutrition Plans</span></div>
+          <div className="pricing-stat-item"><strong>14+</strong><span>Years of Clinical Expertise</span></div>
+        </div>
+        <div className="pricing-payment-prompt"><p>Choose your pricing plan and find one that works for you, or start with an initial consultation.</p>
         <a className="btn btn-secondary" href="https://pages.razorpay.com/stores/st_QifXYeHOUUdx9x" target="_blank" rel="noopener noreferrer">Join Now — visit payment page<ArrowRight size={16} aria-hidden="true" /></a></div>
       </Section>
       <Section width="wide" bg="white" className="pricing-explore-section" title="Explore all nutrition plans" lead="Find the support that fits your goals and routine.">
@@ -51,7 +61,7 @@ export default function ProgramsPricingPage() {
         <p className="pricing-catalogue-page-link"><Link to="/pricing-plans/list">Open the full pricing list <ArrowRight size={15} aria-hidden="true" /></Link></p>
       </Section>
       <Section width="wide" bg="white" eyebrow="SPECIALIST CARE" title="Services">
-        <div className="subtopics-grid">{specialistPrograms.map(program => <article className="subtopic-card" key={program.title}><h3 className="subtopic-name">{program.title}</h3><p className="subtopic-blurb">{program.description}</p>{program.to && <Link className="subtopic-action" to={program.to}>{program.title === 'PCOS/Hypothyroid' ? 'Explore PCOS support' : 'View programs'}<ArrowRight size={14} aria-hidden="true" /></Link>}</article>)}</div>
+        <div className="subtopics-grid">{specialistPrograms.map(program => <article className="subtopic-card" key={program.title}><h3 className="subtopic-name">{program.title}</h3><p className="subtopic-blurb">{program.description}</p>{program.to && <Link className="subtopic-action" to={program.to}>{program.actionLabel || 'View programs'}<ArrowRight size={14} aria-hidden="true" /></Link>}</article>)}</div>
       </Section>
       <Section className="pricing-signature-section" width="wide" bg="base">
         <div className="pricing-signature-grid">

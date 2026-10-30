@@ -112,10 +112,38 @@ export default function GutHealthPage() {
               <p className="gut-hero-note">
                 Not sure where to begin? In this quick call, Meenu will understand your gut health concerns and guide you on next steps, no obligation.
               </p>
+
+              <div className="condition-trust-strip">
+                <div className="trust-item">
+                  <CheckCircle2 size={16} className="text-leaf" />
+                  <span>14+ Years Clinical Experience</span>
+                </div>
+                <div className="trust-item">
+                  <CheckCircle2 size={16} className="text-leaf" />
+                  <span>IBS, SIBO, Acidity &amp; Microbiome Care</span>
+                </div>
+                <div className="trust-item">
+                  <CheckCircle2 size={16} className="text-leaf" />
+                  <span>Food-First Indian Nutrition</span>
+                </div>
+              </div>
             </div>
 
-            {/* Proof Card Panel */}
+            {/* Proof & Photography Panel */}
             <div className="gut-hero-card-panel">
+              <div className="condition-hero-media-card gut-hero-media-card">
+                <img
+                  src={GUT_HERO.heroImage}
+                  alt={GUT_HERO.heroImageAlt}
+                  className="condition-hero-img"
+                  loading="eager"
+                />
+                <div className="condition-hero-media-caption">
+                  <CheckCircle2 size={15} className="text-leaf" aria-hidden="true" />
+                  <span>{GUT_HERO.heroImageCaption}</span>
+                </div>
+              </div>
+
               <div className="gut-stats-card">
                 <div className="gut-stats-header">
                   <span className="stats-header-tag">CLINICAL TRACK RECORD</span>
@@ -544,6 +572,26 @@ export default function GutHealthPage() {
               <ArrowRight size={16} aria-hidden="true" />
             </Link>
           </div>
+        </div>
+      </Section>
+
+      <Section width="wide" bg="base" eyebrow="PRACTICAL RESOURCES" title="Gut Health Recipes & Dietary Guides">
+        <div className="subtopics-grid">
+          <article className="subtopic-card">
+            <h3 className="subtopic-name">Gut Health Recipes</h3>
+            <p className="subtopic-blurb">Explore 8 dietitian-crafted gluten-free, plant-based, and refined-sugar-free Indian recipes built for everyday digestive comfort.</p>
+            <Link className="subtopic-action" to="/gut-health-recipes">Browse all recipes<ArrowRight size={14} aria-hidden="true" /></Link>
+          </article>
+          <article className="subtopic-card">
+            <h3 className="subtopic-name">Gluten-Free Diet Guide</h3>
+            <p className="subtopic-blurb">Understand celiac disease, non-celiac gluten sensitivity, hidden gluten sources, and balanced Indian gluten-free meal planning.</p>
+            <Link className="subtopic-action" to="/gluten-free-diet">Read gluten-free guide<ArrowRight size={14} aria-hidden="true" /></Link>
+          </article>
+          <article className="subtopic-card">
+            <h3 className="subtopic-name">Liver Detox Foods</h3>
+            <p className="subtopic-blurb">Learn how everyday cruciferous vegetables, garlic, citrus, and healthy fats support natural liver and gut clearance pathways.</p>
+            <Link className="subtopic-action" to="/liver-detox-foods">Explore liver-supporting foods<ArrowRight size={14} aria-hidden="true" /></Link>
+          </article>
         </div>
       </Section>
 

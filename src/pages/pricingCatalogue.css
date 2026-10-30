@@ -28,5 +28,6 @@
 .pricing-catalogue-empty { padding: 32px; border: 1px solid #d7e5de; border-radius: 16px; color: var(--color-text-secondary); text-align: center; }
 .pricing-catalogue-page.is-embedded { padding: 32px 0 0; }
 @media (max-width: 1000px) { .pricing-catalogue-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 767px) { .pricing-catalogue-header { display: block; } .pricing-catalogue-search { width: 100%; margin-top: 24px; } }
+@media (max-width: 768px) { .pricing-catalogue-search-input input { font-size: 1rem; } }
+@media (max-width: 767px) { .pricing-catalogue-header { display: block; } .pricing-catalogue-search { width: 100%; flex: 1 1 auto; margin-top: 24px; } }
 @media (max-width: 650px) { .pricing-catalogue-grid { grid-template-columns: minmax(0, 1fr); gap: 16px; } .pricing-catalogue-card { padding: 22px; } .pricing-catalogue-action { width: 100%; justify-content: center; } }

@@ -6,15 +6,18 @@ import {
   Activity,
   HeartPulse,
   CheckCircle2,
-  Clock
+  Clock,
+  Wind,
+  Flame,
+  Brain
 } from 'lucide-react'
 import Section from './Section'
 
 const SAMPLE_SYMPTOMS = [
-  { id: 'bloating', name: 'Bloating & Fullness', defaultScore: 2, icon: '🫧' },
-  { id: 'acidity', name: 'Acidity, Heartburn & GERD', defaultScore: 1, icon: '🔥' },
-  { id: 'constipation', name: 'Constipation & Irregular Digestion', defaultScore: 2, icon: '🌿' },
-  { id: 'brain_fog', name: 'Post-Meal Brain Fog & Fatigue', defaultScore: 1, icon: '⚡' }
+  { id: 'bloating', name: 'Bloating & Fullness', defaultScore: 2, Icon: Wind },
+  { id: 'acidity', name: 'Acidity, Heartburn & GERD', defaultScore: 1, Icon: Flame },
+  { id: 'constipation', name: 'Constipation & Irregular Digestion', defaultScore: 2, Icon: Activity },
+  { id: 'brain_fog', name: 'Post-Meal Brain Fog & Fatigue', defaultScore: 1, Icon: Brain }
 ]
 
 const SEVERITY_LEVELS = ['Never', 'Sometimes', 'Often', 'Always']
@@ -135,10 +138,13 @@ export default function GutAssessmentSection() {
             <div className="preview-symptoms-list">
               {SAMPLE_SYMPTOMS.map((sym) => {
                 const currentVal = selectedScores[sym.id]
+                const SymIcon = sym.Icon
                 return (
                   <div key={sym.id} className="preview-symptom-row">
                     <div className="sym-row-header">
-                      <span className="sym-icon" aria-hidden="true">{sym.icon}</span>
+                      <span className="sym-icon" aria-hidden="true">
+                        <SymIcon size={16} strokeWidth={2} />
+                      </span>
                       <span className="sym-name">{sym.name}</span>
                     </div>
                     <div className="sym-severity-buttons" role="group" aria-label={`Frequency for ${sym.name}`}>

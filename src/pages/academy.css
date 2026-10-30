@@ -45,6 +45,66 @@
 .academy-course-meta strong { color: var(--color-primary); font-family: var(--font-display); font-size: 1.35rem; }
 .academy-course-meta span { color: var(--color-text-muted); font-size: .88rem; }
 .academy-link { margin-top: auto; display: inline-flex; align-items: center; gap: 8px; }
+.academy-card-actions { margin-top: auto; display: grid; gap: 10px; }
+.academy-card-actions .academy-link { margin-top: 0; }
+.academy-detail-overview {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.85fr);
+  gap: clamp(28px, 4vw, 56px);
+  align-items: start;
+}
+.academy-enroll-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: clamp(24px, 2.5vw, 32px);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 18px;
+  background: var(--color-surface);
+  box-shadow: 0 8px 24px rgba(14, 98, 88, 0.05);
+}
+.academy-enroll-eyebrow {
+  align-self: flex-start;
+  padding: 5px 10px;
+  border-radius: 7px;
+  background: var(--color-primary-subtle);
+  color: var(--color-primary);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.academy-enroll-card h3 {
+  margin: 0;
+  color: var(--color-text-main);
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  line-height: 1.3;
+}
+.academy-enroll-note {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+.academy-enroll-card .btn {
+  justify-content: center;
+  width: 100%;
+}
+.academy-detail-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 28px;
+  align-items: center;
+  margin-top: 8px;
+}
+.academy-detail-footer-links .academy-link {
+  margin-top: 0;
+}
+.academy-copy + .academy-editorial-grid,
+.academy-editorial-grid + .academy-copy {
+  margin-top: 24px;
+}
 .academy-note, .academy-disclaimer { margin: 28px 0 0; max-width: 900px; padding: 18px 20px; border-left: 3px solid var(--color-primary); border-radius: 0 10px 10px 0; background: var(--color-primary-subtle); color: var(--color-text-secondary); line-height: 1.7; }
 .academy-disclaimer { margin-bottom: 20px; }
 .academy-editorial-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
@@ -72,7 +132,10 @@
 .academy-faq summary::after { flex: none; color: #0E6258; content: '+'; font-size: 1.4rem; font-weight: 600; line-height: 1; transition: transform 0.2s; }
 .academy-faq[open] summary::after { content: '−'; }
 .academy-faq p { margin: 14px 0 0; font-family: var(--font-sans); font-size: 1.02rem; line-height: 1.75; color: #374151; }
-@media (max-width: 900px) { .academy-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 900px) {
+  .academy-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .academy-detail-overview { grid-template-columns: 1fr; }
+}
 @media (max-width: 600px) {
   .academy-grid, .academy-editorial-grid, .academy-build-copy ul, .academy-audience-copy ul { grid-template-columns: 1fr; }
   .academy-card { padding: 22px; }

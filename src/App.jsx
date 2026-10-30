@@ -33,11 +33,14 @@ import AcademyPage from './pages/AcademyPage'
 import AcademyOverviewPage from './pages/AcademyOverviewPage'
 import BookCallPage from './pages/BookCallPage'
 import GlutenFreePage from './pages/GlutenFreePage'
+import LiverDetoxPage from './pages/LiverDetoxPage'
+import GutHealthRecipesPage from './pages/GutHealthRecipesPage'
+import RecipeDetailPage from './pages/RecipeDetailPage'
 
 function ScrollTop() {
   const { pathname, search } = useLocation()
   useEffect(() => {
-    window.scrollTo(0, 0)
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
   }, [pathname, search])
   return null
 }
@@ -77,6 +80,9 @@ export default function App() {
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/contact-us" element={<ContactPage />} />
             <Route path="/gluten-free-diet" element={<GlutenFreePage />} />
+            <Route path="/liver-detox-foods" element={<LiverDetoxPage />} />
+            <Route path="/gut-health-recipes" element={<GutHealthRecipesPage />} />
+            <Route path="/gut-health-recipes/:slug" element={<RecipeDetailPage />} />
             <Route path="/gut-health" element={<GutHealthPage />} />
             <Route path="/best-gut-health-nutritionist-india" element={<GutHealthPage />} />
             <Route path="/gut-health/ibs-bloating" element={<GutConditionPage conditionSlug="ibs-bloating" />} />
@@ -97,18 +103,28 @@ export default function App() {
             <Route path="/pricing-plans/list" element={<PricingCataloguePage />} />
             <Route path="/signature-nutrition-program" element={<SignaturePage />} />
             <Route path="/blog" element={<BlogPage />} />
+            <Route path="/blog/page/:pageNum" element={<BlogPage />} />
+            <Route path="/blog/categories/:categorySlug" element={<BlogPage />} />
+            <Route path="/blog/categories/:categorySlug/page/:pageNum" element={<BlogPage />} />
             <Route path="/nutrition-blog" element={<BlogPage />} />
+            <Route path="/nutrition-blog/page/:pageNum" element={<BlogPage />} />
+            <Route path="/nutrition-blog/categories/:categorySlug" element={<BlogPage />} />
+            <Route path="/nutrition-blog/categories/:categorySlug/page/:pageNum" element={<BlogPage />} />
             <Route path="/blog/:slug" element={<BlogPostPage />} />
+            <Route path="/post/:slug" element={<BlogPostPage />} />
             <Route path="/adhd-nutritionist-children" element={<MoreCarePage slug="adhd-nutrition" />} />
             <Route path="/child-nutritionist-india" element={<MoreCarePage slug="child-teen-nutrition" />} />
             <Route path="/best-diabetes-nutritionist-india" element={<MoreCarePage slug="diabetes" />} />
             {['/academy/build-your-private-practice', '/nutrition-private-practice'].map(path => <Route key={path} path={path} element={<AcademyPage variant="practice" />} />)}
             {['/academy/masterclass-registration', '/nutritionist-practice-masterclass-registration'].map(path => <Route key={path} path={path} element={<AcademyPage variant="registration" />} />)}
             {['/academy/certificate-courses', '/nutritionist-certificate-courses', '/online-courses-for-nutritionists'].map(path => <Route key={path} path={path} element={<AcademyPage variant="professional" />} />)}
+            {['/academy/certificate-courses/:courseSlug', '/nutritionist-certificate-courses/:courseSlug', '/online-courses-for-nutritionists/:courseSlug'].map(path => <Route key={path} path={path} element={<AcademyPage variant="professional" />} />)}
             {['/academy/courses-masterclasses', '/online-nutrition-course'].map(path => <Route key={path} path={path} element={<AcademyPage variant="public" />} />)}
+            {['/academy/courses-masterclasses/:courseSlug', '/online-nutrition-course/:courseSlug'].map(path => <Route key={path} path={path} element={<AcademyPage variant="public" />} />)}
             {['/academy/online-nutrition-courses', '/online-nutrition-courses'].map(path => <Route key={path} path={path} element={<AcademyPage variant="public-legacy" />} />)}
+            {['/academy/online-nutrition-courses/:courseSlug', '/online-nutrition-courses/:courseSlug'].map(path => <Route key={path} path={path} element={<AcademyPage variant="public-legacy" />} />)}
             {['child-teen-nutrition', 'adhd-nutrition', 'adhd', 'diabetes', 'pcos', 'weight-loss'].map(slug => <Route key={slug} path={`/more-care/${slug}`} element={<MoreCarePage slug={slug} />} />)}
-            {PAGES.filter(p => p.to !== '/academy' && p.to !== '/book-a-call' && p.to !== '/blog' && p.to !== '/programs-pricing' && p.to !== '/contact' && p.to !== '/nutrition-plans' && !p.to.startsWith('/gut-health') && !p.to.startsWith('/sports-nutrition') && !p.to.startsWith('/more-care') && !['/academy/build-your-private-practice', '/academy/certificate-courses', '/academy/courses-masterclasses', '/academy/masterclass-registration', '/academy/online-nutrition-courses'].includes(p.to) && p.to !== '/results' && p.to !== '/terms' && p.to !== '/privacy' && p.to !== '/refund').map((p) => (
+            {PAGES.filter(p => p.to !== '/academy' && p.to !== '/book-a-call' && p.to !== '/blog' && p.to !== '/programs-pricing' && p.to !== '/contact' && p.to !== '/nutrition-plans' && p.to !== '/gluten-free-diet' && p.to !== '/liver-detox-foods' && !p.to.startsWith('/gut-health') && !p.to.startsWith('/sports-nutrition') && !p.to.startsWith('/more-care') && !['/academy/build-your-private-practice', '/academy/certificate-courses', '/academy/courses-masterclasses', '/academy/masterclass-registration', '/academy/online-nutrition-courses'].includes(p.to) && p.to !== '/results' && p.to !== '/terms' && p.to !== '/privacy' && p.to !== '/refund').map((p) => (
               <Route key={p.to} path={p.to} element={element(p)} />
             ))}
             <Route

@@ -106,7 +106,6 @@ export default function AdhdNutritionPage() {
   return (
     <div className="cn-page adhd-dedicated-page" data-source-url={adhd.sourceUrl}>
       <PageHero
-        image="adhd"
         title="ADHD Nutrition for Children"
         blurb="Personalised nutrition support for children and teens with ADHD, designed around adequate nutrition, eating patterns, appetite, growth, school routines and practical Indian food habits."
         parent={{ label: 'More Care', to: '/more-care' }}

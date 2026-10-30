@@ -3,6 +3,8 @@
   "plans": [
     {
       "title": "12-Week Fit & Fuel Program",
+      "badge": "Best Value",
+      "popular": true,
       "price": "18,500",
       "duration": "Valid for 12 weeks",
       "description": "The 12-Week Fit & Fuel Program combines personalized nutrition to support sustainable weight loss, strength, and energy.",

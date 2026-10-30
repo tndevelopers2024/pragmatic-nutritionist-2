@@ -16,7 +16,10 @@ export const GUT_HERO = {
     { value: '8–12 Wks', label: 'Results', sub: 'Results vary between individuals' },
     { value: 'Food-First', label: 'Indian Cuisine', sub: 'Zero starvation or generic charts' }
   ],
-  locationsNote: 'Chennai clinic appointments + Online consultations across India, USA, UK, UAE, Australia, and New Zealand.'
+  locationsNote: 'Chennai clinic appointments + Online consultations across India, USA, UK, UAE, Australia, and New Zealand.',
+  heroImage: '/images/heroes/stock/gut-health-hub.jpg',
+  heroImageAlt: 'Probiotic yogurt bowl topped with fresh figs, hemp seeds and toasted coconut',
+  heroImageCaption: 'Microbiome-Led Indian Gut Protocols'
 }
 
 export const COMMON_SYMPTOMS = [
@@ -363,6 +366,14 @@ export const SUB_PAGES_DATA = {
     headline: 'Stop Living Around Your Stomach',
     subtitle:
       'Painful cramping, unpredictable bowel movements, and waking up flat only to look six months pregnant by dinner. IBS is real, measurable, and treatable without extreme elimination.',
+    trustItems: [
+      '14+ Years Clinical Experience',
+      'Food-First Indian Nutrition',
+      'No Extreme Elimination'
+    ],
+    heroImage: '/images/heroes/stock/ibs-bloating.jpg',
+    heroImageAlt: 'Warm ginger and lemon digestive herbal infusion with fresh ginger root',
+    heroImageCaption: 'Low-FODMAP & Motility Relief',
     rootCauses: [
       {
         title: 'Visceral Hypersensitivity',
@@ -420,6 +431,14 @@ export const SUB_PAGES_DATA = {
     headline: 'Resolve the True Cause of Acid Reflux',
     subtitle:
       'Daily antacids and PPIs only suppress stomach acid without fixing why it splashes upward. We restore lower esophageal sphincter tone, stomach pH, and mucosal comfort.',
+    trustItems: [
+      '14+ Years Clinical Experience',
+      'Stomach pH & LES Tone Support',
+      'Food-First Indian Nutrition'
+    ],
+    heroImage: '/images/heroes/stock/acidity-gerd.jpg',
+    heroImageAlt: 'Soothing herbal flower infusion in glass mug on natural linen',
+    heroImageCaption: 'Stomach pH & Esophageal Comfort',
     rootCauses: [
       {
         title: 'Hypochlorhydria (Low Stomach Acid)',
@@ -477,6 +496,14 @@ export const SUB_PAGES_DATA = {
     headline: 'Achieve Effortless, Natural Daily Bowel Movements',
     subtitle:
       'If you rely on isabgol, senna teas, or harsh laxatives just to have a bowel movement, your migrating motor complex needs clinical nourishment, not forceful stimulation.',
+    trustItems: [
+      '14+ Years Clinical Experience',
+      'Natural Motility & MMC Support',
+      'No Habit-Forming Laxatives'
+    ],
+    heroImage: '/images/heroes/stock/constipation-digestion.jpg',
+    heroImageAlt: 'High-fibre rolled oats topped with fresh figs and pumpkin seeds',
+    heroImageCaption: 'Soluble Fibre & Natural MMC Motility',
     rootCauses: [
       {
         title: 'Sluggish Migrating Motor Complex (MMC)',
@@ -534,6 +561,14 @@ export const SUB_PAGES_DATA = {
     headline: 'Resolve SIBO & Regain Food Tolerance',
     subtitle:
       'Reacting to everyday foods, feeling severely bloated within 30 minutes of eating, and noticing brain fog? We address bacterial relocation, leaky gut, and intestinal immunity.',
+    trustItems: [
+      '14+ Years Clinical Experience',
+      'Breath-Test & Microbiome Led',
+      'Phased Reintroduction Protocol'
+    ],
+    heroImage: '/images/heroes/stock/sibo-gluten.jpg',
+    heroImageAlt: 'Naturally gluten-free quinoa, roasted chickpeas and greens in ceramic bowl',
+    heroImageCaption: 'Targeted SIBO & Gut Barrier Repair',
     rootCauses: [
       {
         title: 'Small Intestinal Bacterial Overgrowth (SIBO)',

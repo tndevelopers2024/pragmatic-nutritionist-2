@@ -41,7 +41,7 @@ function BookingButton({ label = 'Book a Free Discovery Call' }) {
 
 function Copy({ paragraphs }) {
   return paragraphs.map((text, index) => {
-    if (/^(Book|🔗 Book|CONTACT US|Select)/i.test(text)) return null
+    if (/^(Book|CONTACT US|Select)/i.test(text)) return null
     if (text.includes('Explore PCOS Nutrition Support')) return <p key={index}><Link to="/more-care/pcos" className="subtopic-action">Explore PCOS nutrition<ArrowRight size={14} aria-hidden="true" /></Link></p>
     if (text.includes('Explore Weight Management Nutrition')) return <p key={index}><Link to="/more-care/weight-loss" className="subtopic-action">Explore weight management<ArrowRight size={14} aria-hidden="true" /></Link></p>
     if (text.includes('dedicated ADHD nutrition program')) return <p className="placeholder-desc" key={index}>{text} <Link to="/more-care/adhd-nutrition" className="subtopic-action">Explore ADHD support<ArrowRight size={14} aria-hidden="true" /></Link></p>

@@ -54,53 +54,68 @@ export default function GutConditionPage({ conditionSlug }) {
             <span className="breadcrumb-current" aria-current="page">{condition.heroBadge}</span>
           </nav>
 
-          <div className="condition-hero-content">
-            <div className="condition-badge-wrap">
-              <span className="condition-badge-dot" aria-hidden="true" />
-              <span className="condition-badge-text">{condition.heroBadge}</span>
+          <div className="condition-hero-grid">
+            <div className="condition-hero-content">
+              <div className="condition-badge-wrap">
+                <span className="condition-badge-dot" aria-hidden="true" />
+                <span className="condition-badge-text">{condition.heroBadge}</span>
+              </div>
+
+              <h1 className="condition-hero-title">{condition.title}</h1>
+              <p className="condition-hero-subtitle">{condition.subtitle}</p>
+
+              <div className="condition-hero-actions">
+                <button
+                  type="button"
+                  className="clinical-btn-primary"
+                  onClick={openBook}
+                >
+                  <span>Book Free Discovery Call</span>
+                  <ArrowRight size={18} strokeWidth={2.5} className="btn-arrow-icon" />
+                </button>
+
+                <Link to="/gut-health-checker" className="gut-hero-secondary-btn">
+                  <span>Check Your Gut Score</span>
+                  <Activity size={16} strokeWidth={2} />
+                </Link>
+
+                <a
+                  href={wa(`Hi Meenu, I want to discuss a clinical plan for ${condition.title}.`)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="gut-hero-wa-btn"
+                >
+                  <WhatsAppIcon size={18} />
+                  <span>WhatsApp Meenu</span>
+                </a>
+              </div>
+
+              <div className="condition-trust-strip">
+                {(condition.trustItems || [
+                  '14+ Years Clinical Experience',
+                  'Food-First Indian Nutrition',
+                  'No Extreme Elimination'
+                ]).map((item) => (
+                  <div className="trust-item" key={item}>
+                    <CheckCircle2 size={16} className="text-leaf" />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            <h1 className="condition-hero-title">{condition.title}</h1>
-            <p className="condition-hero-subtitle">{condition.subtitle}</p>
-
-            <div className="condition-hero-actions">
-              <button
-                type="button"
-                className="clinical-btn-primary"
-                onClick={openBook}
-              >
-                <span>Book Free Discovery Call</span>
-                <ArrowRight size={18} strokeWidth={2.5} className="btn-arrow-icon" />
-              </button>
-
-              <Link to="/gut-health-checker" className="gut-hero-secondary-btn">
-                <span>Check Your Gut Score</span>
-                <Activity size={16} strokeWidth={2} />
-              </Link>
-
-              <a
-                href={wa(`Hi Meenu, I want to discuss a clinical plan for ${condition.title}.`)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="gut-hero-wa-btn"
-              >
-                <WhatsAppIcon size={18} />
-                <span>WhatsApp Meenu</span>
-              </a>
-            </div>
-
-            <div className="condition-trust-strip">
-              <div className="trust-item">
-                <CheckCircle2 size={16} className="text-leaf" />
-                <span>14+ Years Clinical Experience</span>
-              </div>
-              <div className="trust-item">
-                <CheckCircle2 size={16} className="text-leaf" />
-                <span>Food-First Indian Nutrition</span>
-              </div>
-              <div className="trust-item">
-                <CheckCircle2 size={16} className="text-leaf" />
-                <span>No Extreme Elimination</span>
+            <div className="condition-hero-visual">
+              <div className="condition-hero-media-card">
+                <img
+                  src={condition.heroImage || '/images/heroes/stock/ibs-bloating.jpg'}
+                  alt={condition.heroImageAlt || condition.title}
+                  className="condition-hero-img"
+                  loading="eager"
+                />
+                <div className="condition-hero-media-caption">
+                  <CheckCircle2 size={15} className="text-leaf" aria-hidden="true" />
+                  <span>{condition.heroImageCaption || 'Food-First Indian Gut Protocol'}</span>
+                </div>
               </div>
             </div>
           </div>
@@ -187,7 +202,7 @@ export default function GutConditionPage({ conditionSlug }) {
         <div className="condition-package-card-wrap">
           <div className="condition-package-card">
             <div className="package-card-left">
-              <span className="package-tier-badge">{recommendedProgram.badge}</span>
+              <span className="package-tier-badge">{recommendedProgram.badge || 'RECOMMENDED CLINICAL PROGRAM'}</span>
               <h3 className="package-title">{recommendedProgram.title}</h3>
               <p className="package-ideal">
                 <strong>Designed for:</strong> {recommendedProgram.idealFor}

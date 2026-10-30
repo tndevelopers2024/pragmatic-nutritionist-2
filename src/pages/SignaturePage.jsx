@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { Star } from 'lucide-react'
 import PageHero from '../components/PageHero'
 import Section from '../components/Section'
 import { useSeo } from '../components/Seo'
@@ -49,7 +50,7 @@ export function SignatureContent() {
       <p className="signature-audience-note">{lines[46]}</p>
     </Section>
     <Section width="wide" bg="white" title={lines[48]} className="signature-results-section">
-      <div className="signature-results-grid">{results.map(([start, end]) => <figure className="signature-result-card" key={start}><span className="signature-stars" aria-label="Five stars">★★★★★</span><h3>{lines[start]}</h3><blockquote>{lines.slice(start + 1, end).filter(line => line !== '★★★★★').join(' ')}</blockquote><figcaption>{lines[end]}</figcaption></figure>)}</div>
+      <div className="signature-results-grid">{results.map(([start, end]) => <figure className="signature-result-card" key={start}><span className="signature-stars" aria-label="Five stars">{Array.from({ length: 5 }, (_, idx) => <Star key={idx} size={15} fill="currentColor" strokeWidth={1.5} aria-hidden="true" />)}</span><h3>{lines[start]}</h3><blockquote>{lines.slice(start + 1, end).filter(line => line !== '★★★★★').join(' ')}</blockquote><figcaption>{lines[end]}</figcaption></figure>)}</div>
       <p className="signature-results-note">{lines[66]}</p>
     </Section>
     <Section width="wide" bg="base" title={lines[67]} className="signature-inclusions-section">

@@ -21,7 +21,8 @@ export const MENU = [
       c('IBS & Bloating', '/gut-health/ibs-bloating', 'Calm IBS and bloating with food-first plans.'),
       c('Acidity & GERD', '/gut-health/acidity-gerd', 'Reduce acidity and reflux without giving up food you love.'),
       c('Constipation & Digestion', '/gut-health/constipation-digestion', 'Get digestion regular and comfortable.'),
-      c('SIBO & Gluten Intolerance', '/gut-health/sibo-gluten-intolerance', 'Diagnosis-aware plans for SIBO and gluten issues.')
+      c('SIBO & Gluten Intolerance', '/gut-health/sibo-gluten-intolerance', 'Diagnosis-aware plans for SIBO and gluten issues.'),
+      c('Gut Health Recipes', '/gut-health-recipes', 'Dietitian-crafted gluten-free, plant-based and gut-friendly recipes.')
     ]
   },
   {
@@ -107,29 +108,25 @@ export const ATHLETES = [
     name: 'SAI AMEYA',
     sport: 'Jiu-Jitsu',
     tag: 'Gold & Silver Medalist',
-    achievements: 'Gold medal, IBJJF, Kuala Lumpur International Open • Silver at AJP, Saudi Arabia',
-    icon: '🥋'
+    achievements: 'Gold medal, IBJJF, Kuala Lumpur International Open • Silver at AJP, Saudi Arabia'
   },
   {
     name: 'CHARITA PHANINDRANATH',
     sport: 'Swimming',
     tag: 'National Record Holder',
-    achievements: 'U17 National record holder - 50m Freestyle (26.04s) • Asian Age Group Championship 2026 - 4th place, 50m freestyle',
-    icon: '🏊'
+    achievements: 'U17 National record holder - 50m Freestyle (26.04s) • Asian Age Group Championship 2026 - 4th place, 50m freestyle'
   },
   {
     name: 'AAHANA SINGH',
     sport: 'Squash',
     tag: 'Junior Champion',
-    achievements: 'GU17 Champion — Bengal Junior Open 2026',
-    icon: '🎾'
+    achievements: 'GU17 Champion — Bengal Junior Open 2026'
   },
   {
     name: 'DHAIRYA SAMAHITA NAVEEN',
     sport: 'UIPM-Pentathlon',
     tag: 'International Silver Medalist',
-    achievements: '2025 Silver Medal holder at the International Championship',
-    icon: '🤺'
+    achievements: '2025 Silver Medal holder at the International Championship'
   }
 ]
 
@@ -141,7 +138,6 @@ export const CORE_AREAS = [
     desc: "Understand what's driving your symptoms and build a sustainable nutrition program. Digestive enzymes, acidity, GERD, IBS, bloating, constipation, SIBO & gluten intolerance.",
     linkText: 'EXPLORE GUT HEALTH',
     to: '/gut-health',
-    icon: '🌱',
     badge: 'ROOT-CAUSE PROTOCOLS'
   },
   {
@@ -151,7 +147,6 @@ export const CORE_AREAS = [
     desc: 'Performance nutrition for athletes competing in national and international events. Youth athletes. Competitive athletes. Training nutrition. Recovery. Competition prep.',
     linkText: 'EXPLORE SPORTS NUTRITION',
     to: '/sports-nutrition',
-    icon: '⚡',
     badge: 'PODIUM-PROVEN'
   }
 ]
@@ -237,46 +232,38 @@ export const RESULTS = [
 export const WHY_PRAGMATIC = [
   {
     title: 'Symptom-led, not template-led',
-    desc: 'Your symptoms tell us where to start. Bloating, fatigue, irregular cycles, poor focus. We trace these back to root causes, not just manage them on the surface.',
-    icon: '🔍'
+    desc: 'Your symptoms tell us where to start. Bloating, fatigue, irregular cycles, poor focus. We trace these back to root causes, not just manage them on the surface.'
   },
   {
     title: 'Behaviour coaching that actually holds',
-    desc: 'We work on habits, triggers, routines, and real-life constraints that determine whether nutrition works long term, not just what looks good on paper.',
-    icon: '🤝'
+    desc: 'We work on habits, triggers, routines, and real-life constraints that determine whether nutrition works long term, not just what looks good on paper.'
   },
   {
     title: 'Results that show up in daily life',
-    desc: 'Most clients notice measurable improvement in digestion, energy, metabolic markers, or symptom stability within 8–12 weeks when plans are followed consistently.',
-    icon: '📈'
+    desc: 'Most clients notice measurable improvement in digestion, energy, metabolic markers, or symptom stability within 8–12 weeks when plans are followed consistently.'
   },
   {
     title: 'Global clinical perspective, Indian execution',
-    desc: 'With clinical practice across India, the UK, and New Zealand, we apply international standards using practical Indian foods and real-world lifestyles.',
-    icon: '🌍'
+    desc: 'With clinical practice across India, the UK, and New Zealand, we apply international standards using practical Indian foods and real-world lifestyles.'
   }
 ]
 
 export const DIAGNOSTICS = [
   {
     title: 'Blood & metabolic panels',
-    desc: 'Thyroid, hormones, insulin resistance, vitamin deficiencies — reviewed and translated into your nutrition protocol.',
-    icon: '🩸'
+    desc: 'Thyroid, hormones, insulin resistance, vitamin deficiencies — reviewed and translated into your nutrition protocol.'
   },
   {
     title: 'Gut microbiome analysis',
-    desc: 'A detailed map of your gut bacteria used to personalise your digestive and immune health plan.',
-    icon: '🦠'
+    desc: 'A detailed map of your gut bacteria used to personalise your digestive and immune health plan.'
   },
   {
     title: 'DNA nutrition testing',
-    desc: 'Understand how your genes influence metabolism, food sensitivities, and how your body absorbs key nutrients.',
-    icon: '🧬'
+    desc: 'Understand how your genes influence metabolism, food sensitivities, and how your body absorbs key nutrients.'
   },
   {
     title: 'Functional nutrition tests',
-    desc: "Advanced markers for inflammation, micronutrient status, and organ function — for when standard tests don't tell the full story.",
-    icon: '🧪'
+    desc: "Advanced markers for inflammation, micronutrient status, and organ function — for when standard tests don't tell the full story."
   }
 ]
 
@@ -342,8 +329,11 @@ export const FOOTER_NAV = [
     links: [
       { label: 'About Meenu', to: '/about' },
       { label: 'Nutrition Plans', to: '/nutrition-plans' },
-      { label: 'Blog', to: '/blog' },
+      { label: 'Gut Health Recipes', to: '/gut-health-recipes' },
+      { label: 'Gluten-Free Diet Guide', to: '/gluten-free-diet' },
+      { label: 'Liver Detox Foods', to: '/liver-detox-foods' },
       { label: 'Courses & Masterclasses', to: '/academy/courses-masterclasses' },
+      { label: 'Blog', to: '/blog' },
       { label: 'Contact Us', to: '/contact' }
     ]
   },
