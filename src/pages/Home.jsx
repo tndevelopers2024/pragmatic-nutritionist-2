@@ -6,7 +6,6 @@ import CoreAreas from '../components/CoreAreas'
 import ResultsFilter from '../components/ResultsFilter'
 import WhyPragmatic from '../components/WhyPragmatic'
 import Timeline from '../components/Timeline'
-import DiagnosticCare from '../components/DiagnosticCare'
 import GutAssessmentSection from '../components/GutAssessmentSection'
 import MeetMeenu from '../components/MeetMeenu'
 import Faq from '../components/Faq'
@@ -36,7 +35,6 @@ export default function Home() {
       <WhyPragmatic />
 
       {/* 6. Precision Care: Data-Led Diagnostic Testing */}
-      <DiagnosticCare />
 
       {/* 7. Structured Methodology: 3-Phase Path to Lasting Vitality */}
       <Timeline />
