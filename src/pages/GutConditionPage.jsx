@@ -1,17 +1,12 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useParams, Link, Navigate } from 'react-router-dom'
 import {
   CheckCircle2,
   ArrowRight,
-  ShieldCheck,
   Activity,
-  FileCheck,
   ChevronRight,
   ChevronDown,
-  ChevronUp,
-  AlertCircle,
-  HelpCircle,
-  Sparkles
+  ChevronUp
 } from 'lucide-react'
 import { useSeo } from '../components/Seo'
 import Section from '../components/Section'
@@ -30,14 +25,14 @@ export default function GutConditionPage({ conditionSlug }) {
   const slug = conditionSlug || params.slug
   const condition = SUB_PAGES_DATA[slug]
 
+  useSeo(condition?.metaTitle || 'Gut Health', condition?.metaDesc || 'Gut health protocol')
+
   const openBook = useBook()
   const [activeFaq, setActiveFaq] = useState(0)
 
   if (!condition) {
     return <Navigate to="/gut-health" replace />
   }
-
-  useSeo(condition.metaTitle, condition.metaDesc)
 
   // Find the recommended program tier
   const recommendedProgram =

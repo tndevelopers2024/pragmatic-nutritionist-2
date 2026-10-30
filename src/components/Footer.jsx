@@ -9,8 +9,7 @@ import {
   MEDICAL_DISCLAIMER,
   RESULTS_DISCLAIMER,
   FOOTER_NAV,
-  LEGAL_LINKS,
-  SOCIAL_LINKS
+  LEGAL_LINKS
 } from '../data/site'
 import logoImg from '../assets/Pragmatic_logo.png'
 

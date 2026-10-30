@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
 import { ArrowRight } from 'lucide-react'
 import PageHero from '../components/PageHero'
 import Section from '../components/Section'
@@ -6,13 +7,19 @@ import { useSeo } from '../components/Seo'
 import blogExcerpts from '../data/blogExcerpts.json'
 import { posts } from '../data/blogPosts'
 import './blog.css'
+import './blog-topics.css'
 
 export default function BlogPage() {
+  const [topic, setTopic] = useState('All')
+  const topics = ['All', ...new Set(posts.map(([, category]) => category))]
   useSeo('Blog', 'Evidence-based articles on gut health, sports nutrition and clinical dietetics.')
   return <>
     <PageHero title="Blog" blurb="Evidence-based guides on gut health and teen athlete nutrition, written by Meenu Balaji, M.H.Sc." />
     <Section width="wide" bg="base" title="Explore the latest articles" lead="Explore evidence-based nutrition insights from Meenu Balaji.">
-      <div className="blog-grid">{posts.map(([title, category, , slug, image], index) => (
+      <nav className="blog-topics" aria-label="Filter articles by topic">
+        {topics.map(category => <button key={category} type="button" aria-pressed={topic === category} onClick={() => setTopic(category)}>{category}</button>)}
+      </nav>
+      <div className="blog-grid">{posts.map(([title, category, , slug, image], index) => (topic === 'All' || topic === category) && (
         <article className="blog-card" key={slug}>
           <Link className="blog-card-image" to={`/blog/${slug}`} tabIndex={-1} aria-hidden="true">
             <img src={`https://static.wixstatic.com/media/${image}`} alt={title} loading="lazy" />

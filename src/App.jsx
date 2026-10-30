@@ -25,11 +25,14 @@ import MoreCarePage from './pages/MoreCarePage'
 import ProgramsPricingPage from './pages/ProgramsPricingPage'
 import PricingCataloguePage from './pages/PricingCataloguePage'
 import BlogPage from './pages/BlogPage'
+import BlogPostPage from './pages/BlogPostPage'
+import NotFound from './components/NotFound'
 import ContactPage from './pages/ContactPage'
 import SignaturePage from './pages/SignaturePage'
 import AcademyPage from './pages/AcademyPage'
-import PageHero from './components/PageHero'
-import { Link } from 'react-router-dom'
+import AcademyOverviewPage from './pages/AcademyOverviewPage'
+import BookCallPage from './pages/BookCallPage'
+import GlutenFreePage from './pages/GlutenFreePage'
 
 function ScrollTop() {
   const { pathname, search } = useLocation()
@@ -69,8 +72,11 @@ export default function App() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/about-us" element={<AboutPage />} />
             <Route path="/about-meenu-balaji-nutritionist" element={<AboutPage />} />
+            <Route path="/book-a-call" element={<BookCallPage />} />
+            <Route path="/academy" element={<AcademyOverviewPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/contact-us" element={<ContactPage />} />
+            <Route path="/gluten-free-diet" element={<GlutenFreePage />} />
             <Route path="/gut-health" element={<GutHealthPage />} />
             <Route path="/best-gut-health-nutritionist-india" element={<GutHealthPage />} />
             <Route path="/gut-health/ibs-bloating" element={<GutConditionPage conditionSlug="ibs-bloating" />} />
@@ -92,6 +98,7 @@ export default function App() {
             <Route path="/signature-nutrition-program" element={<SignaturePage />} />
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/nutrition-blog" element={<BlogPage />} />
+            <Route path="/blog/:slug" element={<BlogPostPage />} />
             <Route path="/adhd-nutritionist-children" element={<MoreCarePage slug="adhd-nutrition" />} />
             <Route path="/child-nutritionist-india" element={<MoreCarePage slug="child-teen-nutrition" />} />
             <Route path="/best-diabetes-nutritionist-india" element={<MoreCarePage slug="diabetes" />} />
@@ -101,17 +108,12 @@ export default function App() {
             {['/academy/courses-masterclasses', '/online-nutrition-course'].map(path => <Route key={path} path={path} element={<AcademyPage variant="public" />} />)}
             {['/academy/online-nutrition-courses', '/online-nutrition-courses'].map(path => <Route key={path} path={path} element={<AcademyPage variant="public-legacy" />} />)}
             {['child-teen-nutrition', 'adhd-nutrition', 'adhd', 'diabetes', 'pcos', 'weight-loss'].map(slug => <Route key={slug} path={`/more-care/${slug}`} element={<MoreCarePage slug={slug} />} />)}
-            {PAGES.filter(p => p.to !== '/blog' && p.to !== '/programs-pricing' && p.to !== '/contact' && p.to !== '/nutrition-plans' && !p.to.startsWith('/gut-health') && !p.to.startsWith('/sports-nutrition') && !p.to.startsWith('/more-care') && !['/academy/build-your-private-practice', '/academy/certificate-courses', '/academy/courses-masterclasses', '/academy/masterclass-registration', '/academy/online-nutrition-courses'].includes(p.to) && p.to !== '/results' && p.to !== '/terms' && p.to !== '/privacy' && p.to !== '/refund').map((p) => (
+            {PAGES.filter(p => p.to !== '/academy' && p.to !== '/book-a-call' && p.to !== '/blog' && p.to !== '/programs-pricing' && p.to !== '/contact' && p.to !== '/nutrition-plans' && !p.to.startsWith('/gut-health') && !p.to.startsWith('/sports-nutrition') && !p.to.startsWith('/more-care') && !['/academy/build-your-private-practice', '/academy/certificate-courses', '/academy/courses-masterclasses', '/academy/masterclass-registration', '/academy/online-nutrition-courses'].includes(p.to) && p.to !== '/results' && p.to !== '/terms' && p.to !== '/privacy' && p.to !== '/refund').map((p) => (
               <Route key={p.to} path={p.to} element={element(p)} />
             ))}
             <Route
               path="*"
-              element={
-                <>
-                  <PageHero title="404 — Page not found" blurb="That page does not exist. Use the navigation menu above to find what you need." image="not-found" />
-                  <section className="section bg-base"><div className="sec-wide"><Link className="btn btn-primary" to="/">Back to home</Link></div></section>
-                </>
-              }
+              element={<NotFound />}
             />
           </Routes>
         </main>

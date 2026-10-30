@@ -8,9 +8,7 @@ import meenuPhoto from '../assets/Faithfully Enhanced Portrait.png'
 import './childNutrition.css'
 
 const child = source['child-teen-nutrition']
-const adhd = source['adhd-nutrition']
 const c = child.sections
-const a = adhd.sections
 const familyImage = '/images/more-care/family-nutrition-generated.jpg'
 const athleteImage = '/images/more-care/youth-athlete-nutrition-generated.jpg'
 const clean = text => text.replace(/[\p{Extended_Pictographic}\uFE0F\u200D]/gu, '').trim()
@@ -76,31 +74,6 @@ function FaqChapter({ document, prefix }) {
     </article>)}</div>
     <div className="cn-contact-line"><h3>{document.tail[0]}</h3><BookButton text={document.tail[1]} secondary /></div>
     {document.tail.length > 2 && <div className="cn-price-notes"><Paragraphs lines={document.tail.slice(2)} /></div>}
-  </Chapter>
-}
-
-function AdhdTopics() {
-  const groups = []
-  for (const line of a[1].lines.slice(2)) {
-    if (line.heading) groups.push({ title: line.text, lines: [] })
-    else groups[groups.length - 1].lines.push(line)
-  }
-  return <Chapter title={a[1].title}>
-    <div className="cn-reading"><Paragraphs lines={a[1].lines.slice(0, 2)} /></div>
-    <div className="cn-topic-list">{groups.map((group, index) => {
-      const introLength = index === 1 ? 2 : 1
-      const bulletEnd = index === 0 ? 5 : group.lines.length
-      return <article className="cn-topic" key={group.title}><h3>{group.title}</h3><div><Paragraphs lines={group.lines.slice(0, introLength)} /><ul className="cn-bullet-list">{group.lines.slice(introLength, bulletEnd).map((line, i) => <li key={i}>{line.text}</li>)}</ul><Paragraphs lines={group.lines.slice(bulletEnd)} /></div></article>
-    })}</div>
-  </Chapter>
-}
-
-function AdhdReviews() {
-  const lines = a[6].lines
-  return <Chapter title={a[6].title} eyebrow={lines[0].text}>
-    <div className="cn-review-grid">{[lines.slice(1, 4), lines.slice(4, 6), lines.slice(6, 8)].map((review, i) => <figure className="cn-card cn-review" key={i}><blockquote><Paragraphs lines={review.slice(1)} /></blockquote><figcaption><strong>{review[0].text}</strong></figcaption></figure>)}</div>
-    <div className="cn-expert-note"><h3>{lines[8].text}</h3><p>{lines[9].text}</p></div>
-    <div className="cn-inline-action"><h3>{a[7].title}</h3><BookButton text={a[7].lines[0].text} /></div>
   </Chapter>
 }
 

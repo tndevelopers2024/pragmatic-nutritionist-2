@@ -4,6 +4,7 @@ import PageHero from '../components/PageHero'
 import Section from '../components/Section'
 import { useSeo } from '../components/Seo'
 import { professionalCourseContent } from '../data/professionalCourseContent'
+import { publicCourseContent } from '../data/publicCourseContent'
 import './academy.css'
 
 // Prices below are shown on the source course listings; availability may change.
@@ -289,6 +290,11 @@ function CourseDetails({ course, variant }) {
           <h3>{heading}</h3>
           <ul>{items.map(item => <li key={item}>{item}</li>)}</ul>
         </div>)}
+        {variant === 'public-legacy' && publicCourseContent[course.slug]?.map(({ heading, items }) => <div key={heading}>
+          <h3>{heading}</h3>
+          <ul>{items.map(item => <li key={item}>{item}</li>)}</ul>
+        </div>)}
+        {variant === 'public-legacy' && course.slug === 'picky-eating-masterclass' && <p>For more support, explore our <Link to="/more-care/child-teen-nutrition">child and teen nutrition services</Link>.</p>}
         {variant === 'public-legacy' && course.slug === 'mindful-eating-webinar' && <div>
           <h3>What you will learn</h3>
           <ul>

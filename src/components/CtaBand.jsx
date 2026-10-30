@@ -1,4 +1,3 @@
-import React from 'react'
 import { ArrowRight, ShieldCheck, CheckCircle2, HeartPulse } from 'lucide-react'
 import WhatsAppIcon from './WhatsAppIcon'
 import { useBook } from '../context/bookContext'
