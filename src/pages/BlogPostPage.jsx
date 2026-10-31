@@ -1,12 +1,13 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import { ArrowLeft, ArrowRight, BookOpen, Calendar, Clock, List, Tag, UserCheck } from 'lucide-react'
+import { ArrowLeft, ArrowRight, BookOpen, Calendar, Clock, List, Tag, UserCheck, Layers } from 'lucide-react'
 import PageHero from '../components/PageHero'
 import Section from '../components/Section'
 import CtaBand from '../components/CtaBand'
 import { useSeo } from '../components/Seo'
 import NotFound from '../components/NotFound'
 import { BLOG_POSTS, LEGACY_BLOG_SLUG_REDIRECTS } from '../data/blogPosts'
+import { useBook } from '../context/bookContext'
 import meenuAvatar from '../assets/Faithfully Enhanced Portrait.png'
 import './blog.css'
 
@@ -66,6 +67,7 @@ function resolveBlogHeroStock(slug, categorySlug) {
 export default function BlogPostPage() {
   const { slug } = useParams()
   const navigate = useNavigate()
+  const openBook = useBook()
 
   const decodedSlug = useMemo(() => {
     let raw
@@ -140,6 +142,11 @@ export default function BlogPostPage() {
     return [...sameCat, ...others].slice(0, 3)
   }, [postMeta])
 
+  const latestPosts = useMemo(
+    () => BLOG_POSTS.filter((p) => p.slug !== decodedSlug).slice(0, 4),
+    [decodedSlug]
+  )
+
   if (!postMeta && state.failed) {
     return <NotFound />
   }
@@ -148,6 +155,7 @@ export default function BlogPostPage() {
     return <NotFound />
   }
 
+  const shareUrl = typeof window !== 'undefined' ? window.location.href : ''
   const heroStockImage = resolveBlogHeroStock(decodedSlug, categorySlug)
 
   function handleArticleBodyClick(e) {
@@ -186,8 +194,24 @@ export default function BlogPostPage() {
         imageCaption={`${category} • Evidence-Based Guide`}
       />
 
-      <Section width="medium" bg="base">
+      <Section width="wide" bg="base">
+        <div className="blog-layout">
         <article className="blog-post">
+          {/* Featured Cover Image */}
+          {coverImage && (
+            <figure className="blog-cover-figure">
+              <img
+                className="blog-post-image"
+                src={coverImage}
+                alt={title}
+                onError={(e) => {
+                  e.currentTarget.closest('figure').style.display = 'none'
+                }}
+              />
+            </figure>
+          )}
+
+          <div className="blog-post-content">
           {/* Top Navigation & Article Metadata */}
           <header className="blog-post-header">
             <div className="blog-post-back-row">
@@ -219,20 +243,6 @@ export default function BlogPostPage() {
               )}
             </div>
           </header>
-
-          {/* Original Wix Featured Media */}
-          {coverImage && (
-            <figure className="blog-cover-figure">
-              <img
-                className="blog-post-image"
-                src={coverImage}
-                alt={title}
-                onError={(e) => {
-                  e.currentTarget.closest('figure').style.display = 'none'
-                }}
-              />
-            </figure>
-          )}
 
           {/* Table of Contents (shown when article has 3+ structured headings) */}
           {headings.length >= 3 && (
@@ -316,7 +326,94 @@ export default function BlogPostPage() {
               <span>More {category} guides</span>
             </Link>
           </div>
+          </div>
         </article>
+
+        <aside className="blog-sidebar">
+          <div className="blog-side-card blog-side-facts">
+            <p className="blog-side-eyebrow">Quick facts</p>
+            <div className="blog-side-fact-list">
+              <div className="blog-side-fact">
+                <Calendar size={18} aria-hidden="true" />
+                <div>
+                  <span>Published</span>
+                  <strong>{postDate}</strong>
+                </div>
+              </div>
+              <div className="blog-side-fact">
+                <Clock size={18} aria-hidden="true" />
+                <div>
+                  <span>Reading time</span>
+                  <strong>{readTime}</strong>
+                </div>
+              </div>
+              <div className="blog-side-fact">
+                <Layers size={18} aria-hidden="true" />
+                <div>
+                  <span>Focus</span>
+                  <strong>{category}</strong>
+                </div>
+              </div>
+            </div>
+
+            <p className="blog-side-eyebrow blog-side-share-label">Share</p>
+            <div className="blog-share-list">
+              {[
+                ['LinkedIn', `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`],
+                ['X', `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(title)}`],
+                ['Facebook', `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`]
+              ].map(([label, href]) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="blog-share-link"
+                  aria-label={`Share on ${label}`}
+                >
+                  <span>{label}</span>
+                  <span aria-hidden="true">↗</span>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div className="blog-side-card blog-side-latest">
+            <div className="blog-side-latest-head">
+              <h3>Latest Posts</h3>
+              <button type="button" className="blog-side-contact" onClick={openBook}>
+                Contact
+              </button>
+            </div>
+            <div className="blog-side-latest-list">
+              {latestPosts.map((lp) => {
+                const fallbackImg =
+                  HERO_STOCK_BY_CATEGORY[lp.categorySlug] || '/images/heroes/stock/clinical-blog.jpg'
+                return (
+                  <Link key={lp.slug} to={`/blog/${lp.slug}`} className="blog-side-latest-item">
+                    <span className="blog-side-latest-thumb">
+                      <img
+                        src={lp.coverImage || fallbackImg}
+                        alt={lp.title}
+                        loading="lazy"
+                        onError={(e) => {
+                          if (e.currentTarget.src !== window.location.origin + fallbackImg) {
+                            e.currentTarget.src = fallbackImg
+                          }
+                        }}
+                      />
+                    </span>
+                    <span className="blog-side-latest-text">
+                      <small>{lp.postDate}</small>
+                      <strong>{lp.title}</strong>
+                    </span>
+                  </Link>
+                )
+              })}
+            </div>
+          </div>
+        </aside>
+        </div>
       </Section>
 
       {/* Related Clinical Guides */}

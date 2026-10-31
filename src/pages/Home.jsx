@@ -5,7 +5,6 @@ import Champions from '../components/Champions'
 import CoreAreas from '../components/CoreAreas'
 import ResultsFilter from '../components/ResultsFilter'
 import WhyPragmatic from '../components/WhyPragmatic'
-import Timeline from '../components/Timeline'
 import GutAssessmentSection from '../components/GutAssessmentSection'
 import Faq from '../components/Faq'
 import CtaBand from '../components/CtaBand'
@@ -35,8 +34,6 @@ export default function Home() {
 
       {/* 6. Precision Care: Data-Led Diagnostic Testing */}
 
-      {/* 7. Structured Methodology: 3-Phase Path to Lasting Vitality */}
-      <Timeline />
 
 
       {/* 9. Comprehensive Gut Health Assessment Spotlight */}

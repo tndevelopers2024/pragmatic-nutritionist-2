@@ -3,7 +3,6 @@ import { useSearchParams } from 'react-router-dom'
 import {
   MapPin,
   Mail,
-  MessageCircle,
   Send,
   Calendar,
   Globe2,
@@ -13,6 +12,7 @@ import PageHero from '../components/PageHero'
 import { useSeo } from '../components/Seo'
 import { useBook } from '../context/bookContext'
 import SocialLinks from '../components/SocialLinks'
+import WhatsAppIcon from '../components/WhatsAppIcon'
 import { PHONE, EMAIL, ADDRESS, HPR_ID, MAJOR_LOCATIONS, wa } from '../data/site'
 import './contact.css'
 
@@ -25,7 +25,9 @@ export default function ContactPage() {
   const openBook = useBook()
   const [searchParams] = useSearchParams()
   const interest = (searchParams.get('plan') || searchParams.get('course'))?.trim().slice(0, 200)
-  const [prepared, setPrepared] = useState(false)
+  const [status, setStatus] = useState('idle') // idle | sending | sent | error
+  const [errorMsg, setErrorMsg] = useState('')
+  const [honeypot, setHoneypot] = useState('')
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -40,9 +42,24 @@ export default function ContactPage() {
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    setPrepared(true)
+    if (status === 'sending') return
+    setStatus('sending')
+    setErrorMsg('')
+    try {
+      const res = await fetch('/api/send-mail', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...formData, website: honeypot })
+      })
+      const data = await res.json().catch(() => ({}))
+      if (!res.ok || !data.ok) throw new Error(data.error || 'Could not send your message.')
+      setStatus('sent')
+    } catch (err) {
+      setErrorMsg(err.message || 'Could not send your message.')
+      setStatus('error')
+    }
   }
 
   const inquiryWaUrl = wa(
@@ -76,7 +93,7 @@ export default function ContactPage() {
                 {/* Phone & WhatsApp */}
                 <div className="contact-channel-card">
                   <div className="contact-channel-icon whatsapp">
-                    <MessageCircle size={22} aria-hidden="true" />
+                    <WhatsAppIcon size={22} />
                   </div>
                   <div className="contact-channel-body">
                     <span className="contact-channel-label">Direct WhatsApp</span>
@@ -149,37 +166,37 @@ export default function ContactPage() {
             {/* Right: Contact Inquiry Form */}
             <div className="contact-form-col">
               <div className="contact-form-panel">
-                {prepared ? (
+                {status === 'sent' ? (
                   <div className="contact-success-state">
-                    <h3>Your message is ready</h3>
+                    <h3>Thank you, your message has been sent</h3>
                     <p>
-                      Your message has not been sent yet. Open WhatsApp to review and send it to Meenu.
+                      Meenu's team will get back to you by email or phone shortly.
                     </p>
                     <div className="contact-success-fallback">
-                      <p>Your name, contact details, selected concern and message will be included in the WhatsApp message.</p>
+                      <p>Need a faster reply? You can also continue the conversation on WhatsApp.</p>
                       <a
                         href={inquiryWaUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="btn btn-primary"
                       >
-                        <MessageCircle size={16} aria-hidden="true" />
-                        Review in WhatsApp
+                        <WhatsAppIcon size={16} />
+                        Chat on WhatsApp
                       </a>
                     </div>
                     <button
                       type="button"
                       className="btn btn-secondary contact-reset-btn"
-                      onClick={() => setPrepared(false)}
+                      onClick={() => setStatus('idle')}
                     >
-                      Edit Message
+                      Send Another Message
                     </button>
                   </div>
                 ) : (
                   <>
                     <div className="contact-form-header">
                       <h3>Send a Message</h3>
-                      <p>Fill out the form to prepare a WhatsApp message. You can review it before sending.</p>
+                      <p>Fill out the form and your message will be emailed straight to Meenu.</p>
                     </div>
 
                     <form className="contact-form" onSubmit={handleSubmit}>
@@ -272,9 +289,34 @@ export default function ContactPage() {
                         />
                       </label>
 
-                      <button type="submit" className="btn btn-primary contact-submit-btn">
+                      {/* Honeypot: hidden from real users, bots tend to fill it */}
+                      <input
+                        type="text"
+                        name="website"
+                        tabIndex={-1}
+                        autoComplete="off"
+                        aria-hidden="true"
+                        value={honeypot}
+                        onChange={(e) => setHoneypot(e.target.value)}
+                        style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0 }}
+                      />
+
+                      {status === 'error' && (
+                        <p role="alert" style={{ color: '#b42318', fontSize: '0.9rem', margin: 0 }}>
+                          {errorMsg}{' '}
+                          <a href={inquiryWaUrl} target="_blank" rel="noopener noreferrer">
+                            Send via WhatsApp instead
+                          </a>
+                        </p>
+                      )}
+
+                      <button
+                        type="submit"
+                        className="btn btn-primary contact-submit-btn"
+                        disabled={status === 'sending'}
+                      >
                         <Send size={16} aria-hidden="true" />
-                        Prepare WhatsApp Message
+                        {status === 'sending' ? 'Sending…' : 'Send Message'}
                       </button>
 
 
