@@ -57,6 +57,8 @@ The frontend build is written to `frontend/dist`. `npm start` runs the standalon
 
 The existing Vercel project can keep the repository root as its project directory. Root `vercel.json` builds `frontend/dist` and root `api/` adapters invoke the implementation in `backend/`. Keep MongoDB and SMTP values in the deployment's server environment. No deployment is performed by local development commands.
 
+Use Node 24 and set `NODE_OPTIONS=--experimental-require-module` in Vercel's Production environment. The HTML sanitizer loads an ES module from CommonJS; Vercel disables this Node feature by default even though it is enabled locally. See [Vercel's Node runtime configuration](https://vercel.com/docs/functions/runtimes/node-js/advanced-node-configuration#experimental-nodejs-require-of-es-module). Set the same option in Preview if you later enable the CMS there. Keep database credentials scoped to the environments that need them.
+
 For separate hosts, build the frontend from the workspace and deploy `frontend/dist`; run `npm start --workspace backend` on the backend host with `HOST=0.0.0.0`, `PORT`, and its server environment configured. Include the `shared/` workspace when installing or packaging either app. Route `/api/*` on the public website origin to the backend using your hosting reverse proxy, preserving the public Host header. Development's Vite proxy is not part of the built static site. This keeps admin sessions and uploaded image URLs working through the same website origin; direct cross-origin browser API requests are not enabled.
 
 The public blog reads content through the backend API. Original article backups and migration input belong to the backend; MongoDB versions always take precedence, including private drafts and archived posts.
