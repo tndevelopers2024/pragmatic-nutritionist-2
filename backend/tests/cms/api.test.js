@@ -324,6 +324,44 @@ test('media optimizes uploads, stores WebP in GridFS and serves the saved image'
   assert.equal(list.data.files[0].size, image.data.length)
   assert.equal(list.data.files[0].width, 1600)
 })
+test('deletion requires authentication, same-origin protection and the current revision', async () => {
+  assert.equal((await request('posts', { id: post.id, method: 'DELETE', authenticated: false })).response.status, 401)
+  assert.equal((await request('posts', { id: post.id, method: 'DELETE', headers: { 'X-CMS-Request': '' } })).response.status, 403)
+  assert.equal((await request('posts', { id: post.id, method: 'DELETE', body: { revision: 0 } })).response.status, 409)
+  const result = await request('posts', { id: post.id, method: 'DELETE', body: { revision: post.revision } })
+  assert.equal(result.response.status, 200)
+  assert.equal((await request('posts', { id: post.id })).response.status, 404)
+  assert.equal((await request('revisions', { id: post.id })).response.status, 404)
+  assert.equal((await request('posts', { id: post.id, method: 'PUT', body: post })).response.status, 404)
+  for (const slug of [post.slug, sample.slug]) {
+    const hidden = await request('posts', { slug, admin: false })
+    assert.equal(hidden.response.status, 404)
+    assert.equal(hidden.data.managed, true)
+  }
+  const tombstone = await db.collection('posts').findOne({ slug: post.slug })
+  assert.equal(tombstone.contentHtml, undefined)
+  assert.equal(tombstone.revisions, undefined)
+  assert.equal((await request('posts')).data.posts.some(p => p.id === post.id), false)
+})
+test('deleting bundled and renamed imported articles prevents fallback and migration resurrection', async () => {
+  const articles = await readBundledPosts()
+  // Exercise an article that has never been imported.
+  await db.collection('posts').deleteOne({ slug: articles[2].slug })
+  for (const source of [articles[1], articles[2]]) {
+    const id = `legacy:${source.slug}`
+    const existing = (await request('posts', { id })).data.post
+    assert.equal((await request('posts', { id, method: 'DELETE', body: { revision: existing.revision } })).response.status, 200)
+    const hidden = await request('posts', { slug: source.slug, admin: false })
+    assert.equal(hidden.response.status, 404)
+    assert.equal(hidden.data.managed, true)
+    assert.equal((await request('posts', { id })).response.status, 404)
+    const list = await request('posts', { admin: false })
+    assert.ok(list.data.managedSlugs.includes(source.slug))
+    assert.equal(list.data.posts.some(p => p.slug === source.slug), false)
+  }
+  assert.equal((await migrateBundledPosts(db, articles)).inserted, 0)
+  assert.equal((await request('posts')).data.posts.some(p => p.status === 'deleted'), false)
+})
 test('signing out revokes the server session', async () => {
   assert.equal((await request('logout', { method: 'POST' })).response.status, 200)
   assert.equal((await request('session')).response.status, 401)

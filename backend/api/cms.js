@@ -72,8 +72,8 @@ export default async function handler(req, res) {
   res.setHeader('Cache-Control', 'no-store')
   res.setHeader('X-Content-Type-Options', 'nosniff')
   try {
-    if (!['GET', 'POST', 'PUT'].includes(req.method)) {
-      res.setHeader('Allow', 'GET, POST, PUT')
+    if (!['GET', 'POST', 'PUT', 'DELETE'].includes(req.method)) {
+      res.setHeader('Allow', 'GET, POST, PUT, DELETE')
       throw error('Method not allowed.', 405)
     }
     checkMutation(req)
@@ -220,7 +220,7 @@ export default async function handler(req, res) {
     if (resource === 'posts' && req.method === 'GET') {
       if (id) {
         const post = await findAdminPost(posts, id)
-        if (!post) throw error('Article not found.', 404)
+        if (!post || post.status === 'deleted') throw error('Article not found.', 404)
         return res.status(200).json({ post: post._id ? adminPost(post) : post })
       }
       const managed = await posts
@@ -230,7 +230,7 @@ export default async function handler(req, res) {
       const slugs = new Set(managed.flatMap((p) => [p.slug, ...(p.aliases || [])]))
       return res.status(200).json({
         posts: [
-          ...managed.map(adminPost),
+          ...managed.filter((p) => p.status !== 'deleted').map(adminPost),
           ...BLOG_POSTS.filter((p) => !slugs.has(p.slug)).map((p) => ({
             ...p,
             id: `legacy:${p.slug}`,
@@ -242,14 +242,42 @@ export default async function handler(req, res) {
     }
     if (resource === 'revisions' && req.method === 'GET') {
       const post = await posts.findOne({ _id: objectId(id) })
-      if (!post) throw error('Article not found.', 404)
+      if (!post || post.status === 'deleted') throw error('Article not found.', 404)
       return res.status(200).json({ revisions: (post.revisions || []).reverse() })
+    }
+    if (resource === 'posts' && req.method === 'DELETE') {
+      if (!id) throw error('Choose an article to delete.')
+      const body = await readBody(req)
+      const previous = await findAdminPost(posts, id)
+      if (!previous || previous.status === 'deleted') throw error('Article not found.', 404)
+      if (body.revision !== previous.revision)
+        throw error('This article changed in another window. Reload before deleting.', 409)
+      // Keep the URLs reserved so bundled content and migration cannot resurrect it.
+      const tombstone = {
+        slug: previous.slug,
+        aliases: previous.aliases || [],
+        reservedSlugs: [previous.slug, ...(previous.aliases || [])],
+        status: 'deleted',
+        revision: previous.revision + 1,
+        deletedAt: new Date(),
+        deletedBy: user.email
+      }
+      if (previous._id) {
+        const result = await posts.replaceOne(
+          { _id: previous._id, revision: body.revision }, tombstone
+        )
+        if (!result.matchedCount)
+          throw error('This article changed in another window. Reload before deleting.', 409)
+      } else {
+        await posts.insertOne(tombstone)
+      }
+      return res.status(200).json({ ok: true })
     }
     if (resource === 'posts' && ['POST', 'PUT'].includes(req.method)) {
       const body = await readBody(req)
       const previous = id ? await findAdminPost(posts, id) : null
       const legacy = previous && !previous._id ? previous : null
-      if (req.method === 'PUT' && !previous) throw error('Article not found.', 404)
+      if (previous?.status === 'deleted' || (req.method === 'PUT' && !previous)) throw error('Article not found.', 404)
       if (previous && body.revision !== previous.revision)
         throw error('This article changed in another window. Reload before saving.', 409)
       const normalized = normalizePost(body, previous)

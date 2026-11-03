@@ -11,7 +11,8 @@ import {
   Save,
   X,
   RotateCcw,
-  Sprout
+  Sprout,
+  Trash2
 } from 'lucide-react'
 import { BLOG_CATEGORIES } from '@pragmatic/shared/blog'
 import RichEditor from './RichEditor'
@@ -225,6 +226,24 @@ function Editor({ initial }) {
       setBusy(false)
     }
   }
+  async function deletePost() {
+    if (!window.confirm(`Delete “${post.title}”? This permanently removes the article and its saved versions.`)) return
+    setBusy(true)
+    setError('')
+    try {
+      await cms('posts', { id: post.id, method: 'DELETE', body: { revision: post.revision } })
+      try {
+        localStorage.removeItem(recoveryKey)
+      } catch {
+        /* Storage may be unavailable. */
+      }
+      navigate('/admin', { replace: true })
+    } catch (err) {
+      setError(err.message)
+    } finally {
+      setBusy(false)
+    }
+  }
   async function uploadCover(event) {
     const file = event.target.files[0]
     if (!file) return
@@ -285,6 +304,17 @@ function Editor({ initial }) {
             </p>
           </div>
           <div className="cms-editor-actions">
+            {post.id && (
+              <button
+                type="button"
+                className="cms-button cms-danger"
+                disabled={busy || uploading || inlineUploading}
+                onClick={deletePost}
+              >
+                <Trash2 size={16} />
+                Delete article
+              </button>
+            )}
             {post.id && !post.id.startsWith('legacy:') && (
               <button className="cms-button" type="button" onClick={openHistory}>
                 <History size={16} />

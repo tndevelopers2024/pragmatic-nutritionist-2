@@ -1508,3 +1508,8 @@ body:has(.cms-app) {
   background: var(--cms-surface);
   border-top: 1px solid var(--cms-border);
 }
+
+.cms-button.cms-danger {
+  color: #a52222;
+  border-color: #e4baba;
+}
