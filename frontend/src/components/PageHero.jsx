@@ -51,6 +51,7 @@ export default function PageHero({
   waLabel = 'WhatsApp Meenu',
   trustItems,
   image,
+  media,
   imageAlt,
   imageCaption,
   imagePosition,
@@ -204,13 +205,13 @@ export default function PageHero({
 
           <div className="condition-hero-visual">
             <div className="condition-hero-media-card">
-              <img
+              {media || <img
                 src={resolvedImage}
                 alt={resolvedImageAlt}
                 className="condition-hero-img"
                 style={{ objectPosition: resolvedImagePosition }}
                 loading="eager"
-              />
+              />}
               <div className="condition-hero-media-caption">
                 <CheckCircle2 size={15} className="text-leaf" aria-hidden="true" />
                 <span>{resolvedImageCaption}</span>

@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import { ArrowRight, ChevronLeft, ChevronRight, Clock, Search, X } from 'lucide-react'
 import PageHero from '../components/PageHero'
+import BlogCover from '../components/BlogCover'
 import Section from '../components/Section'
 import CtaBand from '../components/CtaBand'
 import { useSeo } from '../components/Seo'
@@ -226,9 +227,6 @@ export default function BlogPage() {
           ) : (
             <div className="blog-grid">
               {visiblePosts.map((post, idx) => {
-                const fallbackImg =
-                  FALLBACK_CARD_IMAGE_BY_CATEGORY[post.categorySlug] ||
-                  '/images/heroes/stock/clinical-blog.jpg'
                 return (
                   <article className="blog-card" key={post.slug}>
                     <Link
@@ -237,16 +235,7 @@ export default function BlogPage() {
                       tabIndex={-1}
                       aria-hidden="true"
                     >
-                      <img
-                        src={post.coverImage || fallbackImg}
-                        alt={post.title}
-                        loading={idx < 6 ? 'eager' : 'lazy'}
-                        onError={(e) => {
-                          if (e.currentTarget.src !== window.location.origin + fallbackImg) {
-                            e.currentTarget.src = fallbackImg
-                          }
-                        }}
-                      />
+                      <BlogCover src={post.coverImage} alt={post.title} category={post.category} loading={idx < 6 ? 'eager' : 'lazy'} />
                     </Link>
 
                     <div className="blog-card-body">

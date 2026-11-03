@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { ArrowLeft, ArrowRight, BookOpen, Calendar, Clock, List, Tag, UserCheck, Layers } from 'lucide-react'
 import PageHero from '../components/PageHero'
+import BlogCover from '../components/BlogCover'
 import Section from '../components/Section'
 import CtaBand from '../components/CtaBand'
 import { useSeo } from '../components/Seo'
@@ -13,57 +14,6 @@ import { useBook } from '../context/bookContext'
 import meenuAvatar from '../assets/Faithfully Enhanced Portrait.png'
 import './blog.css'
 
-
-const HERO_STOCK_BY_CATEGORY = {
-  'gut-health': '/images/heroes/stock/gut-health-hub.jpg',
-  'sports-nutrition': '/images/heroes/stock/sports-hub.jpg',
-  'child-nutrition': '/images/heroes/stock/child-teen.jpg',
-  'diabetes-management': '/images/heroes/stock/diabetes-care.jpg',
-  'women-health-wellness': '/images/heroes/stock/pcos-hormonal.jpg',
-  'healthy-recipe': '/images/heroes/stock/gut-recipes-hub.jpg',
-  'nutrition-supplements': '/images/heroes/stock/adhd-nutrition.jpg',
-  'nutrition-facts': '/images/heroes/stock/more-care-hub.jpg',
-  'food-product-review': '/images/heroes/stock/pricing-catalogue.jpg',
-  'nutritionists-learning-hub': '/images/heroes/stock/academy-practitioner.jpg'
-}
-
-function resolveBlogHeroStock(slug, categorySlug) {
-  const s = (slug || '').toLowerCase()
-  if (/constipat|piles|fibre|fiber|psyllium|isabgol|chia|flax/.test(s)) {
-    return '/images/heroes/stock/constipation-digestion.jpg'
-  }
-  if (/acidity|gerd|reflux|stomach-acid|heartburn|vinegar/.test(s)) {
-    return '/images/heroes/stock/acidity-gerd.jpg'
-  }
-  if (/sibo|gluten|celiac|ibd|mcas|histamine|leaky-gut/.test(s)) {
-    return '/images/heroes/stock/sibo-gluten.jpg'
-  }
-  if (/ibs|bloat|vagus|fodmap|gut-brain|probiotic|prebiotic|ferment|kanji|kefir|curd/.test(s)) {
-    return '/images/heroes/stock/ibs-bloating.jpg'
-  }
-  if (/adhd|methylation|theanine|saffron|serotonin|hyperactive/.test(s)) {
-    return '/images/heroes/stock/adhd-nutrition.jpg'
-  }
-  if (/runner|marathon|endurance|creatine|pre-workout|electrolyte/.test(s)) {
-    return '/images/heroes/stock/competitive-athletes.jpg'
-  }
-  if (/teen-athlete|teenage-swimmer|teenage-squash|teenage-athlete|young-athlete|cricket|sports-nutritionist/.test(s)) {
-    return '/images/heroes/stock/youth-athletes.jpg'
-  }
-  if (/diabetes|blood-sugar|glycemic|insulin|cholesterol/.test(s)) {
-    return '/images/heroes/stock/diabetes-care.jpg'
-  }
-  if (/pcos|hormon|menopause|endometriosis|period|seed-cycling|inositol|estrogen/.test(s)) {
-    return '/images/heroes/stock/pcos-hormonal.jpg'
-  }
-  if (/weight-loss|glp-1|fat-loss|keto|calorie/.test(s)) {
-    return '/images/heroes/stock/weight-loss.jpg'
-  }
-  if (/private-practice|nutritionist-private/.test(s)) {
-    return '/images/heroes/stock/academy-practice.jpg'
-  }
-  return HERO_STOCK_BY_CATEGORY[categorySlug] || '/images/heroes/stock/clinical-blog.jpg'
-}
 
 export default function BlogPostPage() {
   const { posts: BLOG_POSTS } = useBlogPosts()
@@ -113,7 +63,7 @@ export default function BlogPostPage() {
   const excerpt = article?.excerpt || postMeta?.excerpt || ''
   const readTime = article?.readTime || postMeta?.readTime || '6 min read'
   const postDate = article?.postDate || postMeta?.postDate || 'Clinical Guide'
-  const coverImage = article?.coverImage || postMeta?.coverImage || ''
+  const coverImage = article ? article.coverImage || '' : postMeta?.coverImage || ''
   const tags = article?.tags || postMeta?.tags || []
   const headings = article?.headings || []
 
@@ -146,7 +96,6 @@ export default function BlogPostPage() {
   }
 
   const shareUrl = typeof window !== 'undefined' ? window.location.href : ''
-  const heroStockImage = resolveBlogHeroStock(decodedSlug, categorySlug)
 
   function handleArticleBodyClick(e) {
     const anchor = e.target.closest('a[href]')
@@ -180,7 +129,7 @@ export default function BlogPostPage() {
           readTime,
           `Published ${postDate}`
         ]}
-        image={heroStockImage}
+        media={<BlogCover src={coverImage} alt={title} category={category} className="condition-hero-img" loading="eager" />}
         imageAlt={title}
         imageCaption={`${category} • Evidence-Based Guide`}
       />
@@ -189,18 +138,9 @@ export default function BlogPostPage() {
         <div className="blog-layout">
         <article className="blog-post">
           {/* Featured Cover Image */}
-          {coverImage && (
-            <figure className="blog-cover-figure">
-              <img
-                className="blog-post-image"
-                src={coverImage}
-                alt={article?.coverAlt || title}
-                onError={(e) => {
-                  e.currentTarget.closest('figure').style.display = 'none'
-                }}
-              />
-            </figure>
-          )}
+          <figure className="blog-cover-figure">
+            <BlogCover src={coverImage} alt={article?.coverAlt || title} category={category} className="blog-post-image" />
+          </figure>
 
           <div className="blog-post-content">
           {/* Top Navigation & Article Metadata */}
@@ -379,21 +319,10 @@ export default function BlogPostPage() {
             </div>
             <div className="blog-side-latest-list">
               {latestPosts.map((lp) => {
-                const fallbackImg =
-                  HERO_STOCK_BY_CATEGORY[lp.categorySlug] || '/images/heroes/stock/clinical-blog.jpg'
                 return (
                   <Link key={lp.slug} to={`/blog/${lp.slug}`} className="blog-side-latest-item">
                     <span className="blog-side-latest-thumb">
-                      <img
-                        src={lp.coverImage || fallbackImg}
-                        alt={lp.title}
-                        loading="lazy"
-                        onError={(e) => {
-                          if (e.currentTarget.src !== window.location.origin + fallbackImg) {
-                            e.currentTarget.src = fallbackImg
-                          }
-                        }}
-                      />
+                      <BlogCover src={lp.coverImage} alt={lp.title} category={lp.category} />
                     </span>
                     <span className="blog-side-latest-text">
                       <small>{lp.postDate}</small>
@@ -418,9 +347,6 @@ export default function BlogPostPage() {
         >
           <div className="blog-grid">
             {relatedPosts.map((rp) => {
-              const fallbackImg =
-                HERO_STOCK_BY_CATEGORY[rp.categorySlug] ||
-                '/images/heroes/stock/clinical-blog.jpg'
               return (
                 <article className="blog-card" key={rp.slug}>
                   <Link
@@ -429,16 +355,7 @@ export default function BlogPostPage() {
                     tabIndex={-1}
                     aria-hidden="true"
                   >
-                    <img
-                      src={rp.coverImage || fallbackImg}
-                      alt={rp.title}
-                      loading="lazy"
-                      onError={(e) => {
-                        if (e.currentTarget.src !== window.location.origin + fallbackImg) {
-                          e.currentTarget.src = fallbackImg
-                        }
-                      }}
-                    />
+                    <BlogCover src={rp.coverImage} alt={rp.title} category={rp.category} />
                   </Link>
                   <div className="blog-card-body">
                     <div className="blog-card-top-row">
